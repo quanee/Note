@@ -1690,3 +1690,191 @@ www.tsinghuan.edu.cn
    2.辅助域名服务器(Secondary DNS Server)
    3.高速缓存域名服务器(Cache DNS Server)
    4.转发服务器(Forwarding Server)
+   ```
+
+   12.1.7DNS基本原理
+
+   ```
+   首先,DNS系统以分布式数据库的方式提供域名解析服务.在分布式数据库中,每一条记录称为资源记录(resource record, RR)
+   其次,DNS系统中的数据库采用分散式的方式来管理,没用任何一个域名服务器中的数据库会包含Internet上的所有资源记录.
+   再次,同一个数据库可以由多台域名服务器来管理,查询其中任何一台域名服务器都可以得到相同的资源记录.反之,同一个域名服务器可以管理多个区域的数据库,不同的域名数据库查询都可能是由同一台域名服务器提供
+   最后,将本来属于自己所管理的资源记录授予其他的域名服务器来管理,称之为授权(delegation).一经授权,上层的域名服务器都不在管理这些区域,完全依靠被授权的域名服务器来管理.
+   ```
+
+   12.2BIND及其安装方法
+12.2.1关于BIND
+BIND是互联网上使用最为广泛的域名服务器软件,约占90%市场
+BIND(Berkeley Internet Name Domain)
+1984年,柏克莱加州大学(University of California, Berkeley)计算机系统研究小组的4个研究生共同开发了UNIX系统上的第1个DNS协议
+1985年,美国设备公司(Digital Equipment Corporation, DEC)的工程师Kevin Dunlap重写了这个最初的DNS实现,并正式命名为BIND
+20世纪90年代,BIND被移植到Windows NT平台上.
+BIND发展过程中经历了3个主要版本,分别是BIND 4,BIND 8和BIND 9,每个版本在架构上有显著变化.
+BIND软件包包括:
+   DNS服务器:名称为named的程序,是name daemon的缩写,主要功能是根据DNS协议标准的规定,响应收到的DNS查询
+   DNS解析器:一个解析器是一个程序,通过发送请求到合适的服务器并且对服务器的响应做出合适的回应,来解析对一个域名的查询,一个解析库是程序组件的集合,可以在开发其他程序时使用,为这些程序提供域名解析的功能
+   测试服务器的软件工具.例如,nslookup,dig以及host等
+12.2.2以二进制软件包的方式安装Bind 9
+以root身份登录,执行以下命令(Solaris)
+pkg install pkg:/service/network/dns/bind
+查看当前系统中安装的BIND的版本
+named -v
+FreeBSD命令
+安装
+cd /usr/ports/dns/bind98/
+make && make install
+查看BIND版本
+named -v
+12.2.3以源代码的方式安装BIND9
+BIND9代码下载网址http://www.isc.org/downloads
+tar zxvf bind-9.***.tar.gz
+cd bind-9.***
+./configure
+make && make install
+以源代码的方式安装BIND9需要gcc编译器
+12.2.4启动和停止BIND 9
+BIND 9最主要的服务进程为named
+启动named服务
+svcadm enable dns/serve
+或者
+svcadm enable dns/serve:default
+停止named服务
+svcadm disable dns/serve
+或者
+svcadm disable dns/serve:default
+FreeBSD中需要先配置/etc/rc.conf文件,增加以下代码:
+#add following line if not present
+named_enable=”YES”
+#the line below must replace the line named_program=”usr/sbin/named” if present
+
+   # otherwise add it
+
+   named_program=”/usr/local/sbin/named”
+启动named服务进程
+/etc/rc.d/named start
+停止named服务进程
+/etc/rc.d/named stop
+12.3配置BIND 9
+
+12.3.1BIND配置文件概述
+BIND组件以及位置
+组件  Solaris FreeBSD
+BIND主配置文件   /etc/named.conf /etc/named/named.conf
+BIND可执行文件   
+/usr/sbin/named
+/usr/sbin/named-check
+/usr/sbin/named-checkzone
+/usr/sbin/named-compilezone /usr/sbin/named
+/usr/sbin/named-checkconf
+/usr/sbin/named-checkzone
+/usr/sbin/named-compilezone
+/usr/sbin/named.reconfig
+/usr/sbin/named.reload
+BIND数据库文件   /var/named  /var/named/etc/namedb
+默认的提示文件的名称  未指定 named.root
+启动named svcadm enable dns/server
+或
+svcadm enable dns/server:default    
+/etc/rc.d/named start
+关闭named svcadm disable dns/server
+或
+svcadm disable dns/server:default   
+/etc/rc.d/named stop
+12.3.2主配置文件named.conf
+    named.conf文件中的语句的基本语法
+    clause [argument]{
+    /*块注释*/
+        item;//注释
+        item;#注释
+        ……
+};
+named.conf文件中的常用语句及其涵义
+语句  涵义
+acl 定义一个IP地址表列名,用于访问控制
+controls    定义系统管理员使用的,有关本地域名服务器操作的控制通道
+include 包含一个外部文件
+key 定义密钥,应用在通过TSIG进行授权和认证的配置中
+logging 设置日志服务器和日志信息的发送地
+options 控制服务器的全局配置选项和为其他语句设置默认值
+server  在一个单服务器基础上设置特定的配置选项
+trusted-keys    定义信任的DNSSED密钥
+view    定义一个视图
+zone    定义一个区域
+12.3.3定义地址匹配列表
+    acl语句用来定义地址匹配列表
+    acl acl-name{
+            address_match_list
+};
+    acl-name:要定义的地址匹配列表的名称
+    address_match_list:地址列表,可以是IP地址,也可以是用大括号括起来的另一个地址匹配列表
+    由于BIND采用了顺序优先匹配算法,所以一个小的范围定义一定要在更大的范围定义之前,不管知否带有!符号.
+    BIND定义了一些常,表示某个范围的主机地址
+    any:匹配所有主机
+    none:不匹配任何主机
+    localhost:匹配主机上所有IPv4的网络接口
+    localnets:匹配所有IPv4本地网络的主机
+12.3.4定义控制通道
+    controls语句定义了系统管理员使用的,有关本地域名服务器操作的控制通道
+    control{
+        inet(ipv4_address|IPv6_address|*)
+        [port(integer)]
+        allow{address_match_list}
+        [keys{key_list}];
+        ……
+}
+如果想禁用所有的控制通道,则:
+    controls{};
+12.3.5包含外部文件
+    include语句可以在该语句出现的地方插入指定的文件
+    include “path”
+12.3.6定义共享密钥
+    key语句用来定义共享密钥
+    key key_id{
+        algorithm hmac_md5;
+        secret string;
+};
+    key_id:密钥的名称,在其他地方可以通过该名称来引用该密钥
+    algorithm:加密算法,目前只支持hmac-md5
+    secret:指定一个用base-64编码的字符串作为密钥
+12.3.7定义通道
+    BIND的所有的日志都会输出到一个或者多个通道中.
+    channel channel_name{
+            (file path_name
+[version(number|unlimited)]
+[size filesize]
+|syslog syslog_facility
+|stderr
+|null);
+[severity(critical|error|warning|notice|info|debug|[level]|dynamic);]
+[print-category yes or no;]
+[print-severity yes or no;]
+[print-time yes or no;]
+};
+    channel_name:通道名称
+    file:通道的目标为一个磁盘文件,path_name表示目标文件名
+    version:指定named自动保留的多个日志文件,number用来指定版本的个数,如果指定为unlimited,则表示不限制版本个数.
+    size:指定每个文件的大小,filesize可以以K,B或者G为单位.
+    syslog:表示通道的目标为系统日志
+    stderr:表示将通道的目标为named的标准错误输出
+    null:表示无日志输出
+    severity:指定记录消息的级别,主要有critical,error,warning,notice,info,debug[level]以及dynamic等7个级别.定义某个级别后,系统会定义包括该级别以及比该级别更严重的级别的消息.
+12.3.8使用通道分类
+    category category_name{
+                channel_item;
+    }
+    default:默认类别,匹配所有未明确指定通道的类别,但不匹配不属于任何类别的消息
+    general:包括所有未明确分类的BIND消息
+    database:named内部使用的分类,用来存储域和缓存数据的内部数据库信息
+    security:接受和拒绝的请求
+    config:配置文件分析和处理
+    resolver:域名解析,包括对来自解析器的递归查询的处理.
+    xfer-in:从远程域名服务器到本地域名服务器的区域传输
+    xfer-out: 从本地域名服务器到远程域名服务器的区域传输
+    notify:NOTIFY协议
+    client:客户端请求的处理
+    unmatched:由于没有匹配的视图,那么大无法确定的类别
+    network:网络操作
+    update:动态更新事件
+    queries:查询请求
+    dispatch:DNSSEC和TSIG协议的处理
+    lame_serviers:未知服务器.由于其他DNS服务器中的错误配置 引起的
+12.3.9设置选项
