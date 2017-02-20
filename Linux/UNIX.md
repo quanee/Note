@@ -1878,3 +1878,191 @@ zone    定义一个区域
     dispatch:DNSSEC和TSIG协议的处理
     lame_serviers:未知服务器.由于其他DNS服务器中的错误配置 引起的
 12.3.9设置选项
+    options{
+[version version_string;]
+[directory path_name;]
+[pid-file path_name;]
+[notify yes_or_no|explicit;]
+[recursion yes_or_no;]
+[forward(only|first);]
+[forwards{ip_addr[port ip_port];[ip_addr[port ip_port];..]};]
+[allow-notify{address_match_list};]
+[allow-query{address_match_list};]
+[allow-transfer{address_match_list};]
+[allow-recursion{address_match_list};]
+[allow-v6-synthesis{address_match_list};]
+[blackhole{address_match_list};]
+[listen-on[port ip_port]{address_match_list};]
+[listen-on-v6[port op_port]{address_match_list};]
+[query-source[address(ip_addr|*)][port(ip_port|*)];]
+[port ip_port]
+}
+
+1. 通用选项
+   version:响应针对BIND服务器版本的请求时的内容,缺省返回服务器的真实内容
+   directory:指定BIND服务器的工作目录.配置文件中所使用的相对路径.大多数服务器的输出文件都缺省生成在这个目录下.如果没有设定目录,工作目录缺省设置为服务器启动时的目录”.”.指定的目录应该是一个绝对路径
+   pid-file:指定named进程ID文件的路径名.默认为/var/run/named.pid.是给需要向运行着的服务器发送信号的程序使用的
+   statistics-file:当使用rndc stats命令的时候,服务器会统计信息追加到文件路径名.默认为named.stats,位于在服务器程序的当前目录中.
+   port:指定服务器用来接收和发送DNS协议数据的UDP/TCP端口号,默认为53.主要用于服务器的检测,如果不使用53端口,服务器将不能与其他的DNS进行通信
+2. 布尔选项
+   notify:如果为yes,则用于服务器数据发生变化后,发送给其他服务器消息,然后从服务器和主服务器协商数据库副本的更新.如果为no,则不会发出任何报文.也可以设定在zone语句中.默认值为yes.
+   recursion:指定named程序是否可以代表客户机查询其他的域名服务器,这称为递归查询.默认值为yes.
+把recursion设为no不会阻止用户从服务器的缓存中得到数据,仅仅阻止新数据作为查询的结果被缓存.服务器的内部操作还是可以影响本地的缓存内容.
+3. 转发选项
+转发功能可以用于在一些域名服务器上产生一个大的缓存,从而减少到外部服务器网络上的流量.可以用在和Internet没有直接连接的内部域名服务器上,用来提供对外部域名的查询.只有当服务器是非授权时,并且缓存中没有相关记录时才进行转发
+   forward:只有当forwarders子句的列表中有内容时才有意义.可以指定first和only两个值,如果为first,则域名服务器会先查询设置的forwarders的的服务器,如果没有回答,则会自己寻找答案;如果设定为only,服务器只会把请求转发到其他服务器上.默认值为first.
+   forwarders:设定转发使用的IP地址.默认列表为空,即不转发.转发也可以设置在每个域上,这样全局选项中的转发设置就不会起作用了.可以将不同的域转发到服务器上,或者对不同的域可以实现forward only或者first的不同方式,也可以根本不转发
+4. 访问控制选项
+根据用户请求使用的IP地址进行限制
+   allow-notify:用来设定除主域名外,还可以发送通知消息的主机,通知域中的从服务器区域数据库已经发生改变.默认情况下,区域中的域名服务器只接受来自主域名服务器的通知消息.
+   allow-query:设定可以进行普通查询的主机.默认允许所有主机进行查询.
+   allow-transfer:设定允许和本地服务器进行区域传输的主机.默认允许所有主机进行域传输.
+   allow-recursion:设定可以递归查询本域名服务器的主机.默认允许所有主机之间进行递归查询.禁止递归查询不能阻止查询已经存在于服务器缓存中的数据.
+   allow-v6-synthesis:设定能接受对IPv6响应的主机
+   blackhole:设定一个地址列表,服务器不会接受来自这个列表的查询请求,或者解析这些地址.默认值为none.
+5. 网络接口和端口选项
+使用listen-on来设定.listen-on使用可选的端口和一个地址匹配列表.服务器将会监听所有匹配地址列表中所允许的端口.如果没有端口,则使用53.
+listen-on port{
+
+   ```
+       address_match_list;
+   ```
+
+   }
+port:指定监听的端口
+adderess_match_list:有效的地址匹配列表
+6. 查询地址选项
+query-source {address ip_address port port_number}
+ip_address:一个IPv4的地址
+port_number:端口号
+query-source-v6用来处理IPv6的地址
+12.3.10定义远程服务器
+server ip_addr{
+[bogus yes_or_no;]
+[provide-ixfr yes_or_no;]
+[request-ixfr yes_or_no;]
+[transfers number]
+[transfer-format(one-answer|many-answers);]
+[keys{string;[string;[…]]};]
+}
+ip_addr:远程服务器地址
+bogus:如果值为yes,则named不会向该服务器发送任何查询
+provide-ixfr:如果值为yes,则该服务器将执行增量区域传输,如果值为no,则所有对远端服务器的传输都将是非增量的.不设定,默认为yes.
+request-ixfr:本从服务器是否向主服务器发送区域的增量传输请求.默认为yes
+transfers:限制了来自远端服务器的并发的入站区域传输的数量
+transfer-format:指定服务器进行区域传输的方式,分别有one-answer和many-answers,前者表示每个源数据传输使用一个DNS报文,后者表示在一个报文中汇集尽可能多的记录
+keys:定义key_id,用于当与远程服务器通话时的安全处理
+12.3.11定义视图
+view语句包含一个控制谁能看到视图的访问控制列表,一些应用到视图中所有区域的选项以及区域定义本身
+view view_name{
+
+   ```
+           match-clents{address_match_list};
+           match-destinations{address_match_list};
+           match-recursive-only{yes_or_no};
+           [view_option;…]
+           [zone_statement;…]
+   ```
+
+   }
+view_name:视图名称
+match-clients:控制谁可以看到该视图.
+在BIND中,视图是按照顺序进行处理的,所以要把限制最严格的视图放在前面.不同视图中的区域可以有相同的名称.试图是一种要么全有,要么全无的概念,意味着如果使用视图,那么在named.conf文件中的所有zone语句都必须在一个视图中出现
+12.3.12定义区域
+1.定义区域主服务器
+zone “zone_name”{
+
+   ```
+       type master;
+       [allow-notify{address_match_list};]
+       [allow-query{address_match_list};]
+       [allow-transfer{address_match_list};]
+       [allow-update{address_match_list};]
+       [file path;]
+       [ixfr-base string;]
+   ```
+
+   }
+zone_name:区域名称,必须用双引号括起来
+type master:当前区域的主域名服务器;
+allow-update:限制发生更新的主机,动态更新只限于主服务器,因此,allow-update不能用在从服务器
+ixfr-base:指定事务日志保存文件名称
+2.定义区域从服务器
+zone “zone_name”{
+
+   ```
+       type slave;
+       [allow-notify{address_match_list};]
+       [allow-query{address_match_list};]
+       [allow-transfer{address_match_list};]
+       [allow-update{address_match_list};]
+       [file string;]
+       [masters[port ip_port]{ip_addr[port ip_port][key key];[]};]
+   ```
+
+   }
+type slave:从服务器
+file:指定存储数据库副本的本地磁盘文件
+masters:服务器的IP地址
+3.定义根区域
+zone “.”{
+type hint;
+file “path”
+};
+根域的名称为一个圆点”.”
+type hint:表示根区域
+file:指定根区域的区域数据库文件的路径
+4.定义转发区域
+zone “zone_name”{
+type forward;
+forward only|first;
+forwarder{ip_addr;ip_addr;…};
+};
+type forward:指定转发区域
+forward:控制转发器的行为,当值为first时,该服务器会首先查询forwarders中设置的服务器,如果设置为only,服务器就会把请求转发到其他服务器上
+forwarder:指定要转发的目标服务器的IP地址,默认列表为空,表示不转发
+只有当forwarder的列表不为空时,forwarder再会起作用
+12.3.13根提示文件
+zone “.”{
+
+   ```
+       type hint
+       file “/etc/namedb/named.root”
+   ```
+
+   }
+通过file关键字指定的文件称为根提示文件,根提示文件包含根域的域名服务器的IP地址.习惯命名为named.root,db.cache,root.hint等
+12.4DNS数据库
+12.4.1资源记录
+区域文件是BIND中最主要的文件,域名服务器的实际数据就存储在这些区域文件中.每次当BIND启动时,都会自动加载这些数据.BIND的区域文件都有固定的格式,包含一条或多条记录,这些记录称为资源记录(resource record, RR).
+name ttl class type rdta
+7. name
+当前记录所描述的实体名称,可以是一个主机或者一个域.如果几条连续的记录都涉及到同一个实体,则可以从第2条省略该列的值
+8. ttl
+记录被缓存的有效时间(time to live, TTL).ttl以秒为单位指定资源记录可以被缓存并且认为有效的时间长度.
+9. class
+网络协议的类别,IN(Internet),CS(CSNET),CH(CHAOS),HS(Hesiod).目前CSNET和CHAOS已被废弃,Hesiod是一种建立在BIND之上的数据库服务
+默认值为IN,唯一最常使用的值
+10. type
+区域记录:表示区域以及名称服务器
+基本记录:指定名称和地址之间的映射
+安全记录:向区域文件添加身份认证和签名
+可选记录:提供关于主机或者区域的额外信息
+资源记录类型
+类别  类型  全称  涵义
+区域记录    SOA Start of Authoruty  
+NA  Name Server 
+基本类型    A   IPv4 Addres 
+AAAA    Original IPv6 Address   
+A6  IPv6Address 
+PTR pointer 
+DNAME   Redirection 
+MX  Mail Exchanger  
+安全记录    KEY Public Key  
+NXT Next    
+SIG Signatures  
+可选记录    CNAME   Canonical Name  
+LOC Location    
+RP  Responsible Person  
+SRV Services    
+TXT Text    
