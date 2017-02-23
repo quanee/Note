@@ -976,3 +976,166 @@ o,O,r或者R键
 ###创建磁盘文件
     probe -scsi     检查所有SCSI设备的目标号
     boot -r             引导Solaris系统正确配置磁盘文件
+    dmesg               查看系统日志
+    devfsadm            为新的磁盘创建适当的设备文件
+
+###格式化磁盘
+    UNIX系统的格式化相当于Windows中的低级格式化
+    UNIX系统的创建系统文件相当于Windows中的格式化或高级格式化
+
+###HP-UX系统
+    mediainit
+
+###Solaris系统
+    format
+    disk:选择磁盘
+    type:选择或定义磁盘类型
+    partition:选择当前磁盘的描述信息
+    current:显示当前磁盘的描述信息
+    format:格式化磁盘
+    fdisk:创建fdisk分区
+    repair:修复有缺陷的扇区
+    label:将磁盘标签写入磁盘
+    analyze:分析磁盘表面
+    defect:缺陷列表管理
+    backup:搜索备份盘标签
+    verify:读取和显示磁盘标签
+    save:保存新的磁盘/分区定义
+    inquire:显示磁盘标识
+    volname:设置最多8个字的卷名
+    !:执行命令
+    quit:退出format命令
+
+###创建Solaris fdisk分区
+    fdisk分区是基于x86平台的Solaris系统所特有的功能
+    format>fdisk
+
+###磁盘分片和标记磁盘
+    format>partition
+    partition:
+    0~n:分别设置磁盘分片0~n的属性
+    select:选择预定义的分区表
+    modify:修改预定义的分区表
+    name:命名当前分区表
+    print:显示当前分区表
+    label:将分片映射和磁盘标签写入磁盘
+    !:执行命令
+    quit:退出partition命令
+
+###创建文件系统
+    nesfs /dev/rdsk/c4todoso
+    创建一个标准的UFS文件系统
+    FreeBSD
+    sysinstall
+
+##监控文件系统
+
+###监控磁盘剩余空间display free disk space
+    df [options] [filesystem]
+    options:
+    -a:统计所有的文件系统的剩余空间,包含设置了MNT_IGNORE选项的文件系统
+    -b:FreeBSD:使用512字节的数据块来显示,覆盖当前环境的BLOCKSIZE变量
+                Solaris:以KB为单位显示文件系统总的可用空间
+    -g:FreeBSD:以GB为单位显示磁盘情况
+                 Solaris:显示整个statvfs结构
+    -H或-h:使用容易阅读的格式来显示
+    -k:以KB为单位显示磁盘空间情况
+    filesystem:要显示其剩余空间情况的文件系统.缺省表示当前系统
+
+###监控磁盘使用情况(disk usage)
+    du [options] file…
+    options:
+    -h:以容易阅读的格式显示
+    -d:FreeBSD:显示目录树级别
+                     Solaris:只统计指定的文件系统的信息
+    -s:对于指定的文件或者目录,只显示一条输出结果
+    -t:FreeBSD:指定文件大小阈值,超过该阈值的文件才会显示
+                    Solaris无该选项
+
+###创建文件系统
+
+####newfs命令及其选项(new file system)
+    newfs [options] specialfile
+    options:
+    -E:在创建文件系统前清除磁盘上的数,不适用于Solaris
+    -L:为新文件系统指定卷标,不适用于Solaris
+    -N:只输出文件系统参数,而不是真正创建文件系统
+    -O:指定文件系统类型,如果指定为1,则创建UFS1系统,如果为2,则创建UFS2文件系统,默认创建UFS2.不适用于Solaris
+    -U:在新文件系统上启动soft updates技术,仅适用于FreeBSD
+    -b:指定文件系统块的大小,值必须为2的n次方
+                    FreeBSD缺省为16384
+                    Solaris缺省为8192
+    -c:每个柱面组包含的块的数量
+    -f:磁盘磁片的大小
+    -i:指定文件系统中i节点的密度.默认情况下每4个字节创建1个i节点
+    -m:为普通用户保留的磁盘空间的百分比.默认为8%
+    -n:在FreeBSD中,不要在文件系统中创建.snap目录(会导致该文件系统中不支持快照)
+    -p:指定要创建文件系统的BSD分区,其值为a~h
+    specilafile:要创建文件系统的特殊设备文件名称
+
+###挂载和卸载文件系统
+
+####挂载
+    mount [options]
+    options:
+    -p: 列出当前系统已挂载的文件系统
+    -v: 开启冗余模式(verbose mode)显示一些附加信息
+
+####文件系统挂载选项
+    -a: 使用该选项,mount命令将挂载/etc/fstab文件中描述的所有文件系统,除了被标记为noauto,late或者-t标志排除的文件系统,以及已挂载的文件系统.
+    -f:强制挂载个不干净的文件系统
+    -o:指定挂载选项
+| 
+| ---------------------------------------------------
+| async |为文件系统启用异步I/O
+| force |与-f相同
+| fstab |与-u配合使用时,表示应用/etc/fstab文件中关于该文件系统的所有选项
+| late  |当使用-a选项时,制定该选项的文件将被忽略
+| noasync   |元数据的I/O采用同步的方式,数据的I/O采用异步方式,默认.
+| noatime   |当读取文件时不要更新最近访问时间属性,通常用于文件系统中文件非常多,对于性能要求又非常高的场合.
+| noauto    |当使-a选项时,包含该标志的文件系统将不会被挂载
+| noexec    |不允许在被挂载的文件系统中执行任何二进制文件
+| nosuid    |不允许粘滞位发生作用
+| ro    |以只读的方式挂载文件系统,与-r相同
+| snapshot  |允许文件系统的快照
+| sync  |所有的I/O操作都将以同步的方式进步
+| union |使用联合文件系统,挂载点中原有的内容与被挂载的文件系统中的内容同时可用.
+|   -r: 只读挂载指定的文件系统
+|   -t: 指定要挂载的文件系统的类型,默认值为ufs
+|   -w: 文件系统以读写的方式挂载,不适用于Solaris
+
+###卸载文件系统
+    umount [options] special_file | node
+    options:
+    -a:卸载fstab文件中描述的所有文件系统
+    -A:卸载当前已挂载的所有文件系统,除根文件系统之外,只适用于FreeBSD
+    -F:指定fstab配置文件,只适用于FreeBSD
+    -f:强制卸载某个文件系统
+    -t:指定要卸载的文件类型
+
+###查看文件系统使用者
+    fuser [options] file
+    options:
+    -c:显示包含指定文件的文件系统中关于任何打开的文件的报告
+    -f:仅报告指定文件的使用情况
+    -k:将SIGKILL信号发送到每个本地进程
+    -u:为进程号后圆括号中的本地进程提供登录名
+
+###挂载MS-DOS文件系统
+    mount_msdosfs [options] special_file node
+    options:
+    -o:指定挂载选项
+large   支持超过128G的大文件系统
+longnames   支持Windows长文件名
+shortnames  只支持Windows短文件名,即文件名的长度不超过8个字符,扩展名长度不超过301个字符
+nowin95 忽略Windows95的扩展的文件信息
+    -u:指定文件系统中文件的所有者
+    -g:指定文件系统中文件的所属的组
+    -m:指定文件系统中文件权限掩码
+    -s:强制忽略Windows的长文件名
+    -l:强制列出Windows的长文件名
+    special_file:要挂载的文件系统所对应的特殊文件
+    node:挂载点
+
+###挂载NTFS文件系统
+    mount_ntfs [options] special_file node
