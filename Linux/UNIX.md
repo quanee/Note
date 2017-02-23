@@ -161,3 +161,166 @@
     new_supplementary_group 新的备用组
 
 ###修改用户主目录
+    usermod -d home_dir login_name
+    修改主目录权限
+        chown -R login_name home_dir
+    -R:包含所有子目录
+
+###修改用户默认的Shell
+    usermod -s shell_name login_name
+
+###删除用户
+    userdel login_name
+    该命令并不删除用户目录
+
+###删除用户及其主目录
+    userdel -r login_name
+
+###添加组(组名长度一般不超过8个字符)
+
+###使用默认选项添加组
+    groupadd group_name
+    FreeBSD命令
+    pw groupadd -n group_name -M users
+    -n:新用户组组名
+    -M:新用户组成员(多个成员之间用逗号隔开)
+
+###指定组ID
+    groupadd -g gid group_name
+    FreeBSD命令
+    pw groupadd -g gid -n group_name
+
+###指定重复的组ID
+    group -g gid -o group_name
+    -o:表示使用已有的GID作为新租ID
+    FreeBSD
+    pw groupadd -g gid -o group_name
+
+##修改组
+
+###修改组名
+    groupmod -n new_name group_name
+    group_name:必须为当前系统中已存在的用户组名
+    FreeBSD命令
+    pw groupadd -l new_name -n group_name
+
+###修改组ID
+    groupmod -g gid group_name
+    FreeBSD命令
+    pw groupmod -g gid -n group_name
+
+###修改为重复的组ID
+    groupmod -o -g gid group_name
+
+###删除组
+    groupdel group_name
+    只删除组,并不删除组成员
+    (从/etc/group文件中删除组的定义)
+
+##添加角色(类似用户)
+
+###指定角色基目录
+    roleadd -b base_dir -m role_name
+    -b:指定角色基目录
+    -m:当角色基目录不存在时自动创建主目录
+passwd role_name
+    角色创建之后还处于锁定状态,设置密码之后,才可以变为可用状态.
+/etc/user_attr文件记录角色的扩展属性
+
+#####在FreeBSD等BSD家族的UNIX发行版中,并未引入RBAC安全模型,再基于System V的UNIX发行版中,都引入了基于角色的访问控制模型.
+
+##AIX
+    mkrole [attribute=value…] role_name
+    attribute=value是角色的一系列初始化属性
+    role_name是角色名称
+
+###指定角色主目录
+    roleadd -d home_dir role_name
+    -d:指定角色主目录
+    home_dir:主目录的路径
+
+###指定角色用户组
+    roleadd -g primary_group -G supplementary_group role_name
+    primary_group,supplementary_group必须为系统中已存在的组
+    该角色的成员将成为该角色所在的用户组所在的成员
+
+###指定角色的有效期
+    roleadd -e expire role_name
+    expire:角色的有效期,格式必须符合/etc/datemsk文件中定义的格式之一
+
+###指定角色的ID
+    roleadd -u uid role_name
+    uid:必须为未使用的值
+
+###指定角色默认的Shell
+    roleadd -s shell role_name
+    Shell:未设置默认为/bin/pfsh
+
+###指定角色成员
+    usermod -R role1,role2,…login_name
+    role1,role2…当前系统中已存在的角色
+login_name:当前系统中已存在的登录名
+    在添加用户时指定角色
+        useradd -R role1,role2,…login_name
+
+###为角色授权
+    /etc/user_attr(扩展用户属性数据库)
+    该文件定义了用户与角色的关系,以及用户切换到角色后的权限配置文件
+        login_name:qualifier:res1:res2:attr
+        login_name:用户登录名,值不能为空
+        qualifier:描述信息
+        3~4列:保留列
+        attr:一组用分号隔开的属性及其值的组合,属性形式: key=value
+    /etc/security/prof_attr(权限配置属性数据库)
+        该文件中定义权限配置文件的名称,说明,权限配置文件的授权以及帮助文件的位置
+        profname:res1:res2:desc:attr
+        profname:权限配置文件的名称
+        2~3列:保留列
+        desc:描述信息
+        attr:一组由分号分隔开的键名和键值的组合,其中键名可选值有help和auths
+    /etc/security/exec_attr(授权属性数据库)
+        该文件定义了需要安全属性才能成功运行的命令
+        name:policy:type:res1:res2:id:attr
+        name:权限配置文件的名称
+        policy:与此项相关联的安全策略(可取suser和solaris)
+        type:指定实体的类型,目前只能取值为cmd,表示实体类型命令
+        4~5列:保留列
+        id:标识实体的字符串,对于命令来说应该具有全路径或通配符(*)
+        attr:以分号分隔的关键字-值对的可选列表,用于说明将在执行时应用于实体的安全属性,可以指定零个或多个关键字,有效关键字的列表取决于强制执行的策略,对于suser策略,共有4个有效关键字,分别为euid,uid,egid,和gid.
+    /etc/security/auth_attr
+    该文件定义了所有的授权,这些授权可以直接赋给角色或者用户,写入/etc/user_attr文件中,可以赋给权限配置文件(profile),写入/etc/security/prof_attr文件,然后再将配置文件指定给角色.
+
+######eg:创建一个拥有关闭系统能力的角色
+
+```
+1. 添加角色:名称shutdown,密码test
+    roleadd -m -d /export/home/shutdown shutdown
+2. 修改配置文件.在/etc/security/pro_attr文件中添加所使用的profile,命令:
+    vi /etc/security/prof_attr
+    在文件末尾添加
+    Shut:::Ability to shutdown system
+3. 修改定义执行属性文件/etc/security/exec_attr
+    vi /etc/security/exec_attr
+    在文件末尾添加
+    Shut:suser:cmd:::/usr/sbin/shutdown:uid=0
+4. 将权限配置文件指派给角色,命令:
+    rolemod -P Shut shutdown
+5. 添加用户,并为其指定角色
+    useradd -m -d /export/home/alice -R shutdown alice
+    passwd alice
+6. 切换到alice用户,命令如下:
+    su -alice
+7. 查看用户配置文件
+    /export/home/alice$ /usr/bin/profiles
+```
+
+8. 查看用户alice的角色
+
+   ```
+    /export/home/alice$ roles
+   ```
+
+   9. 切换到shutdown角色
+/export/home/alice$ su – shutdown
+
+9. 执行关闭系统命令
