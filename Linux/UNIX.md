@@ -1954,3 +1954,166 @@ transfer-format:指定服务器进行区域传输的方式,分别有one-answer�
 keys:定义key_id,用于当与远程服务器通话时的安全处理
 12.3.11定义视图
 view语句包含一个控制谁能看到视图的访问控制列表,一些应用到视图中所有区域的选项以及区域定义本身
+view view_name{
+
+   ```
+           match-clents{address_match_list};
+           match-destinations{address_match_list};
+           match-recursive-only{yes_or_no};
+           [view_option;…]
+           [zone_statement;…]
+   ```
+
+   }
+view_name:视图名称
+match-clients:控制谁可以看到该视图.
+在BIND中,视图是按照顺序进行处理的,所以要把限制最严格的视图放在前面.不同视图中的区域可以有相同的名称.试图是一种要么全有,要么全无的概念,意味着如果使用视图,那么在named.conf文件中的所有zone语句都必须在一个视图中出现
+12.3.12定义区域
+1.定义区域主服务器
+zone “zone_name”{
+
+   ```
+       type master;
+       [allow-notify{address_match_list};]
+       [allow-query{address_match_list};]
+       [allow-transfer{address_match_list};]
+       [allow-update{address_match_list};]
+       [file path;]
+       [ixfr-base string;]
+   ```
+
+   }
+zone_name:区域名称,必须用双引号括起来
+type master:当前区域的主域名服务器;
+allow-update:限制发生更新的主机,动态更新只限于主服务器,因此,allow-update不能用在从服务器
+ixfr-base:指定事务日志保存文件名称
+2.定义区域从服务器
+zone “zone_name”{
+
+   ```
+       type slave;
+       [allow-notify{address_match_list};]
+       [allow-query{address_match_list};]
+       [allow-transfer{address_match_list};]
+       [allow-update{address_match_list};]
+       [file string;]
+       [masters[port ip_port]{ip_addr[port ip_port][key key];[]};]
+   ```
+
+   }
+type slave:从服务器
+file:指定存储数据库副本的本地磁盘文件
+masters:服务器的IP地址
+3.定义根区域
+zone “.”{
+type hint;
+file “path”
+};
+根域的名称为一个圆点”.”
+type hint:表示根区域
+file:指定根区域的区域数据库文件的路径
+4.定义转发区域
+zone “zone_name”{
+type forward;
+forward only|first;
+forwarder{ip_addr;ip_addr;…};
+};
+type forward:指定转发区域
+forward:控制转发器的行为,当值为first时,该服务器会首先查询forwarders中设置的服务器,如果设置为only,服务器就会把请求转发到其他服务器上
+forwarder:指定要转发的目标服务器的IP地址,默认列表为空,表示不转发
+只有当forwarder的列表不为空时,forwarder再会起作用
+12.3.13根提示文件
+zone “.”{
+
+   ```
+       type hint
+       file “/etc/namedb/named.root”
+   ```
+
+   }
+通过file关键字指定的文件称为根提示文件,根提示文件包含根域的域名服务器的IP地址.习惯命名为named.root,db.cache,root.hint等
+12.4DNS数据库
+12.4.1资源记录
+区域文件是BIND中最主要的文件,域名服务器的实际数据就存储在这些区域文件中.每次当BIND启动时,都会自动加载这些数据.BIND的区域文件都有固定的格式,包含一条或多条记录,这些记录称为资源记录(resource record, RR).
+name ttl class type rdta
+7. name
+当前记录所描述的实体名称,可以是一个主机或者一个域.如果几条连续的记录都涉及到同一个实体,则可以从第2条省略该列的值
+8. ttl
+记录被缓存的有效时间(time to live, TTL).ttl以秒为单位指定资源记录可以被缓存并且认为有效的时间长度.
+9. class
+网络协议的类别,IN(Internet),CS(CSNET),CH(CHAOS),HS(Hesiod).目前CSNET和CHAOS已被废弃,Hesiod是一种建立在BIND之上的数据库服务
+默认值为IN,唯一最常使用的值
+10. type
+区域记录:表示区域以及名称服务器
+基本记录:指定名称和地址之间的映射
+安全记录:向区域文件添加身份认证和签名
+可选记录:提供关于主机或者区域的额外信息
+资源记录类型
+类别  类型  全称  涵义
+区域记录    SOA Start of Authoruty  
+NA  Name Server 
+基本类型    A   IPv4 Addres 
+AAAA    Original IPv6 Address   
+A6  IPv6Address 
+PTR pointer 
+DNAME   Redirection 
+MX  Mail Exchanger  
+安全记录    KEY Public Key  
+NXT Next    
+SIG Signatures  
+可选记录    CNAME   Canonical Name  
+LOC Location    
+RP  Responsible Person  
+SRV Services    
+TXT Text    
+11. rdata
+分号”;”:表示注释
+圆点”.”:用在名字域时,若圆点后无具体内容则该圆点表示当前域
+@符号:表示当前域
+圆括号”()”:使得资源记录可以跨越多行
+12.4.2SOA记录
+起始授权机构(Start of Authority)记录,是每个授权区域定义的开始标识,属于同一个域的所有资源记录都位于该纪录后面
+name|@  [ttl]   [IN]    SOA name-server email(
+
+    ```
+                    serial                            
+                    fresh                             
+                    retry                             
+                    expire                            
+                    minium)
+    ```
+
+    name|@:区域名称,如果为@则表示当前区域的名称
+TTL
+
+```
+[IN]:网路协议类别,一般取IN,可省略
+SOA:SOA记录
+name-server:当前区域的主域名服务器
+email:当前域的技术联系人的邮件地址
+```
+
+minium:指缓存中否定响应的存活时间
+12.4.3NS记录
+    NS(Name Server)用来定义一个区域中的权威域名服务器,包括主域名服务器和从域名服务器,并且将子域授权给其他机构.
+zone    [ttl]   IN      NS      hostname
+由于高速缓存域名服务器不属于权威域名服务器,所以无需在父区域的区域文件中列出
+12.4.4A记录
+    DNS数据库的核心数据,实际上就是指地址(address).
+    hostname [ttl] IN A ipaddress
+    hostname:主机名称
+    ipaddress:IP地址
+必须为主机的每个网络接口设置一条A记录
+12.4.5PTR记录
+    与A记录的作用相反,完成IP地址到主机名的反响映射.必须为主机的每个网络接口设置一条PTR记录.
+    顶级域arpa:与其他的通用顶级域不同,arpa域并没用分配给组织或者机构使用,而是用于为Internet上的IPv4或者IPv6地址提供反响映射,Internet上反向域名的数据存放在arpa这个顶级域名下面.arpa域有两个子域,分别为in-addr.arpa和ip6.arpa,前者供IPv4地址使用,后者供IPv6地址使用
+PTR记录的语法
+    ipaddress [ttl] IN PTR hostname
+A记录和与之相对应的PTR记录相匹配很重要,不匹配或者遗漏的PTR记录会产生一些意想不到的问题
+12.4.6MX记录
+    专门用来处理电子邮件交换的路由
+    name [ttl] IN MX preference hostname
+    preference:主机接收邮件的优先级,最小0,最大65536,值越小,优先级越高
+在设置MX记录时,将优先级设置为不连续的数值是一个非常好的习惯,这样可以很方便的在中间插入新的主机
+12.4.7CNAME记录
+    用来为主机分配额外的名称,通常称为别名或者昵称.设置别名的目的通常是明确主机的功能或者缩短一个较长的主机名.
