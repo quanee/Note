@@ -2117,3 +2117,166 @@ A记录和与之相对应的PTR记录相匹配很重要,不匹配或者遗漏的
 在设置MX记录时,将优先级设置为不连续的数值是一个非常好的习惯,这样可以很方便的在中间插入新的主机
 12.4.7CNAME记录
     用来为主机分配额外的名称,通常称为别名或者昵称.设置别名的目的通常是明确主机的功能或者缩短一个较长的主机名.
+    CNAME记录的语法
+    nickname [ttl] IN CNAME hostname
+    nickname:别名
+    当BIND遇到一条CNAME记录时,他会停止对该名称的查询,而切换到主机的正式名称.
+可以为某台主机设置多个别名,也可以将一个别名指派给多台主机.
+一种更为妥当的方法是设置多条A记录,指向不同的Web服务器.
+12.4.8区域文件中的命令
+1.$ORIGIN命令
+    当named程序读取区域文件时,会将默认域追加到所有的不完整的域名后面.所谓默认域,是指在named.conf文件的zone语句中指定的区域名称.可以使用$ORIGIN命令在区域文件中重新指定默认域.
+    $ORIGIN zone
+2.$INCLUDE命令
+    用来包含外部文件,将不同功能的代码放在各自的单独文件中.
+    $INCLUDE filename
+3.$TTL命令
+    $TTL default-ttl
+    default-ttl是一个时间值,如果只指定一个数值,BIND9会将其解释为以秒为单位的时间值.还可以使用数值加单位代码的形势来表示,其中s表示秒,m表示分钟,h表示小时,d表示天,w表示周.
+4.$GENERATE命令
+    用来生成一系列类似的记录
+
+12.5BIND9的安全管理
+12.5.1name.conf文件中的安全选项
+BIND9的安全选项
+    选项  所在语句    涵义
+    allow-query options,zone    那些主机能查询区域服务器
+    allow-transfer  options,zone    那些服务器能请求区域传送
+    allow-update    zone    谁能执行动态更新
+    blackhole   option  完全忽略那些服务器
+    bogus   server  从不查询哪些服务器
+    acl 多种语句    访问控制列表
+12.5.2访问控制列表
+    可以避免DNS中的欺骗和拒绝服务攻击
+12.5.3限制named
+chroot环境中的目录关系
+    真实目录    chroot环境中对应的目录
+    /           /var/named/chroot
+    /etc        /var/named/chroot/etc
+    /var/named  /var/named/chroot/var/named
+    /dev        /var/named/chroot/dev
+    /usr        /var/named/chroot/usr
+12.5.4使用TSIG和TKEY保障服务器之间通信的安全
+    所谓TSIG,是指事务签名(Transaction SIGnature).通过事务签名,可以保证服务器之间的安全通信,包括域传送,通知以及递归查询等.
+
+1. 为每对主机产生共享密钥
+为了使用TSIG,首先是为每对主机创建一个密钥,尽管密钥可以任意选择,但是必须保证两台机器上的一样.密钥可以使用dnssec-keygen工具自动生产,也可以手工产生.下面的命令为server1和server2产生一个共享密钥:
+dnssec-keygen -a hmac-md5 -b 128 -n HOST server1-server2
+
+   ```
+   -a:加密算法
+   -b:密钥的长度
+   -n:产生的密钥的所有者类型.该选项的值必须是ZONE,HOST,ENTITY,USER或者OTHER之一,分别表示区域,主机,主机关联,用户以及其他用途.默认ZONE
+   ```
+2. 把共享密钥复制到两台机器中
+当密钥产生之后,可以通过一种安全的途径将其复制到两台主机上面,可以选择scp,sftp或者ftp等
+3. 通知服务器密钥的存在
+通过key语句在配置文件中定义使用密钥
+key server1-server2{
+
+   ```
+       algorithm hmac-md5;
+       secret ************************;
+   ```
+
+   }
+4. 通知服务器使用密钥
+在server1的named.conf文件加入
+
+   ```
+   server server2_IP{
+           keys {server1-server2;};
+   }
+   在server2的named.conf文件加入
+   server server1_IP{
+           keys {server1-server2;};
+   }
+   ```
+5. 基于TSIG密钥的访问控制
+allow-transfer{key server1-server2;};
+
+12.6BIND9的测试和调试
+12.6.1日志系统
+    通道:表示日志输出的目标,例如系统日志,日志文件或者不输出
+    类别:将通道进行分类
+    工具:系统日志工具名称
+    严重性:错误消息的严重级别
+    channel channel_name{
+    (file path[versions(number|unlimited)][size size spec]
+    |syslog syslog_facility
+    |stderr
+    |null);
+    [severity(critical|error|warning|notice|info|debug[level]|dynamic);]
+    [print-category yes or no;]
+    [print-severity yes or no;]
+    [print-time yes or no]
+    }
+    channel_name:通道名称
+    file:当前的通道是文件通道
+    path:文件名
+    version:要保存日志文件的多少个副本,如果指定为unlimited,表示不限制副本
+    size:指定每个文件的最大尺寸
+
+12.6.2调试级别
+    BIND的调试级别使用从0~11的整数来表示,数字越大,日志输出的信息越详细.级别0表示关闭调试功能.级别1和2适用于调试配置和数据库.大于4的级别适合代码的维护人员使用.
+将使系统在调试 级别2启动named程序:
+named -d2
+12.6.3使用rndc工具调试BIND
+    rndc(Remote Name Daemon Control)命令是BIND9提供的管理工具,允许系统管理员控制域名服务器的运行
+rndc [-c config] [-s server][-p port][-y key]command
+    -c:指定配置文件rndc.conf的位置
+12.6.4使用nslookup,dig和host工具调试BIND
+1.nslookup
+    nslookup命令分为交互式和非交互式
+    nsloopup [-option][name|-][server]
+    -all:显示所有的信息
+    -class:设置查询的网络协议类别,可以取值为IN,CH,HS以及ANY
+    -domain:指定默认的域
+    -port:指定域名服务器的端口
+
+```
+nslookup中的交互式命令
+    命令          功能
+name            打印关于name指定的主机或者域名的信息
+help或者?     显示完整的命令清单
+exit            退出交互式环境
+server host     设置host指定的服务器为默认服务器
+lserver host    设置初始服务器为默认服务器
+set type=xxx    设置要查询的记录类型
+set debug       打开调试模式
+set d2          打开多个调试
+ls domain       列出所有主机
+```
+
+2.dig
+    dig(Domain Information Gropher)域名信息搜索器.
+    dig @server name type
+    @server:指定要查询的域名服务器
+12.7常见问题
+ 
+DHCP服务器
+13.1DHCP概述
+13.1.1DHCP
+        DHCP是指动态主机配置协议(Dynamic Host Configuration Protocal, DHCP).DHCP是一个局域网协议,在UDP协议的基础上工作
+    自动分配IP地址
+    集中管理局域网中的电脑
+13.1.2作用域
+    是一个完整连续的可用IP地址范围,DHCP服务主要就是通过作用域来管理网络分布,IP地址分配及其他相关配置参数
+    subnet 10.5.5.0 netmask 255.255.255.224{
+    range 10.5.5.26 10.5.5.30;
+    option domain-name-servers ns1.internal.example.org;
+    option domain_name “internal.example.org”;
+    option routers 10.5.5.1;
+    option broadcast-address 10.5.5.31;
+    default-lease-time 600;
+    max-lease-time 7200;
+    }
+    作用域为10.5.5.0
+    可以分配给客户端使用的IP地址范围为10.5.5.26~10.5.5.30
+13.1.3超级作用域
+    一组作用域的集合,通常是由一个物理子网中包含的多个IP子网组成的.
+13.1.4地址池
+    地址池是指DHCP作用域中,排除不能分配给客户端的某些IP地址之后,剩余的地址的集合.只有地址池中的IP地址,才可以真正地指派给客户端使用.
+13.1.5租约
+DHCP为客户端分配IP地址的方式与现实生活中的出租物品非常类似
+13.1.6DHCP工作原理
