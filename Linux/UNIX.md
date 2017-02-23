@@ -1628,3 +1628,166 @@ change:修改某条特定的路由
 get:查询并显示某个目的地的路由信息
 monitor:监控路由信息
 modifiers表示修饰符,指定目的地类型
+-inet:将指定目的地强制解释为一个IPv4地址
+-inet6:将指定目的地强制解释为一个IPv6地址
+-host:将指定目的地强制解释为一个主机
+-net:将指定目的地强制解释为一个网络
+destination:目的地,可以是主机或者网络
+gateway:数据宝贝发送到的下一个节点
+netmask:子网掩码
+11.4.3默认路由
+默认路由是一种特殊的静态路由
+添加默认路由
+route add default -gateway gateway -interface
+interface
+default:指定添加的是默认路由
+-gateway:默认路由的网关地址
+-interface:默认路由的网络接口
+11.5名称解析
+11.5.1主机名和域名
+1.主机名(hostname)
+在局域网中为主机赋予的名称
+主机名解析/etc/hosts
+[Internet addres] [official hostname] [alias1] [alias2]
+Internet address:主机的IP地址
+official hostname:主机的正式名称,一般是域名
+alias1|alias2:主机的别名(主机名),可以拥有多个
+2.域名
+由一串用圆点分隔的字符组成的Internet上某一台主机或者一组主机上的名称
+11.5.2DNS客户端配置
+DNS配置
+/etc/resolv.conf
+11.6常见问题
+ 
+DNS服务器
+12.1DNS的起源和背景
+12.1.1DNS的历史
+20世纪60年代,美国国防高级研究计划署(Advanced Research Projects Agency, ARPA),开始资助实验性的光与计算机网络,称为阿帕网(The Advanced Research Projects Agency NetWork, ARPANET)
+20世纪80年代,TCP/IP协议成为ARPANET的标准网络协议,ARPANET成为基于TCP/IP协议的局域网和区域联合网的主干,被称为Internet
+1988年,美国国家自然科学基金网络(National Science Foundation Network, NSFNET)取代阿帕网成为Internet的骨干网.1995年春天,Internet完成了由公共NSFNET作为骨干网到使用多个商业骨干网的转变
+12.1.2DNS概述
+www.tsinghuan.edu.cn
+主机名.三级域.二级域.顶级域
+12.1.3域名空间和体系结构
+顶级域名:
+
+4. 通用顶级域名
+
+5. 基础设施顶级域名
+
+6. 国家和地区顶级域
+
+7. 国际化国家和地区顶级域
+12.1.4域和域名
+在DNS树中,域都是分支节点,而主机是叶子节点
+12.1.5区域和域的不同
+域:DNS树上面的一个分支节点以及所有的下面的节点
+区域:把域的某个部分授权出去让别人代为管理,称为区域
+12.1.6域名服务器的类型
+
+   ```
+   1.主域名服务器(Primary DNS Server)
+   2.辅助域名服务器(Secondary DNS Server)
+   3.高速缓存域名服务器(Cache DNS Server)
+   4.转发服务器(Forwarding Server)
+   ```
+
+   12.1.7DNS基本原理
+
+   ```
+   首先,DNS系统以分布式数据库的方式提供域名解析服务.在分布式数据库中,每一条记录称为资源记录(resource record, RR)
+   其次,DNS系统中的数据库采用分散式的方式来管理,没用任何一个域名服务器中的数据库会包含Internet上的所有资源记录.
+   再次,同一个数据库可以由多台域名服务器来管理,查询其中任何一台域名服务器都可以得到相同的资源记录.反之,同一个域名服务器可以管理多个区域的数据库,不同的域名数据库查询都可能是由同一台域名服务器提供
+   最后,将本来属于自己所管理的资源记录授予其他的域名服务器来管理,称之为授权(delegation).一经授权,上层的域名服务器都不在管理这些区域,完全依靠被授权的域名服务器来管理.
+   ```
+
+   12.2BIND及其安装方法
+12.2.1关于BIND
+BIND是互联网上使用最为广泛的域名服务器软件,约占90%市场
+BIND(Berkeley Internet Name Domain)
+1984年,柏克莱加州大学(University of California, Berkeley)计算机系统研究小组的4个研究生共同开发了UNIX系统上的第1个DNS协议
+1985年,美国设备公司(Digital Equipment Corporation, DEC)的工程师Kevin Dunlap重写了这个最初的DNS实现,并正式命名为BIND
+20世纪90年代,BIND被移植到Windows NT平台上.
+BIND发展过程中经历了3个主要版本,分别是BIND 4,BIND 8和BIND 9,每个版本在架构上有显著变化.
+BIND软件包包括:
+   DNS服务器:名称为named的程序,是name daemon的缩写,主要功能是根据DNS协议标准的规定,响应收到的DNS查询
+   DNS解析器:一个解析器是一个程序,通过发送请求到合适的服务器并且对服务器的响应做出合适的回应,来解析对一个域名的查询,一个解析库是程序组件的集合,可以在开发其他程序时使用,为这些程序提供域名解析的功能
+   测试服务器的软件工具.例如,nslookup,dig以及host等
+12.2.2以二进制软件包的方式安装Bind 9
+以root身份登录,执行以下命令(Solaris)
+pkg install pkg:/service/network/dns/bind
+查看当前系统中安装的BIND的版本
+named -v
+FreeBSD命令
+安装
+cd /usr/ports/dns/bind98/
+make && make install
+查看BIND版本
+named -v
+12.2.3以源代码的方式安装BIND9
+BIND9代码下载网址http://www.isc.org/downloads
+tar zxvf bind-9.***.tar.gz
+cd bind-9.***
+./configure
+make && make install
+以源代码的方式安装BIND9需要gcc编译器
+12.2.4启动和停止BIND 9
+BIND 9最主要的服务进程为named
+启动named服务
+svcadm enable dns/serve
+或者
+svcadm enable dns/serve:default
+停止named服务
+svcadm disable dns/serve
+或者
+svcadm disable dns/serve:default
+FreeBSD中需要先配置/etc/rc.conf文件,增加以下代码:
+#add following line if not present
+named_enable=”YES”
+#the line below must replace the line named_program=”usr/sbin/named” if present
+
+   # otherwise add it
+
+   named_program=”/usr/local/sbin/named”
+启动named服务进程
+/etc/rc.d/named start
+停止named服务进程
+/etc/rc.d/named stop
+12.3配置BIND 9
+
+12.3.1BIND配置文件概述
+BIND组件以及位置
+组件  Solaris FreeBSD
+BIND主配置文件   /etc/named.conf /etc/named/named.conf
+BIND可执行文件   
+/usr/sbin/named
+/usr/sbin/named-check
+/usr/sbin/named-checkzone
+/usr/sbin/named-compilezone /usr/sbin/named
+/usr/sbin/named-checkconf
+/usr/sbin/named-checkzone
+/usr/sbin/named-compilezone
+/usr/sbin/named.reconfig
+/usr/sbin/named.reload
+BIND数据库文件   /var/named  /var/named/etc/namedb
+默认的提示文件的名称  未指定 named.root
+启动named svcadm enable dns/server
+或
+svcadm enable dns/server:default    
+/etc/rc.d/named start
+关闭named svcadm disable dns/server
+或
+svcadm disable dns/server:default   
+/etc/rc.d/named stop
+12.3.2主配置文件named.conf
+    named.conf文件中的语句的基本语法
+    clause [argument]{
+    /*块注释*/
+        item;//注释
+        item;#注释
+        ……
+};
+named.conf文件中的常用语句及其涵义
+语句  涵义
+acl 定义一个IP地址表列名,用于访问控制
+controls    定义系统管理员使用的,有关本地域名服务器操作的控制通道
