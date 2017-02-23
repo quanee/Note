@@ -324,3 +324,166 @@ login_name:当前系统中已存在的登录名
 /export/home/alice$ su – shutdown
 
 9. 执行关闭系统命令
+$ /usr/sbin/shutdown -i 0 -g 0
+
+   ```
+       -i:要转入的运行级别.(关闭系统为0)
+       -g:执行时间.(0表示立即执行)
+   ```
+
+   ##修改角色
+###修改角色名
+rolemod -l new_role_name role_name
+-l:表示修改登录名
+
+   > *修改角色名称后,该角色用户不会随之改变,必须人工对用户重新分配角色
+###修改角色主目录
+rolemod -d home_dir
+home_dir:表示实际存在的物理路径,且角色需要拥有读写权限
+-d:如果指定了不存在的路径,则需要使用-m选项.(如果不使用-m选项,系统不会报错)
+###修改角色的主组
+rolemod -g primary_group -G supplementary_group role_name
+primary_group:主组名
+supplementary_group:备用组名
+###修改角色有效期
+rolemod -e expire_date
+expire_date:指定到期时间(/etc/datemsk)
+到期之后任何用户都不可以使用该角色
+###修改角色默认Shell
+角色默认shell为/usr/bin/pfsh,称为pfsh,是因为它是专门由于权限配置文件(profile)的Shell程序之一.
+rolemod -s shell_dir
+-s:修改默认shell
+shell_dir:指定shell路径
+###修改角色授权
+rolemod -A authorization
+-A:修改权限
+authorization:表示具体的授权,多个授权之间用逗号隔开
+eg:将磁盘管理的权限赋予角色role1
+   > 
+   > ```
+   > rolemod -A solaris.admin.diskmgr.write role1
+   > ```
+   > 
+   > ##删除角色
+###使用默认选项删除角色
+roledel role_name
+实际上是从/etc/passwd文件中删除角色的有关记录
+###删除角色主目录
+roledel -r -role_name
+-r:删除(remove)
+同时删除角色的主目录
+
+ 
+
+#UNIX文件,目录和档案的操作
+
+###文件类型
+
+- 普通文件:
+
+  > 文本文件,常用来存储文本数据
+二进制文件:可执行文件,图像,视频,音频.
+
+- 目录:用来组织和访问其他文件:
+
+  > 每个子目录和文件都在其父目录中拥有一条记录,包括:
+I:文件名
+II:文件或目录的唯一标识(inode节点)
+
+- 伪文件:
+
+  > ```
+  >         I:设备文件,如键盘,显示器等.
+  >        II:命名管道:将一个命令的输出连接到另一个命令的输出上面.
+  >       III:proc文件,可以访问内核信息.
+  > ```
+  > 
+  > ###目录和子目录
+tree / -L 2
+-L:输出目录的层数
+Solaris系统没有提供tree命令
+###链接文件
+硬链接:不能跨文件系统.硬链接与源文件是同一文件.创建一个硬链接后,系统本身无法区分那个为源###文件(inode值相同).
+软链接:符号链接,可以跨文件系统.
+###创建链接文件
+ln [options] file_name link_name
+options:
+-s:建立软链接
+###查看inode值
+ls -li
+inode_value primer link_num owner group size date file_name
+  > 
+  > >  inode_value:inode值
+primer:权限
+link_num:链接数
+owner:所有者
+group:组群
+size:文件大小
+date:创建日期
+file_name:文件名
+  > > 
+  > > > 删除硬连接不会释放inode节点,只会是指向该inode节点的链接数减1,直到链接数为0时,才会释放该inode节点
+####创建软链接
+删除原文件后,软链接无变化,但无法访问.
+创建软链接时,使用相对路径,保证最大化可移植性.
+设备文件
+用来表示物理设备的伪文件
+①   硬件设备文件
+  > > > 
+  > > > ```
+  > > >   软盘,IDE硬盘,SCSI,SATA或者SAS硬盘,打印机等.
+  > > > ```
+  > > > 
+  > > > ②   终端设备文件
+  > > > 
+  > > > ```
+  > > >   终端,控制台/虚拟控制台,伪终端
+  > > > ```
+  > > > 
+  > > > ③   伪设备文件(/dev/null, /dev/zero)
+cat /etc/passwd>/dev/null
+cat /etc/passwd>/dev/zero
+  > > > 
+  > > > ```
+  > > >   当处理输出时,这两个伪设备文件的作用相同.
+  > > >   当处理输入时,从/dev/null中读取数据,不管请求多少字节,其结果总是eof,从/dev/zero中请求数据,则会返回请求数量的字符,并且这些字符值都为0.
+  > > > ```
+  > > > 
+  > > > eg:创建一个1000字节的文件
+dd if=/dev/zero of=temp bs=200 count=5
+dd:输入输出工具
+if:文件输入
+of:文件输出
+bs:块大小
+count:快的数量
+##命令管道 
+匿名管道表示方法:|
+从功能上讲,匿名管道与命名管道基本相同,都是将一个进程的输出连接到另一个进程的输入.
+从特性上讲,两者有明显的区别,首先命名管道必须显式的创建,其次,命名管道不会自动消失,除非用户手动删除命名管道,否则命名管道会一直存在,因此,命名管道可以重复使用.
+###创建管道
+mkfifo [-m mode] pipe
+###删除管道
+rm fifo_name
+###proc文件
+一种提供多种系统信息的伪文件,proc文件直接从系统内核中获取信息,所有proc文件都存储在/proc目录中.
+##文件操作
+创建文件(vi,>,cp)
+创建空白文件
+####I.touch [-acm] [-r ref_file|-t tim|-d date_tim] file…
+-a:改变访问控制时间
+-c:如果目标文件不存在,则不创建该文件
+-m:改变修改时间
+-r:指定参考文件,touch会依据该文件的事件属性来修改目标文件的时间属性
+-t:指定时间属性
+-d:指定日期和时间属性
+file:要修改其属性的目标文件
+####日期和时间格式
+[YYYY]MMDDhhmm[.SS]
+YYYY.年.MM.月.DD.天.hh.小时.mm.分钟.SS.秒
+touch命令可以创建多个文件,文件名之间用空格隔开:
+####II.cat file
+将file内容输出到屏幕
+cat>file
+将输入内容,输出到file,按Ctrl+D结束输入
+####III.>file
+直接创建一个空白文件
