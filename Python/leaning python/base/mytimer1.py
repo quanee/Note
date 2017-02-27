@@ -19,3 +19,9 @@ else:
 
 def trace(*args):
     ...
+
+
+def timer(func, *pargs, **kargs):
+    _reps = kargs.pop('_reps', 1000)
+    trace(func, pargs, kargs, _reps)
+    repslist = range(_reps)
