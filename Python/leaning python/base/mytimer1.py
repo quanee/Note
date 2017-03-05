@@ -19,3 +19,6 @@ else:
 
 def trace(*args):
     ...
+
+
+def timer(func, *pargs, **kargs):
