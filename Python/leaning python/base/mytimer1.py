@@ -28,3 +28,6 @@ def timer(func, *pargs, **kargs):
 
     start = timefunc()
     for i in repslist:
+        ret = func(*pargs, **kargs)
+    elapsed = timefunc() - start
+    return (elapsed, ret)
