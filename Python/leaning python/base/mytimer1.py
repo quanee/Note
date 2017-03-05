@@ -31,3 +31,6 @@ def timer(func, *pargs, **kargs):
         ret = func(*pargs, **kargs)
     elapsed = timefunc() - start
     return (elapsed, ret)
+
+
+def best(func, *pargs, **kargs):
