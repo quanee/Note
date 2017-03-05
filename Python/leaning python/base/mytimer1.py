@@ -9,3 +9,7 @@ any system load variation, and returns best time among_reps tests
 
 import time
 import sys
+
+
+if sys.platform[:3] == 'win':
+    timefunc = time.clock
