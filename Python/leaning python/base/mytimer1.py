@@ -13,3 +13,5 @@ import sys
 
 if sys.platform[:3] == 'win':
     timefunc = time.clock
+else:
+    timefunc = time.time
