@@ -18,3 +18,7 @@ def task(host, url='/'):
     text = yield from reader.read()
     print(host, url, text)
     writer.close()
+
+
+tasks = [task('www.baidu.com', '/'),
+         task('www.biying.com', '/')]
