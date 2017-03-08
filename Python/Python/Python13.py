@@ -16,3 +16,4 @@ class Foo(object, metaclass=MyType):
         print(self)
 
     def func(self):
+        print('hello metaclass')
