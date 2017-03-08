@@ -9,3 +9,6 @@ class MyType(type):
         print(456)
         self.__init__(self.__new__(self, *args, **kwargs))  # 3 6 7
         print(self.__new__(self, *args, **kwargs))
+
+
+class Foo(object, metaclass=MyType):
