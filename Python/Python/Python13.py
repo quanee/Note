@@ -23,3 +23,5 @@ class Foo(object, metaclass=MyType):
 
 
 obj = Foo()  # __call__ 1
+
+
