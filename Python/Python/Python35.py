@@ -36,3 +36,22 @@ class Favor(Base):
     caption = Column(String(50), default='red', unique=True)
 
     def __repr__(self):
+        return "%s-%s" % (self.nid, self.caption)
+
+
+class Person(Base):
+    __tablename__ = 'person'
+    nid = Column(Integer, primary_key=True)
+    name = Column(String(32), index=True, nullable=True)
+    favor_id = Column(Integer, ForeignKey("favor.nid"))
+    # 与生成表结构无关，仅用于查询方便
+    favor = relationship("Favor", backref='pers')
+
+# 多对多
+
+
+class ServerToGroup(Base):
+    __tablename__ = 'servertogroup'
+    nid = Column(Integer, primary_key=True, autoincrement=True)
+    server_id = Column(Integer, ForeignKey('server.id'))
+    group_id = Column(Integer, ForeignKey('group.id'))
