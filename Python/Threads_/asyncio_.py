@@ -16,3 +16,5 @@ def task(host, url='/'):
     writer.write(request_header_content)
     yield from writer.drain()
     text = yield from reader.read()
+    print(host, url, text)
+    writer.close()
