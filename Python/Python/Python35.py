@@ -55,3 +55,21 @@ class ServerToGroup(Base):
     nid = Column(Integer, primary_key=True, autoincrement=True)
     server_id = Column(Integer, ForeignKey('server.id'))
     group_id = Column(Integer, ForeignKey('group.id'))
+    group = relationship("Group", backref='s2g')
+    server = relationship("Server", backref='s2g')
+
+
+class Group(Base):
+    __tablename__ = 'group'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64), unique=True, nullable=False)
+    port = Column(Integer, default=22)
+    # group = relationship('Group',secondary=ServerToGroup,backref='host_list')
+
+
+class Server(Base):
+    __tablename__ = 'server'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    hostname = Column(String(64), unique=True, nullable=False)
+
