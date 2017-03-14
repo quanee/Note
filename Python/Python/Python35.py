@@ -131,3 +131,22 @@ ret = session.query(Users).filter(
     or_(
         Users.id < 2,
         and_(Users.name == 'eric', Users.id > 3),
+        Users.extra != ""
+    )).all()
+
+# 通配符
+ret = session.query(Users).filter(Users.name.like('e%')).all()
+ret = session.query(Users).filter(~Users.name.like('e%')).all()
+
+# 限制
+ret = session.query(Users)[1:2]
+
+# 排序
+ret = session.query(Users).order_by(Users.name.desc()).all()
+ret = session.query(Users).order_by(Users.name.desc(), Users.id.asc()).all()
+
+# 分组
+from sqlalchemy.sql import func
+
+ret = session.query(Users).group_by(Users.extra).all()
+ret = session.query(
