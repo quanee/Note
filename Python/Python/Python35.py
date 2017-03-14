@@ -150,3 +150,22 @@ from sqlalchemy.sql import func
 
 ret = session.query(Users).group_by(Users.extra).all()
 ret = session.query(
+    func.max(Users.id),
+    func.sum(Users.id),
+    func.min(Users.id)).group_by(Users.name).all()
+
+ret = session.query(
+    func.max(Users.id),
+    func.sum(Users.id),
+    func.min(Users.id)).group_by(Users.name).having(func.min(Users.id) > 2).all()
+
+# 连表
+
+ret = session.query(Users, Favor).filter(Users.id == Favor.nid).all()
+
+ret = session.query(Person).join(Favor).all()
+
+ret = session.query(Person).join(Favor, isouter=True).all()
+
+
+# 组合
