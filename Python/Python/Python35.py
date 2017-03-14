@@ -73,3 +73,23 @@ class Server(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     hostname = Column(String(64), unique=True, nullable=False)
 
+
+
+
+def init_db():
+    Base.metadata.create_all(engine)
+
+
+def drop_db():
+    Base.metadata.drop_all(engine)
+
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# 增
+obj = Users(name="alex0", extra='sb')
+session.add(obj)
+session.add_all([
+    Users(name="alex1", extra='sb'),
+    Users(name="alex2", extra='sb'),
