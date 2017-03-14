@@ -14,3 +14,5 @@ def task(host, url='/'):
     request_header_content = bytes(request_header_content, encoding='utf-8')
 
     writer.write(request_header_content)
+    yield from writer.drain()
+    text = yield from reader.read()
