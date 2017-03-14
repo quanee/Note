@@ -5,3 +5,6 @@ import asyncio
 无法发送Http协议
 只能发送TCP协议
 '''
+
+
+@asyncio.coroutine
