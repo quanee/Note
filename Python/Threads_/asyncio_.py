@@ -8,3 +8,5 @@ import asyncio
 
 
 @asyncio.coroutine
+def task(host, url='/'):
+    reader, writer = yield from asyncio.open_connection(host, 80)
