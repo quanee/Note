@@ -93,3 +93,21 @@ session.add(obj)
 session.add_all([
     Users(name="alex1", extra='sb'),
     Users(name="alex2", extra='sb'),
+])
+session.commit()
+
+# 删
+session.query(Users).filter(Users.id > 2).delete()
+session.commit()
+
+# 改
+
+session.query(Users).filter(Users.id > 2).update({"name" : "099"})
+session.query(Users).filter(Users.id > 2).update({Users.name: Users.name + "099"}, synchronize_session=False)
+session.query(Users).filter(Users.id > 2).update({"num": Users.num + 1}, synchronize_session="evaluate")
+session.commit()
+# 查
+ret = session.query(Users).all()
+ret = session.query(Users.name, Users.extra).all()
+ret = session.query(Users).filter_by(name='alex').all()
+ret = session.query(Users).filter_by(name='alex').first()
