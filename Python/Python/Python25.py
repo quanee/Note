@@ -58,3 +58,15 @@ class Production(threading.Thread):
             r = random.randint(0, 100)
             q.put(r)
             print("生产出来%s号包子" % r)
+            time.sleep(1)
+
+
+class Proces(threading.Thread):
+    def run(self):
+        while True:
+            re = q.get()
+            print("吃掉%s号包子" % re)
+
+
+if __name__ == "__main__":
+    q = queue.Queue(10)
