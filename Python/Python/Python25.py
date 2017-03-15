@@ -22,3 +22,15 @@ d.put('c')
 
 print(d.get())
 print(d.get())
+print(d.get())
+# print(d.get(0))  # 队列空时 阻塞 参数0 报错
+
+import threading
+import time
+
+
+li = [1, 2, 3, 4, 5]
+
+
+def pri():
+    while li:
