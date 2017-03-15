@@ -46,3 +46,15 @@ def pri():
 t1 = threading.Thread(target=pri, args=())
 t1.start()
 t2 = threading.Thread(target=pri, args=())
+t2.start()
+
+
+import random
+
+
+class Production(threading.Thread):
+    def run(self):
+        while True:
+            r = random.randint(0, 100)
+            q.put(r)
+            print("生产出来%s号包子" % r)
