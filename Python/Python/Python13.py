@@ -7,3 +7,5 @@ class MyType(type):
 
     def __call__(self, *args, **kwargs):  # 2
         print(456)
+        self.__init__(self.__new__(self, *args, **kwargs))  # 3 6 7
+        print(self.__new__(self, *args, **kwargs))
