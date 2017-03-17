@@ -33,3 +33,9 @@ class Manager(Person):
 
 
 # 继承 复合
+class Department:
+    def __init__(self, *args):
+        self.members = list(args)
+
+    def addMember(self, person):
+        self.members.append(person)
