@@ -47,3 +47,10 @@ class Department:
     def showAll(self):
         for person in self.members:
             print(person)
+
+
+
+if __name__ == '__main__':
+    bob = Person('Bob Smith')
+    sue = Person('Sue Jones', job='dev', pay=100000)
+    print(bob)
