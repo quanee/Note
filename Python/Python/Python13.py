@@ -13,3 +13,6 @@ class MyType(type):
 
 class Foo(object, metaclass=MyType):
     def __init__(self, *args, **kwargs):  # 8
+        print(self)
+
+    def func(self):
