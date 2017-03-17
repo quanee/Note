@@ -33,3 +33,7 @@ obj = Foo()  # __call__ 1
 def func():
     print(1)
 
+
+Foo = type('Fo', (object, ), {'f1': func})
+print(Foo)
+print(Foo.f1())
