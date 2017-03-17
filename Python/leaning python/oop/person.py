@@ -19,3 +19,10 @@ class Person(AttrDisplay):
 
     def giveRaise(self, percent):
         self.pay = int(self.pay * (1 + percent))
+
+    # def __str__(self):
+    #     return '[Person: %s, %s]' % (self.name, self.pay)
+
+
+class Manager(Person):
+    def __init__(self, name, pay):
