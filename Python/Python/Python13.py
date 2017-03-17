@@ -21,3 +21,6 @@ class Foo(object, metaclass=MyType):
     def __new__(cls, *args, **kwargs):  # 4
         return object.__new__(cls, *args, **kwargs)  # 5
 
+
+obj = Foo()  # __call__ 1
+
