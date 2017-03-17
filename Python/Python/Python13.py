@@ -27,3 +27,7 @@ obj = Foo()  # __call__ 1
 
 
 # 类由type实例而来
+
+
+
+def func():
