@@ -31,3 +31,5 @@ obj = Foo()  # __call__ 1
 
 
 def func():
+    print(1)
+
