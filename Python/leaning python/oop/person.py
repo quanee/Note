@@ -26,3 +26,10 @@ class Person(AttrDisplay):
 
 class Manager(Person):
     def __init__(self, name, pay):
+        Person.__init__(self, name, 'mgr', pay)
+
+    def giveRaise(self, percent, bonus=.10):
+        Person.giveRaise(self, percent + bonus)
+
+
+# 继承 复合
