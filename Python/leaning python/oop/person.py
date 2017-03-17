@@ -61,3 +61,10 @@ if __name__ == '__main__':
 
     tom = Manager('Tom Jones', 50000)
     tom.giveRaise(.10)
+    print(tom.lastName())
+    print(tom)
+    '''
+    print("-------All three-------")
+    for obj in (bob, sue, tom):
+        obj.giveRaise(.10)
+        print(obj)
