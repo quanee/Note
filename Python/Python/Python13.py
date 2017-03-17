@@ -16,3 +16,6 @@ class Foo(object, metaclass=MyType):
         print(self)
 
     def func(self):
+        print('hello metaclass')
+
+    def __new__(cls, *args, **kwargs):  # 4
