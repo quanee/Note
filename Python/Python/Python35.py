@@ -64,3 +64,25 @@ class Group(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(64), unique=True, nullable=False)
     port = Column(Integer, default=22)
+    # group = relationship('Group',secondary=ServerToGroup,backref='host_list')
+
+
+class Server(Base):
+    __tablename__ = 'server'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    hostname = Column(String(64), unique=True, nullable=False)
+
+
+
+
+def init_db():
+    Base.metadata.create_all(engine)
+
+
+def drop_db():
+    Base.metadata.drop_all(engine)
+
+
+Session = sessionmaker(bind=engine)
+session = Session()
