@@ -20,3 +20,25 @@ class Users(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(32))
     extra = Column(String(16))
+
+    __table_args__ = (UniqueConstraint('id', 'name', name='uix_id_name'), Index('ix_id_name', 'name', 'extra'),)
+
+    def __repr__(self):
+        return "%s-%s" % (self.id, self.name)
+
+
+# 一对多
+
+
+class Favor(Base):
+    __tablename__ = 'favor'
+    nid = Column(Integer, primary_key=True)
+    caption = Column(String(50), default='red', unique=True)
+
+    def __repr__(self):
+        return "%s-%s" % (self.nid, self.caption)
+
+
+class Person(Base):
+    __tablename__ = 'person'
+    nid = Column(Integer, primary_key=True)
