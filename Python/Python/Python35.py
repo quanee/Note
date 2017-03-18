@@ -108,3 +108,25 @@ session.query(Users).filter(Users.id > 2).update({"num": Users.num + 1}, synchro
 session.commit()
 # 查
 ret = session.query(Users).all()
+ret = session.query(Users.name, Users.extra).all()
+ret = session.query(Users).filter_by(name='alex').all()
+ret = session.query(Users).filter_by(name='alex').first()
+
+ret = session.query(Users).filter(text("id<:value and name=:name")).params(value=224, name='fred').order_by(User.id).all()
+
+ret = session.query(Users).from_statement(text("SELECT * FROM users where name=:name")).params(name='ed').all()
+
+# 其他
+# 条件
+ret = session.query(Users).filter_by(name='alex').all()
+ret = session.query(Users).filter(Users.id > 1, Users.name == 'eric').all()
+ret = session.query(Users).filter(Users.id.between(1, 3), Users.name == 'eric').all()
+ret = session.query(Users).filter(Users.id.in_([1, 3, 4])).all()
+ret = session.query(Users).filter(~Users.id.in_([1, 3, 4])).all()
+ret = session.query(Users).filter(Users.id.in_(session.query(Users.id).filter_by(name='eric'))).all()
+from sqlalchemy import and_, or_
+ret = session.query(Users).filter(and_(Users.id > 3, Users.name == 'eric')).all()
+ret = session.query(Users).filter(or_(Users.id < 2, Users.name == 'eric')).all()
+ret = session.query(Users).filter(
+    or_(
+        Users.id < 2,
