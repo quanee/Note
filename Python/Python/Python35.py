@@ -42,3 +42,25 @@ class Favor(Base):
 class Person(Base):
     __tablename__ = 'person'
     nid = Column(Integer, primary_key=True)
+    name = Column(String(32), index=True, nullable=True)
+    favor_id = Column(Integer, ForeignKey("favor.nid"))
+    # 与生成表结构无关，仅用于查询方便
+    favor = relationship("Favor", backref='pers')
+
+# 多对多
+
+
+class ServerToGroup(Base):
+    __tablename__ = 'servertogroup'
+    nid = Column(Integer, primary_key=True, autoincrement=True)
+    server_id = Column(Integer, ForeignKey('server.id'))
+    group_id = Column(Integer, ForeignKey('group.id'))
+    group = relationship("Group", backref='s2g')
+    server = relationship("Server", backref='s2g')
+
+
+class Group(Base):
+    __tablename__ = 'group'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64), unique=True, nullable=False)
+    port = Column(Integer, default=22)
