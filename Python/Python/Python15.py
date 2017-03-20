@@ -12,3 +12,10 @@ class Foo(object):
 b = 'name'
 obj = Foo('moon')
 name = obj.__dict__[b]
+print(name)
+
+# 属性
+v = getattr(obj, b)
+print(v)
+
+# 方法
