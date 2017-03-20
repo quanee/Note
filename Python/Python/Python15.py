@@ -19,3 +19,10 @@ v = getattr(obj, b)
 print(v)
 
 # 方法
+func = getattr(obj, 'show')
+print(func)
+
+s = func()
+print(s)
+
+print(hasattr(obj, 'name'))
