@@ -26,3 +26,10 @@ s = func()
 print(s)
 
 print(hasattr(obj, 'name'))
+
+setattr(obj, 'key', 'value')
+print(obj.key)
+
+delattr(obj, 'key')
+
+# 模块
