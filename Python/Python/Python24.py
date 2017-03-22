@@ -12,3 +12,9 @@ event.clear()：恢复event的状态值为False。
 
 
 class Boss(threading.Thread):
+    def run(self):
+        print("BOSS：今晚大家都要加班到22:00。")
+        event.isSet() or event.set()
+        time.sleep(5)
+        print("BOSS：<22:00>可以下班了。")
+        event.isSet() or event.set()
