@@ -26,3 +26,10 @@ class Worker(threading.Thread):
         print("Worker：哎……命苦啊！")
         time.sleep(0.25)
         event.clear()
+        event.wait()
+        print("Worker：Oh Yeah!")
+
+
+if __name__ == "__main__":
+    event = threading.Event()
+    threads = []
