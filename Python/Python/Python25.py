@@ -16,3 +16,21 @@ q.join() 实际上意味着等到队列为空，再执行别的操作'''
 d = queue.Queue(3)  # 参数小于0 无限大
 
 d.put('a', 0)
+d.put('b')
+d.put('c')
+# d.put('c', 0)  # 队列满时 阻塞 参数0 报错
+
+print(d.get())
+print(d.get())
+print(d.get())
+# print(d.get(0))  # 队列空时 阻塞 参数0 报错
+
+import threading
+import time
+
+
+li = [1, 2, 3, 4, 5]
+
+
+def pri():
+    while li:
