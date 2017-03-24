@@ -55,3 +55,22 @@ if __name__ == '__main__':
     sue = Person('Sue Jones', job='dev', pay=100000)
     print(bob)
     print(sue)
+    print(bob.lastName(), sue.lastName())
+    sue.giveRaise(.10)
+    print(sue)
+
+    tom = Manager('Tom Jones', 50000)
+    tom.giveRaise(.10)
+    print(tom.lastName())
+    print(tom)
+    '''
+    print("-------All three-------")
+    for obj in (bob, sue, tom):
+        obj.giveRaise(.10)
+        print(obj)
+    '''
+
+    # development = Department(bob, sue)
+    # development.addMember(tom)
+    # development.giveRaises(.10)
+    # development.showAll()
