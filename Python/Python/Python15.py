@@ -40,3 +40,17 @@ print(rf.func())
 
 name = getattr(rf, 'NAME')
 print(name)
+func = getattr(rf, 'func')
+print(func())
+
+cls = getattr(rf, 'Foo')
+print(cls)
+obj = cls()
+print(obj.name)
+
+inp = input('请输入:')
+
+if hasattr(rf, inp):
+    func = getattr(rf, inp)
+    result = func()
+    print(result)
