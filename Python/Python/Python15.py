@@ -12,3 +12,17 @@ class Foo(object):
 b = 'name'
 obj = Foo('moon')
 name = obj.__dict__[b]
+print(name)
+
+# 属性
+v = getattr(obj, b)
+print(v)
+
+# 方法
+func = getattr(obj, 'show')
+print(func)
+
+s = func()
+print(s)
+
+print(hasattr(obj, 'name'))
