@@ -19,3 +19,6 @@ if not severities:
     sys.exit(1)
 
 for severity in severities:
+    channel.queue_bind(exchange='direct_logs', queue=queue_name, routing_key=severity)
+
+print(' [*] Waiting for logs. To exit press CTRL+C')
