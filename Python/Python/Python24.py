@@ -28,3 +28,6 @@ class Worker(threading.Thread):
         event.clear()
         event.wait()
         print("Worker：Oh Yeah!")
+
+
+if __name__ == "__main__":
