@@ -22,3 +22,6 @@ class Boss(threading.Thread):
 
 class Worker(threading.Thread):
     def run(self):
+        event.wait()
+        print("Worker：哎……命苦啊！")
+        time.sleep(0.25)
