@@ -33,3 +33,7 @@ class Worker(threading.Thread):
 if __name__ == "__main__":
     event = threading.Event()
     threads = []
+
+    for i in range(5):
+        threads.append(Worker())
+    threads.append(Boss())
