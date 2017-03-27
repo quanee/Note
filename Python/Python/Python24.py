@@ -25,3 +25,6 @@ class Worker(threading.Thread):
         event.wait()
         print("Worker：哎……命苦啊！")
         time.sleep(0.25)
+        event.clear()
+        event.wait()
+        print("Worker：Oh Yeah!")
