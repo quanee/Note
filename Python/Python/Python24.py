@@ -37,3 +37,6 @@ if __name__ == "__main__":
     for i in range(5):
         threads.append(Worker())
     threads.append(Boss())
+
+    for t in threads:
+        t.start()
