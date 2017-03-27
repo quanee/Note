@@ -18,3 +18,7 @@ class Boss(threading.Thread):
         time.sleep(5)
         print("BOSS：<22:00>可以下班了。")
         event.isSet() or event.set()
+
+
+class Worker(threading.Thread):
+    def run(self):
