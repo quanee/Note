@@ -68,3 +68,13 @@ def main():
     args = parse.parse_args()
 
     # set grid size
+    N = 100
+    if args.N and int(args.N) > 8:
+        N = int(args.N)
+
+    # set animation update interval
+    updateInterval = 50
+    if args.interval:
+        updateInterval = int(args.interval)
+
+    # declare grid
