@@ -28,3 +28,13 @@ def update(frameNum, img, grid, N):
     # copy grid since we require 8 neighbors for calculation
     # and we go line by line
     newGrid = grid.copy()
+    for i in range(N):
+        for j in range(N):
+            # compute 8-neghbor sum using toroidal boundary conditions
+            # takes place on a toroidal surface
+            total = int((grid[i, (j - 1) % N] + grid[i, (j + 1) % N] +
+                         grid[(i - 1) % N, j] + grid[(i + 1) % N, j] +
+                         grid[(i - 1) % N, (j - 1) % N] + grid[(i - 1), (j + 1) % N] +
+                         grid[(i + 1) % N, (j - 1) % N] + grid[(i + 1), (j + 1) % N]) / 255)
+
+            # apply Conway's rules
