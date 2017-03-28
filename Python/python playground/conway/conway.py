@@ -58,3 +58,13 @@ def main():
     # sys.argv[0] is the script name and can be ignored
     # parse arguments
     parse = argparse.ArgumentParser(description="Runs Conway's Game of Life simulation.")
+
+    # add arguments
+    parse.add_argument('--grid-size', dest='N', required=False)
+    parse.add_argument('--mov-file', dest='movfile', required=False)
+    parse.add_argument('--interval', dest='interval', required=False)
+    parse.add_argument('--glider', action='store_true', required=False)
+    parse.add_argument('--gosper', action='store_true', required=False)
+    args = parse.parse_args()
+
+    # set grid size
