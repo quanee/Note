@@ -88,3 +88,13 @@ def main():
         grid = randomGrid(N)
 
     # set up the animation
+    fig, ax = plt.subplots()
+    img = ax.imshow(grid, interpolation='nearest')
+    ani = animation.FuncAnimation(fig, update, fargs=(img, grid, N, ),
+                                  frames=10,
+                                  interval=updateInterval,
+                                  save_count=50)
+    # number of frames?
+    # set the output file
+    if args.movfile:
+        ani.save(args.movfile, fps=30, extra_args=['-vcodec', 'libx264'])
