@@ -78,3 +78,13 @@ def main():
         updateInterval = int(args.interval)
 
     # declare grid
+    grid = np.array([])
+    # check if "glider" demo flag is specified
+    if args.glider:
+        grid = np.zeros(N * N).reshape(N, N)
+        addGlider(1, 1, grid)
+    else:
+        # populate grid with random on/off - more off than on
+        grid = randomGrid(N)
+
+    # set up the animation
