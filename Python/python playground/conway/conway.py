@@ -48,3 +48,13 @@ def update(frameNum, img, grid, N):
     # update data
     img.set_data(newGrid)
     grid[:] = newGrid[:]
+
+    return img,
+
+
+# main() function
+def main():
+    # command line arguments are in sys.argv[1], sys.argv[2], ...
+    # sys.argv[0] is the script name and can be ignored
+    # parse arguments
+    parse = argparse.ArgumentParser(description="Runs Conway's Game of Life simulation.")
