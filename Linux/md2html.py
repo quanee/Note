@@ -6,3 +6,4 @@ text = input_file.read()
 html = markdown.markdown(text)
 
 f = open('UNIX.html', 'w', encoding="utf-8")
+f.write(html)
