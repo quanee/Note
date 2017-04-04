@@ -63,3 +63,16 @@ def main():
     parse.add_argument('--grid-size', dest='N', required=False)
     parse.add_argument('--mov-file', dest='movfile', required=False)
     parse.add_argument('--interval', dest='interval', required=False)
+    parse.add_argument('--glider', action='store_true', required=False)
+    parse.add_argument('--gosper', action='store_true', required=False)
+    args = parse.parse_args()
+
+    # set grid size
+    N = 100
+    if args.N and int(args.N) > 8:
+        N = int(args.N)
+
+    # set animation update interval
+    updateInterval = 50
+    if args.interval:
+        updateInterval = int(args.interval)
