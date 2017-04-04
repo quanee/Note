@@ -50,3 +50,16 @@ def update(frameNum, img, grid, N):
     grid[:] = newGrid[:]
 
     return img,
+
+
+# main() function
+def main():
+    # command line arguments are in sys.argv[1], sys.argv[2], ...
+    # sys.argv[0] is the script name and can be ignored
+    # parse arguments
+    parse = argparse.ArgumentParser(description="Runs Conway's Game of Life simulation.")
+
+    # add arguments
+    parse.add_argument('--grid-size', dest='N', required=False)
+    parse.add_argument('--mov-file', dest='movfile', required=False)
+    parse.add_argument('--interval', dest='interval', required=False)
