@@ -17,3 +17,9 @@ def producer():
         con.send(n)
         con2.send(n)
         print("producer is making baozi %s" % n)
+
+
+if __name__ == "__main__":
+    con = consumer("c1")
+    con2 = consumer("c2")
+    p = producer()
