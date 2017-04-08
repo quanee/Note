@@ -7,3 +7,9 @@ def consumer(name):
         new_baozi = yield
         print('[%s] is eating baozi %s' % (name, new_baozi))
 
+
+def producer():
+    con.__next__()
+    con2.__next__()
+    n = 0
+    while n < 5:
