@@ -13,3 +13,7 @@ def producer():
     con2.__next__()
     n = 0
     while n < 5:
+        n += 1
+        con.send(n)
+        con2.send(n)
+        print("producer is making baozi %s" % n)
