@@ -16,3 +16,8 @@ class Foo:
         return 123
 
     def __str__(self):
+        return 'str'
+
+    def __add__(self, other):
+        '''self = o1 other = o2'''
+        return '__add__'
