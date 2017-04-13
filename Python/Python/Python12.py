@@ -45,3 +45,10 @@ class Foo:
 
     def __iter__(self):
         return iter([1, 2, 3, 4])
+
+
+obj = Foo("abc", 23)
+obj()  # 执行__call__
+print(int(obj))  # __int__
+print(str(obj))  # __str__
+print(obj)  # __str__
