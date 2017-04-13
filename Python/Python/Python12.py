@@ -10,3 +10,9 @@ class Foo:
         self.__age = age
 
     def __call__(self, *args, **kwargs):
+        print('call')
+
+    def __int__(self):
+        return 123
+
+    def __str__(self):
