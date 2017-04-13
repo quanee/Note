@@ -57,3 +57,10 @@ o1 = Foo("bbc", 34)
 o2 = Foo("cbc", 45)
 ret = o1 + o2  # 执行第一个对象的__add__方法， 并将第二个对象当作参数传入
 print(ret)
+
+o3 = Foo("dbc", 55)
+d = o3.__dict__
+print(d)
+
+ret = o3[4]  # 索引
+print(ret)
