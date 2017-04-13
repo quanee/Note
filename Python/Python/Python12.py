@@ -52,3 +52,8 @@ obj()  # 执行__call__
 print(int(obj))  # __int__
 print(str(obj))  # __str__
 print(obj)  # __str__
+
+o1 = Foo("bbc", 34)
+o2 = Foo("cbc", 45)
+ret = o1 + o2  # 执行第一个对象的__add__方法， 并将第二个对象当作参数传入
+print(ret)
