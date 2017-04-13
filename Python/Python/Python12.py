@@ -34,3 +34,8 @@ class Foo:
             print(item.step)
         else:
             print("索引")
+            return item + 10
+
+    def __setitem__(self, key, value):
+        '''索引赋值'''
+        print(key, value)
