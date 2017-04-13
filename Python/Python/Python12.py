@@ -28,3 +28,9 @@ class Foo:
     def __getitem__(self, item):
         '''索引访问'''
         if type(item) == slice:
+            print("切片")
+            print(item.start)
+            print(item.stop)
+            print(item.step)
+        else:
+            print("索引")
