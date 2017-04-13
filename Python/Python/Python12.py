@@ -39,3 +39,9 @@ class Foo:
     def __setitem__(self, key, value):
         '''索引赋值'''
         print(key, value)
+
+    def __delitem__(self, key):
+        print(key)
+
+    def __iter__(self):
+        return iter([1, 2, 3, 4])
