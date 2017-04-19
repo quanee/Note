@@ -207,3 +207,34 @@ def count(aClass):
     aClass.numInstances = 0
     return aClass
 
+
+@count
+class Spam:
+    numInstances = 0
+
+    def count(cls):
+        cls.numInstances += 1
+
+    def __init__(self):
+        self.count()
+
+    count = classmethod(count)
+
+
+@count
+class Sub(Spam):
+    def printNumInstances(cls):
+        print("Extra stuff...", cls)
+        Spam.printNumInstances()
+
+    printNumInstances = classmethod(printNumInstances)
+
+
+@count
+class Other(Spam):
+    ...
+
+
+# 元类
+class Meta(type):
+    def __new__(meta, classname, supers, classdict):
