@@ -88,3 +88,33 @@ if __name__ == '__main__':
     (a, b, c, d) = X
     print(a, c, d)
     print(list(X), tuple(X), ''.join(X))
+
+'''__slot__'''
+class limiter(object):
+    __slots__ = ['age', 'name', 'job']
+
+
+if __name__ == '__main__':
+    # Slot违背Python动态特性
+    x = limiter()
+    x.age = 40
+    print(x.age)
+
+    # x.ape = 1000
+    # AttributeError: 'limiter' object has no attribute 'ape'
+
+# 用类方法统计实例
+class Spam:
+    numInstances = 0
+
+    def __init__(self):
+        Spam.numInstances += 1
+
+    def printNumInstances(cls):
+        print("Number of instances:", cls.numInstances)
+
+    printNumInstances = classmethod(printNumInstances)
+
+
+class Sub(Spam):
+    def printNumInstances(cls):
