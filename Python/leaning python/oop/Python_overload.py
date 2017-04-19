@@ -58,3 +58,33 @@ if __name__ == '__main__':
     X = Indexer()
     print(X[2])
     for i in range(5):
+        print(X[i], end=' ')
+    print()
+    # 拦截分片
+    L = [5, 6, 7, 8, 9]
+    print(L[slice(2, 4)])
+
+    print(X[2:4])
+    print(X[1:])
+    print(X[:-1])
+    print(X[::2])
+
+    X[3] = 'e'
+    print(X.data)
+
+    X = C()
+    print(hex(X))
+    print(bin(X))
+    print(oct(X))
+
+    X = stepper()
+    X.data = 'love'
+    print(X[1])
+    for item in X:
+        print(item, end=' ')
+    print('p' in X)
+    print([c for c in X])
+    print(list(map(str.upper, X)))
+    (a, b, c, d) = X
+    print(a, c, d)
+    print(list(X), tuple(X), ''.join(X))
