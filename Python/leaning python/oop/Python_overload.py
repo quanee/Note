@@ -118,3 +118,32 @@ class Spam:
 
 class Sub(Spam):
     def printNumInstances(cls):
+        print("Extra stuff...", cls)
+        Spam.printNumInstances()
+
+    printNumInstances = classmethod(printNumInstances)
+
+
+class Other(Spam):
+    ...
+
+
+x, y = Sub(), Spam()
+x.printNumInstances()
+Sub.printNumInstances()
+y.printNumInstances()
+z = Other()
+z.printNumInstances()
+
+
+# 用类方法统计每个类的实例
+# 静态方法和显示类名称用来处理类本地数据
+# 类方法处理层级中的每个类不同的数据
+class Spam:
+    numInstances = 0
+
+    def count(cls):
+        cls.numInstances += 1
+
+    def __init__(self):
+        self.count()
