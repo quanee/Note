@@ -238,3 +238,33 @@ class Other(Spam):
 # 元类
 class Meta(type):
     def __new__(meta, classname, supers, classdict):
+        ...
+
+
+class C(metaclass=Meta):
+    ...
+
+
+# 修改类属性的副作用
+class X:
+    a = 1
+
+
+Z = X()
+print(Z.a)
+# 1
+print(X.a)
+# 1
+X.a = 2
+print(Z.a)
+# 2
+J = X()
+print(J.a)
+# 2
+
+
+class X:
+    ...
+
+
+class Y:
