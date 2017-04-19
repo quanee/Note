@@ -268,3 +268,33 @@ class X:
 
 
 class Y:
+    ...
+
+
+X.a = 1  # 使用类属性作为变量
+X.b = 2
+X.c = 3
+
+Y.a = X.a + X.b + X.c
+
+for X.i in range(Y.a):
+    print(X.i)  # 0...5
+
+
+class C:
+    shared = []
+
+    def __init__(self):
+        self.perobj = []
+
+
+x = C()
+y = C()
+
+print(y.shared, y.perobj)
+# [] []
+x.shared.append('spam')
+x.perobj.append('spam')
+print(x.shared, x.perobj)
+# ['spam'] ['spam']
+print(y.shared, y.perobj)
