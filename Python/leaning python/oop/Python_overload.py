@@ -147,3 +147,34 @@ class Spam:
 
     def __init__(self):
         self.count()
+
+    count = classmethod(count)
+
+
+class Sub(Spam):
+    numInstances = 0
+
+    def __init__(self):
+        Spam.__init__(self)
+
+class Other(Spam):
+    numInstances = 0
+
+
+x = Spam()
+y1, y2 = Sub(), Sub()
+z1, z2, z3 = Other(), Other(), Other()
+print(x.numInstances, y1.numInstances, z1.numInstances)
+print(Spam.numInstances, Sub.numInstances, Other.numInstances)
+
+
+# 装饰器
+class tracer:
+    def __init__(self, func):
+        self.calls = 0
+        self.func = func
+
+    def __call__(self, *args):
+        self.calls += 1
+        print('call %s to %s' % (self.calls, self.func.__name__))
+        self.func(*args)
