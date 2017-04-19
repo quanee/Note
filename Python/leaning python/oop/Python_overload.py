@@ -28,3 +28,33 @@ __enter__ __exit__  环境管理器   with obj as var:
 __get__ __set__ __delete__  描述符属性   X.attr, X.attr=value,del X.attr
 __new__ 创建  在__init__之前创建对象
 '''
+
+# 索引和分片
+class Indexer:
+    data = [5, 6, 7, 8, 9]
+
+    def __getitem__(self, index):
+        print('getitem:', index)
+        return self.data[index]
+
+    def __setitem__(self, index, value):
+        self.data[index] = value
+
+
+class C:
+    # 针对一个实例返回一个整数值
+
+    def __index__(self):
+        return 255
+
+
+# 索引迭代
+class stepper:
+    def __getitem__(self, i):
+        return self.data[i]
+
+
+if __name__ == '__main__':
+    X = Indexer()
+    print(X[2])
+    for i in range(5):
