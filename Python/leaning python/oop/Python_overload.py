@@ -178,3 +178,32 @@ class tracer:
         self.calls += 1
         print('call %s to %s' % (self.calls, self.func.__name__))
         self.func(*args)
+
+
+@tracer
+def spam(a, b, c):
+    print(a, b, c)
+
+
+spam(1, 2, 3)
+spam('a', 'b', 'c')
+spam(4, 5, 6)
+
+
+'''
+类装饰器和元类
+def decorator(aClass):...
+
+@decorator
+class C:...
+等同于
+def decorator(aClass):...
+
+class C:...
+C = decorator(C)
+'''
+# 装饰器
+def count(aClass):
+    aClass.numInstances = 0
+    return aClass
+
