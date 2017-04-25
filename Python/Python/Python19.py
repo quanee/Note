@@ -13,3 +13,8 @@ def music(func):
         sleep(1)
         print("end listening %s" % ctime())
 
+
+def movie(func):
+    for i in range(2):
+        print("Begin watching at the %s! %s" % (func, ctime()))
+        sleep(5)
