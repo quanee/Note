@@ -30,3 +30,7 @@ threads.append(t2)
 
 
 if __name__ == '__main__':
+    # music(u'七里香')
+    # movie(u'世界末路')
+    for t in threads:
+        t.setDaemon(True)  # 并行不阻塞 不等待t结束
