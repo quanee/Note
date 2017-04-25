@@ -18,3 +18,7 @@ def movie(func):
     for i in range(2):
         print("Begin watching at the %s! %s" % (func, ctime()))
         sleep(5)
+        print("end watching %s" % ctime())
+
+
+threads = []
