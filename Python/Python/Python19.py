@@ -26,3 +26,7 @@ t1 = threading.Thread(target=music, args=('七里香',))
 threads.append(t1)
 t2 = threading.Thread(target=movie, args=('阿甘正传',))
 threads.append(t2)
+
+
+
+if __name__ == '__main__':
