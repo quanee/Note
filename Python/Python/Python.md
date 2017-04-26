@@ -16,3 +16,6 @@ is,is not|同一性测试
 +x,-x|正负号
 ~x|按位翻转
 **|指数
+x.attribute|属性参考
+x[index]|下标
+x[index:index]|寻址段
