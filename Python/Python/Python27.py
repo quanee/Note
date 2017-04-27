@@ -30,3 +30,19 @@ class MyProcess(Process):
 
 
 if __name__ == '__main__':
+    p_list = []
+    for i in range(3):
+        p = MyProcess('moonboss')
+        p.start()
+
+    for i in p_list:
+        i.join()
+
+    print('end')
+'''
+import os
+
+
+def info(title):
+    print(title)
+    print('module name:', __name__)
