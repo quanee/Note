@@ -16,3 +16,12 @@ def accessControl(failIf):
         class onInstance:
             def __init__(self, *args, **kargs):
                 self.__wrapped = aClass(*args, **kargs)
+
+            def __getattr__(self, attr):
+                trace('get: ', attr)
+                if failIf(attr):
+                    raise TypeError('private attribute fetch: ' + attr)
+                else:
+                    return getattr(self.__wrapped, attr)
+
+            def __setattr__(self, attr, value):
