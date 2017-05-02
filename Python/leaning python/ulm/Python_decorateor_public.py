@@ -42,3 +42,13 @@ def Private(*attributes):
 def Public(*attributes):
     return accessControl(failIf=(lambda attr: attr not in attributes))
 
+
+@Private('age')
+class Person(object):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+X = Person('Bob', 40)
+print(X.name)
