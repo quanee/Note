@@ -7,3 +7,12 @@ Add __X__ methods here to intercept and delegate built-ins
 
 traceMe = False
 def trace(*args):
+    if traceMe:
+        print('[' + ''.join(map(str, args)) + ']')
+
+
+def accessControl(failIf):
+    def onDecorator(aClass):
+        class onInstance:
+            def __init__(self, *args, **kargs):
+                self.__wrapped = aClass(*args, **kargs)
