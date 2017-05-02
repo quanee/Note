@@ -34,3 +34,11 @@ def accessControl(failIf):
                     setattr(self.__wrapped, attr, value)
         return onInstance
     return onDecorator
+
+
+def Private(*attributes):
+    return accessControl(failIf=(lambda attr: attr in attributes))
+
+def Public(*attributes):
+    return accessControl(failIf=(lambda attr: attr not in attributes))
+
