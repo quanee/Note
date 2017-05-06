@@ -2,3 +2,4 @@
 
 def func(args):
     '''I am: docstr.func.__doc__'''
+    pass
