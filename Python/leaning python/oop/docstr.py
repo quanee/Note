@@ -9,3 +9,4 @@ class moon:
 
     def method(self, arg):
         '''I am: moon.method.__doc__ or self.method.__doc__'''
+        pass
