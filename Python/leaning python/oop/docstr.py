@@ -6,3 +6,5 @@ def func(args):
 
 class moon:
     '''I am: moon.__doc__ or docstr.moon.__doc__'''
+
+    def method(self, arg):
