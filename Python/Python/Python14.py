@@ -3,3 +3,4 @@ try:
     raise Exception('主动触发异常')
     i = int('adfa')
 except Exception as e:
+    print("异常:", e)
