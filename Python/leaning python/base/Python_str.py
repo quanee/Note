@@ -43,3 +43,8 @@ print('first={0}, last={1}, middle={2}'.format(*parts))
 # [[fill]align][sign][#][0][width][.precision][typecode]
 # align	<, >, =, ^
 print('{0:10} = {1:10}'.format('spam', 123.4567))
+print('{0:>10} = {1:<10}'.format('spam', 123.4567))
+print('{0.platform:>10} = {1[item]:<10}'.format(sys, dict(item='laptop')))
+
+# 类型
+print('{0:e}, {1:.3e}, {2:g}'.format(3.14159, 3.14159, 3.14159))
