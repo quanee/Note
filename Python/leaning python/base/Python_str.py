@@ -38,3 +38,8 @@ print('first={0}, last={1}'.format(somelist[0], somelist[-1]))
 
 parts = somelist[0], somelist[-1], somelist[1:3]
 print('first={0}, last={1}, middle={2}'.format(*parts))
+
+# 具体格式化
+# [[fill]align][sign][#][0][width][.precision][typecode]
+# align	<, >, =, ^
+print('{0:10} = {1:10}'.format('spam', 123.4567))
