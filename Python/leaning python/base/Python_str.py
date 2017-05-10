@@ -8,3 +8,7 @@ print('%f, %.2f, %.*f' % (1 / 3.0, 1 / 3.0, 4, 1 / 3.0))
 print('%(n)d %(x)s' % {'n': 1, 'x': 'abc'})
 
 reply = '''
+Greetings...
+Hello %(name)s!
+Your age squared is %(age)s
+'''
