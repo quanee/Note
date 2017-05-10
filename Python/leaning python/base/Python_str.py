@@ -23,3 +23,8 @@ print(vars())
 # 3.x格式化方法
 print('{0}, {1} and {2}'.format('moon', 'boss', 'max'))
 print('{name}, {nicname}, {age}'.format(name='moonboss', nicname='MaxKim', age='23'))
+print('{name}, {0}, {age}'.format('MaxKim', name='moonboss', age='23'))
+
+
+import sys
+# 键
