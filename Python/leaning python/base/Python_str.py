@@ -12,3 +12,9 @@ Greetings...
 Hello %(name)s!
 Your age squared is %(age)s
 '''
+
+values = {'name': 'moonboss', 'age': 40}
+
+print(reply % values)
+
+# vars()返回字典 包含本函数调用时存在的变量
