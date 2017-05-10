@@ -28,3 +28,8 @@ print('{name}, {0}, {age}'.format('MaxKim', name='moonboss', age='23'))
 
 import sys
 # 键
+print('My {1[name]} runs {0.platform}'.format(sys, {'name': 'laptop'}))
+# 属性
+print('My {config[name]} runs {sys.platform}'.format(sys=sys, config={'name': 'laptop'}))
+# 偏移值
+somelist = list('SPAM')
