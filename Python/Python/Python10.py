@@ -37,3 +37,12 @@ s.f1()
 
 # ##########################################
 
+
+class br(object):
+    pass
+
+
+class rh(br):
+    def sf(self):
+        print("rh.sf")
+        self.pr()  # self为obj 执行minx的pr方法
