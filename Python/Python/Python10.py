@@ -46,3 +46,11 @@ class rh(br):
     def sf(self):
         print("rh.sf")
         self.pr()  # self为obj 执行minx的pr方法
+
+    def pr(self):
+        print("rh.pr")
+
+
+class minx(object):
+    def pr(self):
+        print("minx.pr")
