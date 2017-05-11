@@ -54,3 +54,11 @@ class rh(br):
 class minx(object):
     def pr(self):
         print("minx.pr")
+
+
+class Son(minx, rh):
+    pass
+
+
+obj = Son()
+obj.sf()
