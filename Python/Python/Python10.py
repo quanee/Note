@@ -13,3 +13,11 @@ class son(father):
     def f1(self):
         super(son, self).f1()  # 执行父类方法f1
         print('son.f1')
+
+    def f2(self):
+        print('son.f2')
+
+
+s = son()
+s.f1()
+
