@@ -21,3 +21,12 @@ class son(father):
 s = son()
 s.f1()
 
+
+class mother(object):
+    def f1(self):
+        print('mother.f1')
+
+
+# 多继承 按继承顺序查找方法 共同基类最后查找
+class s(mother, father):
+    pass
