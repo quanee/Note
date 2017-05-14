@@ -18,3 +18,10 @@ while True:
     # 接受字符长度
     result_len = int(str(sk.recv(1024), 'utf8'))
     print(result_len)
+
+    data = bytes()
+    while len(data) != result_len:
+        recv = sk.recv(1024)  # 阻塞
+        data += recv
+
+    print(str(data, 'gbk'))
