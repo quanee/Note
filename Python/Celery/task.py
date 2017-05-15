@@ -10,3 +10,5 @@ from celery import Celery
     >>> from task import run_cmd
     >>> add.delay(x, y)
     >>> r = run_cmd.delay('ls')
+    >>> print(r)
+"""
