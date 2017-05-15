@@ -12,3 +12,6 @@ from celery import Celery
     >>> r = run_cmd.delay('ls')
     >>> print(r)
 """
+
+
+# app = Celery('tasks', broker='redis://localhost', backend='redis://localhost')
