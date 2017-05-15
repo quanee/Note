@@ -22,3 +22,5 @@ app = Celery('task', broker='redis://:moonboss@localhost:port', backend='redis:/
 @app.task
 def add(x, y):
     print('running...', x, y)
+    return x + y
+
