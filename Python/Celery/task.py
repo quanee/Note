@@ -15,3 +15,6 @@ from celery import Celery
 
 
 # app = Celery('tasks', broker='redis://localhost', backend='redis://localhost')
+
+app = Celery('task', broker='redis://:moonboss@localhost:port', backend='redis://:password@localhost:port')
+
