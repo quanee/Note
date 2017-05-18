@@ -18,3 +18,8 @@ print(mnist.train.images.shape, mnist.train.labels.shape)
 print(mnist.test.images.shape, mnist.test.labels.shape)
 # 验证集(5000)
 print(mnist.validation.images.shape, mnist.validation.labels.shape)
+
+
+# 创建并注册默认session
+sess = tf.InteractiveSession()
+# 输入
