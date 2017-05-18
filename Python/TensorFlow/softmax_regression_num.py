@@ -23,3 +23,8 @@ print(mnist.validation.images.shape, mnist.validation.labels.shape)
 # 创建并注册默认session
 sess = tf.InteractiveSession()
 # 输入
+x = tf.placeholder(tf.float32, [None, 784])
+
+W = tf.Variable(tf.zeros([784, 10]))
+b = tf.Variable(tf.zeros([10]))
+# y=softmax(Wx+b)
