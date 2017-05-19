@@ -106,3 +106,39 @@ class AsyncRequest(object):
                 recv_data = bytes()
                 while True:
                     try:
+                        chunck = r.socket.recv(8096)
+                        recv_data += chunck
+                    except Exception as e:
+                        break
+                response = HttpResponse(recv_data)
+                r.callback(response)
+                r.socket.close()
+                self.conn.remove(r)
+
+            if len(self.conn) == 0:
+                break
+
+
+def f1(data):
+    print('保存到文件', data.header_dict)
+
+
+def f2(data):
+    print('保存到数据库', data.header_dict)
+
+
+url_list = [
+    {'host': 'www.baidu.com', 'callback': f2},
+    {'host': 'www.baidu.com', 'callback': f1},
+    {'host': 'www.baidu.com', 'callback': f2},
+    {'host': 'www.baidu.com', 'callback': f2},
+    {'host': 'www.baidu.com', 'callback': f1},
+    {'host': 'www.baidu.com', 'callback': f2},
+] 
+
+req = AsyncRequest()
+for item in url_list:
+    req.add_request(item['host'], item['callback'])
+
+
+req.run()
