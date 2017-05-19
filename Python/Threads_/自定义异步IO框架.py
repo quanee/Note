@@ -70,3 +70,39 @@ class HttpResponse(object):
             h_str = str(h, encoding='utf-8')
             v = h_str.split(':', 1)
             if len(v) == 2:
+                self.header_dict[v[0]] = v[1]
+            
+
+
+
+class AsyncRequest(object):
+    """docstring for AsyncRequest"""
+    def __init__(self):
+        self.conn = []
+        self.connection = []  # 检测是否成功连接
+
+    def add_request(self, host, callback):
+        try:
+            sk = socket.socket()
+            sk.setblocking(False)
+            sk.connect((host, 80, ))
+        except BlockingIOError as e:
+            ...
+        request = HttpRequest(sk, host, callback)
+        self.conn.append(request)
+        self.connection.append(request)
+
+    def run(self):
+        while True:
+            rlist, wlist, elist = select.select(self.conn, self.connection, self.conn, 0.05)
+            for w in wlist:
+                print(w.host, '连接成功...')
+                # 如果循环到 表示socket和服务器端已经连接成功
+                tpl = 'GET / HTTP/1.0\r\n\r\nHost:%s\r\n\r\n' % w.host
+                w.socket.send(bytes(tpl, encoding='utf-8'))
+                self.connection.remove(w)
+            for r in rlist:
+                # r是HttpRequest
+                recv_data = bytes()
+                while True:
+                    try:
