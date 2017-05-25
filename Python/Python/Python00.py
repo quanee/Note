@@ -408,3 +408,84 @@ print(s1)
 
 a = [2, 4, 5, 6]
 b = a
+# 修改第二层地址
+b[0] = 7
+
+print(a)
+print(b)
+
+
+a = [2]
+b = a
+
+b[0] = 3
+print(a)
+print(b)
+
+b = [7]
+print(a)
+print(b)
+
+a = [4, 5, 6]
+b = copy.deepcopy(a)
+print(b)
+b[1] = 3
+print(b)
+
+# 集合
+# 不重复,无序
+# 元素必须可哈希(字典,列表,不可哈希)
+# 非可哈希,可变
+
+s = set(['a', 'b', 'c', 'd'])
+print(s)
+print("a" in s)
+
+# 单个元素
+s.add('e')
+print(s)
+
+# 多个元素
+s.update(['f', 'gh'])
+s.update('ijk')
+print(s)
+
+s.remove('gh')
+print(s)
+
+# 随机删除一个元素
+s.pop()
+print(s)
+
+# 清空集合
+s.clear()
+print(s)
+
+# 关系测试
+a = set("abcd")
+b = set("abcdddd")
+print(a == b)
+print(a < b)
+print(a or b)
+print(a and b)
+
+a = set([1, 2, 3, 4, 5])
+b = set([4, 5, 6, 7, 8])
+# intersection() 交集
+print(a.intersection(b))
+print(a & b)
+# union() 并集
+print(a.union(b))
+print(a | b)
+# difference() 差集
+print(a.difference(b))
+print(a - b)
+# symmetric_difference() 对称差集
+print(a.symmetric_difference(b))
+print(a ^ b)
+a = set([1, 2, 3, 4, 5])
+b = set([3, 4, 5])
+print(a.issuperset(b))
+print(a >= b)
+print(a.issubset(b))
+print(a <= b)
