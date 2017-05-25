@@ -161,3 +161,86 @@ print(tup)
 print(tup[1:])
 print(tup[1:3])
 print(tup[1:4:2])
+
+###########################################################
+# 字典 对key进行哈希函数运算,确定value的存储位置
+dic = {'name': 'pangdahai', 'age': '21', 'id': '123456'}
+print(dic)
+print(dic['name'])
+dic1 = dict((('name', 'pangdahai'), ('age', '21'), ('id', '123456')))
+dic2 = dict({'name': 'pangdahai', 'age': '21', 'id': '123456'})
+print(dic1, dic2)
+
+# 增
+dic = {'name': 'pangdahai'}
+dic['age'] = '21'
+print(dic)
+
+# setdefault(key,value)如果key不存在,则添加到字典中
+#                      如果key存在,则返回key对应的value
+dic.setdefault('age', '123456')
+print(dic)
+
+# 查
+dic = {'name': 'pangdahai', 'age': '21', 'id': '123456'}
+print(list(dic.keys()))
+print(list(dic.values()))
+print(dic['name'])
+print(dic.get('name'))
+
+# get(key,[default])　　---返回字典dict中键key对应值，如果字典中不存在此键，则返回default 的值(default默认值为None)
+
+# has_key(key)　　---判断字典中是否有键key
+
+# 改
+dic = {'name': 'pangdahai', 'age': '21', 'id': '123456'}
+dic['name'] = 'moonboss'
+print(dic)
+# update用另一个字典,存在则修改,不存在则添加
+dic1 = {'name': 1, 'b': 2, 'c': 3}
+dic.update(dic1)
+print(dic)
+
+# 删
+dic = {'name': 'pangdahai', 'age': '21', 'id': '123456'}
+
+# 删除指定键值
+del dic['name']
+print(dic)
+# 删除整个字典对象
+# del dic
+# print(dic)
+
+dic = {'name': 'pangdahai', 'age': '21', 'id': '123456', 'x': 'abcd'}
+# pop返回删除的值
+print(dic.pop('name'))
+# popitem删除并返回字典最后一个值
+print(dic.popitem())
+print(dic)
+# 清空整个字典
+# clear()　　---删除字典中所有元素
+dic.clear()
+print(dic)
+
+# copy()　　---返回字典的一个副本(浅复制)
+
+dic = dict.fromkeys(['host', 'localhost'], 'test')
+print(dic)
+
+dic = dict.fromkeys(['host', 'localhost'], ['test', 'test2'])
+print(dic)
+
+dic['host'][0] = 'test3'
+print(dic)
+
+# 排序
+dic = {'name': 'pangdahai', 'age': '21', 'id': '123456'}
+# dict.fromkeys(seq,val=None) ---创建并返回一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值(默认为None)
+# sorted()默认按key排序
+print(sorted(dic))
+# 排序并输出key-value
+print(sorted(dic.items()))
+
+# 字典遍历
+dic = {'name': 'pangdahai', 'age': '21', 'id': '123456'}
+# items()　　---返回一个包含字典中(键, 值)对元组的列表
