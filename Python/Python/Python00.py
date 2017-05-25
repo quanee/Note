@@ -244,3 +244,85 @@ print(sorted(dic.items()))
 # 字典遍历
 dic = {'name': 'pangdahai', 'age': '21', 'id': '123456'}
 # items()　　---返回一个包含字典中(键, 值)对元组的列表
+for i in dic.items():
+    print(i)
+# keys()　　---返回一个包含字典中所有键的列表
+# values()　　---返回一个包含字典中所有值的列表
+# pop(key, [default])　　---若字典中key键存在，删除并返回dict[key]，若不存在，且未给出default值，引发KeyError异常
+# popitem()　　---删除任意键值对，并返回该键值对，如果字典为空，则产生异常KeyError
+# setdefault(key,[default])　　---若字典中有key，则返回vlaue值，若没有key，则加上该key，值为default，默认None
+# update(dict2)　　---把dict2的元素加入到dict中去，键字重复时会覆盖dict中的键值
+# viewitems()　　---返回一个view对象，（key, value）pair的列表，类似于视图。优点是，如果字典发生变化，view会同步发生变化。在迭代过程中，字典不允许改变，否则会报异常
+# viewkeys()　　---返回一个view对象，key的列表
+
+
+
+
+# 字符串拼接
+a = 'abcd'
+b = '1234'
+c = 'ABCD'
+d = a + b + c
+print(d)   # 效率低
+d = '**'.join([a, b, c])
+print(d)
+
+# 字符串内置方法
+strbin = 'hello pangdahai'
+
+print(strbin.count('l'))    # 统计字符出现次数
+print(strbin.capitalize())  # 首字母大写
+print(strbin.center(40, '+'))  # 填充字符
+print(strbin.endswith('y'))  # 判断结束字符
+print(strbin.startswith('he'))  # 判断开始字符
+strbin = 'he\tllo pangdahai'
+print(strbin.expandtabs(tabsize=10))
+strbin = 'hello pangdahai'
+print(strbin.find('p'))  # 查找到第一个字符位置,并返回索引值
+strbin = 'hello {name}, age is {age}'
+print(strbin.format(name='pangdahai', age=21))  # 替换变量
+print(strbin.format_map({'name': 'pangdahai', 'age': 21}))    # 替换变量(字典)
+# print(strbin.index('a'))
+print('asd'.isalnum())
+print('15'.isdecimal())  # 是否为十进制
+print('15'.isdigit())   # 是否为整型
+print('15'.isidentifier())   # 是否符合规范
+print('Abc'.islower())  # 是否全为小写
+print('Abc'.isupper())  # 是否全为大写
+print('Ab c'.isspace())  # 是否为空格
+print('Abc'.istitle())  # 判断标题
+print('Abc'.upper())    # 转为大写
+print('Abc'.lower())    # 转为小写
+print('title'.rjust(30, '+'))   # 左填充'+' 默认空格
+print('title'.ljust(30, '+'))   # 右填充
+print(' title \n'.strip())  # 去除空格,换行符
+print(' title \n'.lstrip())  # 去除空格,换行符
+print(' title \n'.rstrip())  # 去除空格,换行符
+print(' hello moonboss '.replace('moonboss', 'pangdahai'))
+print(' hello moonboss , very good !'.split(' '))
+print(' hello moonboss , very good !'.rsplit(' ', 1))  # 从右边分割, 分割一次
+
+# 2017/10/28 18:53:04
+# Python编码解码
+'''
+二进制
+ASCII:英文和拉丁字符, 一个字符一个字节,8位一个字节
+gb2312:只有6700多个中文,1980
+gbk1.0:2000多个字符, 1995
+gb18030:27000多个中文 2000
+
+unicode:utf-32 一个字符4个字节
+unicode:utf-16 一个字符2个字节或2个以上,65535
+unicode:utf-8 英文用ASCII码来存,中文占3个字节
+'''
+s = "烫烫"
+# 编码
+s = s.encode('utf-8')
+print(s)
+# 解码
+s = s.decode('utf-8')
+print(s)
+
+
+# 2017/10/28 19:53:58
+# 文件
