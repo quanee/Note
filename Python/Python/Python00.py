@@ -326,3 +326,85 @@ print(s)
 
 # 2017/10/28 19:53:58
 # 文件
+'''
+r   open and reading
+w   open and writing
+x   create and open
+a   open and appending
+b   binary
+t   text
++   reading and writing
+U
+'''
+f = open('text.txt', 'w', encoding='utf-8')
+print(f.fileno())  # 文件描述符
+f.write("一骑红尘妃子笑,\n无人知是荔枝来.\n")
+
+f = open('text.txt', 'r', encoding='utf-8')
+print(f.fileno())  # 文件描述符
+# data = f.read()
+# print(data, "\n------------------\n")
+# 推荐方式
+for i in f.readlines():
+    print(i.strip())
+
+f = open('text.txt', 'r+', encoding='utf-8')
+for i, v in enumerate(f.readlines()):
+    print(i, v.strip())
+print(f.tell())  # 当前指针位置
+f.close()
+# seek()
+f = open('text.txt', 'rb')
+f.seek(6)   # 指针移动指定位数
+for i in f.readlines():
+    print(i.strip().decode('utf-8'))
+f.close()
+
+f = open('text.txt', 'w', encoding='utf-8')
+print(f.fileno())  # 文件描述符
+f.write("一骑红尘妃子笑,\n无人知是荔枝来.\n")
+# 刷新缓存数据到磁盘
+f.flush()
+
+import sys
+import time
+
+# for i in range(30):
+#     sys.stdout.write("+")
+#     sys.stdout.flush() # 实时刷新显示
+#     time.sleep(0.1)
+
+for i in range(30):
+    print('>', end='', flush=True)
+    # time.sleep(0.1)
+print('\n', f.isatty())
+f.truncate(18)  # 从指定字节位置开始清除,默认从开始清除
+
+
+# 2017-11-19 08:46:49
+# 深浅拷贝
+
+# 浅拷贝
+# copy(被拷贝对象可变,只拷贝第一层地址,被拷贝对象不可变,直接引用)
+# deepcopy(依次拷贝所有内容)
+s = [1, 3, "sdf", 3]
+
+s1 = s.copy()
+
+s[1] = 6
+
+print(s)
+print(s1)
+
+# 深拷贝
+s = [[1, 5], 3, "sdf", 3]
+# 只拷贝第一层地址(s1指向s指向的地址)
+s1 = s.copy()
+# 修改第二层地址
+s1[0][1] = 3
+
+print(s)
+print(s1)
+
+a = [2, 4, 5, 6]
+b = a
