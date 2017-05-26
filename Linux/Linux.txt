@@ -26,3 +26,10 @@ crontab
 
 tar
 -c:create
+-x:解压
+-t:查看
+* c/x/t 同时只能存在一个
+-z:gzip
+-j:bzip
+-v:动态显示
+-f:文件名
