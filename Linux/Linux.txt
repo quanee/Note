@@ -11,3 +11,11 @@ gcc命令基本格式
 执行
 	./a.out
 -gcc hello.c -o hello-	// 编译hello.c文件,并输出到hello
+
+
+crontab
+-u user:指定用户
+-e:编辑用户任务
+-l:显示用户任务
+-r:从/var/spool/cron目录中删除某个用户的crontab文件
+-i:删除crontab文件时给予确认提示
