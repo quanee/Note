@@ -19,3 +19,10 @@ crontab
 -l:显示用户任务
 -r:从/var/spool/cron目录中删除某个用户的crontab文件
 -i:删除crontab文件时给予确认提示
+文件格式:
+	*	*	*	*	*	*
+	|	|	|	|	|	|					
+	分	时	日	月	周	命令
+
+tar
+-c:create
