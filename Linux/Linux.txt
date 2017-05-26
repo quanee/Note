@@ -1,0 +1,7 @@
+Linux下使用命令行编译.c文件
+	-vim hello.c
+gcc命令基本格式
+	-gcc [options] [filenames]
+	options:
+		-o:指定输出文件
+		-E:预编译
