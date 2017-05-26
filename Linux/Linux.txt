@@ -5,3 +5,9 @@ gcc命令基本格式
 	options:
 		-o:指定输出文件
 		-E:预编译
+		-S:编译为汇编语言
+		-c:将汇编语言文件或C源文件编译为可重定向的目标文件(二进制形式),默认后缀为.o
+	-gcc hello.c	//编译hello.c文件,默认输出到a.out文件
+执行
+	./a.out
+-gcc hello.c -o hello-	// 编译hello.c文件,并输出到hello
