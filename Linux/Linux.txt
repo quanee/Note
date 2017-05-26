@@ -47,3 +47,9 @@ grep
 sed [-nefr] [action] [file]
 
 -n: 安静模式(STDIN数据不输出到终端)
+-e: 
+-f:
+-r:
+-i:
+
+
