@@ -362,3 +362,55 @@ print(s1 + sample)
 sample.asfreq(freq='D')
 # 重采样
 # 按照12小时频率进行上采样,并指定缺失值按当日最后一个有效观测值来填充
+print(sample.resample('12H').ffill())
+# 按照4天频率进行下采样 ohlc表示时序初始值,最大值,最小值,时序终止数据
+print(sample.resample('4D').ohlc())
+# 提取股票交易周均开,收盘价信息
+print(sample.groupby(lambda x: x.week).mean())
+# 提取股票交易月均开,收盘价信息
+print(jd_ts[['opening_price', 'closing_price']].groupby(lambda x: x.month).mean())
+
+
+# 缺失值处理
+# 缺失数据的形式
+scoresheet = pd.DataFrame({'Name': ['Christoph', 'Morgan', 'Mickel', 'Jones'],
+                           'Economics': [89, 97, 56, 82],
+                           'Statistics': [98, 93, 76, 85]})
+print(scoresheet)
+scoresheet['Datamining'] = [79, np.nan, None, 89]
+scoresheet.loc[[1, 3], ['Name']] = [np.nan, None]
+print(scoresheet)
+
+# 缺失值在默认情况下不参与运算
+print(scoresheet['Datamining'].mean())
+print(scoresheet['Datamining'].mean() == (79 + 89) / 2)
+
+# 时间戳的datetime64[ns]数据格式, 默认缺失值为'NaT'
+scoresheet['Exam_Date'] = pd.date_range('20170707', periods=4)
+print(scoresheet['Exam_Date'])
+
+scoresheet.loc[[2, 3], ['Exam_Date']] = np.nan
+print(scoresheet)
+
+
+# 缺失数据填充与清洗
+'''
+对缺失值进行填充
+value:填充缺失值的标量或字典对象
+methond:指定填充方法:'backfill'/'bfill'向后填充, 'pad'/'ffill'向前填充, 'ffill'默认值, None
+axis: 指定待填充的轴: 0, 1或'index', 'columns', 默认axis=0
+inplace: 指定是否修改对象上的任何其他视图
+limit: 指定'ffill'和'backfill'填充可连续填充的最大数量
+'''
+print(scoresheet.fillna(0))
+print(scoresheet['Name'].fillna('missing'))
+print(scoresheet.fillna(method='pad'))
+print(scoresheet.fillna(method='bfill'))
+print(scoresheet.bfill())
+print(scoresheet.ffill(limit=1))
+print(scoresheet['Datamining'].fillna(scoresheet['Datamining'].mean()))
+print(scoresheet.dropna(axis=0))
+print(scoresheet.dropna(how='any', axis=1))
+scoresheet.loc[[0], ['Exam_Date']] = np.nan
+print(scoresheet)
+print(scoresheet.dropna(how='any', thresh=2, axis=1))
