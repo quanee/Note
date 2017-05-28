@@ -102,3 +102,54 @@ print(jddf.head())
   * read_html: 读入网页中的表
   * read_clipboard: 读入剪贴板中的数据内容
   * read_fwf: 读入固定宽度格式化数据
+  * read_hdf: 读入分布式存储系统中的文件
+'''
+
+jddf = pd.read_excel('data.xlsx', sep=',', header=None, names=['name', 'time', 'opening_price', 'closing_price', 'lowest_price', 'highest_price', 'volume'])
+jddfsetindex = jddf.set_index(jddf['time'])
+print(jddfsetindex.head())
+print(type(jddfsetindex.index))
+
+
+# 数据导出
+# jddf.to_csv('jdstockdata.csv')
+# jddf.to_excel('jdstockdata.xlsx')
+
+# 索引和切片
+print(scoresheet.Subject)
+print(scoresheet[['Name', 'Score']])
+print(scoresheet[:'No4'])
+print(scoresheet.ix[['No1', 'No3', 'No6']])
+print(scoresheet.ix[3:6, ['Name', 'Score']])
+print(scoresheet['Subject'])
+# print(scoresheet.ix[3:6, [1, 3]])
+# print(scoresheet.iloc[[1, 4, 5], [0, 3]])
+print(scoresheet.loc[['No1', 'No5'], ['ID', 'Score']])
+print(scoresheet[(scoresheet.Score > 80) & (scoresheet.Score <= 90)])
+print(scoresheet[['Name', 'Score']][(scoresheet.Score > 80) & (scoresheet.Score <= 90)])
+
+# 行列操作
+scoresheet = pd.DataFrame(dfdata, columns=['ID', 'Name', 'Subject', 'Score'], index=['No1', 'No2', 'No3', 'No4', 'No5', 'No6'])
+print(scoresheet)
+print(scoresheet.reindex(columns=['Name', 'Subject', 'ID', 'Score']))
+
+# 修改行/列数据
+# 新增列
+scoresheet['Homeword'] = 90
+print(scoresheet)
+# 修改列名
+scoresheet.rename(columns={'Homeword': 'Homework'}, inplace=True)
+print(scoresheet)
+
+scoresheet['ID'] = np.arange(6)
+print(scoresheet)
+
+# 替代精确匹配的索引的值
+fixed = pd.Series([97, 76, 83], index=['No1', 'No3', 'No6'])
+scoresheet['Homework'] = fixed
+print(scoresheet)
+
+# 删除行/列数据
+# 删除列
+del scoresheet['Homework']
+print(scoresheet)
