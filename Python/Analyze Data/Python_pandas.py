@@ -310,3 +310,55 @@ print(jd_ts[['opening_price', 'closing_price']].truncate(after='2017-01-20', bef
 pd.date_range(start=None, end=None, periods=None, freq='D', tz=None, normalize=False, name=None, closed=None)
 start:时间日期字符串指定起始时间日期
 end:时间日期字符串指定终止时间日期
+periods:时间日期的个数
+freq:时间日期的频率
+tz:时区
+normalize:生成日期范围之前 将开始/结束日期标准化为午夜
+name:命名时间日期索引
+closed:生成的时间日期索引是/否包含start和end
+'''
+print(pd.date_range(start='2017/07/07', periods=3, freq='M'))
+print(pd.date_range('2017/07/07', '2018/07/07', freq='BMS'))
+
+'''
+B       工作日                  Q       季度末
+C       自定义工作日            QS      季度初
+D       日历日                  BQ      季度末工作日
+W       周                      BQS     季度初工作日
+M       月末                    A       年末
+SM      半月及月末              BA      年末工作日
+BM      月末工作日              AS      年初
+CBM     自定义月末工作日        BAS     年初工作日
+MS      月初                    BH      工作小时
+SMS     月初及月中              H       小时
+BMS     月初工作日              T,min   分钟
+CBMS    自定义月初工作日        S       秒
+                                L,ms    毫秒
+                                U,us    微秒
+                                N       纳秒
+'''
+
+print(pd.date_range('2017/07/07', periods=10, freq='1D2h20min'))
+print(pd.date_range('2017/07/07', '2018/01/22', freq='W-WED'))
+
+ts_offset = pd.tseries.offsets.Week(1) + pd.tseries.offsets.Hour(8)
+print(ts_offset)
+print(pd.date_range('2017/07/07', periods=10, freq=ts_offset))
+
+# 时间移动及运算
+sample = jd_ts['2017-01-01': '2017-01-10'][['opening_price', 'closing_price']]
+print(sample)
+# 将时序数据向后移2期
+print(sample.shift(2))
+# 将时序数据按天向前移2天
+print(sample.shift(-2, freq='1D'))
+# 时间序列运算
+date = pd.date_range('2017/01/01', '2017/01/08', freq='D')
+s1 = pd.DataFrame({'opening_price': np.random.randn(8), 'closing_price': np.random.randn(8)}, index=date)
+print(s1)
+print(s1 + sample)
+
+# 频率转换及重采样
+sample.asfreq(freq='D')
+# 重采样
+# 按照12小时频率进行上采样,并指定缺失值按当日最后一个有效观测值来填充
