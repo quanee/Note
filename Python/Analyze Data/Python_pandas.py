@@ -153,3 +153,56 @@ print(scoresheet)
 # 删除列
 del scoresheet['Homework']
 print(scoresheet)
+
+# 删除行或列 (inplace=True直接修改元数据内存值 inplace=False返回修改后的值)
+scoresheet.drop('ID', axis=1, inplace=True)  # axis=1 列 axis=0 行
+print(scoresheet)
+scoresheet.drop(['No1', 'No5', 'No6'], axis=0, inplace=True)
+print(scoresheet)
+
+# 排序
+ssort = pd.Series(range(5), index=['b', 'a', 'd', 'e', 'c'])
+print(ssort.sort_index())
+print(ssort.sort_index(ascending=False))
+
+scoresheet2.index = [102, 101, 106, 104, 103, 105]
+print(scoresheet2)
+print(scoresheet2.sort_index())
+print(scoresheet2.sort_index(axis=0, ascending=False))
+print(scoresheet2.sort_index(axis=1, ascending=False))
+print(scoresheet2.sort_index(by='Score', ascending=False))
+print(scoresheet2.sort_values(by='Score', ascending=False))
+
+# 排名
+rrank = pd.Series([10, 12, 9, 9, 14, 4, 2, 4, 9, 1])
+print(rrank.rank())
+print(rrank.rank(ascending=False))
+'''
+average  平均分配排名
+min  最小排名
+max  最大排名
+first  按出现顺序排名
+'''
+print(rrank.rank(method='first'))
+print(rrank.rank(method='max'))
+print(scoresheet2.rank())
+
+# 运算
+cs1 = pd.Series([1.5, 2.5, 3, 5, 1], index=['a', 'c', 'd', 'b', 'e'])
+cs2 = pd.Series([10, 20, 30, 50, 10, 100, 20], index=['c', 'a', 'e', 'b', 'f', 'g', 'd'])
+print(cs1 + cs2)
+
+cdf1 = pd.DataFrame(np.arange(10).reshape((2, 5)), columns=list('bcaed'))
+cdf2 = pd.DataFrame(np.arange(12).reshape((3, 4)), columns=list('abcd'))
+print(cdf1 + cdf2)
+print(cdf1.add(cdf2, fill_value=0))
+
+# 函数应用与映射
+reversef = lambda x: -x
+print(reversef(cs2))
+
+rangef = lambda x: x.max() - x.min()
+print(rangef(cs2))
+print(rangef(cdf1.add(cdf2, fill_value=0)))
+print((cdf1.add(cdf2, fill_value=0)).apply(rangef, axis=0))
+print((cdf1.add(cdf2, fill_value=0)).apply(rangef, axis=1))
