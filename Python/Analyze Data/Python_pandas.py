@@ -206,3 +206,54 @@ print(rangef(cs2))
 print(rangef(cdf1.add(cdf2, fill_value=0)))
 print((cdf1.add(cdf2, fill_value=0)).apply(rangef, axis=0))
 print((cdf1.add(cdf2, fill_value=0)).apply(rangef, axis=1))
+
+
+def statistics(x):
+    return pd.Series([x.min(), x.max(), x.max() - x.min(), x.mean(), x.count()], index=['Min', 'Max', 'Range', 'Mean', 'N'])
+
+
+outformat = lambda x: '%.2f' % x
+# 格式化
+print(((cdf1.add(cdf2, fill_value=0)).apply(statistics)).applymap(outformat))
+# apply 的操作对象是DataFrame的一列或一行数据
+# applymap是元素级的 只支持一个函数 作用于每个DataFrame的每个数据
+# map也是元素级的, 对Series中的每个数据调用一次函数
+
+# 分组 (python2 map返回list python3 map返回map对象)
+jddf['Market'] = list(map(lambda x: 'Good' if x > 0 else ('Bad' if x < 0 else 'OK'), jddf['closing_price'] - jddf['opening_price']))
+print(jddf.head())
+
+jddfgrouped = jddf.groupby(jddf['Market'])
+print(jddfgrouped.describe())
+
+# 合并
+c1 = pd.DataFrame({'Name': {101: 'Zhang San', 102: 'Li Si', 103: 'Wang Laowu', 104: 'Zhao Liu', 105: 'Qian Qi', 106: 'Sun Ba'},
+                   'Subject': {101: 'Literature', 102: 'History', 103: 'English', 104: 'Maths', 105: 'Physics', 106: 'Chemics'},
+                   'Score': {101: 98, 102: 76, 103: 84, 104: 70, 105: 93, 106: 83}})
+print(c1)
+
+c2 = pd.DataFrame({'Gender': {101: 'Male', 102: 'Male', 103: 'Male', 104: 'Female', 105: 'Female', 106: 'Male'}})
+print(c2)
+
+c = pd.concat([c1, c2], axis=1)
+print(c)
+
+print(c1.append(c2))
+print(pd.concat([c1, c2], axis=0))
+
+# 按照指定关键字合并
+c3 = pd.DataFrame({'Name': {101: 'Zhang San', 102: 'Li Si', 103: 'Wang Laowu', 104: 'Zhao Liu', 105: 'Qian Qi', 106: 'Sun Ba'},
+                   'Gender': {101: 'Male', 102: 'Male', 103: 'Male', 104: 'Female', 105: 'Female', 106: 'Male'}})
+print(c3)
+
+# 按照相同列合并(类SQL JOIN)
+print(pd.merge(c1, c3, on='Name'))
+
+
+# 分类数据
+student_profile = pd.DataFrame({'Name': ['Morgan Wang', 'Jackie Li', 'Tom Ding', 'Erricson John', 'Juan Saint', 'Sui Mike', 'Li Rose'],
+                                'Gender': [1, 0, 0, 1, 0, 1, 2],
+                                'Blood': ['A', 'AB', 'O', 'AB', 'B', 'O', 'A'],
+                                'Grade': [1, 2, 3, 2, 3, 1, 2],
+                                'Height': [175, 180, 168, 170, 158, 183, 173]})
+print(student_profile)
