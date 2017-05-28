@@ -257,3 +257,56 @@ student_profile = pd.DataFrame({'Name': ['Morgan Wang', 'Jackie Li', 'Tom Ding',
                                 'Grade': [1, 2, 3, 2, 3, 1, 2],
                                 'Height': [175, 180, 168, 170, 158, 183, 173]})
 print(student_profile)
+
+# 为Male列添加标签
+student_profile['Gender_Value'] = student_profile['Gender'].astype('category')
+student_profile['Gender_Value'].cat.categories = ['Female', 'Male', 'Unconfirmed']
+print(student_profile)
+student_profile['Gender_Value'].cat.categories = ['male', 'FeMale', 'Unconfirmed']
+print(student_profile)
+
+# 对数值型数据分段标签
+labels = ["{0}-{1}".format(i, i + 10) for i in range(160, 200, 10)]
+student_profile['Height_Group'] = pd.cut(student_profile.Height, range(160, 205, 10), right=False, labels=labels)
+print(student_profile)
+
+
+# 时间序列
+# 创建时间序列
+# 将当前时间转化为时间戳
+print(pd.Timestamp('now'))
+
+# 利用时间戳创建时间序列
+dates = [pd.Timestamp('2017-07-05'), pd.Timestamp('2017-07-06'), pd.Timestamp('2017-07-07')]
+ts = pd.Series(np.random.randn(3), dates)
+print(ts)
+print(ts.index)
+print(type(ts.index))
+
+dates = pd.date_range('2017-07-05', '2017-07-07')
+tsdr = pd.Series(np.random.randn(3), dates)
+print(tsdr)
+print(type(tsdr.index))
+
+dates = [pd.Period('2017-07-05'), pd.Period('2017-07-06'), pd.Period('2017-07-07')]
+tsp = pd.Series(np.random.randn(3), dates)
+print(tsp)
+print(type(tsdr.index))
+
+jd_ts = jddf.set_index(pd.to_datetime(jddf['time']))
+print(type(jd_ts.index))
+print(jd_ts.head())
+
+
+# 索引与切片
+print(jd_ts['2017-02'])
+print(jd_ts['2017-02':'2017-03'])  # Empty
+print(jd_ts.truncate(after='2017-01-06'))
+print(jd_ts[['opening_price', 'closing_price']].truncate(after='2017-01-20', before='2017-01-13'))  # Empty
+
+
+# 范围和偏移量
+'''
+pd.date_range(start=None, end=None, periods=None, freq='D', tz=None, normalize=False, name=None, closed=None)
+start:时间日期字符串指定起始时间日期
+end:时间日期字符串指定终止时间日期
