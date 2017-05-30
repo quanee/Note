@@ -3,3 +3,5 @@ import importlib
 
 
 module = 'rf'
+
+func_name = 'book'
