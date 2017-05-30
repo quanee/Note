@@ -5,3 +5,5 @@ import importlib
 module = 'rf'
 
 func_name = 'book'
+
+m = importlib.import_module(module)
