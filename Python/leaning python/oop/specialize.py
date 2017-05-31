@@ -25,3 +25,5 @@ class Extender(Super):
 
 class Provider(Super):
     def action(self):
+        print('in Provider.action')
+
