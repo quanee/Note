@@ -21,3 +21,7 @@ class Extender(Super):
         print('starting Extender.method')
         Super.method(self)
         print('ending Extender.method')
+
+
+class Provider(Super):
+    def action(self):
