@@ -9,3 +9,7 @@ class Super:
 
 class Inheritor(Super):
     pass
+
+
+class Replacer(Super):
+    def method(self):
