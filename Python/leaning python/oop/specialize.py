@@ -13,3 +13,5 @@ class Inheritor(Super):
 
 class Replacer(Super):
     def method(self):
+        print('in Replacer.method')
+
