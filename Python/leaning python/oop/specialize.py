@@ -19,3 +19,5 @@ class Replacer(Super):
 class Extender(Super):
     def method(self):
         print('starting Extender.method')
+        Super.method(self)
+        print('ending Extender.method')
