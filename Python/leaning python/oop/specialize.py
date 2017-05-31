@@ -6,3 +6,6 @@ class Super:
     def delegate(self):
         self.action()
 
+
+class Inheritor(Super):
+    pass
