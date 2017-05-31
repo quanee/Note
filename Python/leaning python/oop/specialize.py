@@ -15,3 +15,7 @@ class Replacer(Super):
     def method(self):
         print('in Replacer.method')
 
+
+class Extender(Super):
+    def method(self):
+        print('starting Extender.method')
