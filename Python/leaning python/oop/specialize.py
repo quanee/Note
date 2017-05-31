@@ -4,3 +4,5 @@ class Super:
         print('in Super.method')
 
     def delegate(self):
+        self.action()
+
