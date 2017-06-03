@@ -8,3 +8,13 @@ r = redis.Redis(connection_pool=pool)
 
 r.set("testbin", 0b1111)
 print(r.get("testbin"))
+print(bin(int(r.get("testbin"))))
+
+start = datetime.datetime.now()
+# for i in range(1, 1000000):
+    # r.set(i, i)
+end = datetime.datetime.now()
+print(end - start)
+
+
+if __name__ == '__main__':
