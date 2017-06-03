@@ -18,3 +18,13 @@ print(end - start)
 
 
 if __name__ == '__main__':
+    # String操作
+    print('String 操作：')
+    print('设置单个键值对：')
+    r.set('name', 'pangdahai')
+    print(r.get('name'))
+    r.delete('name')
+    print(r.get('name'))
+
+    print('设置多个键值对：')
+    r.mset(name='pangdahai', sex='male')
