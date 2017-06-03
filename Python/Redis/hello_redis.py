@@ -28,3 +28,13 @@ if __name__ == '__main__':
 
     print('设置多个键值对：')
     r.mset(name='pangdahai', sex='male')
+    print(r.mget('name', 'sex'))
+    r.delete('name')
+    print(r.mget('name', 'sex'))
+    r.delete('sex')
+    print(r.mget('name', 'sex'))
+
+
+    # Hash操作
+    print('Hash操作；')
+    print('在hash中设置一个键值对：')
