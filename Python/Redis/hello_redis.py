@@ -38,3 +38,12 @@ if __name__ == '__main__':
     # Hash操作
     print('Hash操作；')
     print('在hash中设置一个键值对：')
+    r.hset('author', 'name', 'pangdahai')
+    r.hset('author', 'sex', 'male')
+    print(r.hgetall('author'))
+    print(r.hget('author', 'name'))
+    r.hdel('author', 'sex')
+    print(r.hgetall('author'))
+
+
+
