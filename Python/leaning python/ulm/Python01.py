@@ -241,3 +241,126 @@ obj.Y = 6
 obj.Z = 7
 print(obj.X, obj.Y, obj.Z)
 
+
+'''模拟property函数'''
+class Property(object):
+    def __init__(self, fget=None, fset=None, fdel=None, doc=None):
+        self.fget = fget
+        self.fset = fset
+        self.fdel = fdel
+        self.__doc__ = doc
+
+    def __get__(self, instance, instancetype=None):
+        if instance is None:
+            return self
+        if self.fget is None:
+            raise AttributeError("can't get attribute")
+        return self.fget(instance)
+
+    def __set__(self, instance, value):
+        if self.fset is None:
+            raise AttributeError("can't set attribute")
+        self.fset(instance, value)
+
+    def __delete__(self, instance):
+        if self.fdel is None:
+            raise AttributeError("can't delete attribute")
+        self.fdel(instance)
+
+
+class Person(object):
+    def getName(self):
+        ...
+
+    def setName(self, value):
+        ...
+
+    name = Property(getName, setName)
+
+
+'''属性拦截'''
+class Catcher:
+    def __getattr__(self, name):
+        print('Get:', name)
+
+    def __setattr__(self, name, value):
+        print('Set:', name, value)
+
+
+X = Catcher()
+X.job
+X.pay
+X.pay = 99
+
+# 避免循环
+# # 把获取指向一个更高的超类 (x = object.__getattribute__(self, 'other'))
+# # 把属性作为实例的__dict__命名空间字典中的一个键赋值 (self.__dict__['other'] = value)
+# # 把属性赋值传递给一个更高的超类 (object.__setattr__(self, 'other', value))
+# # 不能使用__dict__在__getattribute__中, __dict__会再次触发__getattribute__导致递归循环
+
+
+class Person(object):
+    def __init__(self, name):
+        self._name = name  # 触发__setattr__
+
+    def __getattribute__(self, attr):
+        if attr == 'name':  # 拦截未定义属性
+            print('fetch...')
+            attr = '_name'
+        #     return self._name  # 返回属性
+        # else:
+        #     raise AttributeError(attr)
+        return object.__getattribute__(self, attr)
+
+    def __setattr__(self, attr, value):  # obj.any = value
+        if attr == 'name':
+            print('change...')
+            attr = '_name'  # 设置内部变量命
+        self.__dict__[attr] = value  # 避免循环
+
+    def __delattr__(self, attr):
+        if attr == 'name':
+            print('remove...')
+            attr = '_name'  # 避免循环
+
+        del self.__dict__[attr]
+
+
+bob = Person('Bob Smith')
+print(bob.name)
+bob.name = 'Robert Smith'
+print(bob.name)
+del bob.name
+print('-' * 20)
+sue = Person('Sue Jones')
+print(sue.name)
+
+
+# __getattr__和__getattribute__
+class GetAttr(object):
+    attr1 = 1
+
+    def __init__(self):
+        self.attr2 = 2
+
+    def __getattr__(self, attr):   # 未定义变量
+        print('get: ' + attr)
+        return 3
+
+
+X = GetAttr()
+print(X.attr1)
+print(X.attr2)
+print(X.attr3)
+print('-' * 40)
+
+class GetAttribut(object):
+    attr1 = 1
+
+    def __init__(self):
+        self.attr2 = 2
+
+    def __getattribute__(self, attr):
+        print('get: ' + attr)
+        if attr == 'attr3':
+            return 3
