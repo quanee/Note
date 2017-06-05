@@ -120,3 +120,124 @@ class Subject:
 
 X = Subject()
 X.attr
+Subject.attr
+
+
+# 只读描述符
+class D:
+    def __get__(*args):
+        print('get')
+
+    def __set__(*args):
+        raise AttributeError('cannot set')
+
+
+class C:
+    a = D()
+
+
+X = C()
+X.a
+# X.a = 99  # AttributeError: cannot set
+"""
+*** __deleter__:试图删除所有者类的一个实例上的管理器属性名称
+*** __del__:实例析构方法
+"""
+
+class Name:
+    '''name descriptor docs'''
+
+    def __get__(self, instance, owner):  # self是Name类实例 instance是Person类实例 owner是Person类实例
+        print('fetch...')
+        return instance._name
+
+    def __set__(self, instance, value):
+        print('change...')
+        instance._name = value
+
+    def __delete__(self, instance):
+        print('remove...')
+        del instance._name
+
+
+class Person:
+
+    def __init__(self, name):
+        self._name = name
+
+    name = Name()
+
+
+bob = Person('Bob Smith')
+print(bob.name)
+bob.name = 'Robert Smith'
+print(bob.name)
+del bob.name
+
+print('-' * 20)
+sue = Person('Sue Jones')
+print(sue.name)
+print(Name.__doc__)
+
+
+class DescState(object):
+    """docstring for DescState"""
+
+    def __init__(self, value):
+        self.value = value
+
+    def __get__(self, instance, owner):
+        print('DescState get')
+        return self.value * 10
+
+    def __set__(self, instance, value):
+        print('Descriptor set')
+        self.value = value
+
+
+class CalcAttrs(object):
+    """docstring for CalcAttrs"""
+
+    X = DescState(2)
+    Y = 3  # 客户类
+
+    def __init__(self):
+        self.Z = 4  # 实例
+
+
+obj = CalcAttrs()
+print(obj.X, obj.Y, obj.Z)
+obj.X = 5
+obj.Y = 6
+obj.Z = 7
+print(obj.X, obj.Y, obj.Z)
+
+
+class InstState(object):
+    """docstring for InstState"""
+
+    def __get__(self, instance, owner):
+        print('InstState get')
+        return instance._Y * 100
+
+    def __set__(self, instance, value):
+        print('InstState set')
+        instance._Y = value
+
+
+class CalcAttrs:
+    X = DescState(2)
+    Y = InstState()
+
+    def __init__(self):
+        self._Y = 3
+        self.Z = 4
+
+
+obj = CalcAttrs()
+print(obj.X, obj.Y, obj.Z)
+obj.X = 5
+obj.Y = 6
+obj.Z = 7
+print(obj.X, obj.Y, obj.Z)
+
