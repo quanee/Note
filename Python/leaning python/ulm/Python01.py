@@ -364,3 +364,125 @@ class GetAttribut(object):
         print('get: ' + attr)
         if attr == 'attr3':
             return 3
+        else:
+            return object.__getattribute__(self, attr)
+
+
+X = GetAttribut()
+print(X.attr1)
+print(X.attr2)
+print(X.attr3)
+
+
+'''管理属性'''
+class Powers(object):
+    """使用特性拦截并计算属性(square, cube)"""
+
+    def __init__(self, square, cube):
+        self._square = square
+        self._cube = cube
+
+    def getSquare(self):
+        return self._square ** 2
+
+    def setSquare(self, value):
+        self._square = value
+
+    square = property(getSquare, setSquare)
+
+    def getCube(self):
+        return self._cube ** 3
+
+    cube = property(getCube)
+
+
+X = Powers(3, 4)
+print(X.square)
+print(X.cube)
+X.square = 5
+print(X.square)
+
+
+class DescSquare(object):
+    """描述符拦截计算属性"""
+
+    def __get__(self, instance, owner):
+        return instance._square ** 2
+
+    def __set__(self, instance, value):
+        instance._square = value
+class DescCube(object):
+    def __get__(self, instance, owner):
+        return instance._cube ** 3
+
+
+class Powers:
+    square = DescSquare()
+    cube = DescCube()
+
+    def __init__(self, square, cube):
+        self._square = square
+        self._cube = cube
+
+
+X = Powers(3, 4)
+print(X.square)
+print(X.cube)
+X.square = 5
+print(X.square)
+
+
+class Powers(object):
+    """使用__getattr__访问拦截并计算属性"""
+
+    def __init__(self, square, cube):
+        self._square = square
+        self._cube = cube
+
+    def __getattr__(self, name):
+        if name == 'square':
+            return self._square ** 2
+        elif name == 'cube':
+            return self._cube ** 3
+        else:
+            raise TypeError('unknown attr: ' + name)
+
+    def __setattr__(self, name, value):
+        if name == 'square':
+            self.__dict__['_square'] = value
+        else:
+            self.__dict__[name] = value
+
+
+X = Powers(3, 4)
+print(X.square)
+print(X.cube)
+X.square = 5
+print(X.square)
+
+
+class Powers(object):
+    """使用__getattribute__拦截并计算属性"""
+
+    def __init__(self, square, cube):
+        self._square = square
+        self._cube = cube
+
+    def __getattribute__(self, name):
+        if name == 'square':
+            return object.__getattribute__(self, '_square') ** 2
+        elif name == 'cube':
+            return object.__getattribute__(self, '_cube') ** 3
+        else:
+            return object.__getattribute__(self, name)
+
+    def __setattr__(self, name, value):
+        if name == 'square':
+            self.__dict__['_square'] = value
+        else:
+            self.__dict__[name] = value
+
+
+X = Powers(3, 4)
+print(X.square)
+print(X.cube)
