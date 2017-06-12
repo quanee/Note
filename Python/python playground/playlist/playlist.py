@@ -124,3 +124,45 @@ def findDuplicates(fileName):
     # save duplicates to a file
     if len(dups) > 0:
         print("Found %d duplicates. Track names saved to dup.txt" % len(dups))
+    else:
+        print("No duplicate tracks found!")
+    f = open("dups.txt", 'w')
+    for val in dups:
+        f.write("[%d] %s\n" % (val[0], val[1]))
+    f.close()
+
+
+# gather out code in a main() function
+def main():
+    # create parser
+    descStr = """
+    This program analyzes playlist files(.xml) exported from iTunes.
+    """
+    parser = argparse.ArgumentParser(description=descStr)
+    # add a mutually exclusive group of arguments
+    group = parser.add_mutually_exclusive_group()
+
+    # add expected arguments:
+    group.add_argument('--common', nargs='*', dest='plFiles', required=False)
+    group.add_argument('--stats', dest='plFiles', required=False)
+    group.add_argument('--dup', dest='plFiles', required=False)
+
+    # parse args
+    args = parser.parse_args()
+
+    if args.plFiles:
+        # find common tracks
+        findCommonTracks(args.plFiles)
+    elif args.plFile:
+        # plot stats
+        plotStats(args.plFile)
+    elif args.plFileD:
+        # find duplicate tracks
+        findDuplicates(args.plFileD)
+    else:
+        print("These are not the tracks you are looking for.")
+
+
+# main method
+if __name__ == '__main__':
+    main()
