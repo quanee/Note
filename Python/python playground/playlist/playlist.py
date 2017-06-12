@@ -82,3 +82,45 @@ def plotStats(fileName):
     pyplot.subplot(2, 1, 2)
     pyplot.hist(x, bins=20)
     pyplot.xlabel('Track duration')
+    pyplot.ylabel('Count')
+    # show plot
+    pyplot.show()
+
+
+def findDuplicates(fileName):
+    """
+    Find duplicate tracks in given playlist
+    """
+    print('Find duplicate tracks in %s...' % fileName)
+    # read in playlist
+    plist = plistlib.readPlist(fileName)
+    # get the tracks from the Tracks dictionary
+    tracks = plist['Tracks']
+    # create a track name dictionary
+    trackNames = {}
+    # iterate through tracks
+    for trackId, track in tracks.items():
+        try:
+            name = track['Name']
+            duration = track['Total Time']
+            # look for existing entries
+            if name in trackNames:
+                # if a name and duration match, increment the count
+                # rount the track length to the nearest second
+                if duration // 1000 == trackNames[name][0] // 1000:
+                    count = trackNames[name][1]
+                    trackNames[name] = (duration, count + 1)
+                else:
+                    # add dictionary entry as tuple (duration, count)
+                    trackNames[name] = (duration, 1)
+        except Exception:
+            # ignore
+            ...
+    # store duplicates as (name, count) tuples
+    dups = []
+    for k, v in trackNames.items():
+        if v[1] > 1:
+            dups.append((v[1], k))
+    # save duplicates to a file
+    if len(dups) > 0:
+        print("Found %d duplicates. Track names saved to dup.txt" % len(dups))
