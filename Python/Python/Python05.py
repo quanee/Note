@@ -145,3 +145,23 @@ print(hash.hexdigest())
 hash = hashlib.sha1()
 hash.update('admin')
 print(hash.hexdigest())
+
+# ######## sha256 ########
+
+hash = hashlib.sha256()
+hash.update('admin')
+print(hash.hexdigest())
+
+
+# ######## sha384 ########
+
+hash = hashlib.sha384()
+hash.update('admin')
+print(hash.hexdigest())
+
+# ######## sha512 ########
+
+hash = hashlib.sha512()
+hash.update('admin')
+print(hash.hexdigest())
+
