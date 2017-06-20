@@ -61,3 +61,24 @@ for i in range(4):
         temp = chr(random.randint(65, 90))
     else:
         temp = random.randint(0, 9)
+    checkcode += str(temp)
+print(checkcode)
+
+
+import os
+# os模块 与操作系统交互
+
+print(os.getcwd())  # 获取当前工作目录，即当前python脚本工作的目录路径
+# os.chdir('../')  # 改变当前脚本工作目录；相当于shell下cd
+print(os.curdir)  # 返回当前目录: ('.')
+print(os.pardir)  # 获取当前目录的父目录字符串名：('..')
+os.makedirs('./adir/bdir')  # 可生成多层递归目录
+os.removedirs('./adir/bdir')  # 若目录为空，则删除，并递归到上一级目录，如若也为空，则删除，依此类推
+os.mkdir('./adir')  # 生成单级目录；相当于shell中mkdir dirname
+os.rmdir('./adir')  # 删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname
+print(os.listdir('./'))  # 列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印
+os.remove('data.bin')  # 删除一个文件
+os.rename('datafile.pkl', 'data.bin')  # 重命名文件/目录
+print(os.stat('./Python05.py'))  # 获取文件/目录信息
+print(os.sep)  # 输出操作系统特定的路径分隔符，win下为'\\',Linux下为'/'
+print(os.linesep)  # 输出当前平台使用的行终止符，win下为'\t\n',Linux下为'\n'
