@@ -40,3 +40,24 @@ print(datetime.datetime.now())
 print(datetime.datetime.now() + datetime.timedelta(3))  # 当前时间+3天
 print(datetime.datetime.now() + datetime.timedelta(-3))  # 当前时间-3天
 print(datetime.datetime.now() + datetime.timedelta(hours=3))  # 当前时间+3小时
+print(datetime.datetime.now() + datetime.timedelta(minutes=30))  # 当前时间+30分
+
+
+c_time = datetime.datetime.now()
+print(c_time.replace(minute=3, hour=2))  # 时间替换
+
+
+import random
+
+
+print(random.random())
+print(random.randint(1, 2))
+print(random.randrange(1, 10))
+
+checkcode = ''
+for i in range(4):
+    current = random.randrange(0, 4)
+    if current != i:
+        temp = chr(random.randint(65, 90))
+    else:
+        temp = random.randint(0, 9)
