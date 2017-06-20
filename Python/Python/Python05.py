@@ -102,3 +102,25 @@ print(os.path.getsize('./Python02.py'))  # 返回文件大小
 
 import sys
 # sys模块 与Python解释器交互
+
+print(sys.argv)  # 命令行参数List，第一个元素是程序本身路径
+sys.exit(0)  # 退出程序，正常退出时exit(0)
+print(sys.version)  # 获取Python解释程序的版本信息
+print(sys.maxint)  # 最大的Int值
+print(sys.path)  # 返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
+print(sys.platform)  # 返回操作系统平台名称
+sys.stdout.write('please:')
+val = sys.stdin.readline()[:-1]
+
+
+import hashlib
+
+m = hashlib.md5()
+m.update(b'Hello')
+m.update(b'''It's me''')
+print(m.digest())
+m.update(b'''It's been a long time since last time we ...''')
+
+print(m.digest())  # 2进制格式hash
+print(len(m.hexdigest()))  # 16进制格式hash
+'''
