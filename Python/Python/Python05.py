@@ -82,3 +82,23 @@ os.rename('datafile.pkl', 'data.bin')  # 重命名文件/目录
 print(os.stat('./Python05.py'))  # 获取文件/目录信息
 print(os.sep)  # 输出操作系统特定的路径分隔符，win下为'\\',Linux下为'/'
 print(os.linesep)  # 输出当前平台使用的行终止符，win下为'\t\n',Linux下为'\n'
+print(os.pathsep)    # 输出用于分割文件路径的字符串
+print(os.name)    # 输出字符串指示当前使用平台。win->'nt'; Linux->'posix'
+os.system('dir')  # 运行shell命令，直接显示
+print(os.environ)  # 获取系统环境变量
+print(os.path.abspath('./'))  # 返回path规范化的绝对路径
+print(os.path.split('./'))  # 将path分割成目录和文件名二元组返回
+print(os.path.dirname('./'))  # 返回path的目录。其实就是os.path.split(path)的第一个元素
+print(os.path.basename('./'))  # 返回path最后的文件名。如何path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素
+print(os.path.exists('./'))  # 如果path存在，返回True；如果path不存在，返回False
+print(os.path.isabs('./'))  # 如果path是绝对路径，返回True
+print(os.path.isfile('./'))  # 如果path是一个存在的文件，返回True。否则返回False
+print(os.path.isdir('./'))  # 如果path是一个存在的目录，则返回True。否则返回False
+# print(os.path.join())  # 将多个路径path1[, path2[, ...]]组合后返回，第一个绝对路径之前的参数将被忽略
+print(os.path.getatime('./'))  # 返回path所指向的文件或者目录的最后存取时间
+print(os.path.getmtime('./'))  # 返回path所指向的文件或者目录的最后修改时间
+print(os.path.getsize('./Python02.py'))  # 返回文件大小
+
+
+import sys
+# sys模块 与Python解释器交互
