@@ -165,3 +165,24 @@ hash = hashlib.sha512()
 hash.update('admin')
 print(hash.hexdigest())
 
+
+import logging
+
+# DEBUG < INFO < WARNING < ERROR < CRITICAL
+logging.basicConfig(filename='test.log', level=logging.INFO)
+logging.debug('This message should go to the log file')
+logging.info('So should this')
+logging.warning('And this, too')
+
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.warning('is when this event was logged.')
+
+# %(name)s 	Logger的名字
+
+# %(levelno)s 数字形式的日志级别
+
+# %(levelname)s 	文本形式的日志级别
+
+# %(pathname)s 	调用日志输出函数的模块的完整路径名，可能没有
+
+# %(filename)s 	调用日志输出函数的模块的文件名
