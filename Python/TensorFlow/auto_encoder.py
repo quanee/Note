@@ -74,3 +74,22 @@ class AdditiveGaussianNoiseAutoencoder(object):
 
 
 mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
+
+
+def standard_scale(X_train, X_test):
+    preprocessor = prep.StandardScaler().fit(X_train)
+    X_train = preprocessor.transform(X_train)
+    X_test = preprocessor.transform(X_test)
+
+    return X_train, X_test
+
+
+def get_random_block_from_data(data, batch_size):
+    start_index = np.random.randint(0, len(data) - batch_size)
+
+    return data[start_index: (start_index + batch_size)]
+
+
+X_train, X_test = standard_scale(mnist.train.images, mnist.test.images)
+
+n_samples = int(mnist.train.num_examples)
