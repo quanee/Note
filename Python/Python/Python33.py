@@ -34,3 +34,12 @@ engine = create_engine("mysql+pymysql://root:123@127.0.0.1:3306/t1", max_overflo
 
 
 # 执行SQL
+# cur = engine.execute(
+#     "INSERT INTO hosts (host, color_id) VALUES (%(host)s, %(color_id)s)",
+#     host='1.1.1.99', color_id=3
+# )
+
+# 执行SQL
+# cur = engine.execute('select * from hosts')
+# 获取第一行数据
+# cur.fetchone()
