@@ -25,3 +25,12 @@ engine = create_engine("mysql+pymysql://root:123@127.0.0.1:3306/t1", max_overflo
 # )
 
 # 新插入行自增ID
+# cur.lastrowid
+
+# 执行SQL
+# cur = engine.execute(
+#     "INSERT INTO hosts (host, color_id) VALUES(%s, %s)",[('1.1.1.22', 3),('1.1.1.221', 3),]
+# )
+
+
+# 执行SQL
