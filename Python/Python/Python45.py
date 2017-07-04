@@ -73,3 +73,18 @@ daxin is okay
 </dl>
 
 # 变量              描述
+# loop.index        当前迭代的索引（从1开始）
+# loop.index0       当前迭代的索引（从0开始）
+# loop.first        是否是第一次迭代，返回bool
+# loop.last         是否是最后一次迭代，返回bool
+# loop.length       序列中的项目数量
+# loop.revindex     到循环结束的次数（从1开始）
+# loop.revindex0    到循环结束的次数(从0开始）
+
+
+# jinja2的宏
+# 宏类似于Python中的函数，我们在宏中定义行为，还可以进行传递参数，就像Python中的函数一样一样儿的。
+# 在宏中定义一个宏的关键字是macro，后面跟其 宏的名称和参数等
+{% macro input(name,age=18) %}   # 参数age的默认值为18
+    <input type='text' name="{{ name }}" value="{{ age }}" >
+{% endmacro %}
