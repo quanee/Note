@@ -58,3 +58,18 @@ daxin is okay
 
 # jinja2的for循环
 # 迭代列表
+<ul>
+{% for user in users %}
+<li>{{ user.username|title }}</li>
+{% endfor %}
+</ul>
+
+# 迭代字典
+<dl>
+{% for key, value in my_dict.iteritems() %}
+<dt>{{ key }}</dt>
+<dd>{{ value}}</dd>
+{% endfor %}
+</dl>
+
+# 变量              描述
