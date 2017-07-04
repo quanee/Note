@@ -118,3 +118,17 @@ daxin is okay
 {% extend "base.html" %}       # 继承base.html文件
  
 {% block title %} Dachenzi {% endblock %}   # 定制title部分的内容
+ 
+{% block head %}
+    {{  super()  }}        # 用于获取原有的信息
+    <style type='text/css'>
+    .important { color: #FFFFFF }
+    </style>
+{% endblock %}   
+ 
+# 其他不修改的原封不同的继承
+
+
+
+# 利用jinja2进行渲染
+# jinja2模块中有一个名为Enviroment的类，这个类的实例用于存储配置和全局对象，然后从文件系统或其他位置中加载模板。
