@@ -103,3 +103,18 @@ daxin is okay
     {% block head %}
     <link rel="stylesheet" href="style.css"/>
     <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+</head>
+<body>
+<div id="content">{% block content %}{% endblock %}</div>
+<div id="footer">
+    {% block  footer %}
+    <script>This is javascript code </script>
+    {% endblock %}
+</div>
+</body>
+</html>
+# 这里定义了四处 block，即：head，title，content，footer。那怎么进行继承和变量替换呢？注意看下面的文件
+{% extend "base.html" %}       # 继承base.html文件
+ 
+{% block title %} Dachenzi {% endblock %}   # 定制title部分的内容
