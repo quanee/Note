@@ -88,3 +88,18 @@ daxin is okay
 {% macro input(name,age=18) %}   # 参数age的默认值为18
     <input type='text' name="{{ name }}" value="{{ age }}" >
 {% endmacro %}
+
+# 调用方法也和Python的类似
+<p>{{ input('daxin') }} </p>
+<p>{{ input('daxin',age=20) }} </p>
+
+# jinja2的继承和Super函数
+# jinja2中最强大的部分就是模板继承。模板继承允许我们创建一个基本(骨架)文件，其他文件从该骨架文件继承，然后针对自己需要的地方进行修改。
+# jinja2的骨架文件中，利用block关键字表示其包涵的内容可以进行修改。
+# 以下面的骨架文件base.html为例：
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="style.css"/>
+    <title>{% block title %}{% endblock %} - My Webpage</title>
