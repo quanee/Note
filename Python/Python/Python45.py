@@ -132,3 +132,19 @@ daxin is okay
 
 # 利用jinja2进行渲染
 # jinja2模块中有一个名为Enviroment的类，这个类的实例用于存储配置和全局对象，然后从文件系统或其他位置中加载模板。
+
+# 基本使用方法
+# 　　大多数应用都在初始化的时候撞见一个Environment对象，并用它加载模板。Environment支持两种加载方式：
+
+# PackageLoader：包加载器
+# FileSystemLoader：文件系统加载器
+# PackageLoader
+#     使用包加载器来加载文档的最简单的方式如下：
+from jinja2 import PackageLoader,Environment
+env = Environment(loader=PackageLoader('python_project','templates'))    # 创建一个包加载器对象
+ 
+template = env.get_template('bast.html')    # 获取一个模板文件
+template.render(name='daxin',age=18)   # 渲染
+# 其中：
+# PackageLoader()的两个参数为：python包的名称，以及模板目录名称。
+# get_template()：获取模板目录下的某个具体文件。
