@@ -28,3 +28,18 @@ import jinja2
 #    striptags     渲染之前把值中所有的HTML标签都删掉
 #     join         拼接多个值为字符串
 #     replace      替换字符串的值
+#     round        默认对数字进行四舍五入，也可以用参数进行控制
+#     int          把值转换成整型
+
+{{ 'abc' | captialize  }}
+# Abc
+ 
+{{ 'abc' | upper  }}
+# ABC
+ 
+{{ 'hello world' | title  }}
+# Hello World
+ 
+{{ "hello world" | replace('world','daxin') | upper }}
+# HELLO DAXIN
+ 
