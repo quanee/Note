@@ -43,3 +43,18 @@ import jinja2
 {{ "hello world" | replace('world','daxin') | upper }}
 # HELLO DAXIN
  
+{{ 18.18 | round | int }}
+# 18
+
+# jinja2的控制结构
+# jinja2中的if语句类似与Python的if语句，它也具有单分支，多分支等多种结构，不同的是，条件语句不需要使用冒号结尾，而结束控制语句，需要使用endif关键字。
+{% if daxin.safe %}
+daxin is safe.
+{% elif daxin.dead %}
+daxin is dead
+{% else %}
+daxin is okay
+{% endif %}
+
+# jinja2的for循环
+# 迭代列表
