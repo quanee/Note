@@ -28,3 +28,8 @@ while True:
 
     has_send = 0
     f = open(path, 'rb')
+    # with open(path, 'rb') as f:
+    while has_send != file_size:
+        data = f.read(1024)
+        sk.sendall(data)
+        has_send += len(data)
