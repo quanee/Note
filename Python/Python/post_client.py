@@ -23,3 +23,8 @@ while True:
     file_size = os.stat(path).st_size
 
     file_info = 'post|%s|%s' % (filename, file_size)
+
+    sk.sendall(bytes(file_info, 'utf8'))
+
+    has_send = 0
+    f = open(path, 'rb')
