@@ -18,3 +18,8 @@ while True:
     cmd, path = inp.split('|')
 
     os.path.join(BASE_DIR, path)
+
+    filename = os.path.basename(path)
+    file_size = os.stat(path).st_size
+
+    file_info = 'post|%s|%s' % (filename, file_size)
