@@ -46,3 +46,19 @@ def fib(max):
     n, before, after = 0, 0, 1
     while n < max:
         print(before)
+        before, after = after, before + after
+        n = n + 1
+
+
+fib(8)
+
+
+def fib1(max):
+    n, before, after = 0, 0, 1
+    while n < max:
+        yield before
+        before, after = after, before + after
+        n = n + 1
+
+
+fib1(8)
