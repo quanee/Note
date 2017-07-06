@@ -78,3 +78,19 @@ def producer(name):
     c2 = consumer('B')
     # 生成器不能直接调用send()函数(不能确定生成器是否有对象)
     c.__next__()  # 等价于next(c) 等价于c.send(None)
+    c2.__next__()
+    print("%s开始准备做包子啦！" % name)
+    for i in range(10):
+        print("做了2个包子！")
+        c.send(i)  # 先执行yield，后将i赋给yield的变量
+        c2.send(i)
+
+
+producer("pangdahai")
+
+# 迭代器
+# 有iter()方法
+# 有next()方法
+
+a = [1, 2, 3, 4]
+# next(a)
