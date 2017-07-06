@@ -62,3 +62,19 @@ def fib1(max):
 
 
 fib1(8)
+
+
+#  yield模拟伪并发
+def consumer(name):
+    print("%s 准备吃包子啦！" % name)
+    while True:
+        baozi = yield
+
+        print("包子[%s]来了，被[%s]吃了！" % (baozi, name))
+
+
+def producer(name):
+    c = consumer('A')
+    c2 = consumer('B')
+    # 生成器不能直接调用send()函数(不能确定生成器是否有对象)
+    c.__next__()  # 等价于next(c) 等价于c.send(None)
