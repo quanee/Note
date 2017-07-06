@@ -14,3 +14,19 @@ from collections import Iterator
 # yield
 
 # 列表生成式
+a = [x for x in range(10)]
+
+print(a)
+
+
+def f(n):
+    return n ** 2
+
+
+b = [f(x) for x in range(10)]
+
+print(b)
+
+t = ['123', 8]
+
+a, b = t
