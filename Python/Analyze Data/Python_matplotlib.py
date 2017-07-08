@@ -262,3 +262,91 @@ ax2 = fig.add_axes([0.4, 0.1, 0.4, 0.5])
 # 绘制散点图
 sc = ax2.scatter(jd_stock['opening_price'], jd_stock['closing_price'])
 ax2.set_title('Axes2')
+sc.set(alpha=0.2, zorder=2)
+
+# 将figure对象以指定的文件存储
+canvas.print_figure('figure_line&scatter.png')
+# 将所存储图片显示
+# Image.open('figure_line&scatter.png').show()
+clf_cla_close(plt)
+
+# 绘图样式
+# 查看所有样式
+print(plt.style.available)
+plt.style.use('ggplot')
+plt.plot(jd_stock['opening_price'], label='Opening Price')
+plt.plot(jd_stock['closing_price'], label='Closing Price')
+plt.legend(loc=8, frameon=False, bbox_to_anchor=(0.5, -0.3))
+# plt.show()
+
+# 恢复默认风格
+plt.style.use('default')
+clf_cla_close(plt)
+
+
+
+'''
+pandas基本绘图
+语法:
+pandas对象.plot(x=None, y=None, kind='line', ax=None, subplots=False, sharex=None, sharey=False, layout=None, figsize=None, use_index=True, title=None, grid=None, legend=True, style=None, logx=False, logy=False, loglog=False, xticks=None, colormap=None, table=False, yerr=None, xerr=None, secondary_y=False, sort_columns=False, **kwargs)
+'kind'指定可绘制的图形类型:
+    'line': 折线图
+    'bar': 竖直条形图
+    'barh': 水平条形图
+    'hist': 直方图
+    'box': 盒须图
+    'kde': 核密度估计曲线图
+    'density': 同'kde'
+    'area': 面积图
+    'pie': 饼图
+    'scatter': 散点图
+    'hexbin': 六边形箱图
+其他参数:
+    x: 指定x轴标签或位置
+    y: 指定y轴标签或位置
+    ax: matplotlib的轴对象
+    subplots: True或False 是否为每列单独绘制一副图 默认把所有列绘制在一个图形中
+    sharex: True或False 是否共享x轴 默认False
+    sharey: True或False 是否共享y轴 默认False
+    layout: 用一个元组来设计子图的布局
+    figsize: 用一个元组来设置图像的尺寸
+    use_index: True或False 是否使用索引作为x轴的刻度 默认False
+    title: 设置图形的标题
+    grid: True或False 是否设置图形网格线 默认False
+    legend: True或False或reverse 放置图例
+    style: 使用列表或字典分别为每一列设置matplotlib绘制线条的风格
+    logx: True或False 将x轴对数化 默认False
+    logy: True或False 将y轴对数化 默认False
+    loglog: True或False 将x轴和y轴同时对数化 默认False
+    xticks: 使用一个序列设置x轴的刻度
+    yticks: 使用一个序列设置y轴的刻度
+    xlim: 使用2个元素的元组/列表设置x的上下界
+    ylim: 使用2个元素的元组/列表设置y的上下界
+    rot: 使用一个整数来设置刻度的旋转方向
+    fontsize: 使用一个整数来设置x轴和y轴刻度的字号
+    colormap: 设置图像的色系
+    colorbar: True或False 如设置True 则绘制colorbar
+    position: 用一个浮点数来设置图形的相对位置 取值从0到1 默认值为0.5
+    table: True或False 设置图形中是否绘制统计表
+    yerr和xerr: True或False 绘制残差图
+    stacked: True或False 绘制堆积图形
+    sort_columns: True或False 对图形列的名称进行排序放置 默认False
+    secondary_y: True或False 是否放置第2个y轴 默认不放置
+    mark_right: True或False 当使用第2个y轴时 自动在图例中标记为right 默认False
+    kwds: 选项关键字
+'''
+
+
+
+# 基本统计图形
+# 折线图
+plt.plot(jddf['opening_price'])
+
+# 计算开盘价的5期移动平均
+meanop = jddf['opening_price'].rolling(5).mean()
+stdop = jddf['opening_price'].rolling(5).std()
+plt.plot(range(71), jddf['opening_price'])
+plt.fill_between(range(71), meanop - 1.96 * stdop, meanop + 1.96 * stdop, color='b', alpha=0.2)
+clf_cla_close(plt)
+
+# pandas的plot方法绘图
