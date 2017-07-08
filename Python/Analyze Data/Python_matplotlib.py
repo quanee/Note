@@ -614,3 +614,90 @@ clf_cla_close(plt)
 # 等高线图
 u = np.linspace(-3, 3, 30)
 x, y = np.meshgrid(u, u)
+r = 0.6
+mux = 0
+muy = 0
+sx = 1
+sy = 1
+z = (1 / (2 * 3.1415926535 * sx * sy * np.sqrt(1 - r * r))) * np.exp((-1 / (2 * (1 - r * r))) * (((x - mux) ** 2) / (sx ** 2) - 2 * r * (x - mux) * (y - muy) / (sx * sy) + ((y - muy) ** 2) / (sx ** 2)))
+plt.contourf(x, y, z, alpha=.35, cmap=cm.gist_earth)
+C = plt.contour(x, y, z, colors='black', linewidth=.5)
+plt.clabel(C, inline=1, fontsize=10)
+clf_cla_close(plt)
+
+
+# 极坐标图
+N = 150
+r = 2 * np.random.rand(N)
+theta = 2 * np.pi * np.random.rand(N)
+area = 200 * r ** 2 * np.random.rand(N)
+colors = theta
+ax = plt.subplot(111, projection='polar')
+c = plt.scatter(theta, r, c=colors, s=area, cmap=plt.cm.hsv)
+c.set_alpha(0.75)
+clf_cla_close(plt)
+
+
+# 词云图
+s = pd.read_csv('zhuxian.csv', encoding='utf8')
+print(s.head())
+# 指定用于制图的文本
+mylist = s['chapter1']
+word_list = [' '.join(jieba.cut(sentence)) for sentence in mylist]
+# 将所有文本字符链接起来
+new_text = ' '.join(word_list)
+# 设置词云图的字体 背景颜色 最大词频
+wordcloud = WordCloud(font_path='/usr/share/fonts/user_font/simhei.ttf', background_color='white', width=2000, height=1000, max_words=200).generate(new_text)
+plt.imshow(wordcloud)
+plt.axis('off')
+clf_cla_close(plt)
+
+wordtxt = pd.read_table('cuebintro.txt', encoding='utf8', names=['introduction'])
+mylist = wordtxt['introduction']
+word_list = [' '.join(jieba.cut(sentence)) for sentence in mylist]
+new_text = ' '.join(word_list)
+coloring = imread('logo.png')
+stw = STOPWORDS.copy()
+stw.add('人')
+stw.add('的')
+stw.add('等')
+wordcloud = WordCloud(font_path='/usr/share/fonts/user_font/simhei.ttf', background_color='white', max_font_size=180, scale=2, width=1800, height=800, mask=coloring, stopwords=stw, random_state=42).generate(new_text)
+image_colors = ImageColorGenerator(coloring)
+plt.imshow(wordcloud)
+plt.axis('off')
+plt.figure()
+# wordcloud.to_file('cuebcloud.png')
+clf_cla_close(plt)
+
+
+# 数据地图
+df = pd.read_csv('chinacitypop.csv', encoding='utf8')
+print(df.head())
+plotly.tools.set_credentials_file(username='pangdahai', api_key='pRTwN9QWFpLVXozBvNXJ')
+df['text'] = df['name'] + '<bf>Population' + (df['pop']).astype(str) + 'ten thousand'
+
+limits = [(0, 2), (3, 10), (11, 100), (101, 200), (201, 350)]
+colors = ['rgb(0, 116, 217)', 'rgb(255, 65, 54)', 'rgb(133, 20, 75)', 'rgb(255, 133, 27)', 'lightgrey']
+cities = []
+scale = 10
+
+for i in range(len(limits)):
+    lim = limits[i]
+    df_sub = df[lim[0]:lim[1]]
+    city = dict(type='scattergeo', locationmode='China', lon=df_sub['lon'], lat=df_sub['lat'], text=df_sub['text'], marker=dict(size=df_sub['pop'] / scale, color=colors[i], line=dict(width=0.5, color='rgb(40, 40, 40)'), sizemode='area'), name='{0}-{1}'.format(lim[0], lim[1]))
+    cities.append(city)
+
+layout = dict(title='2014 China city population<br>(Click legend to toggle traces)', showlegend=True, geo=dict(scope='asia', projection=dict(type='mercator'), showland=True, landcolor='rgb(217, 217, 217)', subunitwidth=1, countrywidth=1, subunitcolor='rgb(255, 255, 255', countrycolor='rgb(255, 255, 255)'),)
+fig = dict(data=cities, layout=layout)
+py.iplot(fig, filename='d3-bubble-map-chn-populations')
+clf_cla_close(plt)
+
+
+
+# 其它绘图工具
+with sns.axes_style('dark'):
+    sns.jointplot(salary['salary'], salary['begin_salary'], kind='hex')
+
+
+
+
