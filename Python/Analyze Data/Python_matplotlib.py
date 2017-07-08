@@ -526,3 +526,91 @@ bplot = plt.boxplot(jd_box_data, vert=True, patch_artist=True)
 colors = ['pink', 'lightblue', 'lightgreen', 'cyan']
 for patch, color in zip(bplot['boxes'], colors):
     patch.set_facecolor(color)
+
+combinebox = plt.subplot(111)
+combinebox.set_xticklabels(['opening_price', 'closing_price', 'highest_price', 'lowest_price'])
+clf_cla_close(plt)
+
+colors = dict(boxes='lightgreen', whiskers='lightblue', medians='lightgreen', caps='cyan')
+bplot = jddf[['opening_price', 'closing_price', 'highest_price', 'lowest_price']].plot.box(color=colors, vert=False, positions=[1, 3, 4, 8], patch_artist=True)
+clf_cla_close(plt)
+
+
+# 小提琴图
+axex = plt.subplots(nrows=1, ncols=1, figsize=(8, 5))
+vplot = plt.violinplot(jd_box_data, showmeans=False, showmedians=True)
+colors = ['pink', 'lightblue', 'lightgreen', 'yellow']
+for patch, color in zip(vplot['bodies'], colors):
+    patch.set_facecolor(color)
+
+plt.grid(True)
+plt.xticks([1, 2, 3, 4], ['opening_price', 'closing_price', 'highest_price', 'lowest_price'])
+clf_cla_close(plt)
+
+
+# 散点图
+plt.scatter(salary['salary'], salary['begin_salary'], c='darkblue', alpha=0.4)
+plt.xlabel('current salary')
+plt.ylabel('begin_salary')
+clf_cla_close(plt)
+
+# pandas绘制散点图
+salary.plot.scatter(x='salary', y='begin_salary', c='cyan', alpha=0.45)
+clf_cla_close(plt)
+
+# 叠加散点图
+sc1 = jddf.plot.scatter(x='opening_price', y='closing_price', c='blue', label='opening & closing')
+# ax#: 把指定的scl绘图对象叠加到本次所绘的图形中
+jddf.plot.scatter(x='highest_price', y='lowest_price', c='red', label='highest & lowest', ax=sc1)
+clf_cla_close(plt)
+# c#: 使用其他变量标注散点
+jddf.plot.scatter(x='opening_price', y='closing_price', cmap='Blues_r', c='volume', grid=True)
+clf_cla_close(plt)
+
+# 散点图矩阵
+scatter_matrix(jddf[['opening_price', 'closing_price', 'highest_price', 'lowest_price']], alpha=0.5, figsize=(9, 9), diagonal='kde')
+clf_cla_close(plt)
+# 概率密度曲线图
+jddf['opening_price'].plot(kind='kde')
+clf_cla_close(plt)
+
+
+# 气泡图(散点图延伸 气泡越大数值越大)
+colors = np.random.rand(71)
+plt.scatter(jd_stock['opening_price'], jd_stock['closing_price'], marker='o', c=colors, s=jd_stock['volume'] / 10000, alpha=0.6)
+plt.xlabel('opening_price', fontsize=12)
+plt.ylabel('closing_price', fontsize=12)
+clf_cla_close(plt)
+
+
+# 六边形箱图(蜂窝图)
+# pandas绘图
+# gridsize#: x轴方向分箱数目 默认100
+salary.plot.hexbin(x='salary', y='begin_salary', gridsize=25)
+clf_cla_close(plt)
+# 描述类似气泡图的散点值
+salary.plot.hexbin(x='salary', y='begin_salary', C='age', reduce_C_function=np.min, gridsize=25)
+clf_cla_close(plt)
+
+
+# 雷达坐标图(属性图)
+fig = plt.figure()
+# 1#: 要分析对象 2#: 分类变量
+radviz(salary[['salary', 'begin_salary', 'age', 'education', 'jobtime', 'position']], 'position')
+clf_cla_close(plt)
+
+
+# 轮廓图(横坐标表示需要分析的变量 纵坐标各个指标的值)
+# 1#: 要分析对象 2#: 分类变量
+parallel_coordinates(salary[['salary', 'begin_salary', 'jobtime', 'position']], 'position')
+clf_cla_close(plt)
+
+
+# 调和曲线图(根据三角变换方法将高维空间上的点映射到二维平面的曲线上)
+andrews_curves(salary[['salary', 'begin_salary', 'jobtime', 'position']], 'position')
+clf_cla_close(plt)
+
+
+# 等高线图
+u = np.linspace(-3, 3, 30)
+x, y = np.meshgrid(u, u)
