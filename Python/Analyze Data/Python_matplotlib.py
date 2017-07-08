@@ -173,3 +173,92 @@ fig.set_size_inches(18.5, 10.5)
 # 显示网格
 plt.grid()
 clf_cla_close(plt)
+
+
+# 创建子图
+x = np.linspace(-10, 10, 30)
+y = p(x)
+p2 = p.deriv(m=2)
+y2 = p2(x)
+p3 = p.deriv(m=3)
+y3 = p3(x)
+plt.subplot(221)  # 2行2列第1个
+
+plt.plot(x, y)
+plt.title('Polynomial')
+plt.subplot(222)
+plt.plot(x, y1, 'r')
+plt.title('First Derivative')
+plt.subplot(223)
+plt.plot(x, y2, 'r')
+plt.title('Second Derivative')
+plt.subplot(224)
+plt.plot(x, y3, 'r')
+plt.title('Third Derivative')
+plt.subplots_adjust(hspace=0.4, wspace=0.3)
+clf_cla_close(plt)
+
+
+# 其他绘图函数
+x = np.linspace(-10, 10, 30)
+y = p(x)
+x1 = jddf['opening_price']
+y1 = jddf['closing_price']
+plt.figure(figsize=(10, 6))
+
+plt.subplot(231)
+plt.plot(x, y)
+plt.title('折线图', fontproperties=myfont)
+
+plt.subplot(232)
+plt.scatter(x1, y1)
+plt.title('散点图', fontproperties=myfont)
+
+plt.subplot(233)
+plt.pie(y)
+plt.title('饼图', fontproperties=myfont)
+
+plt.subplot(234)
+plt.bar(x, y)
+plt.title('直方图', fontproperties=myfont)
+
+x2 = y2 = np.arange(-5.0, 5.0, 0.005)
+X, Y = np.meshgrid(x2, y2)
+Z = Y + X ** 2
+
+plt.subplot(235)
+plt.contour(X, Y, Z)
+plt.colorbar()
+plt.title('等高线图', fontproperties=myfont)
+
+img = mping.imread('logo.png')
+
+plt.subplot(236)
+plt.imshow(img)
+plt.title('调用已有图片', fontproperties=myfont)
+plt.subplots_adjust(hspace=0.25)
+
+clf_cla_close(plt)
+
+
+# 面向对象绘图
+'''
+fig.set_alpha(0.2 * fig.get_alpha())
+fig.set(alpha=0.2, zorder=2)
+# gca(): 返回当前的Axes实例本身
+# gcf(): 返回当前Figure实例本身
+'''
+# 防止图形叠加
+fig = Figure()
+canvas = FigureCanvas(fig)
+
+# 指定图像在子图中的位置
+ax1 = fig.add_axes([0.1, 0.6, 0.2, 0.3])
+
+line = ax1.plot([0, 1], [0, 1])
+ax1.set_title('Axes2')
+
+ax2 = fig.add_axes([0.4, 0.1, 0.4, 0.5])
+# 绘制散点图
+sc = ax2.scatter(jd_stock['opening_price'], jd_stock['closing_price'])
+ax2.set_title('Axes2')
