@@ -350,3 +350,90 @@ plt.fill_between(range(71), meanop - 1.96 * stdop, meanop + 1.96 * stdop, color=
 clf_cla_close(plt)
 
 # pandas的plot方法绘图
+jddf = jddf.set_index('time')
+jddf[['opening_price', 'closing_price']].plot(use_index=True, grid=True)
+clf_cla_close(plt)
+
+# pandas的plot方法绘制第2个y轴
+jddf['closing_price'].plot(use_index=True, grid=True)
+jddf['volume'].plot(use_index=True, secondary_y=True, grid=True)
+clf_cla_close(plt)
+
+# 绘制自带统计量图
+fig, ax = plt.subplots(1, 1)
+table(ax, np.round(jddf[['opening_price', 'closing_price']].describe(), 2), loc='upper right', colWidths=[0.2, 0.2])
+jddf.plot(ax=ax, ylim=(25, 45))
+plt.legend(loc='upper left', frameon=False)
+fig.set_size_inches(9, 6)
+clf_cla_close(plt)
+
+# 面积图
+jddf[['opening_price', 'closing_price', 'highest_price', 'lowest_price']].plot.area(ylim=(25, 35), stacked=False, cmap='tab10_r')
+clf_cla_close(plt)
+
+# 直方图
+# 参数: 待绘制的定量数据 划分区间个数
+plt.hist(jddf['opening_price'], 10)
+plt.xlabel('Opening Price')
+plt.ylabel('Frequency')
+plt.title('Opening Price of JD Stock')
+clf_cla_close(plt)
+# pandas对象使用hist和plot方法绘制直方图
+jddf['opening_price'].hist()
+clf_cla_close(plt)
+
+jddf[['opening_price', 'closing_price']].plot(kind='hist', alpha=0.5, colormap='tab10_r', bins=8)
+plt.legend(loc=8, frameon=False, bbox_to_anchor=(0.5, -0.3))
+clf_cla_close(plt)
+
+# 利用hist方法中的by参数指定分类变量按照其分类分别绘制图形
+jddf[['opening_price', 'closing_price']].hist(by=jddf['Market'], stacked=True, bins=8, color=['gray', 'lightblue'])
+
+
+# 条形图
+N = 5
+menMeans = (20, 35, 30, 35, 27)
+womenMeans = (25, 32, 34, 20, 25)
+menStd = (2, 3, 4, 1, 2)
+womenStd = (3, 5, 2, 3, 3)
+ind = np.arange(N)
+width = 0.45
+
+p1 = plt.bar(ind, menMeans, width, color='grey', yerr=menStd)
+p2 = plt.bar(ind, womenMeans, width, color='lightblue', bottom=menMeans, yerr=womenStd)
+clf_cla_close(plt)
+
+
+# 数据集
+salary_fmt = np.dtype([('position', np.str_, 8), ('id', np.int32), ('gender', np.str_, 1), ('education', np.int32), ('salary', np.float64), ('begin_salary', np.float64), ('jobtime', np.int32), ('age', np.int32)])
+salary = pd.DataFrame(np.loadtxt('salary.csv', delimiter=',', skiprows=1, dtype=salary_fmt))
+print(salary.head())
+
+# 绘制不同职位人员分布的条形图
+# 创建一个字典 对职称的每一个类型进行频数统计
+gradeGroup = {}
+
+for grade in salary['position']:
+    gradeGroup[grade] = gradeGroup.get(grade, 0) + 1
+
+xt = gradeGroup.keys()
+xv = gradeGroup.values()
+# bar函数创建条形图
+# #1: 柱的横坐标 #2: 柱的高度 align: 条或柱的对齐方式
+plt.bar(range(3), [gradeGroup.get(xticks, 0) for xticks in xt], align='center', color='lightblue')
+
+# 设置条或柱的文字说明
+# 1#: 文字说明的横坐标 #2: 文字说明内容 #3: 设置排列方向
+plt.xticks((0, 1, 2), xt, rotation='horizontal')
+plt.xlabel('position')
+plt.ylabel('frequency')
+plt.title('job position')
+
+
+def autolabel(rects):
+    # 为条形图中的条挂上数据标签
+    i = -1
+    for rect in rects:
+        i += 1
+        # 1, 2#: 数据值标签在x, y轴上的坐标 3#: 数据值标签
+        plt.text(i, rect - 10, '%d' % rect, ha='center', va='bottom')
