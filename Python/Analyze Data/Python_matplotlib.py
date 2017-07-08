@@ -437,3 +437,92 @@ def autolabel(rects):
         i += 1
         # 1, 2#: 数据值标签在x, y轴上的坐标 3#: 数据值标签
         plt.text(i, rect - 10, '%d' % rect, ha='center', va='bottom')
+
+
+autolabel(xv)
+clf_cla_close(plt)
+
+
+# 分类对比条形图
+plt.figure()
+count_f = [206, 0, 10]
+count_m = [-157, -71, -27]
+plt.barh(range(3), count_f, color='r', alpha=.5, label='female')
+plt.barh(range(3), count_m, color='b', alpha=.5, label='male')
+plt.yticks(range(3), xt)
+plt.legend(loc=1)
+plt.axvline(0, color='k')
+clf_cla_close(plt)
+
+# pandas绘制
+salary['position'].value_counts().plot.bar(rot=0, colormap='summer')
+clf_cla_close(plt)
+crosssalary = pd.crosstab(salary['position'], salary['gender'])
+crosssalary.columns = ['female', 'male']
+crosssalary.plot.bar(rot=0, colormap='autumn', stacked=True)
+clf_cla_close(plt)
+
+
+# 龙卷风图
+yt = ('student', 'employee', 'worker', 'manager', 'lawyer', 'driver', 'fireman', 'singer', 'composer', 'professor', 'journalist')
+count_f = [78, 70, 90, 110, 80, 110, 150, 120, 196, 180, 220]
+count_m = [-10, -21, -27, -34, -89, -84, -78, -90, -100, -123, -212]
+plt.barh(range(11), count_f, color='r', alpha=.5, label='female')
+plt.barh(range(11), count_m, color='b', alpha=.5, label='male')
+plt.yticks(range(11), yt)
+plt.xticks([-150, 150], ['male', 'female'])
+clf_cla_close(plt)
+
+# 饼图
+sizes = {}
+total = sum(gradeGroup.values())
+explode = (0, 0.3, 0)
+colors = ['yellowgreen', 'gold', 'lightskyblue']
+for i in xt:
+    sizes[i] = gradeGroup[i] / total
+
+plt.pie(sizes.values(), labels=sizes.keys(), explode=explode, autopct='%1.2f%%', colors=colors, shadow=True, startangle=45)
+clf_cla_close(plt)
+
+# pandas饼图
+piedf = pd.DataFrame({'percent of position': [0.7707, 0.0573, 0.17201]}, index=['employee', 'director', 'manager'])
+piedf['percent of position'].plot.pie(colors=colors, labeldistance=0.85, autopct='%1.2f%%', fontsize=12, explode=explode, startangle=45)
+piedf['percent of position'].plot(kind='pie', labeldistance=0.85, colors=colors, autopct='%1.2f%%', fontsize=12, explode=explode, startangle=45)
+clf_cla_close(plt)
+
+
+# 阶梯图
+# 1#: 绘制的定量数据 2#: 划分的区间数 density: 参数是否无量纲化 histtype: 绘制阶梯状曲线
+plt.hist(salary['salary'], 10, density=True, histtype='step', cumulative=True)
+plt.xlabel('current salary')
+plt.ylabel('frequency')
+plt.title('salary of U.S. enterpriceses')
+clf_cla_close(plt)
+
+# pandas阶梯图
+salary['salary'].plot.hist(bins=10, density=True, histtype='step', cumulative=True)
+plt.xlabel('current salary')
+plt.ylabel('frequency')
+plt.title('salary of U.S. enterpriceses')
+clf_cla_close(plt)
+
+
+# 盒须图
+# 1#: 数据 2#: 盒子形状 0默认矩形 1凹型 3#: 异常值数据标志形状 4#: 绘制水平盒须图
+plt.boxplot(salary['salary'], 1, 'r', 0, labels=['current salary'])
+plt.title('salary of U.S. enterpriceses')
+clf_cla_close(plt)
+
+plt.boxplot([salary['salary'], salary['begin_salary']])
+plt.title('salary of U.S. enterpriceses')
+combinebox = plt.subplot(111)
+combinebox.set_xticklabels(['current salary', 'begin_salary'])
+clf_cla_close(plt)
+
+jd_box_data = [jd_stock['opening_price'], jd_stock['closing_price'], jd_stock['highest_price'], jd_stock['lowest_price']]
+bplot = plt.boxplot(jd_box_data, vert=True, patch_artist=True)
+
+# 盒子上色
+colors = ['pink', 'lightblue', 'lightgreen', 'cyan']
+for patch, color in zip(bplot['boxes'], colors):
+    patch.set_facecolor(color)
