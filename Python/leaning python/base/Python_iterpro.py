@@ -214,3 +214,27 @@ print(set(x * x for x in range(10)))
 # 字典解析
 print({x: x * x for x in range(10)})
 print(dict((x, x * x) for x in range(10)))
+
+# if子句
+print({x * x for x in range(10) if x % 2 == 0})
+print({x: x * x for x in range(10) if x % 2 == 0})
+
+# 嵌套for
+print({x + y for x in [1, 2, 3] for y in [4, 5, 6]})
+print({x: y for x in [1, 2, 3] for y in [4, 5, 6]})
+
+# 迭代
+print({x + y for x in 'ab' for y in 'cd'})
+print({x + y: (ord(x), ord(y)) for x in 'ab' for y in 'cd'})
+
+
+# x 类似c语言静态本地函数变量
+def saver(x=[]):
+    x.append(1)
+    print(x)
+
+
+saver([2])
+saver([3])
+saver()
+saver()
