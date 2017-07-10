@@ -165,3 +165,28 @@ S1, S2 = 'abc', 'xyz123'
 print(list(myzip(S1, S2)))  # [('a', 'x'), ('b', 'y'), ('c', 'z')]
 print(list(mymapPad(S1, S2)))  # [('a', 'x'), ('b', 'y'), ('c', 'z'), (None, '1'), (None, '2'), (None, '3')]
 print(list(mymapPad(S1, S2, pad=99)))  # [('a', 'x'), ('b', 'y'), ('c', 'z'), (99, '1'), (99, '2'), (99, '3')]
+
+
+# 生成器模拟zip
+# lengths
+def myzip(*seqs):
+    minlen = min(len(S) for S in seqs)
+    return [tuple(S[i] for S in seqs) for i in range(minlen)]
+
+
+def mymapPad(*seqs, pad=None):
+    maxlen = max(len(S) for S in seqs)
+    index = range(maxlen)
+    return [tuple((S[i] if len(S) > i else pad) for S in seqs) for i in index]
+
+
+S1, S2 = 'abc', 'xyz123'
+print(myzip(S1, S2))  # [('a', 'x'), ('b', 'y'), ('c', 'z')]
+print(mymapPad(S1, S2))  # [('a', 'x'), ('b', 'y'), ('c', 'z'), (None, '1'), (None, '2'), (None, '3')]
+print(mymapPad(S1, S2, pad=99))  # [('a', 'x'), ('b', 'y'), ('c', 'z'), (99, '1'), (99, '2'), (99, '3')]
+
+
+# 生成器模拟zip
+# (...)
+def myzip(*seqs):
+    minlen = min(len(S) for S in seqs)
