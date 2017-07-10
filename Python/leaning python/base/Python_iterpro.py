@@ -94,3 +94,27 @@ print(next(It))
 G = (c * 4 for c in 'spark')
 I1 = iter(G)
 print(next(I1))
+print(next(I1))
+
+I2 = iter(G)
+print(next(I2))
+print(next(I2))
+
+# 列表支持多个迭代器
+L = [1, 2, 3, 4]
+I1, I2 = iter(L), iter(L)
+
+print(next(I1))
+print(next(I1))
+
+print(next(I2))
+print(next(I2))
+
+
+# 生成器模拟map
+# yield
+def mymap(func, *seqs):
+    for args in zip(*seqs):
+        yield func(*args)
+
+# (...)
