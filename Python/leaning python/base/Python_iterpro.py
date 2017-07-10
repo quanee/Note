@@ -46,3 +46,27 @@ G = gen()
 print(next(G))  # send(None)
 print(G.send(77))
 print(G.send(88))
+
+
+# 生成器 VS 列表解析
+# 列表解析
+print([x ** 2 for x in range(4)])
+# 生成器表达式
+print((x ** 2 for x in range(4)))
+
+G = (x ** 2 for x in range(4))
+print(next(G))
+print(next(G))
+print(next(G))
+
+print(sum(x ** 2 for x in range(4)))
+print(sorted(x ** 2 for x in range(4)))
+print(sorted((x ** 2 for x in range(4)), reverse=True))
+
+
+# 生成器函数 VS 生成器表达式
+G = (c * 4 for c in 'MOON')
+print(list(G))
+
+
+def timesfour(S):
