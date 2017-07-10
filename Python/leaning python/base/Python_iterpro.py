@@ -70,3 +70,27 @@ print(list(G))
 
 
 def timesfour(S):
+    for c in S:
+        yield c * 4
+
+
+G = timesfour('moon')
+print(list(G))
+
+# 手动迭代
+G = (c * 4 for c in 'MOON')
+It = iter(G)
+print(next(It))
+print(next(It))
+
+
+G = timesfour('moon')
+It = iter(G)
+print(next(It))
+print(next(It))
+
+
+# 生成器是单迭代对象
+G = (c * 4 for c in 'spark')
+I1 = iter(G)
+print(next(I1))
