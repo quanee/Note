@@ -190,3 +190,27 @@ print(mymapPad(S1, S2, pad=99))  # [('a', 'x'), ('b', 'y'), ('c', 'z'), (99, '1'
 # (...)
 def myzip(*seqs):
     minlen = min(len(S) for S in seqs)
+    return (tuple(S[i] for S in seqs) for i in range(minlen))
+
+
+print(list(myzip(S1, S2)))
+
+''' 3.x 死循环
+def myzip(*args):
+    iters = map(iter, args)
+    while iters:
+        res = [next(i) for i in iters]
+        yield tuple(res)
+
+
+print(list(myzip('abc', 'lmnop')))
+'''
+
+
+# 集合解析和字典解析
+# 集合解析
+print({x * x for x in range(10)})
+print(set(x * x for x in range(10)))
+# 字典解析
+print({x: x * x for x in range(10)})
+print(dict((x, x * x) for x in range(10)))
