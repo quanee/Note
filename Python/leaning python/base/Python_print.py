@@ -16,3 +16,5 @@ sys.stdout = log
 print('sys.out = log')
 
 sys.stdout = tmp
+print(1234)
+log.close()
