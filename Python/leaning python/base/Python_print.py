@@ -12,3 +12,5 @@ sys.stdout.write('hello world\n')
 
 tmp = sys.stdout
 sys.stdout = log
+
+print('sys.out = log')
