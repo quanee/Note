@@ -9,3 +9,6 @@ print(a, b, c, sep='$', end='%\n', file=log)
 
 # 打印重定向
 sys.stdout.write('hello world\n')
+
+tmp = sys.stdout
+sys.stdout = log
