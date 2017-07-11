@@ -14,3 +14,5 @@ tmp = sys.stdout
 sys.stdout = log
 
 print('sys.out = log')
+
+sys.stdout = tmp
