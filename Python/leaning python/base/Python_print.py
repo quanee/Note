@@ -6,3 +6,5 @@ a, b, c = 1, 2, 3
 # file 文本发送对象 默认sys.out
 log = open('data.txt', 'a')
 print(a, b, c, sep='$', end='%\n', file=log)
+
+# 打印重定向
