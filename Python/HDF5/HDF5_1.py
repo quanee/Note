@@ -33,3 +33,10 @@ for key, value in dataset.attrs.items():
 print(dataset[0: 10])
 print(dataset[0: 10: 2])
 f.close()
+
+f = h5py.File("weather.hdf5", "w")
+# 3.6测试并非如此 会创建2TB大小文件
+# 2TB数据集
+big_dataset = f.create_dataset("big", shape=(1024, 1024), dtype='float32')
+# 只会占用必要的字节
+big_dataset[1023, 1023] = 42.0
