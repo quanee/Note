@@ -16,3 +16,9 @@ print(out["station"])
 
 wind = np.random.random(2048)
 dt_wind = 5.0
+
+import h5py
+
+f = h5py.File("weather.hdf5", "w")
+f["/15/temperature"] = temperature
+f["/15/temperature"].attrs["dt"] = 10.0
