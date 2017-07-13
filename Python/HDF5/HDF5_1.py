@@ -28,3 +28,8 @@ f["/15/wind"].attrs["dt"] = 5.0
 
 dataset = f["/15/temperature"]
 for key, value in dataset.attrs.items():
+    print("%s: %s" % (key, value))
+
+print(dataset[0: 10])
+print(dataset[0: 10: 2])
+f.close()
