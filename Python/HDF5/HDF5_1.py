@@ -40,3 +40,9 @@ f = h5py.File("weather.hdf5", "w")
 big_dataset = f.create_dataset("big", shape=(1024, 1024), dtype='float32')
 # 只会占用必要的字节
 big_dataset[1023, 1023] = 42.0
+'''' '''
+
+# 对数据集进行透明压缩
+compress_dataset = f.create_dataset("comp", shape=(1024, ), dtype='int', compression='gzip')
+compress_dataset[:] = np.arange(1024)
+print(compress_dataset[:])
