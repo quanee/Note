@@ -3,3 +3,4 @@ import string
 
 a = string.Template('$who is $role')
 print(a.substitute(who='ee', role='linux'))
+
