@@ -23,3 +23,8 @@ print(dset.attrs['another_id'])
 del dset.attrs['another_id']
 
 print([(name, val) for name, val in dset.attrs.items()])
+
+print(dset.attrs.get('run_id'))
+print(dset.attrs.get('missing'))
+
+# 类型猜测
