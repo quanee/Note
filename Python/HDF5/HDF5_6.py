@@ -17,3 +17,9 @@ print([x for x in dset.attrs])
 dset.attrs['another_id'] = 42
 # 改写特征
 dset.attrs['another_id'] = 100
+
+print(dset.attrs['another_id'])
+# 删除特征
+del dset.attrs['another_id']
+
+print([(name, val) for name, val in dset.attrs.items()])
