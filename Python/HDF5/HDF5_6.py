@@ -28,3 +28,7 @@ print(dset.attrs.get('run_id'))
 print(dset.attrs.get('missing'))
 
 # 类型猜测
+print(dset.dtype)
+f.flush()
+# h5ls -vlr attrsdemo.hdf5
+print(np.array(144).dtype)
