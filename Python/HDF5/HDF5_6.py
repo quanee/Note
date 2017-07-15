@@ -8,3 +8,8 @@ dset = f.create_dataset('dataset', (100, ))
 print(dset.attrs)
 dset.attrs['title'] = 'Dataset from third round of experiments'
 dset.attrs['sample_rate'] = 100e6
+dset.attrs['run_id'] = 144
+print(dset.attrs['title'])
+print(dset.attrs['sample_rate'])
+print(dset.attrs['run_id'])
+print([x for x in dset.attrs])
