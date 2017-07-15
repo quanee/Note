@@ -32,3 +32,9 @@ print(dset.dtype)
 f.flush()
 # h5ls -vlr attrsdemo.hdf5
 print(np.array(144).dtype)
+
+dset.attrs['ones'] = np.ones((100, ))
+print(dset.attrs['ones'])
+
+# try:
+#     dset.attrs['ones'] = np.ones((100, 100))
