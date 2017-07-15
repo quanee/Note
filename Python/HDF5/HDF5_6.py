@@ -62,3 +62,8 @@ print(dset.attrs['string'])
 dt = h5py.special_dtype(vlen=str)
 dset.attrs.create('more_strings', ['Hello', 'Another string'], dtype=dt)
 print(dset.attrs['more_strings'])
+
+dset.attrs.modify('two_byte_int', 33)
+print(dset.attrs['two_byte_int'])
+
+f.close()
