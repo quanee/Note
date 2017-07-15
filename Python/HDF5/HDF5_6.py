@@ -38,3 +38,7 @@ print(dset.attrs['ones'])
 
 # try:
 #     dset.attrs['ones'] = np.ones((100, 100))
+# except Exception:
+#     print(Exception)
+
+# print(dset.attrs['ones'])
