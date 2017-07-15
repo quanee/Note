@@ -42,3 +42,8 @@ print(dset.attrs['ones'])
 #     print(Exception)
 
 # print(dset.attrs['ones'])
+
+one_dset = f.create_dataset('one_dset', data=np.ones((100, 100)))
+dset.attrs['ones'] = one_dset.ref
+print(dset.attrs['ones'])
+f.close()
