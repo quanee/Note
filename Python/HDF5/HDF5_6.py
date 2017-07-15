@@ -57,3 +57,8 @@ f.flush()
 
 dset.attrs['string'] = ['Hello'.encode(), 'Another string'.encode()]
 print(dset.attrs['string'])
+
+# 指定变长字符串
+dt = h5py.special_dtype(vlen=str)
+dset.attrs.create('more_strings', ['Hello', 'Another string'], dtype=dt)
+print(dset.attrs['more_strings'])
