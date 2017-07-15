@@ -13,3 +13,7 @@ print(dset.attrs['title'])
 print(dset.attrs['sample_rate'])
 print(dset.attrs['run_id'])
 print([x for x in dset.attrs])
+
+dset.attrs['another_id'] = 42
+# 改写特征
+dset.attrs['another_id'] = 100
