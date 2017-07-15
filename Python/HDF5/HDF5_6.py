@@ -53,3 +53,7 @@ f = h5py.File('attrs_create.hdf5', 'w')
 dset = f.create_dataset('dataset', (100, ))
 dset.attrs.create('two_byte_int', 190, dtype='i2')
 print(dset.attrs['two_byte_int'])
+f.flush()
+
+dset.attrs['string'] = ['Hello'.encode(), 'Another string'.encode()]
+print(dset.attrs['string'])
