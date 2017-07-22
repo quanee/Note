@@ -99,3 +99,104 @@ CLASSES
      |  ----------------------------------------------------------------------
      |  Data and other attributes defined here:
      |
+     |  n_fields = 11
+     |
+     |  n_sequence_fields = 9
+     |
+     |  n_unnamed_fields = 0
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from builtins.tuple:
+     |
+     |  __add__(self, value, /)
+     |      Return self+value.
+     |
+     |  __contains__(self, key, /)
+     |      Return key in self.
+     |
+     |  __eq__(self, value, /)
+     |      Return self==value.
+     |
+     |  __ge__(self, value, /)
+     |      Return self>=value.
+     |
+     |  __getattribute__(self, name, /)
+     |      Return getattr(self, name).
+     |
+     |  __getitem__(self, key, /)
+     |      Return self[key].
+     |
+     |  __getnewargs__(...)
+     |
+     |  __gt__(self, value, /)
+     |      Return self>value.
+     |
+     |  __hash__(self, /)
+     |      Return hash(self).
+     |
+     |  __iter__(self, /)
+     |      Implement iter(self).
+     |
+     |  __le__(self, value, /)
+     |      Return self<=value.
+     |
+     |  __len__(self, /)
+     |      Return len(self).
+     |
+     |  __lt__(self, value, /)
+     |      Return self<value.
+     |
+     |  __mul__(self, value, /)
+     |      Return self*value.n
+     |
+     |  __ne__(self, value, /)
+     |      Return self!=value.
+     |
+     |  __rmul__(self, value, /)
+     |      Return self*value.
+     |
+     |  count(...)
+     |      T.count(value) -> integer -- return number of occurrences of value
+     |
+     |  index(...)
+     |      T.index(value, [start, [stop]]) -> integer -- return first index of value.
+     |      Raises ValueError if the value is not present.
+
+FUNCTIONS
+    asctime(...)
+        asctime([tuple]) -> string
+
+        Convert a time tuple to a string, e.g. 'Sat Jun 06 16:26:11 1998'.
+        When the time tuple is not present, current time as returned by localtime()
+        is used.
+
+    clock(...)
+        clock() -> floating point number
+
+        Return the CPU time or real time since the start of the process or since
+        the first call to clock().  This has as much precision as the system
+        records.
+
+    ctime(...)
+        ctime(seconds) -> string
+
+        Convert a time in seconds since the Epoch to a string in local time.
+        This is equivalent to asctime(localtime(seconds)). When the time tuple is
+        not present, current time as returned by localtime() is used.
+
+    get_clock_info(...)
+        get_clock_info(name: str) -> dict
+
+        Get information of the specified clock.
+
+    gmtime(...)
+        gmtime([seconds]) -> (tm_year, tm_mon, tm_mday, tm_hour, tm_min,
+                               tm_sec, tm_wday, tm_yday, tm_isdst)
+
+        Convert seconds since the Epoch to a time tuple expressing UTC (a.k.a.
+        GMT).  When 'seconds' is not passed in, convert the current time instead.
+
+        If the platform supports the tm_gmtoff and tm_zone, they are available as
+        attributes only.
+
+    localtime(...)
