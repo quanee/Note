@@ -200,3 +200,103 @@ FUNCTIONS
         attributes only.
 
     localtime(...)
+        localtime([seconds]) -> (tm_year,tm_mon,tm_mday,tm_hour,tm_min,
+                                  tm_sec,tm_wday,tm_yday,tm_isdst)
+
+        Convert seconds since the Epoch to a time tuple expressing local time.
+        When 'seconds' is not passed in, convert the current time instead.
+
+    mktime(...)
+        mktime(tuple) -> floating point number
+
+        Convert a time tuple in local time to seconds since the Epoch.
+        Note that mktime(gmtime(0)) will not generally return zero for most
+        time zones; instead the returned value will either be equal to that
+        of the timezone or altzone attributes on the time module.
+
+    monotonic(...)
+        monotonic() -> float
+
+        Monotonic clock, cannot go backward.
+
+    perf_counter(...)
+        perf_counter() -> float
+
+        Performance counter for benchmarking.
+
+    process_time(...)
+        process_time() -> float
+
+        Process time for profiling: sum of the kernel and user-space CPU time.
+
+    sleep(...)
+        sleep(seconds)
+
+        Delay execution for a given number of seconds.  The argument may be
+        a floating point number for subsecond precision.
+
+    strftime(...)
+        strftime(format[, tuple]) -> string
+
+        Convert a time tuple to a string according to a format specification.
+        See the library reference manual for formatting codes. When the time tuple
+        is not present, current time as returned by localtime() is used.
+
+        Commonly used format codes:
+
+        %Y  Year with century as a decimal number.
+        %m  Month as a decimal number [01,12].
+        %d  Day of the month as a decimal number [01,31].
+        %H  Hour (24-hour clock) as a decimal number [00,23].
+        %M  Minute as a decimal number [00,59].
+        %S  Second as a decimal number [00,61].
+        %z  Time zone offset from UTC.
+        %a  Locale's abbreviated weekday name.
+        %A  Locale's full weekday name.
+        %b  Locale's abbreviated month name.
+        %B  Locale's full month name.
+        %c  Locale's appropriate date and time representation.
+        %I  Hour (12-hour clock) as a decimal number [01,12].
+        %p  Locale's equivalent of either AM or PM.
+
+        Other codes may be available on your platform.  See documentation for
+        the C library strftime function.
+
+    strptime(...)
+        strptime(string, format) -> struct_time
+
+        Parse a string to a time tuple according to a format specification.
+        See the library reference manual for formatting codes (same as
+        strftime()).
+
+        Commonly used format codes:
+
+        %Y  Year with century as a decimal number.
+        %m  Month as a decimal number [01,12].
+        %d  Day of the month as a decimal number [01,31].
+        %H  Hour (24-hour clock) as a decimal number [00,23].
+        %M  Minute as a decimal number [00,59].
+        %S  Second as a decimal number [00,61].
+        %z  Time zone offset from UTC.
+        %a  Locale's abbreviated weekday name.
+        %A  Locale's full weekday name.
+        %b  Locale's abbreviated month name.
+        %B  Locale's full month name.
+        %c  Locale's appropriate date and time representation.
+        %I  Hour (12-hour clock) as a decimal number [01,12].
+        %p  Locale's equivalent of either AM or PM.
+
+        Other codes may be available on your platform.  See documentation for
+        the C library strftime function.
+
+    time(...)
+        time() -> floating point number
+
+        Return the current time in seconds since the Epoch.
+        Fractions of a second may be present if the system clock provides them.
+
+DATA
+    altzone = -32400
+    daylight = 0
+    timezone = -28800
+    tzname = ('ÖÐ¹ú±ê×¼Ê±¼ä', 'ÖÐ¹úÏÄÁîÊ±')
