@@ -300,3 +300,105 @@ DATA
     daylight = 0
     timezone = -28800
     tzname = ('ÖÐ¹ú±ê×¼Ê±¼ä', 'ÖÐ¹úÏÄÁîÊ±')
+
+FILE
+    (built-in)
+'''
+
+print(help(time))
+print(time.time())  # 时间戳
+time.sleep(0)
+
+print(time.clock())  # CPU计算执行时间
+
+print(time.gmtime())  # 结构化UTC时间time.struct_time(tm_year=2018, tm_mon=2, tm_mday=13, tm_hour=10, tm_min=49, tm_sec=49, tm_wday=1, tm_yday=44, tm_isdst=0)
+print(time.localtime())  # 本地时间time.struct_time(tm_year=2018, tm_mon=2, tm_mday=13, tm_hour=18, tm_min=49, tm_sec=49, tm_wday=1, tm_yday=44, tm_isdst=0)
+
+print(time.strftime("%Y-%m-%d:%H:%M:%S"))  # 字符串时间
+
+a = time.strptime("2018-02/14 09:45:23", "%Y-%m/%d %H:%M:%S")  # 格式化时间
+print(a.tm_year)
+print(a.tm_mon)
+print(a.tm_mday)
+
+print(time.ctime(time.time()))  # Wed Feb 14 09:49:07 2018 时间戳转换为结构化时间
+
+print(time.mktime(time.localtime()))  # 结构化时间转换为时间戳
+
+
+import datetime
+
+print(datetime.datetime.now())
+
+import random
+
+# random模块
+
+print(random.random())  # 0-1
+print(random.randint(1, 8))  # 1-8
+print(random.randrange(1, 8))  # 1-7
+print(random.choice('hello'))  # h, e, l, l, o
+print(random.choice(['123', 'hello', 'abc', 1]))
+print(random.sample(['a', 'b', 'c', 'd'], 2))
+
+
+# 生成验证码
+def v_code():
+    code = ''
+
+    for i in range(5):
+        add_num = random.randrange(10)
+        add_alp = chr(random.randrange(65, 91))
+
+        code += str(random.choice([add_alp, add_num]))
+    print(code)
+
+
+v_code()
+
+
+import os
+
+# os模块 与操作系统交互
+print(os.getcwd())  # 获取当前路径
+
+os.chdir("..")
+print(os.getcwd())
+os.chdir("./Python")
+
+print(os.curdir)  # 返回当前路径(.)
+print(os.pardir)  # 返回父目录字符串名称
+
+os.makedirs("abc\\abc")  # 创建多重文件夹
+os.removedirs("abc\\abc")  # 删除多重空文件夹
+
+os.mkdir("abc")  # 创建一个文件夹
+os.rmdir("abc")  # 删除一个空文件夹
+
+print(os.listdir())  # 列出当前目录所有文件及文件夹
+
+# os.remove("")  # 删除文件
+
+# os.rename("快捷键.txt", "KeyMap.txt")  # 重命名文件
+
+print(os.stat("python.md"))  # 显示文件信息
+
+print(os.sep)  # 获取系统路径分隔符
+print(os.linesep)  # 获取系统换行符
+print(os.pathsep)  # 输出系统分割文件路径的分割符
+print(os.name)  # 输出平台名称 Windows->nt Linux->posix
+
+os.system("dir")  # 运行命令行命令
+
+print(os.environ)  # 输出系统环境变量
+print(os.path.abspath(".\\python.md"))  # 输出文件的绝对路径
+print(os.path.split(r"C:\Users\pangdahai\Documents\我的坚果云\Note\Python\python.md"))  # 将据对路径分割成路径和文件的二元组返回
+print(os.path.dirname(r"C:\Users\pangdahai\Documents\我的坚果云\Note\Python\python.md"))  # 返回文件路径
+
+# os.path.join(a,b)  # 拼接两个路径
+
+
+import sys
+# sys模块 与Python解释器交互
+
+print(sys.argv)
