@@ -1062,3 +1062,155 @@ Shell进程的执行过程 :
 1973年夏天,开发出基本改进形式,网络协议之间的不同通过一个公有互联网络协议隐藏,随后开发出TCP v1,TCP v2,TCP/IP v3,及目前仍在使用的TCP/IP v4互联网标准协议
 1975年,TCP/IP在斯坦福和伦敦大学之间进行测试,1977年11月,TCP/IP在美国,英国和挪威之间测试.1983年1月1日,ARPANET完全转换到TCP/IP
 1984年,美国国防部将TCP/IP作为所有计算机网络的标准
+## 11.1.2TCP/IP协议网络模型
+
+1983年国际标准化组织(International Organization for Standardization, ISO)提出开放式通信系统互联参考模型(Open System Interconnection Recference Model, OSI)
+OSI模型将计算机网络体系结构分为7层:
+应用层(Application Layer)
+通过应用层应用程序接口与具体的应用程序沟通
+表示层(Presentation Layer)
+向应用程序提供信息和数据的表示方式,使不同表达方式的系统之间能够通信
+会话层(Session Layer)
+管理参与会话的实体之间的对话连接
+传输层(Transport Layer)
+TCP/IP协议所在层,也是最重要的一层.总体的数据传输和数据传输控制,数据的传输单位:段(segment) 网络层(Network Layer) 提供路由和寻址,数据的传输单位:数据报(datagram) 数据链路层(Data Link Layer) 管理两个网络实体之间的数据链路连接的建立,维持和释放等,数据的传输单位:帧(frame) 物理层(Data Link Layer) 规定了数据传输时所需要的物理链路的一系列的电子,电气特性,确保原始的电子信号能够在各种物理介质上传输,数据的传输单位:比特(bit),即位. TCP/IP参考模型
+### 11.1.3端口 常见服务及其默认端口 服务 默认端口 服务 默认端口 FTP数据传输 20 FTP控制命令 21 远程登录(SSH) 22 电子邮件(SMTP) 25 电子邮件(POP3) 110 安全超文本传输(HTTPS) 443 DHCP客户端 546 DHCP服务 547 11.2IP地址 11.2.1IP地址分类 IPv4 A,B以及C类网络的相关参数 网络类别 前缀位 最大网络数 第一个可用的网络号 最后一个可用的网络号 每个网络中的最大主机数 A 0 126 1 126 16777214 B 10 16382 128.1 191.255 65534 C 110 2097150 192.0.1 223.255.255 254
+
+A类IP地址(最优) xxxx.xxxx.xxxx.xxxx 网络地址 主机地址
+
+B类IP地址 xxxx.xxxx.xxxx.xxxx 网络地址 主机地址
+
+C类IP地址 xxxx.xxxx.xxxx.xxxx 网络地址 主机地址
+11.2.2子网和子网掩码 
+子网(subnet):从分类网络中划分出来的一部分网络 包括网络地址,子网号以及主机地址.
+1 子网掩码(subnet mask):用来区分IP地址的网络地址位和主机地址位 子网掩码的左边表示网络地址位用二进制1表示,1的个数等于指定IP地址中网络地址所占的二进制位数;
+右边是主机地址位,用二进制0表示,0的个数等于指定IP地址中主机地址所占的二进制位数 
+11.2.3专用地址和NAT 
+互联网号码分配局(Internet Assigned Numbers Authority, IANA)分配的IP地址称为公用地址 
+A类网络专用IP地址
+10.0.0.1~10.255.255.254 子网掩码:255.0.0.0 
+B类网络专用IP地址 172.16.0.1~172.31.255.254 子网掩码:255.240.0.0 
+C类网络专用IP地址 192.168.0.1~192.168.255.254 子网掩码:255.255.255.0 
+专用地址不能从互联网接受对方发过来的数据,如果某台主机使用专用地址,同时又要与互联网上的其他主机进行通信,则该专用地址必须转换成公用地址,这个过程称为为网络地址转换(Network Address Translation, NAT) 
+### 11.2.4IPv6寻址
+IPv6使用128位的地址,消除了对网络地址转换的依赖
+### 11.3网络接口设置 
+### 11.3.1ifconfig命令
+ifconfig [interface] [options] [address_family] [address] [/prefix_length] [dest_address] [parameters] 
+dc表示DEC/Intel以太网卡驱动程序
+em表示Intel(R) PRO/1000千兆以太网卡驱动 
+sis表示SiS 900,SiS 7016以及NS DP83815/DP83816 
+Solaris网络接口命名规则:
+<driver-name><instance-number>
+options:
+-a:列出所有指定类型的网络接口
+-d:仅仅将ifconfig命令应用于处于禁止状态(down)的网络接口
+-u: 仅仅将ifconfig命令应用于处于启用状态(up)的网络接口
+address_family:地址类型
+address:网络接口的网络地址
+up:激活网络接口,使其处于工作状态
+down:关闭网络接口,时期停止工作
+delete:从接口删除指定的IP地址
+detach:从网络接口列表中删除一个网络接口
+netmask mask:指出子网掩码
+mtu value:设置系统最大的IP包大小,value变量可以是从60~65535的任意整数值
+## 11.3.2列出可用的网络接口
+ifcongig -a 
+11.3.3修改网络接口参数
+ifconfig interface [up|down] 
+up:启用网络接口
+down:禁用网络接口 
+设置IP地址以及子网掩码
+ifconfig interface inet ipaddress netmask mask 
+inet:设置IPv4的IP地址,可省略 
+ipaddress:具体的IPv4地址
+netmask:指定子网掩码
+mask:子网掩码
+ifconfig命令为临时配置 可更改/etc/hostname.
+interface和/etc/netmasks配置文件,需要重新启动
+11.3.4给一个网络配置多个IP地址
+ifconfig interface inet ipaddress netmask mask[add|alias] 
+ipaddress:要分配的IP地址
+mask:子网掩码
+add|alias:指定的网络接口分配别名地址 删除地址
+ifconfig interface inet ipaddress delete
+11.3.5配置DHCP支持 
+动态主机设置协议(Dynamic Host Configuration Protocol, DHCP)是一个局域网的网络协议 
+DHCP配置文件/etc/default/dhcpagent和etc/dhcp.interface 
+eg:为名称为e1000g0的网络接口配置DHCP
+(1) 创建DHCP文件. 
+使用vi命令在/etc目录中创建一个新的文件,名称为dhcp.e1000g0,内容如下:
+wait 30 
+(2) 初始化网络接口
+ifconfig interface [inet6] dhcp start
+inet6表示IPv6地址,默认表示IPv4地址 
+dhcp关键字表示启用DHCP客户端 
+start关键字表示启用并初始化改网络接口
+(3) 查看网络接口的DHCP配置状态 
+ifconfig interface [inet6] dhcp status
+status:查询指定网络接口的状态
+(4) 请求租用期延长 ifconfig interface [inet6] dhcp extend 
+extend表示延长IP地址租用时间
+(5) 释放IP地址 ifconfig interface [inet6] dhcp release
+release表示释放已经分配的IP地址 
+(6) 删除IP地址 ifconfig interface [inet6] dhcp drop 
+drop表示删除已分配的IP地址 为某个网络接口配置DHCP客户端时,需要在rc.conf文件添加 
+ifconfig_interface=”DHCP” 
+11.3.6关闭或激活网络接口 
+关闭网络接口
+ifconfig interface down 
+激活网络接口 
+ifconfig interface up
+11.4路由
+11.4.1路由表
+一般情况下,路由表为与路由器(router)中,主机可以拥有自己的有路由表,称为主路由表 
+查看路由表
+netstat [-r|-n] 
+-n:不使用主机名表示
+11.4.2静态路由 
+手工操纵路由表,进行静态路由设置
+route [options] command [[modifiers] destination gateway [netmask]]
+command: 
+add:增加一条路由 
+flush:删除路由表中所有的路由信息
+delete:删除某条特定的路由
+change:修改某条特定的路由
+get:查询并显示某个目的地的路由信息
+monitor:监控路由信息
+modifiers表示修饰符,指定目的地类型 
+-inet:将指定目的地强制解释为一个IPv4地址
+-inet6:将指定目的地强制解释为一个IPv6地址
+-host:将指定目的地强制解释为一个主机 
+-net:将指定目的地强制解释为一个网络
+destination:目的地,可以是主机或者网络
+gateway:数据宝贝发送到的下一个节点 
+netmask:子网掩码
+11.4.3默认路由 
+默认路由是一种特殊的静态路由
+添加默认路由
+route add default -gateway gateway -interface interface 
+default:指定添加的是默认路由 
+-gateway:默认路由的网关地址 
+-interface:默认路由的网络接口
+11.5名称解析
+11.5.1主机名和域名 
+1.主机名(hostname) 在局域网中为主机赋予的名称 主机名解析/etc/hosts
+[Internet addres] [official hostname] [alias1] [alias2] Internet
+address:主机的IP地址
+official hostname:主机的正式名称,一般是域名
+alias1|alias2:主机的别名(主机名),可以拥有多个
+2.域名 
+由一串用圆点分隔的字符组成的Internet上某一台主机或者一组主机上的名称
+11.5.2DNS客户端配置 
+DNS配置 /etc/resolv.conf 
+11.6常见问题  
+DNS服务器 
+12.1DNS的起源和背景
+12.1.1DNS的历史 20世纪60年代,美国国防高级研究计划署(Advanced Research Projects Agency, ARPA),开始资助实验性的光与计算机网络,称为阿帕网(The Advanced Research Projects Agency NetWork, ARPANET) 20世纪80年代,TCP/IP协议成为ARPANET的标准网络协议,ARPANET成为基于TCP/IP协议的局域网和区域联合网的主干,被称为Internet 1988年,美国国家自然科学基金网络(National Science Foundation Network, NSFNET)取代阿帕网成为Internet的骨干网.1995年春天,Internet完成了由公共NSFNET作为骨干网到使用多个商业骨干网的转变 12.1.2DNS概述 www.tsinghuan.edu.cn 主机名.三级域.二级域.顶级域 
+12.1.3域名空间和体系结构 顶级域名:
+
+通用顶级域名
+
+基础设施顶级域名
+
+国家和地区顶级域
