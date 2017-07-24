@@ -1366,3 +1366,155 @@ options{ [version version_string;] [directory path_name;] [pid-file path_name;] 
 query-source {address ip_address port port_number}
 ip_address:一个IPv4的地址
 port_number:端口号
+query-source-v6用来处理IPv6的地址
+12.3.10定义远程服务器
+server ip_addr{ [bogus yes_or_no;] [provide-ixfr yes_or_no;] [request-ixfr yes_or_no;] [transfers number] [transfer-format(one-answer|many-answers);] [keys{string;[string;[…]]};] }
+ip_addr:远程服务器地址
+bogus:如果值为yes,则named不会向该服务器发送任何查询
+provide-ixfr:如果值为yes,则该服务器将执行增量区域传输,如果值为no,则所有对远端服务器的传输都将是非增量的.不设定,默认为yes.
+request-ixfr:本从服务器是否向主服务器发送区域的增量传输请求.默认为yes
+transfers:限制了来自远端服务器的并发的入站区域传输的数量
+transfer-format:指定服务器进行区域传输的方式,分别有one-answer和many-answers,前者表示每个源数据传输使用一个DNS报文,后者表示在一个报文中汇集尽可能多的记录 keys:定义key_id,用于当与远程服务器通话时的安全处理
+12.3.11定义视图
+view语句包含一个控制谁能看到视图的访问控制列表,一些应用到视图中所有区域的选项以及区域定义本身
+view view_name{ match-clents{address_match_list};
+match-destinations{address_match_list}; match-recursive-only{yes_or_no};
+[view_option;…] [zone_statement;…] } 
+view_name:视图名称 match-clients:控制谁可以看到该视图.
+在BIND中,视图是按照顺序进行处理的,所以要把限制最严格的视图放在前面.不同视图中的区域可以有相同的名称.试图是一种要么全有,要么全无的概念,意味着如果使用视图,那么在named.conf文件中的所有zone语句都必须在一个视图中出现 
+12.3.12定义区域 
+1.定义区域主服务器 
+zone “zone_name”{ type master;
+[allow-notify{address_match_list};] [allow-query{address_match_list};] [allow-transfer{address_match_list};] [allow-update{address_match_list};] [file path;] [ixfr-base string;] } 
+zone_name:区域名称,必须用双引号括起来
+type master:当前区域的主域名服务器;
+allow-update:限制发生更新的主机,动态更新只限于主服务器,因此,allow-update不能用在从服务器ixfr-base:指定事务日志保存文件名称
+2.定义区域从服务器 
+zone “zone_name”{ type slave; [allow-notify{address_match_list};] [allow-query{address_match_list};] [allow-transfer{address_match_list};] [allow-update{address_match_list};] [file string;] [masters[port ip_port]{ip_addr[port ip_port][key key];[]};] } 
+type slave:从服务器 
+file:指定存储数据库副本的本地磁盘文件
+masters:服务器的IP地址 
+3.定义根区域
+zone “.”{ type hint; file “path” }; 
+根域的名称为一个圆点”.” 
+type hint:表示根区域 
+file:指定根区域的区域数据库文件的路径
+4.定义转发区域 
+zone “zone_name”{ type forward; forward only|first; forwarder{ip_addr;ip_addr;…}; }; 
+type forward:指定转发区域 forward:控制转发器的行为,当值为first时,该服务器会首先查询forwarders中设置的服务器,如果设置为only,服务器就会把请求转发到其他服务器上 forwarder:指定要转发的目标服务器的IP地址,默认列表为空,表示不转发 只有当forwarder的列表不为空时,forwarder再会起作用
+12.3.13根提示文件 zone “.”{ type hint file “/etc/namedb/named.root” }
+通过file关键字指定的文件称为根提示文件,根提示文件包含根域的域名服务器的IP地址.习惯命名为named.root,db.cache,root.hint等
+12.4DNS数据库
+12.4.1资源记录
+区域文件是BIND中最主要的文件,域名服务器的实际数据就存储在这些区域文件中.每次当BIND启动时,都会自动加载这些数据.BIND的区域文件都有固定的格式,包含一条或多条记录,这些记录称为资源记录(resource record, RR). name ttl class type rdta
+name 当前记录所描述的实体名称,可以是一个主机或者一个域.如果几条连续的记录都涉及到同一个实体,则可以从第2条省略该列的值
+ttl 记录被缓存的有效时间(time to live, TTL).ttl以秒为单位指定资源记录可以被缓存并且认为有效的时间长度.
+class 网络协议的类别,IN(Internet),CS(CSNET),CH(CHAOS),HS(Hesiod).目前CSNET和CHAOS已被废弃,Hesiod是一种建立在BIND之上的数据库服务 默认值为IN,唯一最常使用的值
+type 区域记录:表示区域以及名称服务器 基本记录:指定名称和地址之间的映射 安全记录:向区域文件添加身份认证和签名 可选记录:提供关于主机或者区域的额外信息 资源记录类型 类别 类型 全称 涵义 区域记录 SOA Start of Authoruty
+NA Name Server 基本类型 A IPv4 Addres AAAA Original IPv6 Address
+A6 IPv6Address PTR pointer DNAME Redirection MX Mail Exchanger
+安全记录 KEY Public Key
+NXT Next
+SIG Signatures
+可选记录 CNAME Canonical Name
+LOC Location
+RP Responsible Person
+SRV Services
+TXT Text
+rdata 分号”;”:表示注释 圆点”.”:用在名字域时,若圆点后无具体内容则该圆点表示当前域 
+@符号:表示当前域
+圆括号”()”:使得资源记录可以跨越多行
+12.4.2SOA记录 起始授权机构(Start of Authority)记录,是每个授权区域定义的开始标识,属于同一个域的所有资源记录都位于该纪录后面
+name|@ [ttl] [IN] SOA name-server email( serial
+fresh
+retry
+expire
+minium)
+name|@:区域名称,如果为@则表示当前区域的名称
+TTL [IN]:网路协议类别,一般取IN,可省略
+SOA:SOA记录 
+name-server:当前区域的主域名服务器
+email:当前域的技术联系人的邮件地址
+minium:指缓存中否定响应的存活时间
+12.4.3NS记录
+NS(Name Server)用来定义一个区域中的权威域名服务器,包括主域名服务器和从域名服务器,并且将子域授权给其他机构.
+zone [ttl] IN NS hostname
+由于高速缓存域名服务器不属于权威域名服务器,所以无需在父区域的区域文件中列出 
+12.4.4A记录 DNS数据库的核心数据,实际上就是指地址(address).
+hostname [ttl] IN A ipaddress 
+hostname:主机名称 
+ipaddress:IP地址 必须为主机的每个网络接口设置一条A记录
+12.4.5PTR记录 
+与A记录的作用相反,完成IP地址到主机名的反响映射.必须为主机的每个网络接口设置一条PTR记录.
+顶级域arpa:与其他的通用顶级域不同,arpa域并没用分配给组织或者机构使用,而是用于为Internet上的IPv4或者IPv6地址提供反响映射,Internet上反向域名的数据存放在arpa这个顶级域名下面.arpa域有两个子域,分别为in-addr.arpa和ip6.arpa,前者供IPv4地址使用,后者供IPv6地址使用 PTR记录的语法
+ipaddress [ttl] IN PTR hostname
+A记录和与之相对应的PTR记录相匹配很重要,不匹配或者遗漏的PTR记录会产生一些意想不到的问题 
+12.4.6MX记录 
+专门用来处理电子邮件交换的路由
+name [ttl] IN MX preference hostname
+preference:主机接收邮件的优先级,最小0,最大65536,值越小,优先级越高 在设置MX记录时,将优先级设置为不连续的数值是一个非常好的习惯,这样可以很方便的在中间插入新的主机
+12.4.7CNAME记录
+用来为主机分配额外的名称,通常称为别名或者昵称.设置别名的目的通常是明确主机的功能或者缩短一个较长的主机名.
+CNAME记录的语法 
+nickname [ttl] IN CNAME hostname
+nickname:别名 当BIND遇到一条CNAME记录时,他会停止对该名称的查询,而切换到主机的正式名称. 可以为某台主机设置多个别名,也可以将一个别名指派给多台主机. 一种更为妥当的方法是设置多条A记录,指向不同的Web服务器. 
+12.4.8区域文件中的命令
+1.$ORIGIN命令 
+当named程序读取区域文件时,会将默认域追加到所有的不完整的域名后面.所谓默认域,是指在named.conf文件的zone语句中指定的区域名称.可以使用$ORIGIN命令在区域文件中重新指定默认域. $ORIGIN zone 2.$INCLUDE命令 用来包含外部文件,将不同功能的代码放在各自的单独文件中.
+$INCLUDE filename
+3.$TTL命令 $TTL default-ttl default-ttl是一个时间值,如果只指定一个数值,BIND9会将其解释为以秒为单位的时间值.还可以使用数值加单位代码的形势来表示,其中s表示秒,m表示分钟,h表示小时,d表示天,w表示周.
+4.$GENERATE命令 用来生成一系列类似的记录
+12.5BIND9的安全管理
+12.5.1name.conf文件中的安全选项 
+BIND9的安全选项
+选项 |所在语句 |涵义
+---|---|---
+allow-query |options,zone| 那些主机能查询区域服务器
+allow-transfer |options,zone| 那些服务器能请求区域传送
+allow-update |zone |谁能执行动态更新
+blackhole| option |完全忽略那些服务器
+bogus |server |从不查询哪些服务器
+acl |多种语句 |访问控制列表
+12.5.2访问控制列表 
+可以避免DNS中的欺骗和拒绝服务攻击
+12.5.3限制named chroot环境中的目录关系 真实目录 chroot环境中对应的目录
+/
+/var/named/chroot
+/etc
+/var/named/chroot/etc
+/var/named 
+/var/named/chroot/var/named
+/dev 
+/var/named/chroot/dev
+/usr 
+/var/named/chroot/usr
+12.5.4使用TSIG和TKEY保障服务器之间通信的安全 
+所谓TSIG,是指事务签名(Transaction SIGnature).通过事务签名,可以保证服务器之间的安全通信,包括域传送,通知以及递归查询等.
+
+为每对主机产生共享密钥 为了使用TSIG,首先是为每对主机创建一个密钥,尽管密钥可以任意选择,但是必须保证两台机器上的一样.密钥可以使用dnssec-keygen工具自动生产,也可以手工产生.下面的命令为server1和server2产生一个共享密钥:
+dnssec-keygen -a hmac-md5 -b 128 -n HOST server1-server2 
+-a:加密算法
+-b:密钥的长度
+-n:产生的密钥的所有者类型.该选项的值必须是ZONE,HOST,ENTITY,USER或者OTHER之一,分别表示区域,主机,主机关联,用户以及其他用途.默认ZONE
+把共享密钥复制到两台机器中 当密钥产生之后,可以通过一种安全的途径将其复制到两台主机上面,可以选择scp,sftp或者ftp等
+通知服务器密钥的存在 通过key语句在配置文件中定义使用密钥 key server1-server2{ algorithm hmac-md5; secret ************************; }
+通知服务器使用密钥 在server1的named.conf文件加入 server server2_IP{ keys {server1-server2;}; } 在server2的named.conf文件加入 server server1_IP{ keys {server1-server2;}; }
+基于TSIG密钥的访问控制 allow-transfer{key server1-server2;};
+12.6BIND9的测试和调试 12.6.1日志系统 通道:表示日志输出的目标,例如系统日志,日志文件或者不输出 类别:将通道进行分类 工具:系统日志工具名称 严重性:错误消息的严重级
+别 channel channel_name{ (file path[versions(number|unlimited)][size size spec] |syslog syslog_facility |stderr |null);
+[severity(critical|error|warning|notice|info|debug[level]|dynamic);] [print-category yes or no;] [print-severity yes or no;] [print-time yes or no] } 
+channel_name:通道名称
+file:当前的通道是文件通道
+path:文件名
+version:要保存日志文件的多少个副本,如果指定为unlimited,表示不限制副本 
+size:指定每个文件的最大尺寸
+
+12.6.2调试级别
+BIND的调试级别使用从0~11的整数来表示,数字越大,日志输出的信息越详细.级别0表示关闭调试功能.级别1和2适用于调试配置和数据库.大于4的级别适合代码的维护人员使用. 将使系统在调试 级别2启动named程序: named -d2
+12.6.3使用rndc工具调试BIND rndc(Remote Name Daemon Control)命令是BIND9提供的管理工具,允许系统管理员控制域名服务器的运行 rndc [-c config] [-s server][-p port][-y key]command -c:指定配置文件rndc.conf的位置
+12.6.4使用nslookup,dig和host工具调试BIND
+1.nslookup nslookup命令分为交互式和非交互式
+nsloopup [-option][name|-][server]
+-all:显示所有的信息
+-class:设置查询的网络协议类别,可以取值为IN,CH,HS以及ANY
+-domain:指定默认的域
