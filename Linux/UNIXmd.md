@@ -150,3 +150,155 @@ chown -R username:root /p-d-username 为用户添加信息
 /etc/shadow vi /etc/shadow 添加 username:NONE::::::: 
 为用户设置密码 
 passwd username 如果未设置/etc/shadow则会出现错误 
+passwd username does not exit Permission denied 
+## 修改用户 usermod [options] login 
+## 修改用户登录名 usermod -l new_login_name old_login_name
+## 修改登录名有效期 usermod -e expire_date login_name expire_date常用格式(/etc/datemsk文件中的格式) %m/%d/%y %H:%M %m/%d/%Y %H:%M %m/%d/%y %m/%d/%Y %m,%d,%y,%M,%Y,月,日,年,小时,分钟 
+### 修改用户所属组 
+usermod -g new_primary_group -G new_supplementary_group login_name
+new_primary_group 新的主组
+new_supplementary_group 新的备用组
+### 修改用户主目录
+usermod -d home_dir login_name 
+修改主目录权限 chown -R login_name home_dir
+-R:包含所有子目录 ###修改用户默认的Shell usermod -s shell_name login_name 
+### 删除用户
+userdel login_name 该命令并不删除用户目录
+### 删除用户及其主目录 userdel -r login_name
+### 添加组(组名长度一般不超过8个字符) 
+### 使用默认选项添加组 groupadd group_name 
+FreeBSD命令 
+pw groupadd -n group_name -M users
+-n:新用户组组名
+-M:新用户组成员(多个成员之间用逗号隔开) 
+### 指定组ID groupadd -g gid group_name 
+FreeBSD命令
+pw groupadd -g gid -n group_name ###指定重复的组ID group -g gid -o group_name -o:表示使用已有的GID作为新租ID FreeBSD pw groupadd -g gid -o group_name ##修改组 ###修改组名 groupmod -n new_name group_name group_name:必须为当前系统中已存在的用户组名 FreeBSD命令 pw groupadd -l new_name -n group_name ###修改组ID groupmod -g gid group_name FreeBSD命令 pw groupmod -g gid -n group_name ###修改为重复的组ID groupmod -o -g gid group_name ###删除组 groupdel group_name 只删除组,并不删除组成员 (从/etc/group文件中删除组的定义) ##添加角色(类似用户) ###指定角色基目录 roleadd -b base_dir -m role_name -b:指定角色基目录 -m:当角色基目录不存在时自动创建主目录 passwd role_name 角色创建之后还处于锁定状态,设置密码之后,才可以变为可用状态. /etc/user_attr文件记录角色的扩展属性 #####在FreeBSD等BSD家族的UNIX发行版中,并未引入RBAC安全模型,再基于System V的UNIX发行版中,都引入了基于角色的访问控制模型. ##AIX mkrole [attribute=value…] role_name attribute=value是角色的一系列初始化属性 role_name是角色名称 ###指定角色主目录 roleadd -d home_dir role_name -d:指定角色主目录 home_dir:主目录的路径 ###指定角色用户组 roleadd -g primary_group -G supplementary_group role_name primary_group,supplementary_group必须为系统中已存在的组 该角色的成员将成为该角色所在的用户组所在的成员 ###指定角色的有效期 roleadd -e expire role_name expire:角色的有效期,格式必须符合/etc/datemsk文件中定义的格式之一 
+### 指定角色的ID 
+roleadd -u uid role_name uid:必须为未使用的值 
+### 指定角色默认的Shell 
+roleadd -s shell role_name Shell:未设置默认为/bin/pfsh 
+### 指定角色成员 
+usermod -R role1,role2,…login_name role1,role2…当前系统中已存在的角色 
+login_name:当前系统中已存在的登录名 
+在添加用户时指定角色
+useradd -R role1,role2,…login_name 
+### 为角色授权 /etc/user_attr(扩展用户属性数据库) 该文件定义了用户与角色的关系,以及用户切换到角色后的权限配置文件 
+login_name:qualifier:res1:res2:attr 
+login_name:用户登录名,值不能为空 
+qualifier:描述信息 
+3~4列:保留列
+attr:一组用分号隔开的属性及其值的组合,属性形式: key=value 
+/etc/security/prof_attr(权限配置属性数据库) 
+该文件中定义权限配置文件的名称,说明,权限配置文件的授权以及帮助文件的位置 
+profname:res1:res2:desc:attr 
+profname:权限配置文件的名称
+2~3列:保留列
+desc:描述信息 
+attr:一组由分号分隔开的键名和键值的组合,其中键名可选值有help和auths 
+/etc/security/exec_attr(授权属性数据库) 
+该文件定义了需要安全属性才能成功运行的命令
+name:policy:type:res1:res2:id:attr 
+name:权限配置文件的名称 
+policy:与此项相关联的安全策略(可取suser和solaris)
+type:指定实体的类型,目前只能取值为cmd,表示实体类型命令 
+4~5列:保留列
+id:标识实体的字符串,对于命令来说应该具有全路径或通配符(*)
+attr:以分号分隔的关键字-值对的可选列表,用于说明将在执行时应用于实体的安全属性,可以指定零个或多个关键字,有效关键字的列表取决于强制执行的策略,对于suser策略,共有4个有效关键字,分别为euid,uid,egid,和gid. 
+/etc/security/auth_attr
+该文件定义了所有的授权,这些授权可以直接赋给角色或者用户,写入/etc/user_attr文件中,可以赋给权限配置文件(profile),写入/etc/security/prof_attr文件,然后再将配置文件指定给角色. 
+###### eg:创建一个拥有关闭系统能力的角色
+1. 添加角色:名称shutdown,密码test 
+roleadd -m -d /export/home/shutdown shutdown
+2. 修改配置文件.在/etc/security/pro_attr文件中添加所使用的profile,命令: 
+vi /etc/security/prof_attr 在文件末尾添加 Shut:::Ability to shutdown system 
+3. 修改定义执行属性文件/etc/security/exec_attr 
+vi /etc/security/exec_attr 在文件末尾添加 Shut:suser:cmd:::/usr/sbin/shutdown:uid=0 
+4. 将权限配置文件指派给角色,命令: rolemod -P Shut shutdown 
+5. 添加用户,并为其指定角色 useradd -m -d /export/home/alice -R shutdown alice passwd alice 
+6. 切换到alice用户,命令如下: su -alice 
+7. 查看用户配置文件 /export/home/alice$ /usr/bin/profiles
+
+查看用户alice的角色 /export/home/alice$ roles
+切换到shutdown角色 /export/home/alice$ su – shutdown
+执行关闭系统命令 $ /usr/sbin/shutdown -i 0 -g 0 -i:要转入的运行级别.(关闭系统为0) -g:执行时间.(0表示立即执行) 
+## 修改角色
+### 修改角色名 rolemod -l new_role_name role_name 
+-l:表示修改登录名
+*修改角色名称后,该角色用户不会随之改变,必须人工对用户重新分配角色
+### 修改角色主目录 rolemod -d home_dir 
+home_dir:表示实际存在的物理路径,且角色需要拥有读写权限 
+-d:如果指定了不存在的路径,则需要使用-m选项.(如果不使用-m选项,系统不会报错) 
+### 修改角色的主组 
+rolemod -g primary_group -G supplementary_group 
+role_name primary_group:主组名 
+supplementary_group:备用组名
+### 修改角色有效期 rolemod -e expire_date 
+expire_date:指定到期时间(/etc/datemsk) 到期之后任何用户都不可以使用该角色 
+### 修改角色默认Shell 角色默认shell为/usr/bin/pfsh,称为pfsh,是因为它是专门由于权限配置文件(profile)的Shell程序之一. 
+rolemod -s shell_dir 
+-s:修改默认shell 
+shell_dir:指定shell路径 
+### 修改角色授权 rolemod -A authorization
+-A:修改权限 
+authorization:表示具体的授权,多个授权之间用逗号隔开 
+eg:将磁盘管理的权限赋予角色
+role1 rolemod -A solaris.admin.diskmgr.write role1 
+## 删除角色
+### 使用默认选项删除角色 
+roledel role_name 实际上是从/etc/passwd文件中删除角色的有关记录 
+### 删除角色主目录
+roledel -r -role_name 
+-r:删除(remove) 同时删除角色的主目录
+# UNIX文件,目录和档案的操作 ###文件类型
+
+普通文件:
+文本文件,常用来存储文本数据 二进制文件:可执行文件,图像,视频,音频.
+目录:用来组织和访问其他文件:
+每个子目录和文件都在其父目录中拥有一条记录,包括: I:文件名 II:文件或目录的唯一标识(inode节点)
+伪文件:
+I:设备文件,如键盘,显示器等.
+II:命名管道:将一个命令的输出连接到另一个命令的输出上面.
+        III:proc文件,可以访问内核信息.
+### 目录和子目录 
+tree / -L 2 
+-L:输出目录的层数
+Solaris系统没有提供tree命令
+### 链接文件 
+硬链接:不能跨文件系统.硬链接与源文件是同一文件.创建一个硬链接后,系统本身无法区分那个为源
+### 文件(inode值相同). 
+软链接:符号链接,可以跨文件系统. 
+### 创建链接文件 ln [options] file_name link_name options: -s:建立软链接 
+### 查看inode值 ls -li
+
+inode_value primer link_num owner group size date file_name
+
+inode_value:inode值 primer:权限 link_num:链接数 owner:所有者 group:组群 size:文件大小 date:创建日期 file_name:文件名
+删除硬连接不会释放inode节点,只会是指向该inode节点的链接数减1,直到链接数为0时,才会释放该inode节点 
+#### 创建软链接 
+删除原文件后,软链接无变化,但无法访问. 创建软链接时,使用相对路径,保证最大化可移植性.
+设备文件 用来表示物理设备的伪文件
+① 硬件设备文件 软盘,IDE硬盘,SCSI,SATA或者SAS硬盘,打印机等.
+② 终端设备文件 终端,控制台/虚拟控制台,伪终端
+③ 伪设备文件(/dev/null, /dev/zero)
+cat /etc/passwd>/dev/null
+cat /etc/passwd>/dev/zero 当处理输出时,这两个伪设备文件的作用相同. 当处理输入时,从/dev/null中读取数据,不管请求多少字节,其结果总是eof,从/dev/zero中请求数据,则会返回请求数量的字符,并且这些字符值都为0.
+eg:创建一个1000字节的文件 
+dd if=/dev/zero of=temp bs=200 count=5 
+dd:输入输出工具 
+if:文件输入 
+of:文件输出
+bs:块大小
+count:快的数量
+## 命令管道 
+匿名管道表示方法:| 从功能上讲,匿名管道与命名管道基本相同,都是将一个进程的输出连接到另一个进程的输入. 
+从特性上讲,两者有明显的区别,首先命名管道必须显式的创建,其次,命名管道不会自动消失,除非用户手动删除命名管道,否则命名管道会一直存在,因此,命名管道可以重复使用. 
+### 创建管道 
+mkfifo [-m mode] pipe
+### 删除管道 
+rm fifo_name 
+### proc文件 一种提供多种系统信息的伪文件,proc文件直接从系统内核中获取信息,所有proc文件都存储在/proc目录中. ##文件操作 创建文件(vi,>,cp) 创建空白文件 
+#### I.touch [-acm] [-r ref_file|-t tim|-d date_tim] file… -a:改变访问控制时间 
+-c:如果目标文件不存在,则不创建该文件 -m:改变修改时间 
+-r:指定参考文件,touch会依据该文件的事件属性来修改目标文件的时间属性 
+-t:指定时间属性 -d:指定日期和时间属性 file:要修改其属性的目标文件 
