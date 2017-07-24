@@ -1518,3 +1518,155 @@ nsloopup [-option][name|-][server]
 -all:显示所有的信息
 -class:设置查询的网络协议类别,可以取值为IN,CH,HS以及ANY
 -domain:指定默认的域
+-port:指定域名服务器的端口
+
+nslookup中的交互式命令
+    命令          功能
+name            打印关于name指定的主机或者域名的信息
+help或者?     显示完整的命令清单
+exit            退出交互式环境
+server host     设置host指定的服务器为默认服务器
+lserver host    设置初始服务器为默认服务器
+set type=xxx    设置要查询的记录类型
+set debug       打开调试模式
+set d2          打开多个调试
+ls domain       列出所有主机
+2.dig dig(Domain Information Gropher)域名信息搜索器. dig @server name type @server:指定要查询的域名服务器
+12.7常见问题
+DHCP服务器
+13.1DHCP概述 
+13.1.1DHCP DHCP是指动态主机配置协议(Dynamic Host Configuration Protocal, DHCP).DHCP是一个局域网协议,在UDP协议的基础上工作 自动分配IP地址 集中管理局域网中的电脑 
+13.1.2作用域 
+是一个完整连续的可用IP地址范围,DHCP服务主要就是通过作用域来管理网络分布,IP地址分配及其他相关配置参数
+subnet 10.5.5.0 netmask 255.255.255.224{ range 10.5.5.26 10.5.5.30; 
+option domain-name-servers ns1.internal.example.org; option domain_name
+“internal.example.org”; option routers 10.5.5.1; 
+option broadcast-address 10.5.5.31; 
+default-lease-time 600; max-lease-time 7200; } 
+作用域为10.5.5.0 可以分配给客户端使用的IP地址范围为10.5.5.26~10.5.5.30 
+13.1.3超级作用域
+一组作用域的集合,通常是由一个物理子网中包含的多个IP子网组成的.
+13.1.4地址池
+地址池是指DHCP作用域中,排除不能分配给客户端的某些IP地址之后,剩余的地址的集合.只有地址池中的IP地址,才可以真正地指派给客户端使用.
+13.1.5租约
+DHCP为客户端分配IP地址的方式与现实生活中的出租物品非常类似
+13.1.6DHCP工作原理
+1.请求IP租约 当DHCP客户机第一次登录网络时,如果客户机上没有任何IP信息设定,它会向网络发出DHCP发出(DHCP DISCVER)数据包,为保证服务期能够接受请求,数据包源地址设定为0.0.0.0,而目的地址为255.255.255.255,以广播形式发送DHCP DISCOVER的信息
+2.提供IP租约 当DHCP服务器监听到客户端发出的DHCP IDSCOVER广播后,它会从那些还没有租出的地址范围内选择可用的IP地址以及其他的TCP/IP设定,以DHCP提供(DHCP OFFER)数据包的形式发送个客户机
+3.选择IP租约 如果客户端收到网络上多台DHCP服务器的响应,客户端会挑选最快的一个DHCP OFFER并向网络发送一个DHCP请求(DHCP REQUEST)广播封包,告诉所有DHCP服务器它将使用哪一台服务器提供的IP地址.同时,客户端还会向网络发送ARP广播数据包,查询网络上有没有其他机器使用该IP地址,如果发现该IP地址已被占用,客户端则会发送一个DHCP拒绝(DHCP DECLINE)数据包给DHCP服务器,拒绝接受其DHCP OFFER,并重新发送DHCP REQUEST信息
+
+确认IP租约 将地址分配给客户端后,DHCP服务器会发送一个DHCP ACK消息,以确认IP租约的正式生效,结束完整的DHCP工作过程 DHCP客户端成功地从服务器取得IP地址后,一般不需要再发送DHCP DISCOVER信息了,除非其租约已经到期或者IP地址重新设定回0.0.0.0 此时,客户端会直接使用已经租用到的IP地址向为其发送此IP地址的DHCP服务器发出DHCP REQUEST信息,DHCP服务器会尽量让客户端使用原来的IP地址,如果没有特殊的情况,会直接响应DHCP ACK,允许客户端继续使用该IP地址.如果该地址已经失效或者已经被其他主机使用了,服务器则会响应一个DHCP NACK 数据 包给客户端,要求其重新执行DHCP DISCOVER
+13.2安装DHCP服务器
+13.2.1DHCP服务器软件
+AIX:dhcpsd FreeBSD:ISC-DHCP,WIDE-DHCP HP-UX:bootpd
+Solaris 11之前:in.dhcpd 
+Solaris 11:ISC-DHCP
+13.2.2ISCDHCP服务器的安装 
+DHCP服务器软件源码下载地址:http://www.isc.org/software/dhcp 
+下载完成后解压 
+tar zxvf dhcp-4.2.3-P2.tar.gz 
+进入释放后的源代码所在目录 
+cd dhcp-4.2.3-P2 
+编译和安装dhcp源代码 
+./configure make && make install
+Solaris 11使用二进制软件包安装ISC DHCP 
+切换到root身份
+pkg install pkg:/service/network/dhcp/isc-dhcp 
+FreeBSD通过Ports安装DHCP服务器
+cd /usr/ports/net/isc-dhcp41-server make && make install
+DHCP编译和安装完成后,在/etc/rc.conf文件中增加以下代码
+dhcpd_enable=”YES” #dhcpd enabled? dhcpd_flags=”-q”
+#command option(s) dhcpd_conf=”/usr/local/etc/dhcpd.conf”
+#configuration file dhcpd_ifaces=”em0”
+#ethernet interface(s) dhcpd_withumask=”022” 
+#file creation mask 
+13.3DHCP服务器的常规配置
+13.3.1DHCP服务器配置流程
+1.定义作用域 
+DHCP服务器作用域是在其主配置文件dhcp.conf中进行定义的.
+当DHCP服务器软件安装完成之后,文件dhcp.conf的内容通常是空白的,需要我们根据自己的网络情况来设置作用域以及各种网络参数和地址池
+2.建立租约数据库
+租约数据库文件用于保存一系列的租约声明,其中包括客户端到的主机名,MAC地址,分配到的IP地址,以及IP地址的有效期等相关信息.是可编辑的ASCII格式文本文件 
+4.重新加载配置文件 ISC-DHCP的工作流程
+(2) 
+(1 ) dhcpd.conf
+
+(3) DHCP服务器 
+(4)
+
+(5)
+
+租约数据库文件
+
+具体描述
+(1) 客户机发送广播向DHCP服务器申请IP地址
+(2) 服务器收到请求后查看主配置文件dhcpd.conf,先根据客户端的MAC地址查看是否为客户端设置了固定IP地址
+(3) 如果为客户端设置了固定IP地址,则将该IP地址发送给客户端.如果没有设置固定IP地址,则将地址池中的IP地址发送给客户端 
+(4) 客户端收到服务器回应后,客户端给予服务器回应,告诉服务器已使用了分配的IP地址 (5) 服务器将相关租约信息存入数据库 
+13.3.2DHCP主配置文件
+ISC DHCP服务器的主配置文件为dhcpd.conf 
+FreeBSD DHCP的主配置文件的路径可以通过dhcpd_conf选项来指定,默认情况下,文件目录为/usr/local/etc/dhcpd.conf
+Solaris 11 主配置文件为 /etc/inet/dhcpd4.conf /etc/inet/dhcpd6.conf 
+13.3.3常用参数介绍 
+1.ddns-update-style none:不支持动态更新
+interim:DNS互动更新模式
+ad-hoc:特殊DNS更新模式 
+2.ignore client-updates 忽略客户机更新,只用于服务器上
+3.default-lease-time 定义默认的IP地址租约时间,单位为秒
+
+max-lease-time 定义客户机IP租约时间的最大值,单位为秒
+13.3.4常用声明语句介绍
+声明语句用来定义IP作用域以及定义为客户端分配的IP地址等.
+在dhcpd.conf文件中,声明语句主要有两种,分别为subnet和range.
+subnet 用来定义一个作用域 subnet ID netmask{ local_parameters; local_options; range_statement; } ID的值必须与DHCP服务器所在的网络标识相同 local_parameters:局部参数 local_options:局部选项 range_statament:用来定义地址池的range语句
+range 用来定义地址池 range start_ip_addr last_ip_addr start_ip_addr:地址池的起始地址 last_ip_addr:地址池的结束地址 在一个subnet语句中,可以有多个range语句,但多个range语句所覆盖的IP地址范围不能脚超或者重复 13.3.5常用选项介绍 1.routers 为客户机指定默认网关 option routers 192.168.0.1 2.subnet-mask 定义客户机的子网掩码 option subnet-mask 255.255.255.0
+domain-name-servers 
+指定客户机默认使用的DNS服务器地址 
+option domain-name-servers 192.168.1.1,192.168.1.2 13.3.6租约数据库文件 租约数据库文件用于保存一系列的租约声明,其中包含客户机的主机名,MAC地址,分配到的IP地址,以及IP地址的有效期等相关信息.租约数据库文件是可编辑的ASCII格式文本文件. Solaris 11,租约数据库文件的路径 
+/var/db/isc-dhcp/dhcp4.leases
+/var/db/isc-dhcp/dhcp4.leases- 
+/var/db/isc-dhcp/dhcp6.leases
+/var/db/isc-dhcp/dhcp6.leases-
+FreeBSD 租约数据库文件位于/var/db目录中,文件名为dhcpd.leases和dhcpd.leses.其中以””符号结尾的文件是租约数据库文件的副本
+13.3.7管理DHCP服务 
+Solaris 11
+启动DHCPv4服务进程
+svcadm enable svc:/network/dhcp/server:ipv4 
+启动DHCPv6服务进程
+svcadm enable svc:/network/dhcp/server:IPv6
+停止DHCP服务 
+svcadm disable svc:/network/dhcp/server:ipv4
+或 svcadm disable svc: /network/dhcp/server:IPv6 
+FreeBSD启动DHCP服务
+/usr/local/etc/rc.d/isc-dhcpd start 
+停止DHCP服务
+/usr/local/etc/rc.d/isc-dhcpd stop
+13.3.8IP地址绑定
+使用ISC DHCP服务器还可以实现将某个固定的IP地址绑定到摸个网卡的物理地址上面
+host hostname{ hardware ethernet mac_addr; fixed-address ip_addr; }
+hostname:主机名称
+hardware:网卡的硬件地址
+ethernet:以太网
+mac_addr:MAC地址十六进制
+fixed-address:为某个客户端分配的固定的IP地址
+13.4DHCP客户机配置
+13.4.1UNIX DHCP客户机配置
+Solaris 
+dhcpagent是一个守护进程,可以获得引导系统时所涉及的其他进程所需的配置信息,
+13.4.2Linux DHCP客户机配置 
+在/etc/sysconfig/network添加
+NETWORKING=yes 
+在/etc/sysconfig/network-scripts目录中
+文件名为ifcfg前缀加上网络接口名称. 
+编辑想要启动DHCP客户端的网络接口配置文
+DEVICE=eth0
+BOOTPROTO=dhcp 
+ONBOOT=yes 
+禁用并重新激活网络接口 
+ifdown eth0 
+ifup eth0 或重启网络功能 service network restart 使用dhclient命令重新发送广播,申请IP地址
+dhclient eth0 
+13.5常见问题
+FTP服务器 
+14.1文件传输协议概述
+14.1.1文件传输协议
