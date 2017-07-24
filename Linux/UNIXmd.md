@@ -758,3 +758,155 @@ options:
 snap目录(会导致该文件系统中不支持快照)
 -p:指定要创建文件系统的BSD分区,其值为a~h 
 specilafile:要创建文件系统的特殊设备文件名称
+### 挂载和卸载文件系统
+#### 挂载 mount [options] 
+options:
+-p: 列出当前系统已挂载的文件系统
+-v: 开启冗余模式(verbose mode)显示一些附加信息 
+#### 文件系统挂载选项
+-a: 使用该选项,mount命令将挂载/etc/fstab文件中描述的所有文件系统,除了被标记为noauto,late或者-t标志排除的文件系统,以及已挂载的文件系统.
+-f:强制挂载个不干净的文件系统 -o:指定挂载选项
+
+async
+force
+fstab
+late
+noasync
+noatime
+noauto
+noexec
+nosuid
+ro
+snapshot
+sync
+union
+-r: 只读挂载指定的文件系统
+-t: 指定要挂载的文件系统的类型,默认值为ufs
+-w: 文件系统以读写的方式挂载,不适用于Solaris
+### 卸载文件系统
+umount [options] special_file | node 
+options: 
+-a:卸载fstab文件中描述的所有文件系统
+-A:卸载当前已挂载的所有文件系统,除根文件系统之外,只适用于FreeBSD
+-F:指定fstab配置文件,只适用于FreeBSD 
+-f:强制卸载某个文件系统
+-t:指定要卸载的文件类型
+### 查看文件系统使用者
+fuser [options] file 
+options: 
+-c:显示包含指定文件的文件系统中关于任何打开的文件的报告
+-f:仅报告指定文件的使用情况
+-k:将SIGKILL信号发送到每个本地进程
+-u:为进程号后圆括号中的本地进程提供登录名
+### 挂载MS-DOS文件系统
+mount_msdosfs [options] special_file node 
+options:
+-o:指定挂载选项 
+large 支持超过128G的大文件系统 
+longnames 支持Windows长文件名
+shortnames 只支持Windows短文件名,即文件名的长度不超过8个字符,扩展名长度不超过301个字符 
+nowin95 忽略Windows95的扩展的文件信息
+-u:指定文件系统中文件的所有者
+-g:指定文件系统中文件的所属的组
+-m:指定文件系统中文件权限掩码
+-s:强制忽略Windows的长文件名
+-l:强制列出Windows的长文件名
+special_file:要挂载的文件系统所对应的特殊文件
+node:挂载点 
+### 挂载NTFS文件系统
+mount_ntfs [options] special_file node 
+### 挂载Linux文件系统
+mount t ext2fs special_file node 
+###挂载和卸载基于CD-ROM的文件系统
+mount_cd9860 [options] special_file node
+### 检查和修复文件系统
+#### fsck命令简介 
+进入单用户模式 
+FreeBSD 
+init 1 shutdown +5 Solaris init s | init S fsck [options] special_file | node 
+options: -f:强制检查所有的文件系统,即使某个文件系统被标记为clean
+-n:对于检查过程的所有问题都默认给否定(no).除CONTINUE以外.
+-p:进入整理(preen)模式,可以修复一些轻微的错误 -y:对检查过程中所有问题都回答(Yes)
+-m:适用于Solaris,之检查,不修复. -F:适用于Solaris,指定要检查的文件系统类型
+-t:适用于FreeBSD,指定要检查的文件系统类型 special_file:要检查的文件系统所对应的特殊文件
+node:文件系统的挂载点
+#### fsck命令的工作过程
+
+检查inode节点格式的正确性 如果inode有问题,标识为BAD 如果有问题且已被另外的文件所引用,则标识为DUP
+查找i节点号越界的块 从操作系统根目录检查所有的目录项,检查在第一步中发现的i节点号越界的块,默认情况下,删除整个目录或者文件
+查找没有被引用的目录 在UNIX操作系统中,默认情况下每个文件系统下都有lost+found这个系统目录,在fsck命令修复时,查找没有被引用的目录,并保存到此目录.
+核对i节点的链接数与目录文件的记录数 逐个核对i节点的链接数与目录文件的记录数.并给出相应的提示与操作.该过程会最大限度修复被损文件
+检查超级块 将可用块数与保持在超级块中的块数进行比较 如果发现问题会提示系统管理员,是否进行自动修复 如果自动修复,会利用新计算出的块列表替换旧的错误的块列表 使用fsck检查和修复文件系统 单用户模式:首选的执行文件系统检查的环境 多用户模式:卸载被检查文件系统后执行fsck命令 ##磁盘配额
+磁盘配额需要UNIX内核支持 FreeBSD的磁盘配额内置于GENERIC内核 重新编译自定义内核,并在内核中加入一行 options QUOTA 编译并安装完自定义内核后,在/etc/rc.conf文件中加入 
+quota_enable=”YES” check_quota=”NO” 启用磁盘配额服务 启动时跳过一致性检查
+### 分配磁盘配额 
+在/etc/fstab文件中需要应用配额的文件系统设置配额选项 在fstab文件第4列中加上userquota或groupquota选项 验证文件系统的磁盘配额是否启用
+FreeBSD 
+## edquota -u username 
+-u:要设置磁盘配额的用户
+-v:验证是否分配成功 -p:将配额应用到ID在某个范围之内的所有用户
+## 进程和作业 
+## 监视进程
+ps [options] 
+options: 
+-a:列出与任何用户标识和终端相关的进程信息
+-A:列出所有的进程,包括守候进程,该选项的作用与-e选项相同
+-e: 列出所有的进程,包括守候进程
+-f:显示每个进程的完整信息
+-l:以长格式显示每个进程
+-o:指定显示格式
+-p:显示指定进程ID的进程信息
+-u:显示与指定用户ID相关的进程的信息
+-t:只显示与某个终端相连的进程的信息 缺省只列出与当前用户和终端有关的进程
+### BSD版本
+a:显示所有用户和终端相连的进程
+e:同时显示进程运行的环境
+p:显示指定进程ID的进程
+u:显示与指定用户ID有关的进程
+### Solaris中的ps命令的常见列及其涵义 
+ADDR 进程的内存地址
+C 处理器的利用率
+CMD 正在被执行的命令的完整文件名以及参数
+NI 进程的nice值,用于设置进程的优先级 
+PID 进程ID
+PPID 父进程ID 
+PRI 进程优先级 
+S 进程状态,包括O,S,W,R,T和Z STIME 进程运行的总时间
+TIME 进程累计CPU时间
+TTY 进程的控制终端名称,如果没用控制,则显示一个问号
+UID 进程的用户ID 
+### FreeBSD的ps命令的常见列及其涵
+%cpu 处理器(CPU)的使用百分比
+%mem 真实内存的使用百分比
+cmd 正在被执行的命令的名称
+command 正在被执行的命令的完整名称,包括参数
+cpu 短期处理器的使用
+nice或者ni nice值,用于设置进程优先级
+pgid 进程组ID 
+pid 进程ID 
+ppid 父进程ID 
+pri 调度优先级
+re 内存驻留时间,以秒为单位
+rss 内存驻留空间大小
+sl 睡眠时间,以秒为单位
+stat 状态码,包括D,I,L,R,S,T,W以及Z
+time 累计CPU时间
+tsize 文本大小,以KB为单位
+tt 控制终端的缩写,通常是两个字母
+tty 控制终端的完整名称 
+uid 用户标识 
+user 用户名
+vsz 虚拟内存大小
+### Solaris的状态码 O:正在运行 S:可中断睡眠状态,进程在等待某个事件的发生
+R:可运行状态,正在运行队列中等待 W:进程正在等待CPU的使用率降低至阈值以下
+T:挂起状态,有作业控制信号或者因为追踪而被挂起
+Z:僵死状态 
+### FreeBSD&Linux
+D:不可中断的睡眠状态,等待事件的结果,通常是I/O
+I:空闲状态,超过20秒的睡眠,仅适用于FreeBSD
+R:可运行状态 S:睡眠状态,少于20秒
+T:挂起状态,有作业控制信号或者因为追踪而被挂起 
+Z:僵死进程
+### 搜索进程
+pgrep [options] pattern 
+options: 
