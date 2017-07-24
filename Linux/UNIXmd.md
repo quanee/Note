@@ -454,3 +454,155 @@ options:
 -r:只用正则表达式搜索
 -n:限制搜索结果的数量 
 -u:更新slocate数据库
+pattern:搜索的字符串
+### find命令 (效率低,功能强大)
+通过搜索目录树来搜索文件 
+find path… express … action… 
+path:路径 
+express:条件
+action:操作 
+### 路径
+UNIX系统中find命令必须制定一个相对或绝对路径(Linux系统可以省略,为当前路径) 
+| 条件: | 常用条件 | 
+--------|---------------------|-----------------------------------------
+|-name pattern |名称为pattern的文件或目录,使用通配符’*’,’?’或’[]’时字符串用单引号或转义字符|  -iname pattern |名称为pattern的文件或目录,忽略大小写| 
+-type |文件类型,可以取值为d,f,b,c,p或l,分别表示目录,普通文件,块设备,字符设备,命令管道或链接| 
+-perm mode |文件模式为mode的文件或目录| 
+-user userid |所有者为userid的文件或目录| 
+-group groupid |组为groupid的文件或目录| 
+-size [-+]n[cbkMG] |指定文件大小,-小于指定大小,+大于指定大小,n具体大小,c,b,k,M或者G分别表示字符,块,千字节,兆字节和千兆字节| 
+-empty | 空文件| 
+-amin n | n分钟之前访问的目录或文件| 
+-atime n | n天之前访问的目录或文件| 
+-cmin n | 状态在n分钟之前发生改变的文件或目录| 
+-ctime n | 状态在n天之前发生改变的文件或目录| 
+-mmin n | n分钟之前被修改的文件或目录| 
+-mtime n | n天之前被修改的文件或目 录| 
+
+## 在使用求反运算符时必须前后都有一个空格 运算符一定要放在单引号中或使用转义字符
+| 操作 | 常用操作 | 
+|------------|--------------------------------------------------| 
+-print | 将搜索结果写入到标准输出,默认操作 |
+-fprint file | 将结果写入file文件中(UNIX不支持),使用> |
+-ls | 显示详细目录列表 | -fls file | 将结果写入file文件中(UNIX不支持),使用> |
+-delete | 将搜索结果文件从磁盘删除 |
+-exec command{}; | 执行command参数指定的命令 |
+-ok command{}; | 同-exec,执行命令时要求用户确认
+## 文件压缩与归档 ####压缩与解压缩(gzip和gunzip) 
+### 压缩(.gz格式) 
+gzip [options] [name…] 
+options: 
+-d:解压缩文件
+-l:列出被压缩文件信息
+-r:递归压缩,包括目录中所有的文件和子目录
+-v:显示压缩过程中每个被压缩文件的信息
+-c:将文件压缩或解压缩至标准输出
+name:被压缩文件列表.多个文件之间用空格隔开
+
+gzip命令会删除源文件 
+### 解压缩 
+gunzip [options] [name…]
+options: 
+-r:递归解压 
+-v:显示解压过程的详细信息
+-c:将数据解压是标准输出 大部分软件先用tar命令归档,然后再用gzip压缩 gzcat命令,可以将.gz压缩文件的内容输出到标准文件
+### 压缩与解压缩命令:
+bzip2和bunzip2 (.bz2) 
+bzip2 [options] [filename…] 
+options: 
+-d:解压缩文件 
+-c:将文件压缩或解压缩至标准输出
+-t:测试压缩文件的完整性,不解压文件
+-v:显示压缩或解压缩的详细信息
+### 归档命令:tar
+tar fuctions tarfile file… 
+functions:
+c:创建新的tar文件
+x:解开tar文件
+t:列出tar文件中包含的文件的信息
+r:追加新的文件到指定的tar文件
+u:用新的文件更新tar文件中相应的文件
+f:指定归档文件名称.可以使用-表示标准输入或标准输出.
+v:tar命令详细的处理过程,即列出每一步处理涉及的文件的信息
+z:调用gzip命令对生成的tar归档文件执行压缩,仅在c模式下使用,x或t模式下,忽略
+Z:调用compress命令对生成的归档文件执行压缩,仅在c模式下使用,x或t模式下,忽略
+j:调用bzip2命令对生成的tar归档文件执行压缩,仅在c模式下使用,x或t模式下,忽略 
+## 文件处理命令 
+### 文件类型识别:
+file(不一定能够完全准确识别) 
+file filename… 
+file命令是根据幻数(magic number)来判断文件类型的 幻数保存在文件的开头几个字节里面,每个文件都有一个幻数
+### 统计行数,字数以及字符数:wc 
+wc [options] file
+options: 
+-c:统计字节数
+-C:统一字符数
+-l:统计行数
+-m:统计字符数,同-C
+-w:统计字数,字与字之间用空格隔开换行符隔开
+### 数据的八进制显示:od(octal dump) 
+od [options] file… 
+options: 
+-b:以八进制显示每个字节
+-c:显示ASCII字符
+-x:以十六进制显示每个字节
+### 文件对比:cmp (compare) 
+cmp fiel1 file2 
+如果file1和file2完全相同,则表示输出 否则,cmp命令会输出第1处不同所在的字节及行号,然后忽略后面的不同之处,执行退出
+-l:列出两个文件的所有不同之处 
+###找出两个文件的相同之处: comm 
+comm [options] file1 file2 
+options:
+-1:数字1,不输出file1独有的部分
+-2:数字2,不输出file2独有的部分
+-3:数字3,不输出两个文件共有的部分 默认都输出(分别为第1列,第2列,第3列)
+### 显示文件的差异:diff和diff3 提示如何对第1个文件进行修改,就可以与第2个文件相同
+diff [options] file1 file2 
+options: 
+-i:忽略字母大小写 
+-w:忽略空格以及制表符 
+-e:只生成一组指令,已提供给其他程序使用
+eg:num1,num2[op]num3,num4 
+op: 
+a: (append)追加 
+d: (delete)删除 
+c: (change)修改
+diff3用来比较3个文件的内容 
+### 文件内容的排序:sort
+sort [options] file… 
+options:
+-c:检查排序是否正确 -m:仅仅执行合并操作,该选项会假设指定的多个文件的内容都是有序的.
+-o:指定输出文件,缺省默认输出到屏幕
+### 搜索文件内容:grep 
+grep [options] pattern file 
+options:
+-c:只输出到符合指定匹配模式的行数
+-i:在比较的过程中忽略大小写
+-n:显示符合指定模式的行号
+-v:输出除符合指定模式以外的所有行
+pattern:指定具体的匹配模式,可以同时指定多个模式,也可以使用正则表达式
+file:指定要搜索的文件,可以同时指定多个文件,也可以使用通配符
+### 显示文件内容:cat 
+cat [options] file… 
+options:
+-b:显示行号,并且忽略空行
+-n:显示行号,包括空行
+### 分页显示文件内容:more和less
+more file…
+-f:水平方向过长 
+Enter键:向上移动一行 
+空格键:向上滚动一屏 
+### more只向上滚动
+less file 
+Space或f键:向前滚动一屏
+b键:向后滚动负一屏
+u键:向后滚动半屏
+### less双向滚动
+###显示前面n行内容
+head [-number|-n number] file…
+### 显示文件后面n行内容:tail
+tail [-number|-n number] file… 
+### vi文本编辑器(Visual Interface) 
+文本编辑器ex的可视化结果 
+vi工作模式
+### 一般模式
