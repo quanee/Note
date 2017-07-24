@@ -1214,3 +1214,155 @@ DNS服务器
 基础设施顶级域名
 
 国家和地区顶级域
+
+国际化国家和地区顶级域
+12.1.4域和域名
+在DNS树中,域都是分支节点,而主机是叶子节点
+12.1.5区域和域的不同 域:DNS树上面的一个分支节点以及所有的下面的节点 区域:把域的某个部分授权出去让别人代为管理,称为区域
+12.1.6域名服务器的类型
+1.主域名服务器(Primary DNS Server) 
+2.辅助域名服务器(Secondary DNS Server)
+3.高速缓存域名服务器(Cache DNS Server) 
+4.转发服务器(Forwarding Server) 
+12.1.7DNS基本原理 
+首先,DNS系统以分布式数据库的方式提供域名解析服务.在分布式数据库中,每一条记录称为资源记录(resource record, RR)
+其次,DNS系统中的数据库采用分散式的方式来管理,没用任何一个域名服务器中的数据库会包含Internet上的所有资源记录.
+再次,同一个数据库可以由多台域名服务器来管理,查询其中任何一台域名服务器都可以得到相同的资源记录.反之,同一个域名服务器可以管理多个区域的数据库,不同的域名数据库查询都可能是由同一台域名服务器提供
+最后,将本来属于自己所管理的资源记录授予其他的域名服务器来管理,称之为授权(delegation).一经授权,上层的域名服务器都不在管理这些区域,完全依靠被授权的域名服务器来管理. 
+12.2BIND及其安装方法 
+12.2.1关于BIND 
+BIND是互联网上使用最为广泛的域名服务器软件,约占90%市场 BIND(Berkeley Internet Name Domain) 1984年,柏克莱加州大学(University of California, Berkeley)计算机系统研究小组的4个研究生共同开发了UNIX系统上的第1个DNS协议 1985年,美国设备公司(Digital Equipment Corporation, DEC)的工程师Kevin Dunlap重写了这个最初的DNS实现,并正式命名为BIND 20世纪90年代,BIND被移植到Windows NT平台上. BIND发展过程中经历了3个主要版本,分别是BIND 4,BIND 8和BIND 9,每个版本在架构上有显著变化.
+BIND软件包包括: 
+ DNS服务器:名称为named的程序,是name daemon的缩写,主要功能是根据DNS协议标准的规定,响应收到的DNS查询 
+ DNS解析器:一个解析器是一个程序,通过发送请求到合适的服务器并且对服务器的响应做出合适的回应,来解析对一个域名的查询,一个解析库是程序组件的集合,可以在开发其他程序时使用,为这些程序提供域名解析的功能 
+ 测试服务器的软件工具.例如,nslookup,dig以及host等
+12.2.2以二进制软件包的方式安装Bind 9 
+以root身份登录,执行以下命令
+(Solaris) pkg install pkg:/service/network/dns/bind
+查看当前系统中安装的BIND的版本
+named -v FreeBSD命令 
+安装 
+cd /usr/ports/dns/bind98/ make && make install 
+查看BIND版本 
+named -v 
+12.2.3以源代码的方式安装BIND9
+BIND9代码下载网址http://www.isc.org/downloads tar zxvf bind-9..tar.gz 
+cd bind-9. ./configure make && make install 以源代码的方式安装BIND9需要gcc编译器 
+12.2.4启动和停止BIND 9 
+BIND 9最主要的服务进程为named 
+启动named服务
+svcadm enable dns/serve
+或者 svcadm enable dns/serve:default
+停止named服务
+svcadm disable dns/serve
+或者 svcadm disable dns/serve:default
+FreeBSD中需要先配置/etc/rc.conf文件,增加以下代码:
+#add following line if not present named_enable=”YES”
+#the line below must replace the line named_program=”usr/sbin/named” if present
+
+otherwise add it
+
+named_program=”/usr/local/sbin/named” 启动named服务进程 /etc/rc.d/named start 停止named服务进程 /etc/rc.d/named stop 12.3配置BIND 9
+
+12.3.1BIND配置文件概述 BIND组件以及位置 组件 Solaris FreeBSD BIND主配置文件 /etc/named.conf /etc/named/named.conf BIND可执行文件
+/usr/sbin/named /usr/sbin/named-check /usr/sbin/named-checkzone /usr/sbin/named-compilezone /usr/sbin/named /usr/sbin/named-checkconf /usr/sbin/named-checkzone /usr/sbin/named-compilezone /usr/sbin/named.reconfig /usr/sbin/named.reload BIND数据库文件 /var/named /var/named/etc/namedb 默认的提示文件的名称 未指定 named.root 启动named svcadm enable dns/server 或 svcadm enable dns/server:default
+/etc/rc.d/named start 
+关闭named 
+svcadm disable dns/server 
+或 svcadm disabledns/server:default
+/etc/rc.d/named stop 
+12.3.2主配置文件named.conf 
+named.conf文件中的语句的基本语法
+clause [argument]{ /块注释/ item;//注释 item;#注释 …… };
+named.conf文件中的常用语句及其涵义 
+语句 涵义 
+acl 定义一个IP地址表列名,用于访问控制
+controls 定义系统管理员使用的,有关本地域名服务器操作的控制通道
+include 包含一个外部文
+件 key 定义密钥,应用在通过TSIG进行授权和认证的配置中
+logging 设置日志服务器和日志信息的发送地
+options 控制服务器的全局配置选项和为其他语句设置默认值
+server 在一个单服务器基础上设置特定的配置选项
+trusted-keys 定义信任的DNSSED密钥 
+view 定义一个视图 
+zone 定义一个区域 
+12.3.3定义地址匹配列表
+acl语句用来定义地址匹配列表
+acl acl-name{ address_match_list }; 
+acl-name:要定义的地址匹配列表的名称
+address_match_list:地址列表,可以是IP地址,也可以是用大括号括起来的另一个地址匹配列表 由于BIND采用了顺序优先匹配算法,所以一个小的范围定义一定要在更大的范围定义之前,不管知否带有!符号. BIND定义了一些常,表示某个范围的主机地址 
+any:匹配所有主机 
+none:不匹配任何主机 
+localhost:匹配主机上所有IPv4的网络接口
+localnets:匹配所有IPv4本地网络的主机
+12.3.4定义控制通道
+controls语句定义了系统管理员使用的,有关本地域名服务器操作的控制通道
+control{ inet(ipv4_address|IPv6_address|) [port(integer)] allow{address_match_list} [keys{key_list}]; …… }
+如果想禁用所有的控制通道,则: controls{}; 
+12.3.5包含外部文件
+include语句可以在该语句出现的地方插入指定的文件 
+include “path”
+12.3.6定义共享密钥
+key语句用来定义共享密钥
+key key_id{ algorithm hmac_md5; secret string; };
+key_id:密钥的名称,在其他地方可以通过该名称来引用该密钥
+algorithm:加密算法,目前只支持hmac-md5
+secret:指定一个用base-64编码的字符串作为密钥
+12.3.7定义通道
+BIND的所有的日志都会输出到一个或者多个通道中. 
+channel channel_name{ (file path_name [version(number|unlimited)] [size filesize] |syslog syslog_facility |stderr |null); [severity(critical|error|warning|notice|info|debug|[level]|dynamic);] [print-category yes or no;] [print-severity yes or no;] [print-time yes or no;] }; 
+channel_name:通道名称
+file:通道的目标为一个磁盘文件,
+path_name表示目标文件名
+version:指定named自动保留的多个日志文件,number用来指定版本的个数,如果指定为unlimited,则表示不限制版本个数.
+size:指定每个文件的大小,
+filesize可以以K,B或者G为单位. 
+syslog:表示通道的目标为系统日志 
+stderr:表示将通道的目标为named的标准错误输出 
+null:表示无日志输出
+severity:指定记录消息的级别,主要有critical,error,warning,notice,info,debug[level]以及dynamic等7个级别.定义某个级别后,系统会定义包括该级别以及比该级别更严重的级别的消息. 
+12.3.8使用通道分类 
+category category_name{ channel_item; }
+default:默认类别,匹配所有未明确指定通道的类别,但不匹配不属于任何类别的消息
+general:包括所有未明确分类的BIND消息
+database:named内部使用的分类,用来存储域和缓存数据的内部数据库信息
+security:接受和拒绝的请求 config:配置文件分析和处理
+resolver:域名解析,包括对来自解析器的递归查询的处理.
+xfer-in:从远程域名服务器到本地域名服务器的区域传输
+xfer-out: 从本地域名服务器到远程域名服务器的区域传输
+notify:NOTIFY协议
+client:客户端请求的处理
+unmatched:由于没有匹配的视图,那么大无法确定的类别
+network:网络操作
+update:动态更新事件
+queries:查询请求
+dispatch:DNSSEC和TSIG协议的处理
+lame_serviers:未知服务器.由于其他DNS服务器中的错误配置 引起的
+12.3.9设置选项 
+options{ [version version_string;] [directory path_name;] [pid-file path_name;] [notify yes_or_no|explicit;] [recursion yes_or_no;] [forward(only|first);] [forwards{ip_addr[port ip_port];[ip_addr[port ip_port];..]};] [allow-notify{address_match_list};] [allow-query{address_match_list};] [allow-transfer{address_match_list};] [allow-recursion{address_match_list};] [allow-v6-synthesis{address_match_list};] [blackhole{address_match_list};] [listen-on[port ip_port]{address_match_list};] [listen-on-v6[port op_port]{address_match_list};] [query-source[address(ip_addr|)][port(ip_port|*)];] [port ip_port] }
+
+通用选项 
+ version:响应针对BIND服务器版本的请求时的内容,缺省返回服务器的真实内容 
+ directory:指定BIND服务器的工作目录.配置文件中所使用的相对路径.大多数服务器的输出文件都缺省生成在这个目录下.如果没有设定目录,工作目录缺省设置为服务器启动时的目录”.”.指定的目录应该是一个绝对路径 
+ pid-file:指定named进程ID文件的路径名.默认为/var/run/named.pid.是给需要向运行着的服务器发送信号的程序使用的 
+ statistics-file:当使用rndc stats命令的时候,服务器会统计信息追加到文件路径名.默认为named.stats,位于在服务器程序的当前目录中.
+ port:指定服务器用来接收和发送DNS协议数据的UDP/TCP端口号,默认为53.主要用于服务器的检测,如果不使用53端口,服务器将不能与其他的DNS进行通信
+布尔选项
+ notify:如果为yes,则用于服务器数据发生变化后,发送给其他服务器消息,然后从服务器和主服务器协商数据库副本的更新.如果为no,则不会发出任何报文.也可以设定在zone语句中.默认值为yes.
+ recursion:指定named程序是否可以代表客户机查询其他的域名服务器,这称为递归查询.默认值为yes. 把recursion设为no不会阻止用户从服务器的缓存中得到数据,仅仅阻止新数据作为查询的结果被缓存.服务器的内部操作还是可以影响本地的缓存内容.
+转发选项
+转发功能可以用于在一些域名服务器上产生一个大的缓存,从而减少到外部服务器网络上的流量.可以用在和Internet没有直接连接的内部域名服务器上,用来提供对外部域名的查询.只有当服务器是非授权时,并且缓存中没有相关记录时才进行转发
+ forward:只有当forwarders子句的列表中有内容时才有意义.可以指定first和only两个值,如果为first,则域名服务器会先查询设置的forwarders的的服务器,如果没有回答,则会自己寻找答案;如果设定为only,服务器只会把请求转发到其他服务器上.默认值为first. 
+ forwarders:设定转发使用的IP地址.默认列表为空,即不转发.转发也可以设置在每个域上,这样全局选项中的转发设置就不会起作用了.可以将不同的域转发到服务器上,或者对不同的域可以实现forward only或者first的不同方式,也可以根本不转发
+访问控制选项 根据用户请求使用的IP地址进行限制
+ allow-notify:用来设定除主域名外,还可以发送通知消息的主机,通知域中的从服务器区域数据库已经发生改变.默认情况下,区域中的域名服务器只接受来自主域名服务器的通知消息.
+ allow-query:设定可以进行普通查询的主机.默认允许所有主机进行查询. 
+ allow-transfer:设定允许和本地服务器进行区域传输的主机.默认允许所有主机进行域传输. 
+ allow-recursion:设定可以递归查询本域名服务器的主机.默认允许所有主机之间进行递归查询.禁止递归查询不能阻止查询已经存在于服务器缓存中的数据. 
+ allow-v6-synthesis:设定能接受对IPv6响应的主机 
+ blackhole:设定一个地址列表,服务器不会接受来自这个列表的查询请求,或者解析这些地址.默认值为none.
+网络接口和端口选项 使用listen-on来设定.listen-on使用可选的端口和一个地址匹配列表.服务器将会监听所有匹配地址列表中所允许的端口.如果没有端口,则使用53. listen-on port{ address_match_list; } port:指定监听的端口 adderess_match_list:有效的地址匹配列表
+查询地址选项 
+query-source {address ip_address port port_number}
+ip_address:一个IPv4的地址
+port_number:端口号
