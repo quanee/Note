@@ -8,3 +8,4 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost',
 channel = connection.channel()
 
 # 声明名为logs的exchange类型为fanout
+channel.exchange_declare(exchange='logs', type='fanout')
