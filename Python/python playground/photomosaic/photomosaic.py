@@ -151,3 +151,54 @@ def createPhotomosaic(target_images, input_images, grid_size, reuse_images=True)
 
     # 计算输入图片平均色
     avgs = []
+    for img in input_images:
+        avgs.append(getAverageRGB(img))
+
+    for img in target_images:
+        # 计算图片平均RGB值
+        avg = getAverageRGB(img)
+        # find the matching index of closest RGB value
+        # from a listt of average RGB values
+        match_index = getBestMatchIndex(avg, avgs)
+        output_images.append(input_images[match_index])
+        # user feedback
+        if count > 0 and batch_size > 10 and count % batch_size is 0:
+            print('processed %d of %d...') % (count, len(target_images))
+        count += 1
+        # remove the select image from input if flag set
+        if not reuse_images:
+            input_images.remove(match)
+
+        print('创建马赛克...')
+        # 从瓦片创建马赛克图片
+        mosaic_image = createImageGrid(output_images, grid_size)
+
+    # 显示马赛克
+    return mosaic_image
+
+
+# gather out code in a main() function
+def main():
+    # command line arguments are in sys.argv[1], sys.argv[2], ...argv
+    # sys.argv[0] is the scrip name itself and can be ignored
+    # parse arguments
+    parser = argparse.ArgumentParser(description='从输入的图片创建马赛克图片')
+
+    # 添加参数
+    parser.add_argument('--target-image', dest='target_image', required=True)
+    parser.add_argument('--input-folder', dest='input_folder', required=True)
+    parser.add_argument('--grid-size', nargs=2, dest='grid_size', required=True)
+    parser.add_argument('--output-file', dest='outfile', required=False)
+
+    args = parser.parse_args()
+
+    ##### INPUTS #####
+
+    # 目标图片
+    target_image = Image.open(args.target_image)
+
+    # 输入图片
+    print('读取输入目录...')
+    input_images = getImages(args.input_folder)
+
+    # 检查发现是否存在不合格图片
