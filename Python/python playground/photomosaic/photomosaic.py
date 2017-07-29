@@ -100,3 +100,54 @@ def getBestMatchIndex(input_avg, avgs):
         if dist < min_dist:
             min_dist = dist
             min_index = index
+        index += 1
+
+    return min_index
+
+
+def createImageGrid(images, dims):
+    """
+    given a list of images and a grid size (m, n), create a grid of images
+    """
+
+    m, n = dims
+
+    # sanity check
+    print(m, n, len(images))
+    assert m * n == len(images)
+
+    # get the maximum height and width of the images
+    # don't assume they're all equal
+    width = max([img.size[0] for img in images])
+    height = max([img.size[1] for img in images])
+
+    # create the target image
+    grid_img = Image.new('RGB', (n * width, m * height))
+
+    # paste the tile images into the image grid
+    for index in range(len(images)):
+        row = int(index / n)
+        col = index - n * row
+        grid_img.paste(images[index], (col * width, row * height))
+
+    return grid_img
+
+
+def createPhotomosaic(target_images, input_images, grid_size, reuse_images=True):
+    """
+    从输入的图片创建马赛克图片
+    """
+
+    print('切割输入图片...')
+    # 将目标图片切割为瓦片
+    target_images = splitImage(target_images, grid_size)
+
+    print('finding images matches...')
+    # 遍历所有瓦片, 挑出与输入图片相匹配
+    output_images = []
+    # for user feedback
+    count = 0
+    batch_size = int(len(target_images) / 10)
+
+    # 计算输入图片平均色
+    avgs = []
