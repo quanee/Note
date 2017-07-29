@@ -202,3 +202,53 @@ def main():
     input_images = getImages(args.input_folder)
 
     # 检查发现是否存在不合格图片
+    if input_images == []:
+        print('没有找到输入图片在%s. 退出' % (args.input_folder, ))
+        exit()
+
+    # shuffle list to get a more varied output?
+    random.shuffle(input_images)
+
+    # 网格大小
+    grid_size = (int(args.grid_size[0]), int(args.grid_size[1]))
+
+    # 输出
+    output_filename = 'mosaic.png'
+    if args.outfile:
+        output_filename = args.outfile
+
+    # reuse any image in input
+    reuse_images = True
+
+    # resize the input to fit the original image size?
+    resize_input = True
+
+    ##### END INPUTS #####
+    print('开始创建马赛克图片...')
+
+    # if images can't be reused, ensure m*n <= num_of_images
+    if not reuse_images:
+        if grid_size[0] * grid_size[1] > len(input_images):
+            print('grid size less than number of images')
+            exit()
+
+    # resizing input
+    if resize_input:
+        print('resizing images...')
+        # for given grid size, compute the maximum width and height of tiles
+        dims = (int(target_image.size[0] / grid_size[1]),
+                int(target_image.size[1] / grid_size[0]))
+        print('max tile dims: %s' % (dims, ))
+        # resize
+        for img in input_images:
+            img.thumbnail(dims)
+
+        # create photomosaic
+        mosaic_image = createPhotomosaic(target_image, input_images, grid_size, reuse_images)
+
+        # 写出马赛克
+        mosaic_image.save(output_filename, 'PNG')
+
+        print('保存输出到%s' % (output_filename))
+        print('完成')
+
