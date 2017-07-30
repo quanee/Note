@@ -10,3 +10,5 @@ x2d = np.array(((100, 200, 300),
 
 print(x2d)
 x2d.ravel()
+print(x2d)
+x2d.resize((3, 6))
