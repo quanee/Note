@@ -17,3 +17,6 @@ x2d.reshape(6, 3)
 print(x2d)
 x2d.shape = (9, 2)
 print(x2d)
+
+
+# 矩阵子类
