@@ -54,3 +54,7 @@ case "$1" in
 		start
 	;;
 	condrestart)
+		if test "x`pidof redis`" != x; then
+			stop
+			start
+		fi
