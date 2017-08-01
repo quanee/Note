@@ -18,3 +18,7 @@ if [ -e $redis_pid -a ! -z $redis_pid ];then
 	exit 1
 fi
 echo -n $"Starting $prog "
+# Single instance for all caches
+$redis_path $redis_conf
+RETVAL=$?
+[ $RETVAL -eq 0 ] && {
