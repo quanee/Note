@@ -46,3 +46,7 @@ case "$1" in
 		stop
 	;;
 	status)
+		status $prog
+		RETVAL=$?
+	;;
+	restart)
