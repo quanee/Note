@@ -30,3 +30,7 @@ echo
 }
 # Stop daemons.
 stop() {
+	echo -n $"Stopping $prog "
+	killproc -d 10 $redis_path
+	echo
+	[ $RETVAL = 0 ] && rm -f $redis_pid /var/lock/subsys/$prog
