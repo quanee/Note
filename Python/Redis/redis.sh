@@ -22,3 +22,7 @@ echo -n $"Starting $prog "
 $redis_path $redis_conf
 RETVAL=$?
 [ $RETVAL -eq 0 ] && {
+	touch /var/lock/subsys/$prog
+	success $"$prog"
+}
+echo
