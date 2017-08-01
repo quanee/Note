@@ -50,3 +50,7 @@ case "$1" in
 		RETVAL=$?
 	;;
 	restart)
+		stop
+		start
+	;;
+	condrestart)
