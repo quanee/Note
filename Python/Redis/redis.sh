@@ -42,3 +42,7 @@ case "$1" in
 	start)
 		start
 	;;
+	stop)
+		stop
+	;;
+	status)
