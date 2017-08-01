@@ -26,3 +26,7 @@ RETVAL=$?
 	success $"$prog"
 }
 echo
+	return $RETVAL
+}
+# Stop daemons.
+stop() {
