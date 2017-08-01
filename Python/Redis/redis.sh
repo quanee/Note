@@ -38,3 +38,7 @@ stop() {
 	return $RETVAL
 }
 # See how we were called.
+case "$1" in
+	start)
+		start
+	;;
