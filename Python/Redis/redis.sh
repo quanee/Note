@@ -34,3 +34,7 @@ stop() {
 	killproc -d 10 $redis_path
 	echo
 	[ $RETVAL = 0 ] && rm -f $redis_pid /var/lock/subsys/$prog
+	RETVAL=$?
+	return $RETVAL
+}
+# See how we were called.
