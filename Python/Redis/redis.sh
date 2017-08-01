@@ -10,3 +10,7 @@ redis_pid="/var/run/redis.pid"
 . /etc/rc.d/init.d/functions
 [ -x $redis_path ] || exit 0
 RETVAL=0
+prog="redis"
+# Start daemons.
+start() {
+if [ -e $redis_pid -a ! -z $redis_pid ];then
