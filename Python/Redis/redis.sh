@@ -14,3 +14,7 @@ prog="redis"
 # Start daemons.
 start() {
 if [ -e $redis_pid -a ! -z $redis_pid ];then
+	echo $prog" already running...."
+	exit 1
+fi
+echo -n $"Starting $prog "
