@@ -12,3 +12,8 @@ class Foo:
 
 def news():
     return '新闻'
+
+
+def book():
+    return '书'
+
