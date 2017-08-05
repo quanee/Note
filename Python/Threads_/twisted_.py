@@ -14,3 +14,5 @@ def one_done(contents):
 deferred_list = []
 
 url_list = [
+            'http://www.bing.com',
+            'http://www.baidu.com',
