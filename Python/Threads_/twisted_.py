@@ -20,3 +20,5 @@ url_list = [
             ]
 
 for url in url_list:
+    # 发送HTTP请求
+    deferred = getPage(bytes(url, encoding='utf8'))
