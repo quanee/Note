@@ -16,3 +16,5 @@ deferred_list = []
 url_list = [
             'http://www.bing.com',
             'http://www.baidu.com',
+            'http://www.github.com',
+            ]
