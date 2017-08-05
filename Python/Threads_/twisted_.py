@@ -9,3 +9,6 @@ def all_done(arg):
 
 def one_done(contents):
     print('one_done')
+
+
+deferred_list = []
