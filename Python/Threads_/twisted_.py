@@ -18,3 +18,5 @@ url_list = [
             'http://www.baidu.com',
             'http://www.github.com',
             ]
+
+for url in url_list:
