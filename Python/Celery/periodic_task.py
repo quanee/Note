@@ -12,3 +12,5 @@ def setup_periodic_tasks(sender, **kwargs):
  
     # 每30秒中调用test('world')
     sender.add_periodic_task(30.0, test.s('world'), expires=10)
+ 
+    # 每周一上午7:30执行test('Happy Mondays!')
