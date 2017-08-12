@@ -14,3 +14,5 @@ def setup_periodic_tasks(sender, **kwargs):
     sender.add_periodic_task(30.0, test.s('world'), expires=10)
  
     # 每周一上午7:30执行test('Happy Mondays!')
+    sender.add_periodic_task(crontab(hour=7, minute=30, day_of_week=1), test.s('Happy Mondays!'), )
+ 
