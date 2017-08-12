@@ -10,3 +10,5 @@ def setup_periodic_tasks(sender, **kwargs):
     # 每10秒中调用test('hello')
     sender.add_periodic_task(10.0, test.s('hello'), name='add every 10')
  
+    # 每30秒中调用test('world')
+    sender.add_periodic_task(30.0, test.s('world'), expires=10)
