@@ -4,3 +4,5 @@ from celery.schedules import crontab
 
  
 app = Celery('task', broker='redis://:password@//localhost:port', backend='redis://:password@//localhost:port')
+ 
+@app.on_after_configure.connect
