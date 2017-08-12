@@ -6,3 +6,5 @@ from celery.schedules import crontab
 app = Celery('task', broker='redis://:password@//localhost:port', backend='redis://:password@//localhost:port')
  
 @app.on_after_configure.connect
+def setup_periodic_tasks(sender, **kwargs):
+    # 每10秒中调用test('hello')
