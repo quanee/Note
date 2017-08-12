@@ -8,3 +8,5 @@ app = Celery('task', broker='redis://:password@//localhost:port', backend='redis
 @app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
     # 每10秒中调用test('hello')
+    sender.add_periodic_task(10.0, test.s('hello'), name='add every 10')
+ 
