@@ -47,3 +47,9 @@ shelfFile.close()
 import shutil
 import os
 '''复制 移动 改名 删除文件'''
+
+# 复制文件 并命名
+shutil.copy('./rf.py', './test.py')
+# 复制文件夹
+shutil.copytree('../sp', './test')
+# 文件/文件夹移动改名
