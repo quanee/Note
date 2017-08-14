@@ -37,3 +37,8 @@ print(pyperclip.paste())
 
 
 import shelve
+
+shelfFile = shelve.open('myfile')
+cats = ['zophie', 'pooka', 'simon']
+shelfFile['cats'] = cats
+shelfFile.close()
