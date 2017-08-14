@@ -33,3 +33,7 @@ pprint.pprint(count)
 import pyperclip
 
 pyperclip.copy('Hello world!')
+print(pyperclip.paste())
+
+
+import shelve
