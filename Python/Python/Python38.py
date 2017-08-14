@@ -42,3 +42,8 @@ shelfFile = shelve.open('myfile')
 cats = ['zophie', 'pooka', 'simon']
 shelfFile['cats'] = cats
 shelfFile.close()
+
+
+import shutil
+import os
+'''复制 移动 改名 删除文件'''
