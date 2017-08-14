@@ -18,3 +18,8 @@ for t in triangles():
 
 
 import pprint
+
+message = 'It was a bridge cold day in April, and the clocks were striking thirteen.'
+count = {}
+
+for character in message:
