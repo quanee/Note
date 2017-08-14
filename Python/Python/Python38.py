@@ -13,3 +13,8 @@ for t in triangles():
     print(t)
     n += 1
     if n == 10:
+        break
+
+
+
+import pprint
