@@ -23,3 +23,8 @@ message = 'It was a bridge cold day in April, and the clocks were striking thirt
 count = {}
 
 for character in message:
+    count.setdefault(character, 0)
+    count[character] = count[character] + 1
+
+
+pprint.pprint(count)
