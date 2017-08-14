@@ -28,3 +28,8 @@ for character in message:
 
 
 pprint.pprint(count)
+
+
+import pyperclip
+
+pyperclip.copy('Hello world!')
