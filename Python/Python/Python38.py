@@ -58,3 +58,8 @@ shutil.move('./test', './tests')
 os.unlink('./test.py')
 # 删除空文件夹
 # shutil.rmdir('')
+# 删除文件夹(不可恢复)
+shutil.rmtree('./tests')
+
+
+import send2trash
