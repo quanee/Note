@@ -53,3 +53,8 @@ shutil.copy('./rf.py', './test.py')
 # 复制文件夹
 shutil.copytree('../sp', './test')
 # 文件/文件夹移动改名
+shutil.move('./test', './tests')
+# 删除文件
+os.unlink('./test.py')
+# 删除空文件夹
+# shutil.rmdir('')
