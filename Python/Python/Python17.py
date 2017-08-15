@@ -22,3 +22,9 @@ t1.start()
 t2.start()
 
 print('---main---')
+
+t1.join()
+t2.join()
+
+end = time.time()
+print(end - begin)
