@@ -18,3 +18,7 @@ def bar(n):
 
 t1 = threading.Thread(target=foo, args=(1,))
 t2 = threading.Thread(target=bar, args=(2,))
+t1.start()
+t2.start()
+
+print('---main---')
