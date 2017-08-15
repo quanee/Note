@@ -13,3 +13,8 @@ def foo(n):
 def bar(n):
     print('bar%s' % n)
     time.sleep(2)
+    print('end bar')
+
+
+t1 = threading.Thread(target=foo, args=(1,))
+t2 = threading.Thread(target=bar, args=(2,))
