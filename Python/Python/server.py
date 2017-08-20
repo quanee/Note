@@ -68,3 +68,10 @@ conn, addr = sk.accept()  # 3
 while True:
     data = conn.recv(1024)
     if not data:
+        conn.close()
+        conn, addr = sk.accept()
+        print(addr)
+        continue
+    print(str(data, 'utf8'))
+    # print(conn)
+    inp = input('>>>')
