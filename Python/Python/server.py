@@ -75,3 +75,10 @@ while True:
     print(str(data, 'utf8'))
     # print(conn)
     inp = input('>>>')
+    conn.send(bytes(inp, 'utf8'))
+'''
+
+while True:
+    conn, addr = sk.accept()
+    print(addr)
+    while True:
