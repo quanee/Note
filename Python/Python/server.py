@@ -26,3 +26,10 @@ family = AF_INET6: 服务器之间的通信
 family = AF_UNIX : Unix不同进程间通信
 
 sk.bind(address)    #将套接字绑定到地址。address地址的格式取决于地址族。在AF_INET下，以元组（host,port）的形式表示地址。
+sk.listen(backlog)  #开始监听传入连接。backlog指定在拒绝连接之前，可以挂起的最大连接数量。
+                    #backlog等于5，表示内核已经接到了连接请求，但服务器还没有调用accept进行处理的连接个数最大为5
+                    #这个值不能无限大，因为要在内核中维护连接队列
+sk.setblocking(bool)    #是否阻塞（默认True），如果设置False，那么accept和recv时一旦无数据，则报错。
+sk.accept()             #接受连接并返回（conn,address）,其中conn是新的套接字对象，可以用来接收和发送数据。address是连接客户端的地址。
+                        #接收TCP 客户的连接（阻塞式）等待连接的到来
+sk.connect(address)     #连接到address处的套接字。一般，address的格式为元组（hostname,port）,如果连接出错，返回socket.error错误。
