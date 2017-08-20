@@ -19,3 +19,10 @@ import socket
 --------------------------------------------------------------------
 '''
 '''
+SOCK_STREAM:TCP
+SOCK_DGRAM :UDP
+family = AF_INET : 服务器之间的通信
+family = AF_INET6: 服务器之间的通信
+family = AF_UNIX : Unix不同进程间通信
+
+sk.bind(address)    #将套接字绑定到地址。address地址的格式取决于地址族。在AF_INET下，以元组（host,port）的形式表示地址。
