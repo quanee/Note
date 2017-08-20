@@ -82,3 +82,10 @@ while True:
     conn, addr = sk.accept()
     print(addr)
     while True:
+        try:
+            data = conn.recv(1024)
+        except Exception:
+            break
+        if not data:
+            conn.close()
+            conn, addr = sk.accept()
