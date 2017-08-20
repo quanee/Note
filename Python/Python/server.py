@@ -47,3 +47,10 @@ sk.getsockname()  #返回套接字自己的地址。通常是一个元组(ipaddr
 sk.fileno()  #套接字的文件描述符
 
 '''
+'''
+recv()
+send()
+sendall()
+'''
+sk = socket.socket()
+print(sk)
