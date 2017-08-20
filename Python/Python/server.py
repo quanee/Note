@@ -33,3 +33,10 @@ sk.setblocking(bool)    #是否阻塞（默认True），如果设置False，那�
 sk.accept()             #接受连接并返回（conn,address）,其中conn是新的套接字对象，可以用来接收和发送数据。address是连接客户端的地址。
                         #接收TCP 客户的连接（阻塞式）等待连接的到来
 sk.connect(address)     #连接到address处的套接字。一般，address的格式为元组（hostname,port）,如果连接出错，返回socket.error错误。
+sk.connect_ex(address)  #同上，只不过会有返回值，连接成功时返回 0 ，连接失败时候返回编码，例如：10061
+sk.close()  #关闭套接字
+sk.recv(bufsize[,flag])     #接受套接字的数据。数据以字符串形式返回，bufsize指定最多可以接收的数量。flag提供有关消息的其他信息，通常可以忽略。
+sk.recvfrom(bufsize[.flag]) #与recv()类似，但返回值是（data,address）。其中data是包含接收数据的字符串，address是发送数据的套接字地址。
+sk.send(string[,flag])      #将string中的数据发送到连接的套接字。返回值是要发送的字节数量，该数量可能小于string的字节大小。即：可能未将指定内容全部发送。
+sk.sendall(string[,flag])   #将string中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。成功返回None，失败则抛出异常。
+                            #内部通过递归调用send，将所有内容发送出去。
