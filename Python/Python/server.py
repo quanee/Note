@@ -40,3 +40,10 @@ sk.recvfrom(bufsize[.flag]) #与recv()类似，但返回值是（data,address）
 sk.send(string[,flag])      #将string中的数据发送到连接的套接字。返回值是要发送的字节数量，该数量可能小于string的字节大小。即：可能未将指定内容全部发送。
 sk.sendall(string[,flag])   #将string中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。成功返回None，失败则抛出异常。
                             #内部通过递归调用send，将所有内容发送出去。
+sk.sendto(string[,flag],address)  #将数据发送到套接字，address是形式为（ipaddr，port）的元组，指定远程地址。返回值是发送的字节数。该函数主要用于UDP协议。
+sk.settimeout(timeout)  #设置套接字操作的超时期，timeout是一个浮点数，单位是秒。值为None表示没有超时期。一般，超时期应该在刚创建套接字时设置，因为它们可能用于连接的操作（如 client 连接最多等待5s ）
+sk.getpeername()  #返回连接套接字的远程地址。返回值通常是元组（ipaddr,port）。
+sk.getsockname()  #返回套接字自己的地址。通常是一个元组(ipaddr,port)
+sk.fileno()  #套接字的文件描述符
+
+'''
