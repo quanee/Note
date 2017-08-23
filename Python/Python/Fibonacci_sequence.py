@@ -10,3 +10,4 @@ for i in range(10):
 
 
 class Fib():
+    def __init__(self):
