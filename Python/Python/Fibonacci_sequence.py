@@ -8,3 +8,5 @@ def fib(n):
 for i in range(10):
     fib(i)
 
+
+class Fib():
