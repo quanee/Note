@@ -3,3 +3,5 @@ def fib(n):
     for i in range(n):
         a, b = b, a + b
     print(a)
+
+# 打印前10项
