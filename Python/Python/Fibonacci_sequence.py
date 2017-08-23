@@ -5,3 +5,4 @@ def fib(n):
     print(a)
 
 # 打印前10项
+for i in range(10):
