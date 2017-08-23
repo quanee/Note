@@ -6,3 +6,4 @@ def fib(n):
 
 # 打印前10项
 for i in range(10):
+    fib(i)
