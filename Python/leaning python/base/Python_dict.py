@@ -18,3 +18,5 @@ if 'f' in D:
     print(D['f'])
 else:
     print('None')
+
+value = D.get('x', 0)
