@@ -16,3 +16,5 @@ for c in 'moonboss':
 
 if 'f' in D:
     print(D['f'])
+else:
+    print('None')
