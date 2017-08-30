@@ -6,3 +6,5 @@ Ks.sort()
 
 for key in Ks:
     print(key, '=>', D[key])
+
+for key in sorted(D):
