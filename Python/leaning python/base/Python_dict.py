@@ -13,3 +13,6 @@ for key in sorted(D):
 for c in 'moonboss':
     print(c.upper())
 
+
+if 'f' in D:
+    print(D['f'])
