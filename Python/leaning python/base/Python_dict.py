@@ -9,3 +9,6 @@ for key in Ks:
 
 for key in sorted(D):
     print(key, '=>', D[key])
+
+for c in 'moonboss':
+    print(c.upper())
