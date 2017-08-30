@@ -20,3 +20,4 @@ else:
     print('None')
 
 value = D.get('x', 0)
+print(value)
