@@ -52,3 +52,12 @@ def covertImageToAscii(fileName, cols, scale, moreLevels):
     # chech if image size is too small
     if cols > W or rows > H:
         print("Image too small for specified cols!")
+        exit(0)
+
+    # an ASCII image is a list of character strings
+    aimg = []
+    # generate the list of tile dimensions
+    for j in range(rows):
+        y1 = int(j * h)
+        y2 = int((j + 1) * h)
+        # correct the last tile
