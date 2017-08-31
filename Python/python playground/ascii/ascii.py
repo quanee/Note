@@ -34,3 +34,12 @@ def covertImageToAscii(fileName, cols, scale, moreLevels):
     """
     # declare globals
     global gscale1, gscale2
+    # open image and convert to grayscale
+    image = Image.open(fileName).convert('L')
+    # store the image dimensions
+    W, H = image.size[0], image.size[1]
+    print("input image dims: %d x %d" % (W, H))
+    # cpmpute tile width
+    w = W / cols
+    # compute tile height based on the aspect ratio and scale of the font
+    h = w / scale
