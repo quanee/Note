@@ -25,3 +25,12 @@ def getAverageL(image):
     # get the dimensions
     w, h = im.shape
     # get the average
+    return np.average(im.reshape(w * h))
+
+
+def covertImageToAscii(fileName, cols, scale, moreLevels):
+    """
+    Given Image and dimensions (rows, cols), returns an m*n list of Images
+    """
+    # declare globals
+    global gscale1, gscale2
