@@ -88,3 +88,12 @@ def covertImageToAscii(fileName, cols, scale, moreLevels):
 
     # return text image
     return aimg
+
+
+# main() function
+def main():
+    # create parser
+    descStr = "This program converts an image into ASCII art."
+    parser = argparse.ArgumentParser(description=descStr)
+    # add expected arguments
+    parser.add_argument('--file', dest='imgFile', required=True)
