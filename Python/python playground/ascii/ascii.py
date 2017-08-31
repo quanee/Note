@@ -124,3 +124,12 @@ def main():
 
     # open a new text file
     f = open(outFile, 'w')
+    # write each string in the list to the new file
+    for row in aimg:
+        f.write(row + '\n')
+    # clean up
+    f.close()
+    print("ASCII art written to %s" % outFile)
+
+
+# call main
