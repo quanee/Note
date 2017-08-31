@@ -79,3 +79,12 @@ def covertImageToAscii(fileName, cols, scale, moreLevels):
             avg = int(getAverageL(img))
             # look up the ASCII character for grayscale value (avg)
             if moreLevels:
+                gsval = gscale1[int((avg * 69) / 255)]
+            else:
+                gsval = gscale2[int((avg * 9) / 255)]
+
+            # append the ASCII characher to the string
+            aimg[j] += gsval
+
+    # return text image
+    return aimg
