@@ -115,3 +115,12 @@ def main():
     if args.scale:
         scale = float(args.scale)
     # set cols
+    cols = 80
+    if args.cols:
+        cols = int(args.cols)
+    print('generating ASCII art...')
+    # convert image to ASCII text
+    aimg = covertImageToAscii(imgFile, cols, scale, args.moreLevels)
+
+    # open a new text file
+    f = open(outFile, 'w')
