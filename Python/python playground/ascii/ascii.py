@@ -97,3 +97,12 @@ def main():
     parser = argparse.ArgumentParser(description=descStr)
     # add expected arguments
     parser.add_argument('--file', dest='imgFile', required=True)
+    parser.add_argument('--scale', dest='scale', required=False)
+    parser.add_argument('--out', dest='outFile', required=False)
+    parser.add_argument('--cols', dest='cols', required=False)
+    parser.add_argument('--morelevels', dest='moreLevels', action='store_true')
+
+    # parse arguments
+    args = parser.parse_args()
+
+    imgFile = args.imgFile
