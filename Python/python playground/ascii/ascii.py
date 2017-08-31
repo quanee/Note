@@ -106,3 +106,12 @@ def main():
     args = parser.parse_args()
 
     imgFile = args.imgFile
+    # set output file
+    outFile = 'out.txt'
+    if args.outFile:
+        outFile = args.outFile
+    # set scale default as 0.43, which suits a courier font
+    scale = 0.43
+    if args.scale:
+        scale = float(args.scale)
+    # set cols
