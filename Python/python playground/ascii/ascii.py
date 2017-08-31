@@ -70,3 +70,12 @@ def covertImageToAscii(fileName, cols, scale, moreLevels):
             # crop the image to fit the tile
             x1 = int(i * w)
             x2 = int((i + 1) * w)
+            # correct the last tile
+            if i == cols - 1:
+                x2 = W
+            # crop the image to extract the tile into another Image object
+            img = image.crop((x1, y1, x2, y2))
+            # get the average luminance
+            avg = int(getAverageL(img))
+            # look up the ASCII character for grayscale value (avg)
+            if moreLevels:
