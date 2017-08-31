@@ -16,3 +16,12 @@ gscale2 = '@%#*+=-:. '
 
 
 def getAverageL(image):
+    """
+    Given PIL Image, return average value of grayscale value
+    """
+
+    # get image as numpy array
+    im = np.array(image)
+    # get the dimensions
+    w, h = im.shape
+    # get the average
