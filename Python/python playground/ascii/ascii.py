@@ -61,3 +61,12 @@ def covertImageToAscii(fileName, cols, scale, moreLevels):
         y1 = int(j * h)
         y2 = int((j + 1) * h)
         # correct the last tile
+        if j == rows - 1:
+            y2 = H
+
+        # append an empty string
+        aimg.append("")
+        for i in range(cols):
+            # crop the image to fit the tile
+            x1 = int(i * w)
+            x2 = int((i + 1) * w)
