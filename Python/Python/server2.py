@@ -10,3 +10,4 @@ sk.bind(address)  # 绑定IP和端口 1
 
 sk.listen(3)  # 排队连接个数 2
 try:
+    sk.setblocking(False)
