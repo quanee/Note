@@ -30,3 +30,7 @@ class Foo(object):
 
     @prof.deleter
     def prof(self):
+        print("deleter")
+
+
+    def func1(self):
