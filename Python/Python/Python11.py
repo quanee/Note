@@ -38,3 +38,6 @@ class Foo(object):
 
     def func2(self, v):
         print(v)
+
+    def func3(self):
+        print('func3-del')
