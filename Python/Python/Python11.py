@@ -41,3 +41,8 @@ class Foo(object):
 
     def func3(self):
         print('func3-del')
+
+    fgs = property(fget=func1, fset=func2, fdel=func3)
+
+
+f = Foo()
