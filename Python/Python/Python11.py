@@ -14,3 +14,7 @@ class Foo(object):
     @staticmethod
     def sta():
         print("静态方法 类直接调用")
+
+    @classmethod
+    def clsf(cls):
+        print("当前类", cls)
