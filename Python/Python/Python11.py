@@ -34,3 +34,7 @@ class Foo(object):
 
 
     def func1(self):
+        return 'func1-get'
+
+    def func2(self, v):
+        print(v)
