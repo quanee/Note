@@ -46,3 +46,7 @@ class Foo(object):
 
 
 f = Foo()
+f.func()
+Foo.sta()
+Foo.clsf()
+f.prof
