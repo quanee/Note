@@ -22,3 +22,7 @@ class Foo(object):
 
     @property
     def prof(self):
+        print("属性方法")
+
+    @prof.setter
+    def prof(self, val):
