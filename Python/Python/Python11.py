@@ -26,3 +26,7 @@ class Foo(object):
 
     @prof.setter
     def prof(self, val):
+        print(val)
+
+    @prof.deleter
+    def prof(self):
