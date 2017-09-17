@@ -10,3 +10,7 @@ class Foo(object):
 
     def func(self):
         print("普通方法 对象调用")
+
+    @staticmethod
+    def sta():
+        print("静态方法 类直接调用")
