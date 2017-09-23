@@ -10,3 +10,8 @@ print(x.spam, y.spam)
 SharedData.spam = 55
 print(x.spam, y.spam, SharedData.spam)
 x.spam = 66
+print(x.spam, y.spam, SharedData.spam)
+
+
+class MixedNames:
+    data = 'spam'
