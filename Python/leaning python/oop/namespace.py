@@ -14,3 +14,4 @@ if __name__ == '__main__':
     print(sub.__dict__)  # 类有自己的命名空间
 
     X = sub()
+    print(X.__dict__)  # 实例命名空间初始为空
