@@ -4,3 +4,5 @@ class Super(object):
 
 
 class sub(Super):
+    def hola(self):
+        self.data2 = 'boss'
