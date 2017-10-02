@@ -18,3 +18,5 @@ if __name__ == '__main__':
 
     X.hola()
     print(X.__dict__)  # 属性位于实例的属性命名空间字典内 随实例的不同而不同 self正是进入其命名空间的钩子
+
+    X.hello()
