@@ -22,3 +22,5 @@ if __name__ == '__main__':
     X.hello()
     print(X.__dict__)
     # {'data2': 'boss', 'data1': 'moon'}
+    print(X.__dict__.keys())
+    # dict_keys(['data2', 'data1'])
