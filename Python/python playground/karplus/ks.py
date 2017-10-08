@@ -46,3 +46,15 @@ def generateNote(freq):
     # initialize samples buffer
     samples = np.array([0] * nSamples, 'float32')
     for i in range(nSamples):
+        samples[i] = buf[0]
+        avg = 0.995 * 0.5 * (buf[0] + buf[1])
+        buf.append(avg)
+        buf.popleft()
+        # plot of flag set
+        if gShowPlot:
+            if i % 1000 == 0:
+                axline.set_ydata(buf)
+                plt.draw()
+
+        # convert samples to 16-bit values and then to a string
+        # the maximum value is 32767 for 16-bit
