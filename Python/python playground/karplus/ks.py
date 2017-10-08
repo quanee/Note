@@ -93,3 +93,16 @@ class NotePlayer:
 def main():
     # declare global var
     global gShowPlot
+
+    parser = argparse.ArgumentParser(description="Generation sounds with Karplus String Algorithm")
+    # add arguments
+    parser.add_argument('--display', action='store_true', required=False)
+    parser.add_argument('--play', action='store_true', required=False)
+    parser.add_argument('--piano', action='store_true', required=False)
+    args = parser.parse_args()
+
+
+    # show plot if flay set
+    if args.display:
+        gShowPlot = True
+        plt.ion()
