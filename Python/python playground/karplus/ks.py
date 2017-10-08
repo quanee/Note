@@ -70,3 +70,14 @@ class NotePlayer:
         pygame.init()
         # dictionary of notes
         self.notes = {}
+
+    # add a note
+    def add(self, fileName):
+        self.notes[fileName] = pygame.mixer.Sound(fileName)
+
+    # play a note
+    def play(self, fileName):
+        try:
+            self.notes[fileName].play()
+        except Exception:
+            print(fileName + 'not found!')
