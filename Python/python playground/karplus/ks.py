@@ -58,3 +58,15 @@ def generateNote(freq):
 
         # convert samples to 16-bit values and then to a string
         # the maximum value is 32767 for 16-bit
+        samples = np.array(samples * 32767, 'int16')
+        return samples.tostring()
+
+
+# play a WAV file
+class NotePlayer:
+    # constructor
+    def __init__(self):
+        pygame.mixer.pre_init(44100, -16, 1, 2048)
+        pygame.init()
+        # dictionary of notes
+        self.notes = {}
