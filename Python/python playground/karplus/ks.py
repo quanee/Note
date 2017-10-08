@@ -130,3 +130,15 @@ def main():
 
     # play a random tune
     if args.play:
+        while True:
+            try:
+                nplayer.playRandom()
+                # rest - 1 to 8 beats
+                rest = np.random.choice([1, 2, 4, 8], 1, p=[0.15, 0.7, 0.1, 0.05])
+                time.sleep(0.25 * rest[0])
+            except KeyboardInterrupt:
+                exit()
+
+    # random piano mode
+    if args.piano:
+        while True:
