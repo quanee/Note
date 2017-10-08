@@ -81,3 +81,15 @@ class NotePlayer:
             self.notes[fileName].play()
         except Exception:
             print(fileName + 'not found!')
+
+    def playRandom(self):
+        """play a random note"""
+        index = random.randint(0, len(self.notes) - 1)
+        note = list(self.notes.values())[index]
+        note.play()
+
+
+# main() function
+def main():
+    # declare global var
+    global gShowPlot
