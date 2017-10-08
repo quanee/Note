@@ -118,3 +118,15 @@ def main():
             print('create ' + fileName + '...')
             writeWAVE(fileName, data)
         else:
+            print('fileName already create. skipping...')
+
+        # add note to player
+        nplayer.add(name + '.wav')
+
+        # play note if display flag set
+        if args.display:
+            nplayer.play(name + '.wav')
+            time.sleep(0.5)
+
+    # play a random tune
+    if args.play:
