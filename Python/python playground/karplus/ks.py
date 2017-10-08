@@ -106,3 +106,15 @@ def main():
     if args.display:
         gShowPlot = True
         plt.ion()
+
+    # create note player
+    nplayer = NotePlayer()
+
+    print('create notes...')
+    for name, freq in list(pmNotes.items()):
+        fileName = name + '.wav'
+        if not os.path.exists(fileName) or args.display:
+            data = generateNote(freq)
+            print('create ' + fileName + '...')
+            writeWAVE(fileName, data)
+        else:
