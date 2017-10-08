@@ -34,3 +34,15 @@ def writeWAVE(fname, data):
 
 
 # generate note of given frequency
+def generateNote(freq):
+    nSamples = 44100
+    sampleRate = 44100
+    N = int(sampleRate / freq)
+    # initialze ring buffer
+    buf = deque([random.random() - 0.5 for i in range(N)])
+    # plot of flag set
+    if gShowPlot:
+        axline, = plt.plot(buf)
+    # initialize samples buffer
+    samples = np.array([0] * nSamples, 'float32')
+    for i in range(nSamples):
