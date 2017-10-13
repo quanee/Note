@@ -82,3 +82,23 @@ SELECT * FROM t_name WHERE column LIKE “”
    常用聚合函数
 SUM() 求和
 AVG() 求平均值
+MAX() 最大值
+MIN() 最小值
+COUNT() 计数
+    COUNT(*) 列数
+    COUNT(column) 行数
+    分页查询(LIMIT 起始行, 查询几行)
+起始行从0开始
+分页: 当前页 每页显示条数
+分页查询当前页的数据sql:SELECT * FROM t_name LIMIT (当前页-1)*每页显示条数,每页显示条数;
+SELECT * FROM t_name LIMIT start_line, count_line;
+    查询排序
+SELECT * FROM t_name ORDER BY column ASC/DESC;
+多列排序条件
+SELECT * FROM t_name ORDER BY column1 ASC/DESC, column2 ASC/DESC;
+先按column1排序,对column1值相同的行,按column2排序
+    分组查询(GROUP BY)
+SELECT column,COUNT(column/*) FROM t_name GROUP BY column;
+    分组查询后筛选
+SELECT column,COUNT(column/*) FROM t_name GROUP BY column HAVING COUNT(column/*);
+
