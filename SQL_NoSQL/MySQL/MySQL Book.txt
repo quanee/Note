@@ -228,3 +228,25 @@ END IF;
 END $
 
 CALL proif(1,@str);
+
+SELECT @str;
+
+
+带有循环功能的存储过程
+输入数值,求从一到该数值的累加和
+DELIMITER $
+CREATE PROCEDURE prowhile(IN num INT, OUT result INT)
+BEGIN
+定义一个局部变量
+DECLARE i INT DEFAULT 1;
+DECLARE vsum INT DEFAULT 0;
+WHILE i<=num DO
+SET vsum=vsum+i;
+SET i=i+1;
+END WHILE;
+SET result=vsum;
+END $
+
+CALL prowhile(122, @result)
+
+SELECT @result;
