@@ -102,3 +102,25 @@ SELECT column,COUNT(column/*) FROM t_name GROUP BY column;
     分组查询后筛选
 SELECT column,COUNT(column/*) FROM t_name GROUP BY column HAVING COUNT(column/*);
 
+
+表约束
+唯一:
+unique:不可可重复,可以为空,一张表可以有多个
+主键: 非空+unique
+primary key:不可重复,不可为空,一张表只能有一个
+自增长
+cretate TABLE t_name(column type auto_inrement);
+cretate TABLE t_name(column type zerofill auto_inrement); 零填充
+不能影响自增长约束
+DELETE FROM t_name;
+可以影响自增长约束
+TRUNCATE TABLE t_name;
+外键约束
+CREATE TABLE t_name(
+column type,
+CONSTRAINT column_fk FOREIGN KEY(column) REFERENCES t_name_fk(column)
+                         外键名称                              外键                    参考表(参考字段)                                                                      
+);
+有外键约束时:
+添加数据时:先添加主表(参考表),再添加副表
+修改数据时:先修改副表,再修改主表(参考表)数据
