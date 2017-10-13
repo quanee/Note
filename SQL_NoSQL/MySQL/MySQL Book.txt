@@ -208,3 +208,23 @@ SET var = value;
 END $
 
 SET @var=value;
+CALL proinout(@var)
+
+
+带有条件判断的存储过程
+输入整数,返回对应星期天
+ DELIMITER $
+CREATE PROCEDURE proif(IN num INT, OUT str VARCHAR(20))
+BEGIN
+IF num=1 THEN
+SET str='星期一';
+IF num=2 THEN
+SET str='星期二';
+IF num=3 THEN
+SET str='星期三';
+ELSE
+SET str='输入错误';
+END IF;
+END $
+
+CALL proif(1,@str);
