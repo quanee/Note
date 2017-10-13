@@ -250,3 +250,24 @@ END $
 CALL prowhile(122, @result)
 
 SELECT @result;
+
+
+触发器
+当操作某张表时,同时触发一些动作
+插入数据后,同时向日志表中插入
+创建触发器(插入)
+CREATE TRIGGER triname AFTER INSERT ON t_name FOR EACH ROW
+INSERT INTO log_t_name(clomn,...) VALUES('INSERT');
+创建触发器(修改)
+CREATE TRIGGER triname AFTER UPDATE ON t_name FOR EACH ROW
+INSERT INTO log_t_name(clomn,...) VALUES('update');
+创建触发器(删除)
+CREATE TRIGGER triname AFTER DELETEON t_name FOR EACH ROW
+INSERT INTO log_t_name(clomn,...) VALUES('delete');
+mysql权限
+修改密码
+UPDATE USER SET PASSWORD=PASSWORD('new_passwd') WHERE USERN='USErname';
+分配权限
+GRANT SELECT ON DATABASE.table TO 'USEr'@'accounttype' IDENTIFIED BY 'password';
+GRANT DELETE ON DATABASE.table TO 'USEr'@'accounttype' IDENTIFIED BY 'password';
+mysql备份和还原
