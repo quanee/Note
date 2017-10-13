@@ -145,3 +145,24 @@ CONSTRAINT column_fk FOREIGN KEY(column) REFERENCES t_name_fk(column)
 数据库设计:业务模型/实体模型->数据模型()硬盘
 详细设计
 类详细,属性,方法
+三大范式
+设计原则:设计的表尽量遵守三大范式
+第一范式:表中每个字段必须是不可分割的独立单元
+第二范式:在第一范式的基础上,非主属性完全函数依赖于任何一个候选码
+第三范式:在第二范式的基础上,非主属性既不传递依赖于码,也不函数依赖于码
+存储过程
+执行效率快,在服务端执行
+移植性差
+创建存储过程
+DELIMITER $     声明结束符
+CREATE PROCEDURE proname()
+BEGIN
+SELECT * FROM t_name;
+...
+END $
+执行存储过程
+CALL proname();
+参数
+IN  输入参数,可以携带数据到存储过程中
+OUT     输出参数,可以从存储过程中返回结果
+INOUT   输入输出参数,既有输入功能,也有输出功能
