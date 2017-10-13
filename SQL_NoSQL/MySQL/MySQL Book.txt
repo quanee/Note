@@ -19,3 +19,24 @@ USE db_name;
 创建表
 CRETAE TABLE t_name(column type,...);
 查看表结构
+DESC t_name;
+修改表名称
+ALTER TABLES old_t_name RENAME TO new_t_name;
+显示所有数据库
+SHOW DATABASES;
+显示所有表
+SHOW TABLES;
+修改数据库默认编码
+ALTER DATABASE db_name DEFAULT CHARACTER SET encoding;
+给表添加列
+ALTER TABLE t_name ADD new_column type,…;
+给表删除列
+ALTER TABLE t_name DROP columnname;
+
+
+插入数据
+插入所有字段
+INSERT INTO t_name VALUES(colum1, .....);
+插入部分字段
+INSERT t_name(colum1,..) VALUES(value1,...);
+修改数据
