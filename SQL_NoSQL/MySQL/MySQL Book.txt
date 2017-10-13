@@ -1,0 +1,21 @@
+SHOW DATABASES;
+
+CREATE DATABASE db_name;
+
+USE db_name;
+
+SHOW TABLES;
+
+CREATE TABLE t_name(FD_1 TYPE, ...);
+
+SELECT * FROM t_name;
+
+INSERT INTO t_name(FD_1, ...) VALUES(KEY1, ...);
+
+
+表操作
+选择数据库
+USE db_name;
+创建表
+CRETAE TABLE t_name(column type,...);
+查看表结构
