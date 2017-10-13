@@ -124,3 +124,24 @@ CONSTRAINT column_fk FOREIGN KEY(column) REFERENCES t_name_fk(column)
 有外键约束时:
 添加数据时:先添加主表(参考表),再添加副表
 修改数据时:先修改副表,再修改主表(参考表)数据
+删除数据时:先删除副表,再删除主表(参考表)数据
+级联操作
+有外键约束时,通过修改或删除主表,影响副表
+CREATE TABLE t_name(
+column type,
+CONSTRAINT column_fk FOREIGN KEY(column) REFERENCES t_name_fk(column) 
+      外键名称                         外键                     参考表(参考字段)             ON UPDATE CASCADE[ ON DELETE CASCADE]                                                                   
+);
+级联修改:ON UPDATE CASCADE
+级联删除:ON DELETE CASCADE
+
+
+数据库设计
+需求分析
+
+需求设计
+概要设计
+抽取实体:业务模型->实体模型(类)
+数据库设计:业务模型/实体模型->数据模型()硬盘
+详细设计
+类详细,属性,方法
