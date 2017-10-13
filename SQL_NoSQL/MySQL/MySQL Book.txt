@@ -61,3 +61,24 @@ SELECT column AS ‘column_new’,… FROM t_name AS t_name_new;
 SELECT column1,…’常量列’ FROM t_name;
     查询时合并列
 SELECT columname, (column1+column2) FROM t_name;
+column1和column2必须为数值类型
+    查询时去除重复列
+SELECT DISTINCT column FROM t_name;
+SELECT DISTINCT(column) FROM t_name;
+    条件查询(WHERE)
+   逻辑条件:and(与) or(或)
+SELECT * FROM t_name WHERE column1=value AND column2=value 
+SELECT * FROM t_name WHERE column1=value OR column2=value
+   比较条件: > < >= <= <>(不等于) between and
+SELECT * FROM t_name WHERE column > value1 AND column < valu2;
+SELECT * FROM t_name WHERE column BETWEEN value1 AND value2;
+   判空条件(null 空字符串) is null, is not null, =’’, <>’’
+SELECT column,… FROM t_name WHERE column is null;
+   模糊条件(LIKE)
+% 任意个字符
+_ 一个字符
+SELECT * FROM t_name WHERE column LIKE “”
+    聚合查询
+   常用聚合函数
+SUM() 求和
+AVG() 求平均值
