@@ -40,3 +40,24 @@ INSERT INTO t_name VALUES(colum1, .....);
 插入部分字段
 INSERT t_name(colum1,..) VALUES(value1,...);
 修改数据
+UPDATE tableblename SET columnname=value WHERE 条件;
+删除全表
+DELETE FROM t_name;
+可以带条件删除
+只能删除表的数据,不能删除表的约束
+可以回滚
+TRUNCATE TABLE t_name;
+不能带条件删除
+既可以删除表的数据,也可以删除表的约束
+不可以回滚
+####################################################################
+查询所有列
+SELECT * FROM t_name;
+    查询指定列
+SELECT column1,… FROM t_name;
+    查询时指定别名
+SELECT column AS ‘column_new’,… FROM t_name AS t_name_new;
+    查询时添加常量列
+SELECT column1,…’常量列’ FROM t_name;
+    查询时合并列
+SELECT columname, (column1+column2) FROM t_name;
