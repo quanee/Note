@@ -166,3 +166,24 @@ CALL proname();
 IN  输入参数,可以携带数据到存储过程中
 OUT     输出参数,可以从存储过程中返回结果
 INOUT   输入输出参数,既有输入功能,也有输出功能
+带有存储输入参数的存储过程
+DELIMITER $
+CREATE PROCEDURE proin(IN col  type)
+BEGIN
+SELECT * FROM t_name WHERE column=col;
+END $
+
+CALL proin(col);
+
+带有输出参数的存储过程
+DELIMITER $
+CREATE PROCEDURE proout(OUT col type)
+BEGIN
+ SET col = 'Hello MySQL!';
+END $
+删除存储过程
+DROP PROCEDURE proout;
+
+
+mysql变量
+全局变量(内置变量) 
