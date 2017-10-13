@@ -187,3 +187,24 @@ DROP PROCEDURE proout;
 
 mysql变量
 全局变量(内置变量) 
+SHOW varibales; 查看所有全局变量
+select @@变量名;查看某个全局变量
+set 变量名=新值; 修改全局变量
+character_set_client:mysql服务器的接收数据的编码
+character_set_results:mysql服务器输出数据的编码
+会话变量:只存在于当前客户端与数据库服务端的依次连接中,如果连接断开,那么会话变量全部丢失
+SET @var='value';
+局部变量:在存储过程中使用的变量
+1)定义一个会话变量name
+2)使用name会话变量接受存储过程的返回值
+CALL proout(@name);
+SELECT @name;
+带有输入输出参数的存储过程
+DELIMITER $
+CREATE PROCEDURE proinout(INOUT var type)
+BEGIN
+SELECT var;
+SET var = value;
+END $
+
+SET @var=value;
