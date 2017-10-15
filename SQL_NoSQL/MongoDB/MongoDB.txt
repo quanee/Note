@@ -85,3 +85,25 @@ pipeline = [
 {'$group':{'_id':'$price','counts':{'$sum':1}}},
 
 {'$sort' :{'counts':-1}},
+
+{'$limit':10}
+
+]
+
+# '$slice':['$cates',2,1] 2表示跳过两个，选择第三个
+
+# '$group'更新_id 新建 counts字段
+
+# 按照count字段排序
+
+pipeline2 = [
+
+{'$match':{'$and':[{'pub_date':'2015.12.24'},{'time':3}]}},
+
+{'$group':{'_id':{'$slice':['$cates',2,1]},'counts':{'$sum':1}}},
+
+{'$sort':{'counts':-1}}
+
+]
+
+调用aggregate函数
