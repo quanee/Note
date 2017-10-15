@@ -63,3 +63,25 @@ pipline=[{$match:?},
 		 {$redact:?},
 		 {$sample:?},
 		 {$out:?}
+
+]
+
+# $match：选择24号发布的商品且交易时长为三天的商品
+
+# $group:打组。实际上是求和、平均等计算性的打组
+
+# 按照price进行分组，每相同price的加1，即求每种价格出现的次数
+
+# $sort：对'counts'进行排序，-1代表从高到低排序，1代表顺序
+
+# $limit：和find中limit一样+
+
+# $price相当于把原始数据中price勾过来
+
+pipeline = [
+
+{'$match':{'$and':[{'pub_date':'2016.12.24'},{'time':3}]}},
+
+{'$group':{'_id':'$price','counts':{'$sum':1}}},
+
+{'$sort' :{'counts':-1}},
