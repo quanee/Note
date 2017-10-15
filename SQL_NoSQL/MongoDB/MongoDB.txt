@@ -1,0 +1,22 @@
+2017/10/27 19:05:53
+
+索引碎片整理
+	db.values.reIndex()
+查询分析器开启
+	db.setProfilingLevel(2)
+强制使用指定索引
+	hing({indexname:1})
+通配符
+	$**	匹配任意字段中包含的字符串
+-- 解析字符串>>>删除分词>>>匹配词干
+-- 关键字使用双引号包含,必须匹配含有双引号的短语
+	db.books.find({$text:{$search:'"books"'}})	匹配含有books的短语
+排除单词
+	db.books.find({$text:{$search:'mongodb -second'}}) 搜索匹配mongodb但不包含second的短语
+排除文档
+	db.books.find({$text:{$search:'mongodb -"second"  '}}) 搜索匹配mongodb但不包含second的文档
+分配权重(默认为1,其他值为被发现的概率的倍数,即对索引的影响)
+	db.books.createIndex(
+		{'$**': 'text'},<--使用字符串索引索引所有字段
+		{weights:
+			{title: 10,	<---为字段指定1以外的权重
