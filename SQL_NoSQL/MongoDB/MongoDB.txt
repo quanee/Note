@@ -20,3 +20,25 @@
 		{'$**': 'text'},<--使用字符串索引索引所有字段
 		{weights:
 			{title: 10,	<---为字段指定1以外的权重
+			dategories:5}
+		}
+	)
+在索引里指定语言
+db.books.createIndex(
+	{'$**':'text'},
+	{weights:
+		{title:10,
+		categories:5},
+	name:'index_name',
+	default_language:'french'
+	}
+)
+
+切换存储引擎到WiredTiger
+设置配置文件YAML
+storage:
+	dbpath:"/data/db"	数据库存储路径
+	joural:
+		enabled:true	是否启用日志,默认true
+	engine:"wiredTiger"	存储引擎,默认mmapv1
+	wiredTiger:			
