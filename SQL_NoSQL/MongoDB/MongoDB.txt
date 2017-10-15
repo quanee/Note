@@ -42,3 +42,24 @@ storage:
 		enabled:true	是否启用日志,默认true
 	engine:"wiredTiger"	存储引擎,默认mmapv1
 	wiredTiger:			
+		engineConfig:	
+			cacheSizeGB:8	使用内存大小,默认是物理内存的一半,至少1G
+			journalCompressor:none	日志压缩器,默认snappy, 设置为none获取最佳性能
+		collectionConfig:
+			blockCompressor:none	集合数据压缩器(none,snappy,zlib)
+		indexConfig:
+			prefixCompression:false	是否为索引使用压缩
+
+
+
+collection.aggregate(pipeline)
+
+pipline=[{$match:?},
+		 {$group:?},
+		 {$sort:?},
+		 {$limit:?},
+		 {$skip:?},
+		 {$unwind:?},
+		 {$redact:?},
+		 {$sample:?},
+		 {$out:?}
