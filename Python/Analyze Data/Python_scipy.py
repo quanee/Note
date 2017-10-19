@@ -88,3 +88,12 @@ print(jddf['opening_price'].skew())
 print(stats.skew(jddf['opening_price'], bias=False))
 
 # 峰度(反映数据分布曲线陡峭或扁平程度的指标)
+print(jddf['opening_price'].kurt())
+print(stats.kurtosis(jddf['opening_price'], bias=False))
+
+
+
+# 统计表
+print(jddf.describe())
+print(stats.describe(jddf[['opening_price', 'closing_price', 'lowest_price', 'highest_price', 'volume']]))
+# 统计表的编制
