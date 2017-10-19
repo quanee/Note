@@ -61,3 +61,12 @@ print(md1.mode())
 print(np.ptp(jd_stock['opening_price']))
 print(np.max(jd_stock['opening_price']) - np.min(jd_stock['opening_price']))
 print(jddf['opening_price'].max() - jddf['opening_price'].min())
+print(stats.mstats.mquantiles(jddf['opening_price'], prob=1) - stats.mstats.mquantiles(jddf['opening_price'], prob=0))
+
+# 四分位差
+print(stats.scoreatpercentile(jddf['opening_price'], 75) - stats.scoreatpercentile(jddf['opening_price'], 25))
+
+# 方差和标准差
+print(np.var(jd_stock['opening_price'], ddof=1))
+print(jd_stock['opening_price'].var(ddof=1))
+print(np.std(jd_stock['opening_price'], ddof=1))
