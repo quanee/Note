@@ -25,3 +25,12 @@ print(stats.mstats.winsorize(jddf['opening_price'], (0.05, 0.05)).mean())
 # 几何平均数
 print(stats.gmean(jddf['opening_price']))
 # 调和平均数
+print(stats.hmean(jddf['opening_price']))
+
+# 中位数
+print(np.median(jd_stock['opening_price']))
+print(jddf['opening_price'].median())
+# print(stats.nanmedian(jddf['opening_price']))
+
+# 分位数
+# 计算指定分位点的分位数
