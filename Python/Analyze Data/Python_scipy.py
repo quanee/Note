@@ -15,3 +15,13 @@ print(np.mean(jd_stock['opening_price']))
 print(np.average(jd_stock['opening_price']))
 print(np.average(jd_stock['closing_price'], weights=jd_stock['volume']))
 print(jddf['opening_price'].mean())
+
+# 截尾均值(去掉头尾若干最大最小的数据)
+print(stats.tmean(jddf['opening_price']))
+print(stats.tmean(jddf['opening_price'], (25, 30)))  # 截尾的上, 下界
+
+# 缩尾均值(把原始数据中最小的N个值用第N+1小的数值替换, 最大的N个值用第N+1大的数值替换)
+print(stats.mstats.winsorize(jddf['opening_price'], (0.05, 0.05)).mean())
+# 几何平均数
+print(stats.gmean(jddf['opening_price']))
+# 调和平均数
