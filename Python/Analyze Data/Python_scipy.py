@@ -34,3 +34,12 @@ print(jddf['opening_price'].median())
 
 # 分位数
 # 计算指定分位点的分位数
+print(stats.scoreatpercentile(jddf['opening_price'], [10, 20, 25, 50, 75, 100]))
+# 计算指定数值所处的分位点
+print(stats.percentileofscore(jddf['opening_price'], 30.27))
+
+print(stats.mstats.mquantiles(jddf['opening_price'], prob=0.50))
+print(stats.mstats.hdquantiles(jddf['opening_price'], prob=0.50))
+
+# 众数
+m = np.array([1, 2, 3, 4, 3, 2, 3, 3, 4, 4, 4, 7, 8])
