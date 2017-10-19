@@ -79,3 +79,12 @@ print(jddf['opening_price'].cov(jddf['closing_price']))
 
 # 变异系数
 cv = jd_stock['closing_price'].var() / jd_stock['closing_price'].mean()
+print('CV of closing_price:', cv)
+
+
+# 分布形状
+# 偏度(数据分布对称性的测度  K=E(x-u)^3/o^3)
+print(jddf['opening_price'].skew())
+print(stats.skew(jddf['opening_price'], bias=False))
+
+# 峰度(反映数据分布曲线陡峭或扁平程度的指标)
