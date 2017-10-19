@@ -70,3 +70,12 @@ print(stats.scoreatpercentile(jddf['opening_price'], 75) - stats.scoreatpercenti
 print(np.var(jd_stock['opening_price'], ddof=1))
 print(jd_stock['opening_price'].var(ddof=1))
 print(np.std(jd_stock['opening_price'], ddof=1))
+print(jddf['opening_price'].var(), jddf['opening_price'].std())
+# print(stats.tvar(jddf['opening_price']), stats.nanstd(jddf['opening_price']))
+
+# 协方差
+print(np.cov((jd_stock['opening_price'], jd_stock['closing_price']), bias=1, ddof=1))
+print(jddf['opening_price'].cov(jddf['closing_price']))
+
+# 变异系数
+cv = jd_stock['closing_price'].var() / jd_stock['closing_price'].mean()
