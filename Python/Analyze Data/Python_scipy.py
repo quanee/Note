@@ -97,3 +97,12 @@ print(stats.kurtosis(jddf['opening_price'], bias=False))
 print(jddf.describe())
 print(stats.describe(jddf[['opening_price', 'closing_price', 'lowest_price', 'highest_price', 'volume']]))
 # 统计表的编制
+storesales = pd.read_csv('storesales.csv')
+print(storesales.head())
+
+storesales['store'] = storesales['store'].astype('category')
+storesales['store'].cat.categories = ['SANFORD', 'MILLENIA', 'OCOEE', 'KISSIMMEE']
+storesales['store'].cat.set_categories = ['SANFORD', 'MILLENIA', 'OCOEE', 'KISSIMMEE']
+storesales['method'] = storesales['method'].astype('category')
+storesales['method'].cat.categories = ['On Line', 'In Store']
+storesales['method'].cat.set_categories = ['On Line', 'In Store']
