@@ -43,3 +43,12 @@ print(stats.mstats.hdquantiles(jddf['opening_price'], prob=0.50))
 
 # 众数
 m = np.array([1, 2, 3, 4, 3, 2, 3, 3, 4, 4, 4, 7, 8])
+print(stats.mode(m))
+print(stats.mode(jd_stock['opening_price']))
+print(stats.mode(jddf['opening_price']))
+# 错误
+m1 = np.array([1, 2, 3, 4, 7, 8])
+print(stats.mode(m1))
+
+md = pd.DataFrame(m)
+print(md.mode())
