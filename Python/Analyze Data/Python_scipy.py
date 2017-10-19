@@ -52,3 +52,12 @@ print(stats.mode(m1))
 
 md = pd.DataFrame(m)
 print(md.mode())
+
+md1 = pd.DataFrame(m1)
+print(md1.mode())
+
+# 离散程度
+# 极差
+print(np.ptp(jd_stock['opening_price']))
+print(np.max(jd_stock['opening_price']) - np.min(jd_stock['opening_price']))
+print(jddf['opening_price'].max() - jddf['opening_price'].min())
