@@ -106,3 +106,12 @@ storesales['store'].cat.set_categories = ['SANFORD', 'MILLENIA', 'OCOEE', 'KISSI
 storesales['method'] = storesales['method'].astype('category')
 storesales['method'].cat.categories = ['On Line', 'In Store']
 storesales['method'].cat.set_categories = ['On Line', 'In Store']
+
+storesales_grouped = storesales.groupby(storesales['method'])
+print(storesales_grouped['sales', 'orders'].agg('sum'))
+
+'''
+pivot_table(data, values=None, index=None, columns=None, aggfunc='mean', fill_value=None, margins=False, dropna=True, margins_name='All')
+data: 指定为pandas中的DataFrame
+index, columns, values: 分别对应数据透视表中的行,列和值, 他们都应当是data所指定DataFrame中的列
+aggfunc: 指定汇总的函数, 默认为mean函数
