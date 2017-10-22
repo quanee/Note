@@ -22,3 +22,11 @@ class Manager():
 
 
     def giveRaise(self, percent, bonus=.10):
+        self.person.giveRaise(percent + bonus)
+
+
+    def __getarr__(self, attr):
+        return getattr(self.person, attr)
+
+
+    def __str__(self):
