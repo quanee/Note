@@ -46,3 +46,11 @@ if __name__ == '__main__':
     tom = Manager('Tom Jones', 50000)
     tom.giveRaise(.10)
     # print(tom.lastName())
+    print(tom)
+
+    # 内省工具
+    print(bob.__class__)
+    print(bob.__class__.__name__)
+    print(list(bob.__dict__.keys()))
+    for key in bob.__dict__:
+        print(key, '=>', bob.__dict__[key])
