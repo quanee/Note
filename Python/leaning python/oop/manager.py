@@ -14,3 +14,11 @@ class Person(object):
 
     def __str__(self):
         return '[Person: %s, %s]' % (self.name, self.pay)
+
+
+class Manager():
+    def __init__(self, name, pay):
+        self.person = Person(name, 'mgr', pay)
+
+
+    def giveRaise(self, percent, bonus=.10):
