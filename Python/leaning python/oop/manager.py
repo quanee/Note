@@ -30,3 +30,11 @@ class Manager():
 
 
     def __str__(self):
+        return str(self.person)
+
+
+
+if __name__ == '__main__':
+    bob = Person('Bob Smith')
+    sue = Person('Sue Jones', job='dev', pay=100000)
+    print(bob)
