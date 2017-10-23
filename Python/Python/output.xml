@@ -7,3 +7,4 @@
         <neighbor direction="W" name="Switzerland" />
     </country>
     <country name="Singapore">
+        <rank updated="yes">5</rank>
