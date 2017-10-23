@@ -5,3 +5,4 @@
         <gdppc>141100</gdppc>
         <neighbor direction="E" name="Austria" />
         <neighbor direction="W" name="Switzerland" />
+    </country>
