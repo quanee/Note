@@ -6,3 +6,4 @@
         <neighbor direction="E" name="Austria" />
         <neighbor direction="W" name="Switzerland" />
     </country>
+    <country name="Singapore">
