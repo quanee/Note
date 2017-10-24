@@ -10,3 +10,7 @@ f.close()
 
 # 计算字符串md5
 src = ''
+
+myMd5 = hashlib.md5()
+myMd5.update(src.encode('utf8'))
+myMd5_Digest = myMd5.hexdigest()
