@@ -6,3 +6,4 @@ r = threading.Lock()
 
 
 def addNum():
+    global num
