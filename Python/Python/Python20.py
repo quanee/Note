@@ -21,3 +21,5 @@ def addNum():
     # print('--get num:', num)
     r.release()  # 释放锁
 
+
+num = 100  # 设定一个共享变量
