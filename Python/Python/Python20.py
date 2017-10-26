@@ -23,3 +23,6 @@ def addNum():
 
 
 num = 100  # 设定一个共享变量
+
+thread_list = []
+for i in range(100):
