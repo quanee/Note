@@ -14,3 +14,5 @@ def addNum():
     r.acquire()  # 获取锁
     # 线程不安全
     temp = num
+    time.sleep(0.001)
+    print('ok')
