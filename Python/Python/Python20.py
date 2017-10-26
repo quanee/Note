@@ -10,3 +10,5 @@ def addNum():
 
     #  安全 线程切换时无操作
     # num -= 1
+
+    r.acquire()  # 获取锁
