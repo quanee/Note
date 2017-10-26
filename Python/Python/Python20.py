@@ -18,3 +18,5 @@ def addNum():
     print('ok')
     # 线程切换时 num可能没有改变
     num = temp - 1  # 对此公共变量进行-1操作
+    # print('--get num:', num)
+    r.release()  # 释放锁
