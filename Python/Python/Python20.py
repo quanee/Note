@@ -12,3 +12,5 @@ def addNum():
     # num -= 1
 
     r.acquire()  # 获取锁
+    # 线程不安全
+    temp = num
