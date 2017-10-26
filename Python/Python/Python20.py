@@ -20,3 +20,4 @@ def addNum():
     num = temp - 1  # 对此公共变量进行-1操作
     # print('--get num:', num)
     r.release()  # 释放锁
+
