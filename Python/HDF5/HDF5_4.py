@@ -25,3 +25,12 @@ print(tile.shape)
 
 dset = f.create_dataset('chunked', (100, 480, 640), dtype='i1', chunks=(1, 64, 64))
 print(dset.chunks)
+
+# 设置分块形状
+# 自动分块
+dset = f.create_dataset("Image", (100, 480, 640), 'f', chunks=True)
+print(dset.chunks)
+
+'''
+手动选择形状
+ *  只有使用连续存储或自动分块会导致性能不佳时才手动选择分块形状
