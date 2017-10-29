@@ -123,3 +123,13 @@ shuffle过滤器
 dset = f.create_dataset('BigDatasets', (1000, 1000), dtype='float64', compression='gzip', shuffle=True)
 dset[...] = 50.0
 print(dset.shuffle)
+
+'''
+FLETCHER32过滤器 (校验和过滤器 弗莱彻校验的32位实现)
+    每个分块被写入文件时计算一个校验和保存在分块的元数据中
+    读取时 再次计算并比对校验和 如果不匹配 会抛出一个错误 读取失败
+    所有HDF5发行版可用
+    很快
+    兼容所有无损过滤器
+'''
+dset = f.create_dataset('Data', (1000, ), fletcher32=True)
