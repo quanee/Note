@@ -42,3 +42,13 @@ print(dset.chunks)
 # 手动指定分块
 dset1 = f.create_dataset('timetraces1', (1, 1000), maxshape=(None, 1000), chunks=(1, 1000))
 dset2 = f.create_dataset('timetraces2', (5000, 1000), maxshape=(None, 1000), chunks=(1, 1000))
+
+# 方法一 (简单添加)
+def add_trace_1(arr):
+    dset1.resize((dset1.shape[0] + 1, 1000))
+    dset1[-1, :] = arr
+
+
+# 方法二 (超额分配 结束时削减)
+ntraces = 0
+def add_trace_2(arr):
