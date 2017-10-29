@@ -34,3 +34,11 @@ print(dset.chunks)
 '''
 手动选择形状
  *  只有使用连续存储或自动分块会导致性能不佳时才手动选择分块形状
+ *  为数据集指定最自然的访问方式
+ *  分块不要太小(至少大于10KB)
+ *  分块不要太大(至少小于1MB)
+'''
+# 可变性数据集
+# 手动指定分块
+dset1 = f.create_dataset('timetraces1', (1, 1000), maxshape=(None, 1000), chunks=(1, 1000))
+dset2 = f.create_dataset('timetraces2', (5000, 1000), maxshape=(None, 1000), chunks=(1, 1000))
