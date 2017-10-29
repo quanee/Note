@@ -16,3 +16,12 @@ print(image.shape)
 # 读取一张图像角落上64x64的像素块
 tile = dset[0, 0:64, 0:64]
 print(tile.shape)
+
+'''
+分块存储
+指定最适合访问模式的N维形状
+当写入磁盘时 HDF5将数据分成指定形状的块 然后扁平的写入磁盘 其坐标有一个B树索引
+'''
+
+dset = f.create_dataset('chunked', (100, 480, 640), dtype='i1', chunks=(1, 64, 64))
+print(dset.chunks)
