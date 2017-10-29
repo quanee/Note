@@ -78,3 +78,13 @@ def test1():
 def test2():
     for idx in range(N):
         add_trace_2(data)
+
+
+print(dset1.chunks)
+print(dset2.chunks)
+
+# print(timeit(test1, setup=setup, number=1))
+# print(timeit(test2, setup=setup, number=1))
+
+
+# 过滤器和压缩
