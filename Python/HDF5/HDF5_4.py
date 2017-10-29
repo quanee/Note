@@ -96,3 +96,13 @@ dset[...] = 42.0
 print(dset[0, 0])
 print(dset.compression_opts)
 print(dset.chunks)
+
+'''
+szip压缩器
+NASA专利压缩技术
+  仅支持(1, 2, 4, 8字节, 有/无符号)整型和浮点(4/8字节)类型
+  快速压缩解压
+'''
+# dset = f.create_dataset('BigDataset', (1000, 1000), dtype='float64', compression='szip')
+
+'''
