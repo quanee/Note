@@ -60,3 +60,12 @@ def add_trace_2(arr):
 def done():
     dset2.resize((ntraces, 1000))
 
+
+def setup():
+    global data, N, dset1, dset2, ntraces
+    data = np.random.random(1000)
+    N = 10000
+    dset1.resize((1, 1000))
+    dset2.resize((10001, 1000))
+    ntraces = 0
+
