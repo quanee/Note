@@ -52,3 +52,11 @@ def add_trace_1(arr):
 # 方法二 (超额分配 结束时削减)
 ntraces = 0
 def add_trace_2(arr):
+    global ntraces
+    dset2[ntraces, :] = arr
+    ntraces += 1
+
+
+def done():
+    dset2.resize((ntraces, 1000))
+
