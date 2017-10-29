@@ -106,3 +106,12 @@ NASA专利压缩技术
 # dset = f.create_dataset('BigDataset', (1000, 1000), dtype='float64', compression='szip')
 
 '''
+LZF压缩器
+  支持HDF5所有类型
+  超快的压缩和解压
+  仅可用于Python C代码开源
+'''
+# dset = f.create_dataset('BigDataset', (1000, 1000), dtype='float64', compression='lzf')
+
+'''
+shuffle过滤器
