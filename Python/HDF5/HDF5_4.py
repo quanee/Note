@@ -115,3 +115,11 @@ LZF压缩器
 
 '''
 shuffle过滤器
+    将数据重新分块打包 提高压缩率
+    所有HDF5发行版可用
+    超快
+    仅可与GZIP或LZF等过滤器共同使用
+'''
+dset = f.create_dataset('BigDatasets', (1000, 1000), dtype='float64', compression='gzip', shuffle=True)
+dset[...] = 50.0
+print(dset.shuffle)
