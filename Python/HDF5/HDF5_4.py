@@ -88,3 +88,11 @@ print(dset2.chunks)
 
 
 # 过滤器和压缩
+# 压缩过滤器
+dset = f.create_dataset('BigDataset', (1000, 1000), dtype='float64', compression='gzip', compression_opts=9)
+# compression_opts 压缩级别 0-9 越大压缩率越高
+print(dset.compression)
+dset[...] = 42.0
+print(dset[0, 0])
+print(dset.compression_opts)
+print(dset.chunks)
