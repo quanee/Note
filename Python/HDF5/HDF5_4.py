@@ -69,3 +69,12 @@ def setup():
     dset2.resize((10001, 1000))
     ntraces = 0
 
+
+def test1():
+    for idx in range(N):
+        add_trace_1(data)
+
+
+def test2():
+    for idx in range(N):
+        add_trace_2(data)
