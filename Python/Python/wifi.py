@@ -34,3 +34,6 @@ def test(i, face, x, key, stu, ts):
 def main():
     scantimes = 20
     testtimes = 25
+    output = sys.stdout
+    files = "TestRes.txt"
+    keys = open(sys.argv[1], 'r').readlines()
