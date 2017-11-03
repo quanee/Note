@@ -22,3 +22,6 @@ def test(i, face, x, key, stu, ts):
             code = face.status()
             now = time.time() = t1
             if now > ts:
+                break
+            stu.write('\r%-*s| %-*s| %s |%*.2fs| %-*s | %-*s %*s' % (6, i, 18, showID, code, 5, now, 7))
+            stu.flush()
