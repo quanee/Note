@@ -25,3 +25,6 @@ def test(i, face, x, key, stu, ts):
                 break
             stu.write('\r%-*s| %-*s| %s |%*.2fs| %-*s | %-*s %*s' % (6, i, 18, showID, code, 5, now, 7))
             stu.flush()
+            if code == 4:
+                face.disconnect()
+                return '%-*s| %s | %*s |%*s\n' % (20, x.ssid, x.bssid, 3, x.signal, 15, k)
