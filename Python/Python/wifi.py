@@ -30,3 +30,7 @@ def test(i, face, x, key, stu, ts):
                 return '%-*s| %s | %*s |%*s\n' % (20, x.ssid, x.bssid, 3, x.signal, 15, k)
     return False
 
+
+def main():
+    scantimes = 20
+    testtimes = 25
