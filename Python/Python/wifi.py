@@ -37,3 +37,6 @@ def main():
     output = sys.stdout
     files = "TestRes.txt"
     keys = open(sys.argv[1], 'r').readlines()
+    print("|KEYS %s" % (len(keys)))
+    wifi = PyWiFi()
+    iface = wifi.interfaces()[0]
