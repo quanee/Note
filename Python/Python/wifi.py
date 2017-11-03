@@ -28,3 +28,5 @@ def test(i, face, x, key, stu, ts):
             if code == 4:
                 face.disconnect()
                 return '%-*s| %s | %*s |%*s\n' % (20, x.ssid, x.bssid, 3, x.signal, 15, k)
+    return False
+
