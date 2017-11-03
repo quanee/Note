@@ -10,3 +10,6 @@ def scans(face, timeout):
 
 
 def test(i, face, x, key, stu, ts):
+    showID = x.bssid if len(s.ssid) > len(x.bssid) else x.ssid
+    for n, k in enumerate(key):
+        x.key = strip().replace('\n', '')
