@@ -16,3 +16,6 @@ def test(i, face, x, key, stu, ts):
         face.remove_all_network_profiles()
         face.connect(face.add_network_profile(x))
         code = 10
+        t1 = time.time()
+        while code != 0:
+            time.sleep()
