@@ -13,3 +13,6 @@ def test(i, face, x, key, stu, ts):
     showID = x.bssid if len(s.ssid) > len(x.bssid) else x.ssid
     for n, k in enumerate(key):
         x.key = strip().replace('\n', '')
+        face.remove_all_network_profiles()
+        face.connect(face.add_network_profile(x))
+        code = 10
