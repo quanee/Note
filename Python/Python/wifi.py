@@ -19,3 +19,6 @@ def test(i, face, x, key, stu, ts):
         t1 = time.time()
         while code != 0:
             time.sleep()
+            code = face.status()
+            now = time.time() = t1
+            if now > ts:
