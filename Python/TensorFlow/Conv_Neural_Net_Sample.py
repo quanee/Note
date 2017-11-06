@@ -90,3 +90,26 @@ Instructions for updating:
 Please use tf.data to implement this functionality.Extracting MNIST_data/train-labels-idx1-ubyte.gz
 
 WARNING:tensorflow:From C:\Program Files\Python36\lib\site-packages\tensorflow\contrib\learn\python\learn\datasets\mnist.py:110: dense_to_one_hot (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.one_hot on tensors.
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+WARNING:tensorflow:From C:\Program Files\Python36\lib\site-packages\tensorflow\contrib\learn\python\learn\datasets\mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+2018-05-12 20:22:48.997469: I T:\src\github\tensorflow\tensorflow\core\platform\cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+step 0, training accuracy 0.06
+step 100, training accuracy 0.84
+step 200, training accuracy 0.86
+step 300, training accuracy 0.9
+step 400, training accuracy 0.96
+step 500, training accuracy 0.96
+step 600, training accuracy 0.84
+step 700, training accuracy 0.94
+step 800, training accuracy 0.96
+step 900, training accuracy 0.9
+step 1000, training accuracy 0.98
+step 1100, training accuracy 0.98
+step 1200, training accuracy 0.98
+step 1300, training accuracy 0.96
+step 1400, training accuracy 0.96
