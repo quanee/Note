@@ -22,3 +22,5 @@ header = {
           'X-Anit-Forge-Token': 'None',
           'X-Requested-With': 'XMLHttpRequest',
           }
+
+html = requests.post(url, data=data, headers=header)
