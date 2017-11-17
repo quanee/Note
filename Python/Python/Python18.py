@@ -4,3 +4,4 @@ url = 'https://www.lagou.com/jobs/positionAjax.json?city=%E6%88%90%E9%83%BD&need
 
 data = {'first': 'false',
         'pn': 4,
+        'kd': 'Python'}
