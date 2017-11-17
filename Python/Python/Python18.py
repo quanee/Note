@@ -18,3 +18,5 @@ header = {
           'Origin': 'https://www.lagou.com',
           'Referer': 'https://www.lagou.com/jobs/list_Python?city=%E6%88%90%E9%83%BD&cl=false&fromSearch=true&labelWords=&suginput=',
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+          'X-Anit-Forge-Code': '0',
+          'X-Anit-Forge-Token': 'None',
