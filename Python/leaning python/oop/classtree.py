@@ -6,3 +6,10 @@ def classtree(cls, indent):
         classtree(supercls, indent + 3)
 
 def instancetree(inst):
+    print('Tree of %s' % inst)
+    classtree(inst.__class__, 3)
+
+def selftest():
+    class A:
+        ...
+
