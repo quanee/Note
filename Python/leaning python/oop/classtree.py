@@ -29,3 +29,11 @@ def selftest():
     class E:
         ...
 
+
+    class F(D, E):
+        ...
+
+
+    instancetree(B())
+    instancetree(F())
+
