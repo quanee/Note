@@ -21,3 +21,11 @@ def selftest():
     class C(A):
         ...
 
+
+    class D(B, C):
+        ...
+
+
+    class E:
+        ...
+
