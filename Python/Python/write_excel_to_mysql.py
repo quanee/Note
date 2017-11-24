@@ -50,3 +50,15 @@ __db_config = {
     'port': 3306,
     'user': 'your.db.username',
     'password': 'your.db.password',
+    'db': 'xls',
+    'charset': 'utf8'
+}
+
+####################
+
+
+def usage():
+
+    print('xls2db.py usage:')
+
+    print(' xls2db filename(xlsx)')
