@@ -141,3 +141,15 @@ indx = itertools.count(1, 1)
 # 构建插入语句
 
 sql = 'INSERT IGNORE INTO `xls`.`%s` ' % (shname)
+
+for row in ws.iter_rows(min_row=2):
+
+    insql = sql \
+
+    + 'VALUES (%s, ' % next(indx) \
+
+    + ', '.join(["'%s'" % ''.join(filter(lambda x: x not in('"\''), str(var.value))) for var in row]) \
+
+    + ')\n'
+
+with connection.cursor() as cursor:
