@@ -115,3 +115,15 @@ sql += 'CREATE TABLE `xls`.`%s` (\n `indx` INT NOT NULL AUTO_INCREMENT,\n' % (sh
 for col in ws.iter_cols(max_row=2):
 
     if not isinstance(col[0].value, str):
+
+        break
+
+if col[1].is_date:
+
+    sql += ' `%s` DATETIME NULL DEFAULT NULL, \n' % (col[0].value)
+
+else:
+
+    sql += ' `%s` VARCHAR(64) NULL DEFAULT NULL,\n' % (col[0].value)
+
+    sql += ' PRIMARY KEY (`indx`) \n) DEFAULT CHARACTER SET = utf8;\n'
