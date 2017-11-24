@@ -62,3 +62,16 @@ def usage():
     print('xls2db.py usage:')
 
     print(' xls2db filename(xlsx)')
+
+    print(' version: 1.0.1')
+
+    print(' by sun')
+
+    exit(1)
+
+# 主函数执行
+
+
+if __name__ == '__main__':
+
+    if len(sys.argv) != 2:
