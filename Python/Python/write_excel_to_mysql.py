@@ -75,3 +75,17 @@ def usage():
 if __name__ == '__main__':
 
     if len(sys.argv) != 2:
+
+        usage()
+
+fname = sys.argv[1]
+
+if not os.path.exists(fname):
+
+    print("file not exist:", fname)
+
+exit(2)
+
+# 创建链接
+
+connection = pymysql.connect(**__db_config)
