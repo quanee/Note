@@ -37,3 +37,16 @@ print("导入完成")
 import os
 import sys
 import getopt
+import openpyxl
+import pymysql
+import datetime
+import re
+import itertools
+
+# 数据库连接配置文件
+
+__db_config = {
+    'host': '127.0.0.1',
+    'port': 3306,
+    'user': 'your.db.username',
+    'password': 'your.db.password',
