@@ -101,3 +101,17 @@ for shname in wb.get_sheet_names():
     # 过滤空表
 
     if ws.max_row <= 1:
+
+        break
+
+# 构建建表SQL
+
+sql = 'DROP TABLE IF EXISTS `xls`.`%s`;\n' % (shname)
+
+sql += 'CREATE TABLE `xls`.`%s` (\n `indx` INT NOT NULL AUTO_INCREMENT,\n' % (shname)
+
+# 构建表的结构
+
+for col in ws.iter_cols(max_row=2):
+
+    if not isinstance(col[0].value, str):
