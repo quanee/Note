@@ -23,3 +23,17 @@ cursor.execute("create table country(province varchar(20),num int,town varchar(3
 sql = 'insert into country(province,num,city,town) values(?,?,?,?)'
 
 cursor.executemany(sql, datalist)  # 插入数据
+
+conn.commit()  # 提交数据到数据库
+
+conn.close()  # 关闭连接
+
+print("导入完成")
+# 将excel导入mysql
+#/usr/bin/env python3
+
+# -*- coding:utf-8 -*-
+
+import os
+import sys
+import getopt
