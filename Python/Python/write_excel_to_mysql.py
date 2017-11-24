@@ -89,3 +89,15 @@ exit(2)
 # 创建链接
 
 connection = pymysql.connect(**__db_config)
+
+print("loadfile:", fname)
+
+wb = openpyxl.load_workbook(fname)
+
+for shname in wb.get_sheet_names():
+
+    ws = wb.get_sheet_by_name(shname)
+
+    # 过滤空表
+
+    if ws.max_row <= 1:
