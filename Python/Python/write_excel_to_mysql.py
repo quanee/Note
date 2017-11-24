@@ -127,3 +127,17 @@ else:
     sql += ' `%s` VARCHAR(64) NULL DEFAULT NULL,\n' % (col[0].value)
 
     sql += ' PRIMARY KEY (`indx`) \n) DEFAULT CHARACTER SET = utf8;\n'
+
+with connection.cursor() as cursor:
+
+    row_count = cursor.execute(sql)
+
+print('create table:', shname)
+
+# 构建自增主键
+
+indx = itertools.count(1, 1)
+
+# 构建插入语句
+
+sql = 'INSERT IGNORE INTO `xls`.`%s` ' % (shname)
