@@ -14,3 +14,7 @@ print(type(s))
 
 s = s.encode('utf8')
 print(s, type(s), repr(s))
+s = s.decode('utf8')
+print(s, type(s), repr(s))
+
+s = s.encode('gbk')
