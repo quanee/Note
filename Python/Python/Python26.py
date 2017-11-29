@@ -18,3 +18,6 @@ s = s.decode('utf8')
 print(s, type(s), repr(s))
 
 s = s.encode('gbk')
+print(s, type(s), repr(s))
+s = s.decode('gbk')
+print(s, type(s), repr(s))
