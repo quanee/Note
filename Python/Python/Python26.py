@@ -6,3 +6,7 @@ import sys
 # print(f.read())
 
 print(sys.getdefaultencoding())  # 获取默认编码
+
+s = '我的世界'
+print(len(s))
+print(repr(s))
