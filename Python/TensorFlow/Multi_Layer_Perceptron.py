@@ -22,3 +22,5 @@ hidden1_drop = tf.nn.dropout(hidden1, keep_prob)
 y = tf.nn.softmax(tf.matmul(hidden1_drop, W2) + b2)
 
 y_ = tf.placeholder(tf.float32, [None, 10])
+cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
+train_step = tf.train.AdagradOptimizer(0.3).minimize(cross_entropy)
