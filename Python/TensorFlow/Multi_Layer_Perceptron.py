@@ -6,3 +6,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 mnist = input_data.read_data_sets('MNIST_data/', one_hot=True)
 sess = tf.InteractiveSession()
+
+in_units = 784
+h1_units = 300
+W1 = tf.Variable(tf.truncated_normal([in_units, h1_units], stddev=0.1))
