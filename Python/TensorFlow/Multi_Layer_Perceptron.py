@@ -10,3 +10,6 @@ sess = tf.InteractiveSession()
 in_units = 784
 h1_units = 300
 W1 = tf.Variable(tf.truncated_normal([in_units, h1_units], stddev=0.1))
+b1 = tf.Variable(tf.zeros([h1_units]))
+W2 = tf.Variable(tf.zeros([h1_units, 10]))
+b2 = tf.Variable(tf.zeros([10]))
