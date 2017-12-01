@@ -19,3 +19,6 @@ keep_prob = tf.placeholder(tf.float32)
 
 hidden1 = tf.nn.relu(tf.matmul(x, W1) + b1)
 hidden1_drop = tf.nn.dropout(hidden1, keep_prob)
+y = tf.nn.softmax(tf.matmul(hidden1_drop, W2) + b2)
+
+y_ = tf.placeholder(tf.float32, [None, 10])
