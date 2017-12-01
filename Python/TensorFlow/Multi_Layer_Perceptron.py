@@ -16,3 +16,6 @@ b2 = tf.Variable(tf.zeros([10]))
 
 x = tf.placeholder(tf.float32, [None, in_units])
 keep_prob = tf.placeholder(tf.float32)
+
+hidden1 = tf.nn.relu(tf.matmul(x, W1) + b1)
+hidden1_drop = tf.nn.dropout(hidden1, keep_prob)
