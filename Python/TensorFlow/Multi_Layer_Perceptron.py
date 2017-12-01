@@ -28,3 +28,6 @@ train_step = tf.train.AdagradOptimizer(0.3).minimize(cross_entropy)
 tf.global_variables_initializer().run()
 for i in range(3000):
     batch_xs, batch_ys = mnist.train.next_batch(100)
+    train_step.run({x: batch_xs, y_: batch_ys, keep_prob: 0.75})
+
+correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
