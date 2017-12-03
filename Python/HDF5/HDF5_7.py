@@ -18,3 +18,7 @@ print(a)
 dt = h5py.special_dtype(vlen=str)
 print(repr(dt))
 print(dt.kind)
+
+dset = f.create_dataset('vlen_dataset', (100, ), dtype=dt)
+dset[0] = 'Hello'
+dset[1] = np.string_('Hello2')
