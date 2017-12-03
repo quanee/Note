@@ -38,3 +38,7 @@ print(out.dtype)
 
 
 import os
+f.close()
+for name in os.listdir('./'):
+    if not name.endswith('.py'):
+        try:
