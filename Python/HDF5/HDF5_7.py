@@ -6,3 +6,7 @@ f = h5py.File('typesdemo.hdf5')
 dt = np.dtype('S10')
 dset = f.create_dataset('fixed_string', (100, ), dtype=dt)
 dset[0] = 'Hello'.encode()
+print(dset[0])
+# 超出长度部分截断
+dset[0] = 'aksdjfhaksdfjhasdfjahsdkfjhasdk'.encode()
+print(dset[0])
