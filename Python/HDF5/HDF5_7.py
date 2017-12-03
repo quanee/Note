@@ -14,3 +14,7 @@ print(dset[0])
 dt = np.dtype('S3')
 a = np.array(['a', 'ab', 'abc', 'abcd'], dtype=dt)
 print(a)
+
+dt = h5py.special_dtype(vlen=str)
+print(repr(dt))
+print(dt.kind)
