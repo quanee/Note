@@ -26,3 +26,7 @@ dset[3] = 'X' * 10000
 
 # 读取一个元素时 返回str
 out = dset[0]
+print(type(out))
+
+# 读取多个元素时 返回object
+print(dset[0:2])
