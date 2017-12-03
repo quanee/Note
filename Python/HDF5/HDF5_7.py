@@ -22,3 +22,7 @@ print(dt.kind)
 dset = f.create_dataset('vlen_dataset', (100, ), dtype=dt)
 dset[0] = 'Hello'
 dset[1] = np.string_('Hello2')
+dset[3] = 'X' * 10000
+
+# 读取一个元素时 返回str
+out = dset[0]
