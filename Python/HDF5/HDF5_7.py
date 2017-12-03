@@ -30,3 +30,6 @@ print(type(out))
 
 # 读取多个元素时 返回object
 print(dset[0:2])
+out = dset[0:1]
+print(out.dtype)
+
