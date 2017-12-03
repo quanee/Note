@@ -10,3 +10,7 @@ print(dset[0])
 # 超出长度部分截断
 dset[0] = 'aksdjfhaksdfjhasdfjahsdkfjhasdk'.encode()
 print(dset[0])
+
+dt = np.dtype('S3')
+a = np.array(['a', 'ab', 'abc', 'abcd'], dtype=dt)
+print(a)
