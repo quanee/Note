@@ -4,3 +4,5 @@ import logging
 
 
 log_directory = 'D:/log_result.txt'
+logging.basicConfig(filename=(log_directory), level=logging.DEBUG, format='%(created)f==> %(message)s')
+
