@@ -16,3 +16,12 @@ def handle_response(response):
 
     if COUNT == 0:
         ioloop.IOLoop.current().stop()
+
+
+
+def func():
+    url_list = [
+        'http://www.baidu.com',
+        'http://www.bing.com',
+        'http://www.github.com',
+    ]
