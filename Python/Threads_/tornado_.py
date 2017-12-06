@@ -25,3 +25,12 @@ def func():
         'http://www.bing.com',
         'http://www.github.com',
     ]
+    global COUNT
+    COUNT = len(url_list)
+    for url in url_list:
+        print(url)
+        http_client = AsyncHTTPClient()
+        http_client.fetch(HTTPRequest(url), handle_response)
+
+
+ioloop.IOLoop.current().add_callback(func)
