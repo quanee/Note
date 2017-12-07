@@ -12,3 +12,4 @@ def fetch_async(url):
 
 
 tasks = [
+         fetch_async('http://www.baidu.com'),
