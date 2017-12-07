@@ -9,3 +9,4 @@ def fetch_async(url):
     response = yield from aiohttp.request('GET', url)
     print(url, response)
     response.close()
+
