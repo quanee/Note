@@ -5,3 +5,4 @@ import asyncio
 
 @asyncio.coroutine
 def fetch_async(url):
+    print(url)
