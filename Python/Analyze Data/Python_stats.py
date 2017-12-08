@@ -54,3 +54,10 @@ print(sm.stats.DescrStatsW(moisture['moisture']).ztest_mean(value=4, alternative
 mobile = pd.read_csv('mobile.csv')
 print(mobile.head())
 # 检测单侧P值
+print(sm.stats.DescrStatsW(mobile['csi']).ttest_mean(value=82, alternative='larger'))
+# t检验
+print(stats.ttest_1samp(a=mobile['csi'], popmean=82))
+
+# 单总体比例检验
+print(stats.binom_test(95, 100, p=0.97, alternative='greater'))
+print(sm.stats.binom_test(95, 100, prop=0.97, alternative='larger'))
