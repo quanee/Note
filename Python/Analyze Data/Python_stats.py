@@ -68,3 +68,10 @@ print(sm.stats.proportions_ztest(95, 100, value=0.97, alternative='larger'))
 battery = pd.read_csv('battery.csv')
 print(battery.head())
 # 两样本总体方差是否相等
+print(stats.bartlett(battery[battery['tech'] == 1]['Endurance'], battery[battery['tech'] == 2]['Endurance']))
+print(stats.levene(battery[battery['tech'] == 1]['Endurance'], battery[battery['tech'] == 2]['Endurance']))
+
+# 直接使用统计量进行t检验
+print(stats.ttest_ind_from_stats(3.7257, 0.2994, 35, 3.9829, 0.4112, 35))
+# 独立样本均值的假设检验
+print(sm.stats.ttest_ind(battery[battery['tech'] == 1]['Endurance'], battery[battery['tech'] == 2]['Endurance'], alternative='two-sided', usevar='pooled', value=0))
