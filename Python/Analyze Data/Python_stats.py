@@ -47,3 +47,10 @@ print(m.std())
 
 
 print(sm.stats.proportion_confint(95, 100, alpha=0.01, method='binom_test'))
+# 总体均值Z检验
+print(sm.stats.DescrStatsW(moisture['moisture']).ztest_mean(value=4, alternative='larger'))
+
+
+mobile = pd.read_csv('mobile.csv')
+print(mobile.head())
+# 检测单侧P值
