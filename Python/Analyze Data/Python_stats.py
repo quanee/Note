@@ -75,3 +75,10 @@ print(stats.levene(battery[battery['tech'] == 1]['Endurance'], battery[battery['
 print(stats.ttest_ind_from_stats(3.7257, 0.2994, 35, 3.9829, 0.4112, 35))
 # 独立样本均值的假设检验
 print(sm.stats.ttest_ind(battery[battery['tech'] == 1]['Endurance'], battery[battery['tech'] == 2]['Endurance'], alternative='two-sided', usevar='pooled', value=0))
+# 总体均值的差值进行假设检验
+print(sm.stats.ttest_ind(battery[battery['tech'] == 1]['Endurance'], battery[battery['tech'] == 2]['Endurance'], alternative='smaller', usevar='pooled', value=0.1))
+
+
+# 独立样本比例之差的假设检验
+magzine = pd.read_csv('magzine.csv')
+print(magzine.head())
