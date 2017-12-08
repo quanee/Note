@@ -89,3 +89,10 @@ magzine['name'].cat.set_categories = ['Fashion', 'Cosmetic']
 magzine['gender'] = magzine['gender'].astype('category')
 magzine['gender'].cat.categories = ['Male', 'Female']
 magzine['gender'].cat.set_categories = ['Male', 'Female']
+
+# 统计女性人数
+female = magzine[magzine['gender'] == 'Female']['name'].value_counts()
+print(female)
+
+magzines = magzine['name'].value_counts()
+print(magzines)
