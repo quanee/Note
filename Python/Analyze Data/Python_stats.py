@@ -82,3 +82,10 @@ print(sm.stats.ttest_ind(battery[battery['tech'] == 1]['Endurance'], battery[bat
 # 独立样本比例之差的假设检验
 magzine = pd.read_csv('magzine.csv')
 print(magzine.head())
+magzine['name'] = magzine['name'].astype('category')
+magzine['name'].cat.categories = ['Fashion', 'Cosmetic']
+magzine['name'].cat.set_categories = ['Fashion', 'Cosmetic']
+
+magzine['gender'] = magzine['gender'].astype('category')
+magzine['gender'].cat.categories = ['Male', 'Female']
+magzine['gender'].cat.set_categories = ['Male', 'Female']
