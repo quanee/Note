@@ -40,3 +40,10 @@ m, v, s = stats.mvsdist(moisture['moisture'])
 print(m.interval(0.95))
 # 95%置信度下总体方差的置信区间
 print(v.interval(0.95))
+# 95%置信度下总体标准差的置信区间
+print(s.interval(0.95))
+# 均值的估计标准误差
+print(m.std())
+
+
+print(sm.stats.proportion_confint(95, 100, alpha=0.01, method='binom_test'))
