@@ -33,3 +33,10 @@ print(moisture_mean)
 # 单总体方差
 print(moisture_var)
 # 单总体标准差
+print(moisture_std)
+
+m, v, s = stats.mvsdist(moisture['moisture'])
+# 95%置信度下总体均值的置信区间
+print(m.interval(0.95))
+# 95%置信度下总体方差的置信区间
+print(v.interval(0.95))
