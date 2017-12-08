@@ -26,3 +26,10 @@ print(moisture.head())
 print(sm.stats.DescrStatsW(moisture['moisture']).zconfint_mean(alpha=0.05))
 # t分布的估计区间
 print(sm.stats.DescrStatsW(moisture['moisture']).tconfint_mean(alpha=0.05))
+# t分布下的均值估计结果
+moisture_mean, moisture_var, moisture_std = stats.bayes_mvs(moisture['moisture'], alpha=0.95)
+print(moisture_mean)
+
+# 单总体方差
+print(moisture_var)
+# 单总体标准差
