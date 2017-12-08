@@ -61,3 +61,10 @@ print(stats.ttest_1samp(a=mobile['csi'], popmean=82))
 # 单总体比例检验
 print(stats.binom_test(95, 100, p=0.97, alternative='greater'))
 print(sm.stats.binom_test(95, 100, prop=0.97, alternative='larger'))
+print(sm.stats.proportions_ztest(95, 100, value=0.97, alternative='larger'))
+
+
+# 独立样本的假设检验
+battery = pd.read_csv('battery.csv')
+print(battery.head())
+# 两样本总体方差是否相等
