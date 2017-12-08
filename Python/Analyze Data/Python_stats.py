@@ -18,3 +18,11 @@ print(miu.var(ddof=0))
 print(miu.mean())
 
 
+
+# 单总体均值的参数估计
+moisture = pd.read_csv('moisture.csv')
+print(moisture.head())
+# 正态估计区间
+print(sm.stats.DescrStatsW(moisture['moisture']).zconfint_mean(alpha=0.05))
+# t分布的估计区间
+print(sm.stats.DescrStatsW(moisture['moisture']).tconfint_mean(alpha=0.05))
