@@ -19,3 +19,9 @@ def scp():
 
 
 scp()
+
+
+# 内置作用域
+import builtins
+
+print(dir(builtins))
