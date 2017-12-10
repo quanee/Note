@@ -11,3 +11,11 @@
 
 x = 1
 
+
+def scp():
+    print(x)
+
+    # x = 1  # UnboundLocalError: local variable 'x' referenced before assignment
+
+
+scp()
