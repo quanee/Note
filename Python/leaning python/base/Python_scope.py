@@ -39,3 +39,11 @@ def gf():
 
 gf()
 print(g)
+
+
+# 嵌套作用域和lambda
+
+
+def func():
+    x = 4
+    action = (lambda n: x ** n)
