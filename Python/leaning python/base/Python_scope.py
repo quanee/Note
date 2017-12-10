@@ -25,3 +25,11 @@ scp()
 import builtins
 
 print(dir(builtins))
+
+
+# 全局变量
+global g
+
+
+def gf():
+    global g
