@@ -47,3 +47,9 @@ print(g)
 def func():
     x = 4
     action = (lambda n: x ** n)
+    return action
+
+
+x = func()
+print(x(5))
+
