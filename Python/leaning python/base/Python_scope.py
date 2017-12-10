@@ -53,3 +53,10 @@ def func():
 x = func()
 print(x(5))
 
+
+# nonlocal
+# 必须在一个嵌套的def作用域中赋值过
+# 仅查找嵌套的def的作用域
+
+def tester(start):
+    state = start
