@@ -33,3 +33,9 @@ global g
 
 def gf():
     global g
+
+    g = 4
+
+
+gf()
+print(g)
