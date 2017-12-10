@@ -67,3 +67,11 @@ def tester(start):
         state += 1
 
     return nested
+
+
+F = tester(0)
+F('F')
+F('F')
+F('F')
+
+G = tester(45)
