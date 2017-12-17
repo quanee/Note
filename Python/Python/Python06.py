@@ -33,3 +33,22 @@ print('bitbucket.org' in config)
 print('bitbucket.com' in config)
 
 print(config['bitbucket.org']['User'])
+
+for key in config['bitbucket.org']:
+    print(key)
+# 删除节点
+config.remove_section('topsecret.server.com')
+# 修改值
+config.set('bitbucket.org', 'user', 'moon')
+# 删除键值对
+config.remove_option('DEFAULT', 'compression')
+# 判断键
+print(config.has_section('topsecret.server.com'))
+# 增加节点
+config.add_section('topsecret.server.com')
+# 写入
+config.write(open('example.ini', 'w'))
+
+
+import re
+# re模块 正则表达式 匹配字符串
