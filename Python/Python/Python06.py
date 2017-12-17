@@ -106,3 +106,21 @@ print(ret)
 # re.sub  匹配字符并替换 并返回替換次
 ret = re.subn('s', 'x', 'moonboss', 1)
 print(ret)
+# re.compile 创建可匹配对象
+obj = re.compile('\d{3}')
+ret = obj.search('abc123dfd')
+print(ret.group())
+
+ret = re.finditer('\d', 'ad3k3j4k3k4jf8')
+print(next(ret).group())
+
+# []字符集 取消元字符的特殊功能
+
+# re.I(re.IGNORECASE): 忽略大小写（括号内是完整写法，下同）
+# M(MULTILINE): 多行模式，改变'^'和'$'的行为（参见上图）
+# S(DOTALL): 点任意匹配模式，改变'.'的行为
+
+# 分组() 一个()为一组
+ret = re.search('(?P<name>\w{2})/(?P<age>\d{2})', 'as/34kj/56')
+print(ret.group())
+print(ret.group('name'))
