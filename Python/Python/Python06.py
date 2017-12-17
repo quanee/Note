@@ -87,3 +87,22 @@ ret = re.search('hello', 'fsdfhelloshellodf')
 print(ret.group())
 # ret.span 返回匹配字符串的起始结束位置
 print('span:', ret.span())
+
+# re.findall 把所有匹配到的字符放到以列表中的元素返回
+# 返回分组中组的内容
+ret = re.findall('\w(hello)', 'dghahellonbossahellodsf')  # 完全匹配
+print(ret)
+# 返回匹配的全部内容
+ret = re.findall('\w(?:hello)', 'dghahellonbossahellodsf')  # 完全匹配
+print(ret)
+
+# re.split 以匹配到的字符当做列表分隔符
+ret = re.split('s', 'abcsdefsghi')  # 完全匹配
+print(ret)
+
+# re.sub  匹配字符并替换
+ret = re.sub('s', 'x', 'moonboss', 1)
+print(ret)
+# re.sub  匹配字符并替换 并返回替換次
+ret = re.subn('s', 'x', 'moonboss', 1)
+print(ret)
