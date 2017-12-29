@@ -12,3 +12,4 @@ print(__name__)
 import shelve
 
 s = shelve.open('test')
+s['info'] = {'name': 'moon', 'age': '34'}
