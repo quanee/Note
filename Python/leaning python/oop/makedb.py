@@ -13,3 +13,7 @@ for obj in (bob, sue, tom):
     db[obj.name] = obj
 
 db.close()
+
+import glob
+
+print(glob.glob('person*'))
