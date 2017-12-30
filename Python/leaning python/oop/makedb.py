@@ -23,3 +23,7 @@ print(open('persondb.dir').read())
 print(open('persondb.dir', 'rb').read())
 
 db = shelve.open('persondb')
+
+print(len(db))
+
+print(list(db.keys()))
