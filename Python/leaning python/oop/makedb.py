@@ -8,3 +8,8 @@ import shelve
 
 
 db = shelve.open('persondb')
+
+for obj in (bob, sue, tom):
+    db[obj.name] = obj
+
+db.close()
