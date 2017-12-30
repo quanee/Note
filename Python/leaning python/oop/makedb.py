@@ -17,3 +17,9 @@ db.close()
 import glob
 
 print(glob.glob('person*'))
+
+print(open('persondb.dir').read())
+
+print(open('persondb.dir', 'rb').read())
+
+db = shelve.open('persondb')
