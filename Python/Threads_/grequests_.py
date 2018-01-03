@@ -9,3 +9,4 @@ request_list = [
     grequests.get('http://www.bing.com/'),
     grequests.get('http://www.github.com/'),
 ]
+
