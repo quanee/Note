@@ -10,3 +10,5 @@ request_list = [
     grequests.get('http://www.github.com/'),
 ]
 
+
+# 执行并获取响应列表
