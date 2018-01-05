@@ -11,3 +11,11 @@ F = open('datafile.pkl', 'rb')
 E = pickle.load(F)
 
 print(E)
+
+F.close()
+
+
+
+import struct
+
+F = open('data.bin', 'wb')
