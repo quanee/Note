@@ -54,3 +54,10 @@ def f(d, l, n):
 
 if __name__ == '__main__':
     with Manager() as manager:
+        d = manager.dict()
+        li = manager.list(range(5))
+
+        p_list = []
+        for i in range(10):
+            p = Process(target=f, args=(d, li, i))
+            p.start()
