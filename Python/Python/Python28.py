@@ -61,3 +61,10 @@ if __name__ == '__main__':
         for i in range(10):
             p = Process(target=f, args=(d, li, i))
             p.start()
+            p_list.append(p)
+        for res in p_list:
+            res.join()
+
+        print(d)
+        print(li)
+'''
