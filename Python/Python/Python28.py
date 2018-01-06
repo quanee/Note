@@ -75,3 +75,9 @@ import time
 
 def Foo(i):
     time.sleep(2)
+    return i + 100
+
+
+def Bar(arg):
+    print('-->exec done:', arg)
+
