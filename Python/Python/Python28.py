@@ -40,3 +40,10 @@ if __name__ == '__main__':
     parent_conn.send('hello')
     p.join()
 '''
+'''
+from multiprocessing import Process, Manager
+
+
+def f(d, l, n):
+    d[n] = '1'
+    d['2'] = 2
