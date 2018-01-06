@@ -47,3 +47,10 @@ from multiprocessing import Process, Manager
 def f(d, l, n):
     d[n] = '1'
     d['2'] = 2
+    d[0.25] = None
+    l.append(n)
+    print(l)
+
+
+if __name__ == '__main__':
+    with Manager() as manager:
