@@ -18,3 +18,11 @@ if __name__ == '__main__':
     print(q.get())
     print(q.get())
     print(q.get())
+
+    for i in p_list:
+        i.join()
+'''
+
+'''
+def f(conn):
+    conn.send('Hello')
