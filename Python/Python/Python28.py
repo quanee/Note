@@ -26,3 +26,10 @@ if __name__ == '__main__':
 '''
 def f(conn):
     conn.send('Hello')
+    conn.send([42, None, 'hello'])
+    print(conn.recv())
+    conn.close()
+
+
+if __name__ == '__main__':
+    parent_conn, child_conn = Pipe()
