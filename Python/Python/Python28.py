@@ -12,3 +12,9 @@ if __name__ == '__main__':
     print('main id q', id(q))
     p_list = []
     for i in range(3):
+        p = Process(target=f, args=(q, i))
+        p_list.append(p)
+        p.start()
+    print(q.get())
+    print(q.get())
+    print(q.get())
