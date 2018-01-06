@@ -68,3 +68,10 @@ if __name__ == '__main__':
         print(d)
         print(li)
 '''
+
+from  multiprocessing import Process, Pool
+import time
+
+
+def Foo(i):
+    time.sleep(2)
