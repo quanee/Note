@@ -8,3 +8,4 @@ class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         """get请求方式"""
         self.write('hello tornado')
+
