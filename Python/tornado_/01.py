@@ -9,3 +9,5 @@ class IndexHandler(tornado.web.RequestHandler):
         """get请求方式"""
         self.write('hello tornado')
 
+
+if __name__ == '__main__':
