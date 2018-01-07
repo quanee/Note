@@ -5,3 +5,4 @@ import tornado.ioloop
 
 class IndexHandler(tornado.web.RequestHandler):
     """主页处理类"""
+    def get(self):
