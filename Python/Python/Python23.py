@@ -20,3 +20,14 @@ class Producer(threading.Thread):
 class Consumer(threading.Thread):
     def run(self):
         global L
+        while True:
+                lock_con.acquire()
+                if len(L) == 0:
+                    lock_con.wait()
+                print('消费者', self.name, ":Delete" + str(L[0]), L)
+                del L[0]
+                lock_con.release()
+                time.sleep(0.25)
+
+
+if __name__ == "__main__":
