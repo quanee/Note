@@ -31,3 +31,13 @@ class Consumer(threading.Thread):
 
 
 if __name__ == "__main__":
+
+    L = []
+    lock_con = threading.Condition()
+    threads = []
+    for i in range(5):
+        threads.append(Producer())
+    threads.append(Consumer())
+
+    for t in threads:
+        t.start()
