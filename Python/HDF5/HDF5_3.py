@@ -173,3 +173,28 @@ data[data < 0] = 0
 print(data[...])
 
 data = np.random.random(10) * 2 - 1
+print(data)
+# 将负值转正
+data[data < 0] = -1 * data[data < 0]
+print(data[...])
+
+
+# 坐标列表
+dset = f['range']
+print(dset[...])
+
+print(dset[[1, 2, 7]])
+
+# 自动广播
+dset = f2['big']
+print(dset.shape)
+
+# 复制dset[0, :]的记录并覆盖所有其他值
+data = dset[0, :]
+for idx in range(100):
+    dset[idx, :] = data
+
+print(dset.shape)
+print(dset[...])
+
+# h5py内建的广播功能
