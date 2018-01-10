@@ -148,3 +148,28 @@ print(dset[0])  # 返回元素本身
 print(dset[...])  # Ellipsis返回一个具有一个1个元素的数组
 
 dset = f.create_dataset('0d', data=42)
+print(dset.shape)
+print(dset[...])
+print(dset[()])
+'''
+Ellipsis获取数据集中的所有元素, 结果永远是一个数组
+'()'获取数据集中的所有元素, 对于1维或更高维数据集, 结果是一个数组, 0维则是一个标量
+'''
+
+# 布尔索引
+'''
+val[val < 0] = 0
+布尔数组索引 如果val是一个NumPy整型数组, 表达式val<0的结果是一个布尔数组
+           当val中相应元素为负是为True, 否则为False (数据筛选)
+    当布尔数组索引中的元素为True时, 数据集中对应的元素被选中
+'''
+
+# 创建一个-1到1之间平均分布的随机数组
+data = np.random.random(10) * 2 - 1
+print(data)
+
+# 用布尔数组将负值截断为0
+data[data < 0] = 0
+print(data[...])
+
+data = np.random.random(10) * 2 - 1
