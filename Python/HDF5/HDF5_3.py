@@ -273,3 +273,28 @@ print(dset.shape)
 dset = f.create_dataset('unlimited', (2, 2), maxshape=(2, None))
 print(dset.shape)
 print(dset.maxshape)
+dset.resize((2, 3))
+print(dset.shape)
+dset.resize((2, 2**30))
+print(dset.shape)
+# 无论maxshape参数为何 不能改变维度个数 即数据集阶数是固定的 永远不能改变
+
+# 用resize重新组织数据
+a = np.array([[1, 2], [3, 4]])
+print(a.shape)
+print(a)
+# 数据重新组织
+a.resize((1, 4))
+print(a)
+
+dset = f.create_dataset('sizetest', (2, 2), dtype=np.int32, maxshape=(None, None))
+dset[...] = [[1, 2], [3, 4]]
+print(dset[...])
+# 数据不会重新组织 而是丢掉
+dset.resize((1, 4))
+print(dset[...])
+dset.resize((1, 10))
+print(dset[...])
+
+# 何时以及如何进行resize
+# 方案一 (每次新增一条数据时, 扩展一条记录 )
