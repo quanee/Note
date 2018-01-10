@@ -47,3 +47,29 @@ f1 = h5py.File('big1.hdf5')
 f2 = h5py.File('big2.hdf5')
 print(f1['big'].dtype)
 print(f2['big'].dtype)
+
+# 自动类型转换和直读
+dset = f2['big']
+print(dset.dtype)  # float32
+print(dset.shape)
+# 创建双精度数组
+big_out = np.empty((100, 1000), dtype=np.float64)
+# 将数据直接读入输出数组 不需要转换
+dset.read_direct(big_out)
+
+# 用astype读
+with dset.astype('float64'):
+    out = dset[0, :]
+
+print(out.dtype)
+
+# 转换成'较小'的类型时对值进行取整或'截断'
+f = h5py.File("testfile.hdf5", "w")
+f.create_dataset('x', data=1e256, dtype=np.float64)
+print(f['x'][...])
+
+f.create_dataset('y', data=1e256, dtype=np.float32)
+print(f['y'][...])
+
+# 改变形状
+'''
