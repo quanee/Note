@@ -123,3 +123,28 @@ Some_dset[0:10, 20:70] = out*2
         1. h5py计算切片大小并检查是否跟输入的数组大小匹配
         2. HDF5选出数据集中相应的部分
         3. HDF5从输入数组读取并写入文件
+'''
+# start-stop-step索引
+dset = f.create_dataset('range', data=np.arange(10))
+print(dset[...])
+print(dset[4])
+print(dset[4:8])
+
+a = np.arange(10)
+print(a)
+print(a[::-1])
+
+# h5py不支持数组翻转
+
+# 多维切片和标量切片
+# ... Ellipsis 指定不想特别指定的维度
+dset = f.create_dataset('4d', shape=(100, 80, 50, 20))
+print(dset[0, ..., 0].shape)
+print(dset[...].shape)
+
+dset = f.create_dataset('1d', shape=(1, ), data=42)
+print(dset.shape)
+print(dset[0])  # 返回元素本身
+print(dset[...])  # Ellipsis返回一个具有一个1个元素的数组
+
+dset = f.create_dataset('0d', data=42)
