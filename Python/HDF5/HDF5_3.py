@@ -223,3 +223,28 @@ print(means.shape)
 # 使用read_direct
 out = np.empty((100, 50), dtype=np.float32)
 dset.read_direct(out, np.s_[:, 0:50])
+means = out.mean(axis=1)
+
+dset = f.create_dataset('perftest', (10000, 10000), dtype=np.float32)
+dset[:] = np.random.random(10000)
+
+def time_simple():
+    dset[:, 0:500].mean(axis=1)
+
+
+out = np.empty((10000, 500), dtype=np.float32)
+
+
+def time_direct():
+    dset.read_direct(out, np.s_[:, 0:500])
+    out.mean(axis=1)
+
+
+from timeit import timeit
+print(timeit(time_simple, number=100))
+print(timeit(time_direct, number=100))
+f.close()
+f = h5py.File("testfile.hdf5", "w")
+
+# 数据类型注解
+a = np.ones((1000, 1000), dtype='<f4')  # little-endian
