@@ -98,3 +98,28 @@ print(out.shape)
         1. h5py计算结果数组对象形状是(10, 50)
         2. 分配一个空的Numpy数组 形状为(10, 50)
         3. HDF5选出数据集中相应部分
+        4. HDF5将数据集中的数据复制给空的numpy数组
+        5. 返回填充好的NumPy数组
+'''
+
+# 选择合理的切片大小
+for ix in range(100):
+    for iy in range(1000):
+        val = dset[ix, iy]
+        if val < 0:
+            dset[ix, iy] = 0
+# 进行100000次切片操作
+
+for ix in range(100):
+    val = dset[ix, :]
+    val[val < 0] = 0
+    dset[ix, :] = val
+# 进行100次切片操作
+
+
+'''
+Some_dset[0:10, 20:70] = out*2
+产生步骤:
+        1. h5py计算切片大小并检查是否跟输入的数组大小匹配
+        2. HDF5选出数据集中相应的部分
+        3. HDF5从输入数组读取并写入文件
