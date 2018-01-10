@@ -298,3 +298,27 @@ print(dset[...])
 
 # 何时以及如何进行resize
 # 方案一 (每次新增一条数据时, 扩展一条记录 )
+dset1 = f.create_dataset('timetraces', (1, 1000), maxshape=(None, 1000))
+
+def add_trace_1(arr):
+    dset1.resize((dset.shape[0] + 1, 1000))
+    dset1[-1, :] = arr
+
+
+# 方案二 (记住插入的次数并在结束时'削减'数据集)
+dset2 = f.create_dataset('timetraces2', (5000, 1000), maxshape=(None, 1000))
+
+ntraces = 0
+def add_trace_2(arr):
+    global ntraces
+    dset2[ntraces, :] = arr
+    ntraces += 1
+
+
+def done():
+    dset2.resize((ntraces, 1000))
+
+
+
+
+
