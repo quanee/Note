@@ -198,3 +198,28 @@ print(dset.shape)
 print(dset[...])
 
 # h5py内建的广播功能
+dset[:, :] = dset[0, :]
+print(dset.shape)
+print(dset[...])
+
+f.close()
+f = h5py.File("testfile.hdf5", "w")
+
+# 直读入一个已存在的数组
+print(dset.dtype)
+out = np.empty((100, 1000), dtype=np.float64)
+dset.read_direct(out)
+# 需要一次性读取整个数据集
+
+dset.read_direct(out, source_sel=np.s_[0, :], dest_sel=np.s_[50, :])
+# np.s_ 以一个数组切片格式为参数 将相应记录在numpy的一个slice对象 并返回这个对象
+
+# 标准切片技术
+out = dset[:, 0:50]
+print(out.shape)
+means = out.mean(axis=1)
+print(means.shape)
+
+# 使用read_direct
+out = np.empty((100, 50), dtype=np.float32)
+dset.read_direct(out, np.s_[:, 0:50])
