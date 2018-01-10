@@ -248,3 +248,28 @@ f = h5py.File("testfile.hdf5", "w")
 
 # 数据类型注解
 a = np.ones((1000, 1000), dtype='<f4')  # little-endian
+b = np.ones((1000, 1000), dtype='>f4')  # big-endian
+
+print(timeit(a.mean, number=1000))
+print(timeit(b.mean, number=1000))
+
+c = b.view('float32')
+c[:] = b
+b = c
+print(timeit(b.mean, number=1000))
+
+# 改变数据集形状
+# 创建可变形数据集
+dset = f.create_dataset('resizeable', (2, 2), maxshape=(2, 2))
+print(dset.shape)
+print(dset.maxshape)
+# 改变形状
+dset.resize((1, 1))
+print(dset.shape)
+dset.resize((2, 2))
+print(dset.shape)
+
+# 无线维度 None
+dset = f.create_dataset('unlimited', (2, 2), maxshape=(2, None))
+print(dset.shape)
+print(dset.maxshape)
