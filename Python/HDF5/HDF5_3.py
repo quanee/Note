@@ -73,3 +73,28 @@ print(f['y'][...])
 
 # 改变形状
 '''
+imagedata.shape
+(100, 480, 640)
+f.create_dataset('newshape', data=imagedata, shape=(100, 2, 240, 640))
+'''
+
+# 默认填充值
+dset = f.create_dataset('empty', (2, 2), dtype=np.int32)
+print(dset[...])
+
+dset = f.create_dataset('filled', (2, 2), dtype=np.int32, fillvalue=42)
+print(dset[...])
+print(dset.fillvalue)
+
+# 读写数据
+# 高效率切片
+dset = f2['big']
+print(dset)
+# 切片
+out = dset[0:10, 20: 70]
+print(out.shape)
+'''
+切片操作细节
+        1. h5py计算结果数组对象形状是(10, 50)
+        2. 分配一个空的Numpy数组 形状为(10, 50)
+        3. HDF5选出数据集中相应部分
