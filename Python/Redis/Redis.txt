@@ -152,3 +152,80 @@ linsert KEY BEFORE|AFTER PIVOT VALUE
 blpop KEY timeout
 # 从列表尾部阻塞弹出元素
 brpop KEY TIMEOUT
+# 从一个列表尾部阻塞弹出元素压入另一个列表的头部
+brpoplpush SOURCE DESTINATION TIMEOUT
+
+
+hash散列
+# 设置单个字段(键,字段,值)
+hset KEY FIELD VALUE
+# KEY的field不存在时才执行
+hsetnx KEY FIELD VALUE
+# 设置多个字段
+hmset KEY FIELD VALUE [FIELD VALUE ...]
+# 返回字段个数
+hlen KEY
+# 判断字段是否存在(key或field不存在返回0)
+hexists KEY FIELD
+# 返回字段值
+hget KEY FIELD
+# 返回多个字段值
+hmget KEY FIELD [FIELD...]
+# 获取所有键值对
+hgetall KEY
+# 获取所有键
+hkeys KEY
+# 获取所有值
+hvals KEY
+# 给KEY的FIELD字段加INCREMENT(整型)
+hincrby KEY FIELD INCREMENT
+# 给key的field字段加increment(浮点型)
+hincrbyfloat KEY field increment
+# 删除key的field字段
+hdel KEY field [field...]
+
+Set集合
+	* 无序的,去重的
+	* 元素字符串类型
+sadd KEY member [member...]
+# 增加一个或多个元素(如果元素已存在,自动忽略)
+srem KEY member [memver...]
+# 移除一个或多个元素(如果元素不存在,自动忽略)
+smembers KEY
+# 返回集合所有元素(元素过多会产生阻塞)
+sismember KEY member
+# 检查元素是否存在
+SRANDMEMBER KEY count
+# 随机返回集合中count个元素(默认为1)
+	* count大于集合基数,返回所有元素
+	* count>0返回可重复出现的count绝对值个
+SCARD KEY
+# 返回集合元素个数(不需要遍历)
+SPOP KEY
+# 随机移除并返回被移除的元素
+smovl SOURCE DESTINATION MEMBER
+# 移除source中的member到destination
+sdiff KEY [key...]
+# 从第一个key中去除其他集合和自己的交集部分
+sdiffstore DESTINATION KEY [KEY...]
+# 将差集结果存到destination中
+sinter KEY [KEY...]
+# 取所有集合交集部分
+sinterstore destination KEY [key...]
+# 将交集结果存到destination中
+sunion KEY [KEY...]
+# 取所有集合并集部分
+sunionstore DESTINATION KEY [KEY...]
+# 将并集结果存到DESTINATION中
+
+SortedSet集合
+	有序的,去重的
+	元素字符串类型
+	每个元素都关联一个浮点数分值(score),并按照分值从大到小顺序排列集合中的元素(分值可以相同)
+# 增加一个或多个元素(如果元素已存在,则使用新的score)
+zadd KEY SCORE MEMBER [SCORE MEMBER...]
+# 移除一个或多个元素(元素不存在,自动忽略)
+zrem KEY MEMBER [MEMBER...]
+# 显示分值
+zscore KEY MEMBER
+# 增加或减少(increment为负数)分值
