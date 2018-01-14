@@ -229,3 +229,79 @@ zrem KEY MEMBER [MEMBER...]
 # 显示分值
 zscore KEY MEMBER
 # 增加或减少(increment为负数)分值
+zincrby KEY INCREMENT MEMBER
+# 返回元素排名(索引从0开始)
+zrank KEY MEMBER
+# 返回指定区间元素
+zrange KEY START STOP [WITHSCORES]
+	如果score相同,则按照字典序lexicographical order排序
+	默认按照score从小到大,如果需要score从大到小排列,使用ZREVRANGE
+# 返回指定分值区间元素
+zrangebyscore KEY MIN MAX [WITHSCORES] [LIMIT OFFSET COUNT]
+	返回score默认属于[min,max]之间,元素按照score升序排序,score相同字典序
+	LIMIT中OFFset代表跳过多少个元素,count代表返回个数
+	使用小括号,修改区间为开区间
+	-inf和+inf表示负无穷和正无穷
+# 删除指定排名范围元素
+zremrangebyrank KEY START STOP
+
+# 返回集合中元素个数
+zcard KEY
+# 返回指定范围元素(分值)
+zcount KEY MIN MAX
+
+# 并集
+zunionstore DESTINATION NUMKEYS KEY [KEY ...] [weights WEIGHT] [aggregate sum|min|max]
+	NUMKEYS指定key的数量,必须
+	WEIGHTS权重,key中每一个score都要乘以权重
+	AGGREGATE指定并集结果的聚集方式
+		SUM:将所有集合中某一元素的score值之和作为结果集中该成员的score值
+		MIN:将所有集合中某一元素的score值中最小值作为结果集中该成员的score值
+		MAX:将所有集合中某一元素的score值中最大值作为结果集中该成员的score值
+
+#RDB持久化(全量备份)
+	* RDB文件(二进制)
+	* 定时更新(消耗大,不完全安全)
+save M N
+# 距离上次创建RDB文件已过m秒,且所有数据库总共已发生不少于n次的修改,则执行BGSAVE
+bgsave
+# 执行时不会阻塞进程(fork子进程,效率稍低)
+# AOF持久化(增量备份)
+# 使用数据库日志来保存每一条命令
+appendfsync always		服务器没写入一个命令,调用一次fdatasync
+appendfsync everysec	服务器每秒调用一次fdatasync
+appendfsync no			服务器不主动调用fdatasync
+	always 速度慢
+	ererysec 默认值
+AOF文件冗余时,AOF文件过大,需要AOF重写,以减小AOF文件
+	客户端向服务器发送BGREWRITEAOF命令
+	通过设置配置选项来让服务器自动执行BGREWRITEAOF命令:
+		auto-aof-rewrite-min-size<size>,触发AOF重写所需的最小体积,只要AOF文件的体积大于等于size时.服务器才会考虑是否进行AOF重写
+
+#主从复制
+Master:只能写
+Slave:只能读
+	*)redis-server --slaveof <master-ip> <master-port>	(启动)配置当前服务为slave
+	*)SLAVEOF host port (命令行)将当前服务器状态从master修改为其它服务器的slave
+	*)redis-server config.conf	(配置文件)
+		config.conf文件内容:
+			slaveof master-ip master-port
+			slave-port
+Master出现故障时Slave使用SLAVEOF no one命令成为Master,其它Slave使用slaveof命令指向新的Master(手动)
+
+# Redis哨兵
+Sentinel配置文件
+		Sentinel monitor <name> <ip> <port> <quorum>
+		监视名为name的主服务器,当quorum个Sentinel判断主服务器下线时,Sentinel才会同意故障转移
+		Sentinel默认端口号为26379
+
+Redis Twemproxy(分片)
+
+
+
+
+
+
+
+
+
