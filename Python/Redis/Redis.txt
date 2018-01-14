@@ -75,3 +75,80 @@ PTTL KEY
 # 查看剩余生存时间
 # # KEY存在,但没有设置TTL,返回-1
 # # KEY存在,还在生命周期内,返回剩余的秒
+# # KEY曾经存在,但已消亡,返回-2
+
+# 键类型
+type KEY
+
+# 键是否存在
+exists KEY
+
+# 键重命名
+renamenx KEY NEWKEY
+
+
+# 删除键
+del KEY
+
+# 设置键为key的二进制的OFFset(从右往左)位值为VALUE
+setbit KEY OFFSET VALUE
+
+# 获取键为key在OFFset位上的值(从右往左)最低位开始正数符号位为1负数为0
+getbit KEY OFFSET
+
+# 返回key在指定区间第一次出现的位置
+bitpos KEY BIT [START][END]
+
+# 获取key二进制位数
+bitcount KEY
+
+# 二进制位操作
+bitop OPERATION KEY [KEY ...]
+
+# 清除当前库数据
+flushdb
+
+flushall
+# 清除所有库中的数据
+
+#List列表(Linked List实现元素为字符串)
+b u
+l LEFT
+r RIGHT
+x EXIST
+# 从左压入元素
+lpush KEY VALUE
+# 从左压入元素
+lrushx KEY VALUE
+# 从右压入元素
+rpush KEY VALUE
+# 从右压入元素
+rpushx KEY VALUE
+# 从左弹出元素
+lpop KEY
+# 从右弹出元素
+rpop KEY
+# 从source尾部弹出元素,压入destination头部
+rpoplpush SOURCE DESTINATION
+# 返回指定范围元素
+lrange KEY START STOP
+# 获取指定位置的元素
+lindex KEY INDEX
+# 设置指定位置元素的值
+lset KEY INDEX VALUE
+# 元素列表长度(元素个数)
+llen KEY
+
+LREM KEY COUNT VALUE
+	count>0:从表头开始遍历移除count个值为VALUE的元素
+	count<0:从表尾开始遍历移除count绝对值个值为VALUE的元素
+	count=0:移除所有值为VALUE的元素
+# 移除从start到stop以外的元素
+ltrim KEY START STOP
+# 在pivot(key中已有元素)之前(BEFORE)或之后(AFTER)插入元素VALUE
+linsert KEY BEFORE|AFTER PIVOT VALUE
+
+# 从列表头部阻塞弹出元素
+blpop KEY timeout
+# 从列表尾部阻塞弹出元素
+brpop KEY TIMEOUT
