@@ -1,0 +1,77 @@
+# 设值
+set KEY VALUE
+
+# 获值
+get KEY
+
+# 设置过期时间(单位:s)
+set KEY VALUE ex SECONDS
+
+# 设置过期时间(单位:s)
+exprire KEY SECONDS
+
+# 设置过期时间(单位:ms)
+pexprire KEY MILLISECONDS
+
+# 设置UNIX过期时间戳
+exprireat KEY timestamp
+
+# 设置UNIX过期时间戳
+pexprireat KEY MILLISECONDS-TIMESTAMP
+
+# 删除过期
+rersist KEY
+
+# 存在则不插入
+set B 2 nx
+
+# 存在则修改
+set B 2 xx
+
+# 批插入
+mset A 1 B 2 C 3
+
+# 批插入(原子操作)
+msetnx D 7 E 3
+
+# 获取所有键
+keys *
+
+# 设置新值并返回旧值
+getset A 2
+
+# 将值VALUE插入到字符串键key已存储内容的末尾(字符串拼接)
+append KEY VALUE
+
+# 获取字符串长度
+strlen KEY
+
+
+# 获取键值为key的字符串从index1到index2的值(index从左往右 从0开始 从右往左 从-1开始)
+getrang KEY INDEX1 INDEX2
+
+
+
+# # # # # # # # # # # # # # # 整型 # # # # # # 
+incrby KEY INTNUM(整型)
+# 将key的值加INTNUM(没有则创建,并将INTNUM赋给key)
+
+decrby KEY INTNUM
+# 将KEY的值减INTNUM
+
+# KEY值加一
+incr KEY
+
+# KEY值减一
+decr KEY
+
+#浮点型
+incrbyfloat KEY NUM(浮点型)
+# 将key的值加NUM(没有则创建,并将NUM赋给key,通过传入负值做减法)
+
+
+TTL KEY
+PTTL KEY
+# 查看剩余生存时间
+# # KEY存在,但没有设置TTL,返回-1
+# # KEY存在,还在生命周期内,返回剩余的秒
