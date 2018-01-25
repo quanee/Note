@@ -18,3 +18,7 @@ while True:
 
     w = [socket_obj_1, ]  # 1与对方创建连接成功
         socket_obj_1.send("'''GET /index HTTP/1.0\r\nHost: baidu.com\r\n\r\n'''")  # 3
+
+# $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $ $
+
+r, w, e = select.select([obj], [], [])
