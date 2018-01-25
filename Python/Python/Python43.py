@@ -25,3 +25,5 @@ r, w, e = select.select([obj], [], [])
 # obj 可以不是socket对象 但必须有fileno方法 并返回一个文件描述符
 # select内部:
 #       * 调用 obj.fileno()方法
+#       * obj类内部封装socket文件描述符
+"""
