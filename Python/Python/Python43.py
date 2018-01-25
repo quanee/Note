@@ -9,3 +9,7 @@ try:
     socket_obj_3.connet()
 except Exception:
     ...
+
+
+while True:
+    r, w, e = select.select([socket_obj_1, socket_obj_2, socket_obj_3, ], [socket_obj_1, socket_obj_2, socket_obj_3, ], [], 0.05)
