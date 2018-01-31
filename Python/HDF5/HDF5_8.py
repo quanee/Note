@@ -30,3 +30,11 @@ print(grp1.attrs['dataset'])
 
 out = f[grp1.attrs['dataset']]
 print(out == dset)
+
+f.move('mydata2', 'mydata3')
+out = f[grp1.attrs['dataset']]
+print(out == dset)
+
+# 引用是一种数据类型
+dt = h5py.special_dtype(ref=h5py.Reference)
+print(repr(dt))
