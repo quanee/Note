@@ -70,3 +70,10 @@ index_arr = dset_random[...]
 print(index_arr)
 
 # random_ref = dset_random.regionref[index_arr]
+# print(dset_random.regionref.selection(random_ref))
+
+# 维度标尺
+dset = f.create_dataset('temperatures', (100, 100, 100), dtype='f')
+dset.attrs['temp_units'] = 'C'
+dset.attrs['steps'] = [10000, 10000, 100]
+dset.attrs['axes'] = ['x'.encode(), 'y'.encode(), 'z'.encode()]
