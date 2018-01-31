@@ -14,3 +14,11 @@ print(out == grp1)
 
 # 只能定位本文件内对象
 out = grp2[grp1.ref]
+print(out == grp2)
+
+
+grp1.attrs['dataset'] = dset.name
+print(grp1.attrs['dataset'])
+out = f[grp1.attrs['dataset']]
+print(out == dset)
+f.move('mydata', 'mydata2')
