@@ -101,3 +101,12 @@ for key, val in f['scale_x'].attrs.items():
 dset.dims[0].attach_scale(f['scale_x'])
 dset.dims[1].attach_scale(f['scale_y'])
 dset.dims[2].attach_scale(f['scale_z'])
+
+
+print(dset.dims[0][0])
+print(dset.dims[0][0][...])
+
+print(dset.dims[0]['Simulation X (North) axis'])
+
+# 给数据集坐标轴打标签
+dset.dims[0].label = 'x'
