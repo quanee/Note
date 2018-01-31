@@ -62,3 +62,11 @@ print(ref_out)
 # print(data)
 
 # 复杂索引
+dset_random = f.create_dataset('small_example', (3, 3))
+dset_random[...] = np.random.random((3, 3))
+print(dset_random[...])
+
+index_arr = dset_random[...]
+print(index_arr)
+
+# random_ref = dset_random.regionref[index_arr]
