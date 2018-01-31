@@ -86,3 +86,11 @@ for name in dset.attrs:
 
 print(dset.dims)
 f.create_dataset('scale_x', data=np.arange(100) * 10e3)
+f.create_dataset('scale_y', data=np.arange(100) * 10e3)
+f.create_dataset('scale_z', data=np.arange(100) * 100)
+
+dset.dims.create_scale(f['scale_x'], 'Simulation X (North) axis')
+dset.dims.create_scale(f['scale_y'], 'Simulation Y (East) axis')
+dset.dims.create_scale(f['scale_z'], 'Simulation Z (Vertical) axis')
+
+for key, val in f['scale_x'].attrs.items():
