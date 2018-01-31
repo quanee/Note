@@ -94,3 +94,10 @@ dset.dims.create_scale(f['scale_y'], 'Simulation Y (East) axis')
 dset.dims.create_scale(f['scale_z'], 'Simulation Z (Vertical) axis')
 
 for key, val in f['scale_x'].attrs.items():
+    print(key, ':', val)
+
+
+# 在数据集上添加标尺
+dset.dims[0].attach_scale(f['scale_x'])
+dset.dims[1].attach_scale(f['scale_y'])
+dset.dims[2].attach_scale(f['scale_z'])
