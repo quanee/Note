@@ -77,3 +77,12 @@ dset = f.create_dataset('temperatures', (100, 100, 100), dtype='f')
 dset.attrs['temp_units'] = 'C'
 dset.attrs['steps'] = [10000, 10000, 100]
 dset.attrs['axes'] = ['x'.encode(), 'y'.encode(), 'z'.encode()]
+
+# 创建维度标尺
+# 删除特征
+for name in dset.attrs:
+    del dset.attrs[name]
+
+
+print(dset.dims)
+f.create_dataset('scale_x', data=np.arange(100) * 10e3)
