@@ -22,3 +22,11 @@ print(grp1.attrs['dataset'])
 out = f[grp1.attrs['dataset']]
 print(out == dset)
 f.move('mydata', 'mydata2')
+# out = f[grp1.attrs['dataset']]  # KeyError: "Unable to open object (object 'mydata' doesn't exist)"
+
+
+grp1.attrs['dataset'] = dset.ref
+print(grp1.attrs['dataset'])
+
+out = f[grp1.attrs['dataset']]
+print(out == dset)
