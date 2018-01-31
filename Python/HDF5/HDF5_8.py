@@ -38,3 +38,11 @@ print(out == dset)
 # 引用是一种数据类型
 dt = h5py.special_dtype(ref=h5py.Reference)
 print(repr(dt))
+print(dt.kind)
+
+ref_dset = f.create_dataset('references', (10, ), dtype=dt)
+out = ref_dset[0]
+print(out)
+
+print(bool(out))
+print(bool(grp1.ref))
