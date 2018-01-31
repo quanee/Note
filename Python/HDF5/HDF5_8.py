@@ -110,3 +110,10 @@ print(dset.dims[0]['Simulation X (North) axis'])
 
 # 给数据集坐标轴打标签
 dset.dims[0].label = 'x'
+dset.dims[1].label = 'y'
+dset.dims[2].label = 'z'
+
+
+
+
+
