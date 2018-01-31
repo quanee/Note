@@ -54,3 +54,11 @@ print(dset.shape)
 print(dset.regionref)
 
 ref_out = dset.regionref[10: 90]
+print(ref_out)
+
+# dset.regionref.shape(ref_out)(100, )
+# dset.regionref.selechion(ref_out)(80, )
+# data = dset[ref_out]
+# print(data)
+
+# 复杂索引
