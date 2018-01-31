@@ -46,3 +46,11 @@ print(out)
 
 print(bool(out))
 print(bool(grp1.ref))
+
+# 区域引用
+# 创建
+print(dset.name)
+print(dset.shape)
+print(dset.regionref)
+
+ref_out = dset.regionref[10: 90]
