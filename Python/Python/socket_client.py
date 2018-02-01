@@ -7,3 +7,4 @@ print('客户端启动:')
 
 while True:
     inp = input('>>>')
+    sk.sendall(bytes(inp, 'utf8'))
