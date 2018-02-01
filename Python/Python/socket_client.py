@@ -10,3 +10,4 @@ while True:
     sk.sendall(bytes(inp, 'utf8'))
     if inp == 'exit':
         break
+    server_response = sk.recv(1024)
