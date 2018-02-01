@@ -9,3 +9,4 @@ while True:
     inp = input('>>>')
     sk.sendall(bytes(inp, 'utf8'))
     if inp == 'exit':
+        break
