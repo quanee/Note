@@ -6,3 +6,4 @@ sk.connect(ip_port)
 print('客户端启动:')
 
 while True:
+    inp = input('>>>')
