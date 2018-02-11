@@ -10,3 +10,17 @@ engine = create_engine("mysql+pymysql://root:123@127.0.0.1:3306/t1", max_overflo
 Base = declarative_base()
 
 # 创建表
+
+# 创建单表
+
+
+class Users(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(32))
+    extra = Column(String(16))
+
+    __table_args__ = (UniqueConstraint('id', 'name', name='uix_id_name'), Index('ix_id_name', 'name', 'extra'),)
+
+
+# 一对多
