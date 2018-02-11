@@ -24,3 +24,15 @@ class Users(Base):
 
 
 # 一对多
+class Favor(Base):
+    __tablename__ = 'favor'
+    nid = Column(Integer, primary_key=True)
+    caption = Column(String(50), default='red', unique=True)
+
+
+class Person(Base):
+    __tablename__ = 'person'
+    nid = Column(Integer, primary_key=True)
+    name = Column(String(32), index=True, nullable=True)
+    favor_id = Column(Integer, ForeignKey("favor.nid"))
+
