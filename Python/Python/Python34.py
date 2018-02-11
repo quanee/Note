@@ -50,3 +50,15 @@ class Server(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     hostname = Column(String(64), unique=True, nullable=False)
+
+
+class ServerToGroup(Base):
+    __tablename__ = 'servertogroup'
+    nid = Column(Integer, primary_key=True, autoincrement=True)
+    server_id = Column(Integer, ForeignKey('server.id'))
+    group_id = Column(Integer, ForeignKey('group.id'))
+
+
+def init_db():
+    Base.metadata.create_all(engine)
+
