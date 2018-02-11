@@ -36,3 +36,17 @@ class Person(Base):
     name = Column(String(32), index=True, nullable=True)
     favor_id = Column(Integer, ForeignKey("favor.nid"))
 
+
+# 多对多
+class Group(Base):
+    __tablename__ = 'group'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64), unique=True, nullable=False)
+    port = Column(Integer, default=22)
+
+
+class Server(Base):
+    __tablename__ = 'server'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    hostname = Column(String(64), unique=True, nullable=False)
