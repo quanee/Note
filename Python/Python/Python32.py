@@ -34,3 +34,15 @@ row_1 = cursor.fetchone()
 # r = cursor.execute("call p1()")
 
 # result = cursor.fetchone()
+
+
+# 提交，不然无法保存新建或者修改的数据
+conn.commit()
+
+# 关闭游标
+cursor.close()
+# 关闭连接
+conn.close()
+
+
+# 获取最新自增ID
