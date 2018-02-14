@@ -22,3 +22,15 @@ effect_row = cursor.execute("update hosts set host = '1.1.1.2'")
 row_1 = cursor.fetchone()
 
 # 获取前n行数据
+# row_2 = cursor.fetchmany(3)
+# 获取所有数据
+# row_3 = cursor.fetchall()
+# cursor.scroll(1,mode='relative')  # 相对当前位置移动
+# cursor.scroll(2,mode='absolute')  # 相对绝对位置移动
+
+
+# 游标设置为字典类型
+# cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+# r = cursor.execute("call p1()")
+
+# result = cursor.fetchone()
