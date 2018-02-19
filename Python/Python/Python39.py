@@ -7,3 +7,9 @@
 """
 imp = input('输入模块名:')
 dd = __import__(imp)
+
+inp_func = input('输入函数名:')
+
+f = getattr(dd, inp_func, None)
+
+f()
