@@ -18,3 +18,7 @@ f()
 
 for item in [lambda x: i * x for i in range(4)]:
     print(item(2))  # 6 6 6 6
+
+
+for item in [lambda x, i=i: i * x for i in range(4)]:
+    print(item(2))  # 0 2 4 6
