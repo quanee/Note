@@ -13,3 +13,8 @@ inp_func = input('输入函数名:')
 f = getattr(dd, inp_func, None)
 
 f()
+"""
+
+
+for item in [lambda x: i * x for i in range(4)]:
+    print(item(2))  # 6 6 6 6
