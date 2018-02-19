@@ -38,3 +38,8 @@ for item in fun():
 
 
 from functools import partial  
+from operator import mul  
+
+
+def testFun():
+    return [partial(mul, i) for i in range(4)]
