@@ -32,3 +32,9 @@ def fun():
     for i in range(4):
         yield lambda x: i * x
 
+
+for item in fun():
+    print(item(2))  # 0 2 4 6
+
+
+from functools import partial  
