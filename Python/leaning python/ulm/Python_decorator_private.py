@@ -49,3 +49,17 @@ if __name__ == '__main__':
         def double(self):
             for i in range(self.size()):
                 self.data[i] = self.data[i] * 2
+
+        def display(self):
+            print('%s => %s' % (self.label, self.data))
+
+
+    X = Doubler('X is', [1, 2, 3])
+    Y = Doubler('Y is', [-10, -20, -30])
+
+    print(X.label)
+    X.display()
+    X.double()
+    X.display()
+    print(Y.label)
+    Y.display()
