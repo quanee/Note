@@ -24,3 +24,15 @@ def Private(*privates):
 
             def __setattr__(self, attr, value):
                 trace('set:', attr, value)
+                if attr == 'wrapped':
+                    self.__dict__[attr] = value
+                elif attr in privates:
+                    raise TypeError('private attribute change: ' + attr)
+                else:
+                    setattr(self.wrapped, attr, value)
+        return onInstance
+    return onDecorator
+
+
+if __name__ == '__main__':
+    traceMe = True
