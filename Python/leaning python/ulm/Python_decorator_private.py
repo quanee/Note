@@ -36,3 +36,16 @@ def Private(*privates):
 
 if __name__ == '__main__':
     traceMe = True
+
+    @Private('data', 'size')
+    class Doubler:
+        def __init__(self, label, start):
+            self.label = label
+            self.data = start
+
+        def size(self):
+            return len(self.data)
+
+        def double(self):
+            for i in range(self.size()):
+                self.data[i] = self.data[i] * 2
