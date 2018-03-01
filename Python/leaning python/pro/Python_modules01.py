@@ -42,3 +42,7 @@ import
  Java类 在Jython版本的Python中
  .NET组件 在IronPython版本的Python中
 """
+
+import time
+
+print(time.__dict__)
