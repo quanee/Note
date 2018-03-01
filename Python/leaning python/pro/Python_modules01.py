@@ -34,3 +34,7 @@ import
 模块文件选择
  源代码文件xx.py
  字节码文件xx.pyc
+ 目录xx, 包导入
+ 编译扩展模块(C/C++),导入时动态链接(xx.so(Linux) xx.dll或xx.py(windows))
+ 用C编写好的内置模块, 并通过静态连接至Python
+ ZIP文件组件, 导入时自动解压
