@@ -38,3 +38,7 @@ import
  编译扩展模块(C/C++),导入时动态链接(xx.so(Linux) xx.dll或xx.py(windows))
  用C编写好的内置模块, 并通过静态连接至Python
  ZIP文件组件, 导入时自动解压
+ 内存内映像, 对于frozen可执行文件
+ Java类 在Jython版本的Python中
+ .NET组件 在IronPython版本的Python中
+"""
