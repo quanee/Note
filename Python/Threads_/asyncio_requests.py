@@ -11,3 +11,4 @@ requests 实现封装Http数据包
 def fetch_async(func, *args):
     loop = asyncio.get_event_loop()
     future = loop.run_in_executor(None, func, *args)
+    response = yield from future
