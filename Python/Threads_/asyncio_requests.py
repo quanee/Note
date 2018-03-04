@@ -8,3 +8,4 @@ requests 实现封装Http数据包
 
 
 @asyncio.coroutine
+def fetch_async(func, *args):
