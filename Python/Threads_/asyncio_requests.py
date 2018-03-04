@@ -12,3 +12,4 @@ def fetch_async(func, *args):
     loop = asyncio.get_event_loop()
     future = loop.run_in_executor(None, func, *args)
     response = yield from future
+    print(response.url, response.content)
