@@ -26,3 +26,6 @@ class myThread(threading.Thread):
         # lockA.acquire()
         print(self.name, "gotlockA", time.ctime())
         lock.release()
+        # lockA.release()
+        lock.release()
+        # lockB.release()
