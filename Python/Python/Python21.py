@@ -33,3 +33,8 @@ class myThread(threading.Thread):
     def run(self):
         self.doA()
         self.doB()
+
+
+if __name__ == "__main__":
+
+    # lockA = threading.Lock()
