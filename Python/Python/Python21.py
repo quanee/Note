@@ -14,3 +14,7 @@ class myThread(threading.Thread):
         print(self.name, "gotlockB", time.ctime())
         lock.release()
         # lockB.release()
+        lock.release()
+        # lockA.release()
+
+    def doB(self):
