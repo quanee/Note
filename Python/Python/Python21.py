@@ -18,3 +18,7 @@ class myThread(threading.Thread):
         # lockA.release()
 
     def doB(self):
+        lock.acquire()
+        # lockB.acquire()
+        print(self.name, "gotlockB", time.ctime())
+        time.sleep(2)
