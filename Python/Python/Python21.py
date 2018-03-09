@@ -22,3 +22,7 @@ class myThread(threading.Thread):
         # lockB.acquire()
         print(self.name, "gotlockB", time.ctime())
         time.sleep(2)
+        lock.acquire()
+        # lockA.acquire()
+        print(self.name, "gotlockA", time.ctime())
+        lock.release()
