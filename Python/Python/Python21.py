@@ -38,3 +38,7 @@ class myThread(threading.Thread):
 if __name__ == "__main__":
 
     # lockA = threading.Lock()
+    # lockB = threading.Lock()
+
+    lock = threading.RLock()  # 递归锁 可重用(可被多次获取与释放 计数器)
+    threads = []
