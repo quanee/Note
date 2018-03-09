@@ -29,3 +29,7 @@ class myThread(threading.Thread):
         # lockA.release()
         lock.release()
         # lockB.release()
+
+    def run(self):
+        self.doA()
+        self.doB()
