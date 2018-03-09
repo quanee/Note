@@ -10,3 +10,7 @@ class myThread(threading.Thread):
         print(self.name, "gotlockA", time.ctime())
         time.sleep(3)
         lock.acquire()
+        # lockB.acquire()
+        print(self.name, "gotlockB", time.ctime())
+        lock.release()
+        # lockB.release()
