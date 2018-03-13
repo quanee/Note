@@ -11,3 +11,6 @@ def forLoop():
         res.append(abs(x))
     return res
 
+
+def listComp():
+    return [abs(x) for x in repslist]
