@@ -19,3 +19,6 @@ def listComp():
 def mapCall():
     return list(map(abs, repslist))
 
+
+def genExpr():
+    return list(abs(x) for x in repslist)
