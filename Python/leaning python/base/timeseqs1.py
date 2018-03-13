@@ -26,3 +26,5 @@ def genExpr():
 
 def genFunc():
     def gen():
+        for x in repslist:
+            yield abs(x)
