@@ -6,3 +6,5 @@ repslist = range(reps)
 
 
 def forLoop():
+    res = []
+    for x in repslist:
