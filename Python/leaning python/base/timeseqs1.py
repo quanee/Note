@@ -22,3 +22,4 @@ def mapCall():
 
 def genExpr():
     return list(abs(x) for x in repslist)
+
