@@ -15,3 +15,6 @@ def forLoop():
 def listComp():
     return [abs(x) for x in repslist]
 
+
+def mapCall():
+    return list(map(abs, repslist))
