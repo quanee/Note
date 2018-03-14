@@ -5,3 +5,4 @@ repslist = range(reps)
 
 
 def timer(func, *pargs, **kargs):
+    start = time.clock()
