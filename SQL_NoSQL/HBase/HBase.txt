@@ -3,3 +3,4 @@ create 'T_NAME', 'COL_FAM'
 检查表模式
 list
 写数据
+put 'T_NAME', 'ROW_KEY', 'COL_FAM:CF_NAME', 'VALUE'
