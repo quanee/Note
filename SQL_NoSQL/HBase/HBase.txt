@@ -1,2 +1,3 @@
 创建表
 create 'T_NAME', 'COL_FAM'
+检查表模式
