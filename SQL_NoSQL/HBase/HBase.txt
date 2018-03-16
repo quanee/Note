@@ -6,3 +6,4 @@ list
 put 'T_NAME', 'ROW_KEY', 'COL_FAM:CF_NAME', 'VALUE'
 读数据
 get 'T_NAME', 'ROW_KEY'
+表扫描 返回表所有行
