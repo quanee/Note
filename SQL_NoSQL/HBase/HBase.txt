@@ -4,3 +4,4 @@ create 'T_NAME', 'COL_FAM'
 list
 写数据
 put 'T_NAME', 'ROW_KEY', 'COL_FAM:CF_NAME', 'VALUE'
+读数据
