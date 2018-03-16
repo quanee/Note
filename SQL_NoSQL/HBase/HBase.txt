@@ -2,3 +2,4 @@
 create 'T_NAME', 'COL_FAM'
 检查表模式
 list
+写数据
