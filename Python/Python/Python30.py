@@ -21,3 +21,7 @@ gr1.switch()
 '''
 
 '''gevent 协程
+
+import gevent
+import time
+
