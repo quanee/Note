@@ -49,3 +49,8 @@ monkey.patch_all()  # Windows IO阻塞监听补丁
 import gevent
 from urllib.request import urlopen
 
+
+def f(url):
+    print('GET: %s' % url)
+    resp = urlopen(url)
+    data = resp.read()
