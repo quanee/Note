@@ -37,3 +37,8 @@ def bar():
     gevent.sleep(1)
     print('Explicit context switch to bar again', time.ctime())
 
+
+gevent.joinall([
+    gevent.spawn(foo),
+    gevent.spawn(bar),
+    # gevent.spawn(func),
