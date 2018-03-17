@@ -46,3 +46,6 @@ gevent.joinall([
 
 from gevent import monkey
 monkey.patch_all()  # Windows IO阻塞监听补丁
+import gevent
+from urllib.request import urlopen
+
