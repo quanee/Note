@@ -13,3 +13,8 @@ def test2():
     print(34)
     gr1.switch()
     print(78)
+
+
+gr1 = greenlet.greenlet(test1)
+gr2 = greenlet.greenlet(test2)
+gr1.switch()
