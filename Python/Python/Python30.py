@@ -10,3 +10,6 @@ def test1():
 
 
 def test2():
+    print(34)
+    gr1.switch()
+    print(78)
