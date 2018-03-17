@@ -25,3 +25,8 @@ gr1.switch()
 import gevent
 import time
 
+
+def foo():
+    print('Running in foo', time.ctime())
+    gevent.sleep(1)
+    print('Explicit context switch to foo again', time.ctime())
