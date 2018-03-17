@@ -30,3 +30,7 @@ def foo():
     print('Running in foo', time.ctime())
     gevent.sleep(1)
     print('Explicit context switch to foo again', time.ctime())
+
+
+def bar():
+    print('Running in bar', time.ctime())
