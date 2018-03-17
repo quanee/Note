@@ -34,3 +34,6 @@ def foo():
 
 def bar():
     print('Running in bar', time.ctime())
+    gevent.sleep(1)
+    print('Explicit context switch to bar again', time.ctime())
+
