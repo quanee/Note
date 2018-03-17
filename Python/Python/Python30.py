@@ -42,3 +42,7 @@ gevent.joinall([
     gevent.spawn(foo),
     gevent.spawn(bar),
     # gevent.spawn(func),
+])'''
+
+from gevent import monkey
+monkey.patch_all()  # Windows IO阻塞监听补丁
