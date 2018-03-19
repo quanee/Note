@@ -67,3 +67,26 @@ yum info [options] <package>
 options:
 all:可用的及安装的软件包名
 available:可用的软件包名
+updates:可更新的软件包 
+installed:已安装的软件包
+obsoletes:旧的软件包 
+recent:最近加入软件仓库的软件包
+### 软件包组管理
+yum [option] <packageground>
+option:
+grouplist:列出软件包组 
+groupinfo:显示软件包信息 
+groupinstall:安装软件包组 
+groupremove:删除软件包组 
+groupupdate:更新软件包组 
+### Ubuntu软件包命名约定 <软件包名称><版本>-<修订号><平台>.deb
+### 安装tar.gz源代码包
+tar zxvf .tar.gz // 解压并提取源代码 
+cd *** // 进入释放文件后自动生成的目录 
+./configure –prifix=/usr/local/ //安装配置编译环境,安装目录为/usr/local/*** 
+make&&make install // 编译和安装 
+###安装tar.bz2源代码包
+tar zxvf .tar.bz2 // 解压并提取源代码
+cd *** // 进入释放文件后自动生成的目录
+./configure –prifix=/usr/local/ //安装配置编译环境,安装目录为/usr/local/*** 
+make&&make install // 编译和安装 
