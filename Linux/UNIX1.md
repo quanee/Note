@@ -44,3 +44,26 @@ updates:可更新的软件包
 installed:已安装的软件包 
 obsoletes:旧的软件包 
 recent:最近加入软件仓库的软件包 
+package:指定要列出的软件包名称,可以使用通配符*. 
+### 使用yum命令安装软件包 yum install <package>  
+package:要安装的软件包的名称,不要求版本号,yum命令会自动查找适当的版本.
+yum命令会自动检查依赖关系,并给出总的下载量(本地安装也是),提示确认下载. 
+#### yum search [options] <keyword> 
+options: 
+all:搜索所有软件包信息 默认只搜索名称和摘要 
+keyword:搜索关键字 
+### 使用yum命令删除软件包 
+yum remove <package>
+或yum earse <package> package所有以来的软件包也会被删除 
+### 使用yum命令更新软件包 
+yum update <package> 
+yum upgrade <package> 
+yum update-to <package> 
+yum upgrade-to <package> 
+yum check-update <package> 
+### 更新所有软件包:yum update 
+### 使用yum命令查看软件包 
+yum info [options] <package> 
+options:
+all:可用的及安装的软件包名
+available:可用的软件包名
