@@ -11,3 +11,18 @@ def forLoop():
         res.append(abs(x))
     return res
 
+
+def listComp():
+    return [abs(x) for x in repslist]
+
+
+def mapCall():
+    return list(map(abs, repslist))
+
+
+def genExpr():
+    return list(abs(x) for x in repslist)
+
+
+def genFunc():
+    def gen():
