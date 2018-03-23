@@ -54,3 +54,17 @@ def mapCall():
 
 
 def genExpr():
+    return list(x + 10 for x in repslist)
+
+
+def genFunc():
+    def gen():
+        for x in repslist:
+            yield x + 10
+    return list(gen())
+
+
+print(sys.version)
+for test in (forLoop, listComp, mapCall, genExpr, genFunc):
+    elapsed, result = mytimer.timer(test)
+    print('-' * 33)
