@@ -40,3 +40,17 @@ for test in (forLoop, listComp, mapCall, genExpr, genFunc):
 
 def forLoop():
     res = []
+    for x in repslist:
+        res.append(x + 10)
+    return res
+
+
+def listComp():
+    return [x + 10 for x in repslist]
+
+
+def mapCall():
+    return list(map(lambda x: x + 10, repslist))
+
+
+def genExpr():
