@@ -40,3 +40,10 @@ def main():
     bloom = BloomFilter(100, 10)
     animals = ['dog', 'cat', 'giraffe', 'fly', 'mosquito', 'horse', 'eagle',
                'bird', 'bison', 'boar', 'butterfly', 'ant', 'anaconda', 'bear',
+               'chicken', 'dolphin', 'donkey', 'crow', 'crocodile']
+    # First insertion of animals into the bloom filter
+    for animal in animals:
+        bloom.add(animal)
+
+    # Membership existence for already inserted animals
+    # There should not be any false negatives
