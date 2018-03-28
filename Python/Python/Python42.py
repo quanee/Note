@@ -47,3 +47,9 @@ def main():
 
     # Membership existence for already inserted animals
     # There should not be any false negatives
+    for animal in animals:
+        if animal in bloom:
+            print('{} is in bloom filter as expected'.format(animal))
+        else:
+            print('Something is terribly went wrong for {}'.format(animal))
+            print('FALSE NEGATIVE!')
