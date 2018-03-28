@@ -25,3 +25,10 @@ class BloomFilter(set):
             self.bit_array[index] = 1
 
         return self
+
+    def __contains__(self, item):
+        out = True
+        for ii in range(self.hash_count):
+            index = mmh3.hash(item, ii) % self.size
+            if self.bit_array[index] == 0:
+                out = False
