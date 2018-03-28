@@ -12,3 +12,9 @@ class BloomFilter(set):
         self.bit_array.setall(0)
         self.size = size
         self.hash_count = hash_count
+
+    def __len__(self):
+        return self.size
+
+    def __iter__(self):
+        return iter(self.bit_array)
