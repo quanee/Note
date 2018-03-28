@@ -32,3 +32,11 @@ class BloomFilter(set):
             index = mmh3.hash(item, ii) % self.size
             if self.bit_array[index] == 0:
                 out = False
+
+        return out
+
+
+def main():
+    bloom = BloomFilter(100, 10)
+    animals = ['dog', 'cat', 'giraffe', 'fly', 'mosquito', 'horse', 'eagle',
+               'bird', 'bison', 'boar', 'butterfly', 'ant', 'anaconda', 'bear',
