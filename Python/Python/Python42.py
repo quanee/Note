@@ -18,3 +18,10 @@ class BloomFilter(set):
 
     def __iter__(self):
         return iter(self.bit_array)
+
+    def add(self, item):
+        for ii in range(self.hash_count):
+            index = mmh3.hash(item, ii) % self.size
+            self.bit_array[index] = 1
+
+        return self
