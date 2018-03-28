@@ -53,3 +53,11 @@ def main():
         else:
             print('Something is terribly went wrong for {}'.format(animal))
             print('FALSE NEGATIVE!')
+
+    # Membership existence for not inserted animals
+    # There could be false positives
+    other_animals = ['badger', 'cow', 'pig', 'sheep', 'bee', 'wolf', 'fox',
+                     'whale', 'shark', 'fish', 'turkey', 'duck', 'dove',
+                     'deer', 'elephant', 'frog', 'falcon', 'goat', 'gorilla',
+                     'hawk' ]
+    for other_animal in other_animals:
