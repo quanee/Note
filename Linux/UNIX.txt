@@ -1663,3 +1663,558 @@ zone	定义一个区域
 [print-category yes or no;]
 [print-severity yes or no;]
 [print-time yes or no;]
+};
+	channel_name:通道名称
+	file:通道的目标为一个磁盘文件,path_name表示目标文件名
+	version:指定named自动保留的多个日志文件,number用来指定版本的个数,如果指定为unlimited,则表示不限制版本个数.
+	size:指定每个文件的大小,filesize可以以K,B或者G为单位.
+	syslog:表示通道的目标为系统日志
+	stderr:表示将通道的目标为named的标准错误输出
+	null:表示无日志输出
+	severity:指定记录消息的级别,主要有critical,error,warning,notice,info,debug[level]以及dynamic等7个级别.定义某个级别后,系统会定义包括该级别以及比该级别更严重的级别的消息.
+12.3.8使用通道分类
+	category category_name{
+				channel_item;
+	}
+ 	default:默认类别,匹配所有未明确指定通道的类别,但不匹配不属于任何类别的消息
+ 	general:包括所有未明确分类的BIND消息
+ 	database:named内部使用的分类,用来存储域和缓存数据的内部数据库信息
+ 	security:接受和拒绝的请求
+ 	config:配置文件分析和处理
+ 	resolver:域名解析,包括对来自解析器的递归查询的处理.
+ 	xfer-in:从远程域名服务器到本地域名服务器的区域传输
+ 	xfer-out: 从本地域名服务器到远程域名服务器的区域传输
+ 	notify:NOTIFY协议
+ 	client:客户端请求的处理
+ 	unmatched:由于没有匹配的视图,那么大无法确定的类别
+ 	network:网络操作
+ 	update:动态更新事件
+ 	queries:查询请求
+ 	dispatch:DNSSEC和TSIG协议的处理
+ 	lame_serviers:未知服务器.由于其他DNS服务器中的错误配置 引起的
+12.3.9设置选项
+	options{
+[version version_string;]
+[directory path_name;]
+[pid-file path_name;]
+[notify yes_or_no|explicit;]
+[recursion yes_or_no;]
+[forward(only|first);]
+[forwards{ip_addr[port ip_port];[ip_addr[port ip_port];..]};]
+[allow-notify{address_match_list};]
+[allow-query{address_match_list};]
+[allow-transfer{address_match_list};]
+[allow-recursion{address_match_list};]
+[allow-v6-synthesis{address_match_list};]
+[blackhole{address_match_list};]
+[listen-on[port ip_port]{address_match_list};]
+[listen-on-v6[port op_port]{address_match_list};]
+[query-source[address(ip_addr|*)][port(ip_port|*)];]
+[port ip_port]
+}
+1.	通用选项
+	version:响应针对BIND服务器版本的请求时的内容,缺省返回服务器的真实内容
+	directory:指定BIND服务器的工作目录.配置文件中所使用的相对路径.大多数服务器的输出文件都缺省生成在这个目录下.如果没有设定目录,工作目录缺省设置为服务器启动时的目录”.”.指定的目录应该是一个绝对路径
+	pid-file:指定named进程ID文件的路径名.默认为/var/run/named.pid.是给需要向运行着的服务器发送信号的程序使用的
+	statistics-file:当使用rndc stats命令的时候,服务器会统计信息追加到文件路径名.默认为named.stats,位于在服务器程序的当前目录中.
+	port:指定服务器用来接收和发送DNS协议数据的UDP/TCP端口号,默认为53.主要用于服务器的检测,如果不使用53端口,服务器将不能与其他的DNS进行通信
+2.	布尔选项
+	notify:如果为yes,则用于服务器数据发生变化后,发送给其他服务器消息,然后从服务器和主服务器协商数据库副本的更新.如果为no,则不会发出任何报文.也可以设定在zone语句中.默认值为yes.
+	recursion:指定named程序是否可以代表客户机查询其他的域名服务器,这称为递归查询.默认值为yes.
+把recursion设为no不会阻止用户从服务器的缓存中得到数据,仅仅阻止新数据作为查询的结果被缓存.服务器的内部操作还是可以影响本地的缓存内容.
+3.	转发选项
+转发功能可以用于在一些域名服务器上产生一个大的缓存,从而减少到外部服务器网络上的流量.可以用在和Internet没有直接连接的内部域名服务器上,用来提供对外部域名的查询.只有当服务器是非授权时,并且缓存中没有相关记录时才进行转发
+	forward:只有当forwarders子句的列表中有内容时才有意义.可以指定first和only两个值,如果为first,则域名服务器会先查询设置的forwarders的的服务器,如果没有回答,则会自己寻找答案;如果设定为only,服务器只会把请求转发到其他服务器上.默认值为first.
+	forwarders:设定转发使用的IP地址.默认列表为空,即不转发.转发也可以设置在每个域上,这样全局选项中的转发设置就不会起作用了.可以将不同的域转发到服务器上,或者对不同的域可以实现forward only或者first的不同方式,也可以根本不转发
+4.	访问控制选项
+根据用户请求使用的IP地址进行限制
+	allow-notify:用来设定除主域名外,还可以发送通知消息的主机,通知域中的从服务器区域数据库已经发生改变.默认情况下,区域中的域名服务器只接受来自主域名服务器的通知消息.
+	allow-query:设定可以进行普通查询的主机.默认允许所有主机进行查询.
+	allow-transfer:设定允许和本地服务器进行区域传输的主机.默认允许所有主机进行域传输.
+	allow-recursion:设定可以递归查询本域名服务器的主机.默认允许所有主机之间进行递归查询.禁止递归查询不能阻止查询已经存在于服务器缓存中的数据.
+	allow-v6-synthesis:设定能接受对IPv6响应的主机
+	blackhole:设定一个地址列表,服务器不会接受来自这个列表的查询请求,或者解析这些地址.默认值为none.
+5.	网络接口和端口选项
+使用listen-on来设定.listen-on使用可选的端口和一个地址匹配列表.服务器将会监听所有匹配地址列表中所允许的端口.如果没有端口,则使用53.
+listen-on port{
+			address_match_list;
+}
+port:指定监听的端口
+adderess_match_list:有效的地址匹配列表
+6.	查询地址选项
+query-source {address ip_address port port_number}
+ip_address:一个IPv4的地址
+port_number:端口号
+query-source-v6用来处理IPv6的地址
+12.3.10定义远程服务器
+server ip_addr{
+[bogus yes_or_no;]
+[provide-ixfr yes_or_no;]
+[request-ixfr yes_or_no;]
+[transfers number]
+[transfer-format(one-answer|many-answers);]
+[keys{string;[string;[…]]};]
+}
+ip_addr:远程服务器地址
+bogus:如果值为yes,则named不会向该服务器发送任何查询
+	provide-ixfr:如果值为yes,则该服务器将执行增量区域传输,如果值为no,则所有对远端服务器的传输都将是非增量的.不设定,默认为yes.
+	request-ixfr:本从服务器是否向主服务器发送区域的增量传输请求.默认为yes
+	transfers:限制了来自远端服务器的并发的入站区域传输的数量
+	transfer-format:指定服务器进行区域传输的方式,分别有one-answer和many-answers,前者表示每个源数据传输使用一个DNS报文,后者表示在一个报文中汇集尽可能多的记录
+	keys:定义key_id,用于当与远程服务器通话时的安全处理
+12.3.11定义视图
+	view语句包含一个控制谁能看到视图的访问控制列表,一些应用到视图中所有区域的选项以及区域定义本身
+view view_name{
+				match-clents{address_match_list};
+				match-destinations{address_match_list};
+				match-recursive-only{yes_or_no};
+				[view_option;…]
+				[zone_statement;…]
+}
+	view_name:视图名称
+match-clients:控制谁可以看到该视图.
+在BIND中,视图是按照顺序进行处理的,所以要把限制最严格的视图放在前面.不同视图中的区域可以有相同的名称.试图是一种要么全有,要么全无的概念,意味着如果使用视图,那么在named.conf文件中的所有zone语句都必须在一个视图中出现
+12.3.12定义区域
+1.定义区域主服务器
+	zone “zone_name”{
+			type master;
+			[allow-notify{address_match_list};]
+			[allow-query{address_match_list};]
+			[allow-transfer{address_match_list};]
+			[allow-update{address_match_list};]
+			[file path;]
+			[ixfr-base string;]
+}
+	zone_name:区域名称,必须用双引号括起来
+	type master:当前区域的主域名服务器;
+	allow-update:限制发生更新的主机,动态更新只限于主服务器,因此,allow-update不能用在从服务器
+	ixfr-base:指定事务日志保存文件名称
+2.定义区域从服务器
+	zone “zone_name”{
+			type slave;
+			[allow-notify{address_match_list};]
+			[allow-query{address_match_list};]
+			[allow-transfer{address_match_list};]
+			[allow-update{address_match_list};]
+			[file string;]
+			[masters[port ip_port]{ip_addr[port ip_port][key key];[]};]
+}
+	type slave:从服务器
+	file:指定存储数据库副本的本地磁盘文件
+	masters:服务器的IP地址
+3.定义根区域
+zone “.”{
+type hint;
+file “path”
+};
+	根域的名称为一个圆点”.”
+	type hint:表示根区域
+	file:指定根区域的区域数据库文件的路径
+4.定义转发区域
+zone “zone_name”{
+type forward;
+forward only|first;
+forwarder{ip_addr;ip_addr;…};
+};
+	type forward:指定转发区域
+	forward:控制转发器的行为,当值为first时,该服务器会首先查询forwarders中设置的服务器,如果设置为only,服务器就会把请求转发到其他服务器上
+	forwarder:指定要转发的目标服务器的IP地址,默认列表为空,表示不转发
+只有当forwarder的列表不为空时,forwarder再会起作用
+12.3.13根提示文件
+	zone “.”{
+			type hint
+			file “/etc/namedb/named.root”
+}
+	通过file关键字指定的文件称为根提示文件,根提示文件包含根域的域名服务器的IP地址.习惯命名为named.root,db.cache,root.hint等
+12.4DNS数据库
+12.4.1资源记录
+	区域文件是BIND中最主要的文件,域名服务器的实际数据就存储在这些区域文件中.每次当BIND启动时,都会自动加载这些数据.BIND的区域文件都有固定的格式,包含一条或多条记录,这些记录称为资源记录(resource record, RR).
+	name ttl class type rdta
+1.	name
+当前记录所描述的实体名称,可以是一个主机或者一个域.如果几条连续的记录都涉及到同一个实体,则可以从第2条省略该列的值
+2.	ttl
+记录被缓存的有效时间(time to live, TTL).ttl以秒为单位指定资源记录可以被缓存并且认为有效的时间长度.
+3.	class
+网络协议的类别,IN(Internet),CS(CSNET),CH(CHAOS),HS(Hesiod).目前CSNET和CHAOS已被废弃,Hesiod是一种建立在BIND之上的数据库服务
+默认值为IN,唯一最常使用的值
+4.	type
+ 	区域记录:表示区域以及名称服务器
+ 	基本记录:指定名称和地址之间的映射
+ 	安全记录:向区域文件添加身份认证和签名
+ 	可选记录:提供关于主机或者区域的额外信息
+资源记录类型
+类别	类型	全称	涵义
+区域记录	SOA	Start of Authoruty	
+	NA	Name Server	
+基本类型	A	IPv4 Addres	
+	AAAA	Original IPv6 Address	
+	A6	IPv6Address	
+	PTR	pointer	
+	DNAME	Redirection	
+	MX	Mail Exchanger	
+安全记录	KEY	Public Key	
+	NXT	Next	
+	SIG	Signatures	
+可选记录	CNAME	Canonical Name	
+	LOC	Location	
+	RP	Responsible Person	
+	SRV	Services	
+	TXT	Text	
+5.	rdata
+ 	分号”;”:表示注释
+ 	圆点”.”:用在名字域时,若圆点后无具体内容则该圆点表示当前域
+ 	@符号:表示当前域
+ 	圆括号”()”:使得资源记录可以跨越多行
+12.4.2SOA记录
+	起始授权机构(Start of Authority)记录,是每个授权区域定义的开始标识,属于同一个域的所有资源记录都位于该纪录后面
+name|@	[ttl]	[IN]	SOA	name-server	email(
+						serial                            
+						fresh                             
+						retry                             
+						expire                            
+						minium)                           
+	name|@:区域名称,如果为@则表示当前区域的名称
+	TTL
+	[IN]:网路协议类别,一般取IN,可省略
+	SOA:SOA记录
+	name-server:当前区域的主域名服务器
+	email:当前域的技术联系人的邮件地址
+minium:指缓存中否定响应的存活时间
+12.4.3NS记录
+	NS(Name Server)用来定义一个区域中的权威域名服务器,包括主域名服务器和从域名服务器,并且将子域授权给其他机构.
+zone	[ttl]	IN		NS		hostname
+由于高速缓存域名服务器不属于权威域名服务器,所以无需在父区域的区域文件中列出
+12.4.4A记录
+	DNS数据库的核心数据,实际上就是指地址(address).
+	hostname [ttl] IN A ipaddress
+	hostname:主机名称
+	ipaddress:IP地址
+必须为主机的每个网络接口设置一条A记录
+12.4.5PTR记录
+	与A记录的作用相反,完成IP地址到主机名的反响映射.必须为主机的每个网络接口设置一条PTR记录.
+	顶级域arpa:与其他的通用顶级域不同,arpa域并没用分配给组织或者机构使用,而是用于为Internet上的IPv4或者IPv6地址提供反响映射,Internet上反向域名的数据存放在arpa这个顶级域名下面.arpa域有两个子域,分别为in-addr.arpa和ip6.arpa,前者供IPv4地址使用,后者供IPv6地址使用
+PTR记录的语法
+	ipaddress [ttl] IN PTR hostname
+A记录和与之相对应的PTR记录相匹配很重要,不匹配或者遗漏的PTR记录会产生一些意想不到的问题
+12.4.6MX记录
+	专门用来处理电子邮件交换的路由
+	name [ttl] IN MX preference hostname
+	preference:主机接收邮件的优先级,最小0,最大65536,值越小,优先级越高
+在设置MX记录时,将优先级设置为不连续的数值是一个非常好的习惯,这样可以很方便的在中间插入新的主机
+12.4.7CNAME记录
+	用来为主机分配额外的名称,通常称为别名或者昵称.设置别名的目的通常是明确主机的功能或者缩短一个较长的主机名.
+	CNAME记录的语法
+	nickname [ttl] IN CNAME hostname
+	nickname:别名
+	当BIND遇到一条CNAME记录时,他会停止对该名称的查询,而切换到主机的正式名称.
+可以为某台主机设置多个别名,也可以将一个别名指派给多台主机.
+一种更为妥当的方法是设置多条A记录,指向不同的Web服务器.
+12.4.8区域文件中的命令
+1.$ORIGIN命令
+	当named程序读取区域文件时,会将默认域追加到所有的不完整的域名后面.所谓默认域,是指在named.conf文件的zone语句中指定的区域名称.可以使用$ORIGIN命令在区域文件中重新指定默认域.
+	$ORIGIN zone
+2.$INCLUDE命令
+	用来包含外部文件,将不同功能的代码放在各自的单独文件中.
+	$INCLUDE filename
+3.$TTL命令
+	$TTL default-ttl
+	default-ttl是一个时间值,如果只指定一个数值,BIND9会将其解释为以秒为单位的时间值.还可以使用数值加单位代码的形势来表示,其中s表示秒,m表示分钟,h表示小时,d表示天,w表示周.
+4.$GENERATE命令
+	用来生成一系列类似的记录
+	
+12.5BIND9的安全管理
+12.5.1name.conf文件中的安全选项
+BIND9的安全选项
+	选项	所在语句	涵义
+	allow-query	options,zone	那些主机能查询区域服务器
+	allow-transfer	options,zone	那些服务器能请求区域传送
+	allow-update	zone	谁能执行动态更新
+	blackhole	option	完全忽略那些服务器
+	bogus	server	从不查询哪些服务器
+	acl	多种语句	访问控制列表
+12.5.2访问控制列表
+	可以避免DNS中的欺骗和拒绝服务攻击
+12.5.3限制named
+chroot环境中的目录关系
+	真实目录	chroot环境中对应的目录
+	/			/var/named/chroot
+	/etc		/var/named/chroot/etc
+	/var/named	/var/named/chroot/var/named
+	/dev		/var/named/chroot/dev
+	/usr		/var/named/chroot/usr
+12.5.4使用TSIG和TKEY保障服务器之间通信的安全
+	所谓TSIG,是指事务签名(Transaction SIGnature).通过事务签名,可以保证服务器之间的安全通信,包括域传送,通知以及递归查询等.
+1.	为每对主机产生共享密钥
+	为了使用TSIG,首先是为每对主机创建一个密钥,尽管密钥可以任意选择,但是必须保证两台机器上的一样.密钥可以使用dnssec-keygen工具自动生产,也可以手工产生.下面的命令为server1和server2产生一个共享密钥:
+	dnssec-keygen -a hmac-md5 -b 128 -n HOST server1-server2
+ 	    -a:加密算法
+ 	    -b:密钥的长度
+ 	    -n:产生的密钥的所有者类型.该选项的值必须是ZONE,HOST,ENTITY,USER或者OTHER之一,分别表示区域,主机,主机关联,用户以及其他用途.默认ZONE
+2.	把共享密钥复制到两台机器中
+当密钥产生之后,可以通过一种安全的途径将其复制到两台主机上面,可以选择scp,sftp或者ftp等
+3.	通知服务器密钥的存在
+	通过key语句在配置文件中定义使用密钥
+	key server1-server2{
+			algorithm hmac-md5;
+			secret ************************;
+}
+4.	通知服务器使用密钥
+	在server1的named.conf文件加入
+		server server2_IP{
+				keys {server1-server2;};
+		}
+		在server2的named.conf文件加入
+		server server1_IP{
+				keys {server1-server2;};
+		}
+5.	基于TSIG密钥的访问控制
+	allow-transfer{key server1-server2;};
+
+12.6BIND9的测试和调试
+12.6.1日志系统
+ 	通道:表示日志输出的目标,例如系统日志,日志文件或者不输出
+ 	类别:将通道进行分类
+ 	工具:系统日志工具名称
+ 	严重性:错误消息的严重级别
+	channel channel_name{
+	(file path[versions(number|unlimited)][size size spec]
+	|syslog syslog_facility
+	|stderr
+	|null);
+	[severity(critical|error|warning|notice|info|debug[level]|dynamic);]
+	[print-category yes or no;]
+	[print-severity yes or no;]
+	[print-time yes or no]
+	}
+	channel_name:通道名称
+	file:当前的通道是文件通道
+	path:文件名
+	version:要保存日志文件的多少个副本,如果指定为unlimited,表示不限制副本
+	size:指定每个文件的最大尺寸
+
+
+12.6.2调试级别
+	BIND的调试级别使用从0~11的整数来表示,数字越大,日志输出的信息越详细.级别0表示关闭调试功能.级别1和2适用于调试配置和数据库.大于4的级别适合代码的维护人员使用.
+将使系统在调试 级别2启动named程序:
+named -d2
+12.6.3使用rndc工具调试BIND
+	rndc(Remote Name Daemon Control)命令是BIND9提供的管理工具,允许系统管理员控制域名服务器的运行
+rndc [-c config] [-s server][-p port][-y key]command
+	-c:指定配置文件rndc.conf的位置
+12.6.4使用nslookup,dig和host工具调试BIND
+1.nslookup
+	nslookup命令分为交互式和非交互式
+	nsloopup [-option][name|-][server]
+ 	-all:显示所有的信息
+ 	-class:设置查询的网络协议类别,可以取值为IN,CH,HS以及ANY
+ 	-domain:指定默认的域
+ 	-port:指定域名服务器的端口
+
+	nslookup中的交互式命令
+		命令			功能
+	name			打印关于name指定的主机或者域名的信息
+	help或者?		显示完整的命令清单
+	exit			退出交互式环境
+	server host		设置host指定的服务器为默认服务器
+	lserver host	设置初始服务器为默认服务器
+	set type=xxx	设置要查询的记录类型
+	set debug		打开调试模式
+	set d2			打开多个调试
+	ls domain		列出所有主机
+2.dig
+	dig(Domain Information Gropher)域名信息搜索器.
+	dig @server name type
+	@server:指定要查询的域名服务器
+12.7常见问题
+ 
+DHCP服务器
+13.1DHCP概述
+13.1.1DHCP
+		DHCP是指动态主机配置协议(Dynamic Host Configuration Protocal, DHCP).DHCP是一个局域网协议,在UDP协议的基础上工作
+ 	自动分配IP地址
+ 	集中管理局域网中的电脑
+13.1.2作用域
+	是一个完整连续的可用IP地址范围,DHCP服务主要就是通过作用域来管理网络分布,IP地址分配及其他相关配置参数
+	subnet 10.5.5.0 netmask 255.255.255.224{
+	range 10.5.5.26 10.5.5.30;
+	option domain-name-servers ns1.internal.example.org;
+	option domain_name “internal.example.org”;
+	option routers 10.5.5.1;
+	option broadcast-address 10.5.5.31;
+	default-lease-time 600;
+	max-lease-time 7200;
+	}
+	作用域为10.5.5.0
+	可以分配给客户端使用的IP地址范围为10.5.5.26~10.5.5.30
+13.1.3超级作用域
+	一组作用域的集合,通常是由一个物理子网中包含的多个IP子网组成的.
+13.1.4地址池
+	地址池是指DHCP作用域中,排除不能分配给客户端的某些IP地址之后,剩余的地址的集合.只有地址池中的IP地址,才可以真正地指派给客户端使用.
+13.1.5租约
+DHCP为客户端分配IP地址的方式与现实生活中的出租物品非常类似
+13.1.6DHCP工作原理
+1.请求IP租约
+	当DHCP客户机第一次登录网络时,如果客户机上没有任何IP信息设定,它会向网络发出DHCP发出(DHCP DISCVER)数据包,为保证服务期能够接受请求,数据包源地址设定为0.0.0.0,而目的地址为255.255.255.255,以广播形式发送DHCP DISCOVER的信息
+2.提供IP租约
+	当DHCP服务器监听到客户端发出的DHCP IDSCOVER广播后,它会从那些还没有租出的地址范围内选择可用的IP地址以及其他的TCP/IP设定,以DHCP提供(DHCP OFFER)数据包的形式发送个客户机
+3.选择IP租约
+	如果客户端收到网络上多台DHCP服务器的响应,客户端会挑选最快的一个DHCP OFFER并向网络发送一个DHCP请求(DHCP REQUEST)广播封包,告诉所有DHCP服务器它将使用哪一台服务器提供的IP地址.同时,客户端还会向网络发送ARP广播数据包,查询网络上有没有其他机器使用该IP地址,如果发现该IP地址已被占用,客户端则会发送一个DHCP拒绝(DHCP DECLINE)数据包给DHCP服务器,拒绝接受其DHCP OFFER,并重新发送DHCP REQUEST信息
+5.	确认IP租约
+	将地址分配给客户端后,DHCP服务器会发送一个DHCP ACK消息,以确认IP租约的正式生效,结束完整的DHCP工作过程
+	DHCP客户端成功地从服务器取得IP地址后,一般不需要再发送DHCP DISCOVER信息了,除非其租约已经到期或者IP地址重新设定回0.0.0.0
+	此时,客户端会直接使用已经租用到的IP地址向为其发送此IP地址的DHCP服务器发出DHCP REQUEST信息,DHCP服务器会尽量让客户端使用原来的IP地址,如果没有特殊的情况,会直接响应DHCP ACK,允许客户端继续使用该IP地址.如果该地址已经失效或者已经被其他主机使用了,服务器则会响应一个DHCP NACK 数据 包给客户端,要求其重新执行DHCP DISCOVER
+13.2安装DHCP服务器
+13.2.1DHCP服务器软件
+	AIX:dhcpsd
+	FreeBSD:ISC-DHCP,WIDE-DHCP
+	HP-UX:bootpd
+	Solaris 11之前:in.dhcpd
+	Solaris 11:ISC-DHCP
+13.2.2ISC DHCP服务器的安装
+	DHCP服务器软件源码下载地址:http://www.isc.org/software/dhcp
+	下载完成后解压
+	tar zxvf dhcp-4.2.3-P2.tar.gz
+	进入释放后的源代码所在目录
+	cd dhcp-4.2.3-P2
+	编译和安装dhcp源代码
+	./configure
+	make && make install
+	Solaris 11使用二进制软件包安装ISC DHCP
+	切换到root身份
+	pkg install pkg:/service/network/dhcp/isc-dhcp
+	FreeBSD通过Ports安装DHCP服务器
+	cd /usr/ports/net/isc-dhcp41-server
+	make && make install
+	DHCP编译和安装完成后,在/etc/rc.conf文件中增加以下代码
+	dhcpd_enable=”YES”			#dhcpd enabled?
+	dhcpd_flags=”-q”				#command option(s)
+	dhcpd_conf=”/usr/local/etc/dhcpd.conf”														#configuration file
+	dhcpd_ifaces=”em0”			#ethernet interface(s)
+	dhcpd_withumask=”022”		#file creation mask
+13.3DHCP服务器的常规配置
+13.3.1DHCP服务器配置流程
+1.定义作用域
+	DHCP服务器作用域是在其主配置文件dhcp.conf中进行定义的.当DHCP服务器软件安装完成之后,文件dhcp.conf的内容通常是空白的,需要我们根据自己的网络情况来设置作用域以及各种网络参数和地址池
+2.建立租约数据库
+	租约数据库文件用于保存一系列的租约声明,其中包括客户端到的主机名,MAC地址,分配到的IP地址,以及IP地址的有效期等相关信息.是可编辑的ASCII格式文本文件
+4.重新加载配置文件
+ISC-DHCP的工作流程 
+	(2)
+	(1 )	dhcpd.conf	
+
+	(3)	DHCP服务器	
+	(4)
+
+	(5)
+
+	租约数据库文件
+
+具体描述
+	(1)	客户机发送广播向DHCP服务器申请IP地址
+	(2)	服务器收到请求后查看主配置文件dhcpd.conf,先根据客户端的MAC地址查看是否为客户端设置了固定IP地址
+	(3)	如果为客户端设置了固定IP地址,则将该IP地址发送给客户端.如果没有设置固定IP地址,则将地址池中的IP地址发送给客户端
+	(4)	客户端收到服务器回应后,客户端给予服务器回应,告诉服务器已使用了分配的IP地址
+	(5)	服务器将相关租约信息存入数据库
+13.3.2DHCP主配置文件
+	ISC DHCP服务器的主配置文件为dhcpd.conf
+	FreeBSD DHCP的主配置文件的路径可以通过dhcpd_conf选项来指定,默认情况下,文件目录为/usr/local/etc/dhcpd.conf
+	Solaris 11 主配置文件为
+	/etc/inet/dhcpd4.conf
+	/etc/inet/dhcpd6.conf
+13.3.3常用参数介绍
+1.ddns-update-style
+ 	none:不支持动态更新
+ 	interim:DNS互动更新模式
+ 	ad-hoc:特殊DNS更新模式
+2.ignore client-updates
+	忽略客户机更新,只用于服务器上
+3.default-lease-time
+	定义默认的IP地址租约时间,单位为秒
+4.	max-lease-time
+	定义客户机IP租约时间的最大值,单位为秒
+13.3.4常用声明语句介绍
+	声明语句用来定义IP作用域以及定义为客户端分配的IP地址等.在dhcpd.conf文件中,声明语句主要有两种,分别为subnet和range.
+1.	subnet
+用来定义一个作用域
+	subnet ID netmask{
+	local_parameters;
+	local_options;
+	range_statement;
+	}
+	ID的值必须与DHCP服务器所在的网络标识相同
+	local_parameters:局部参数
+	local_options:局部选项
+	range_statament:用来定义地址池的range语句
+2.	range
+	用来定义地址池
+	range start_ip_addr last_ip_addr
+	start_ip_addr:地址池的起始地址
+	last_ip_addr:地址池的结束地址
+	在一个subnet语句中,可以有多个range语句,但多个range语句所覆盖的IP地址范围不能脚超或者重复
+13.3.5常用选项介绍
+1.routers
+	为客户机指定默认网关
+	option routers 192.168.0.1
+2.subnet-mask
+	定义客户机的子网掩码
+	option subnet-mask 255.255.255.0
+3.	domain-name-servers
+	指定客户机默认使用的DNS服务器地址
+	option domain-name-servers 192.168.1.1,192.168.1.2
+13.3.6租约数据库文件
+租约数据库文件用于保存一系列的租约声明,其中包含客户机的主机名,MAC地址,分配到的IP地址,以及IP地址的有效期等相关信息.租约数据库文件是可编辑的ASCII格式文本文件.
+Solaris 11,租约数据库文件的路径
+	/var/db/isc-dhcp/dhcp4.leases
+	/var/db/isc-dhcp/dhcp4.leases-
+	/var/db/isc-dhcp/dhcp6.leases
+	/var/db/isc-dhcp/dhcp6.leases-
+FreeBSD 租约数据库文件位于/var/db目录中,文件名为dhcpd.leases和dhcpd.leses~.其中以”~”符号结尾的文件是租约数据库文件的副本
+13.3.7管理DHCP服务
+Solaris 11启动DHCPv4服务进程
+	svcadm enable svc:/network/dhcp/server:ipv4
+启动DHCPv6服务进程
+	svcadm enable svc:/network/dhcp/server:IPv6
+停止DHCP服务
+	svcadm disable svc:/network/dhcp/server:ipv4
+或
+svcadm disable svc: /network/dhcp/server:IPv6
+	FreeBSD启动DHCP服务
+	/usr/local/etc/rc.d/isc-dhcpd start
+	停止DHCP服务
+	/usr/local/etc/rc.d/isc-dhcpd stop
+13.3.8IP地址绑定
+	使用ISC DHCP服务器还可以实现将某个固定的IP地址绑定到摸个网卡的物理地址上面
+	host hostname{
+			hardware ethernet mac_addr;
+			fixed-address ip_addr;
+}
+	hostname:主机名称
+	hardware:网卡的硬件地址
+	ethernet:以太网
+	mac_addr:MAC地址十六进制
+	fixed-address:为某个客户端分配的固定的IP地址
+13.4DHCP客户机配置
+13.4.1UNIX DHCP客户机配置
+	Solaris
+		dhcpagent是一个守护进程,可以获得引导系统时所涉及的其他进程所需的配置信息,
+13.4.2Linux DHCP客户机配置
+在/etc/sysconfig/network添加
+	NETWORKING=yes
+在/etc/sysconfig/network-scripts目录中
+文件名为ifcfg前缀加上网络接口名称.
+编辑想要启动DHCP客户端的网络接口配置文件
+	DEVICE=eth0
+	BOOTPROTO=dhcp
+	ONBOOT=yes
+禁用并重新激活网络接口
+	ifdown eth0
+	ifup eth0
+或重启网络功能
+	service network restart
+使用dhclient命令重新发送广播,申请IP地址
+	dhclient eth0
+13.5常见问题
+ 
+FTP服务器
+14.1文件传输协议概述
+14.1.1文件传输协议
