@@ -1108,3 +1108,558 @@ Solaris中的ps命令的常见列及其涵义
  	TIME		进程累计CPU时间
  	TTY	进程的控制终端名称,如果没用控制,则显示一个问号
  	UID	进程的用户ID
+FreeBSD的ps命令的常见列及其涵义
+ 	%cpu			处理器(CPU)的使用百分比
+ 	%mem			真实内存的使用百分比
+ 	cmd			正在被执行的命令的名称
+ 	command	正在被执行的命令的完整名称,包括参数
+ 	cpu			短期处理器的使用
+ 	nice或者ni	nice值,用于设置进程优先级
+ 	pgid			进程组ID
+ 	pid			进程ID
+ 	ppid			父进程ID
+ 	pri			调度优先级
+ 	re			内存驻留时间,以秒为单位
+ 	rss			内存驻留空间大小
+ 	sl			睡眠时间,以秒为单位
+ 	stat			状态码,包括D,I,L,R,S,T,W以及Z
+ 	time			累计CPU时间
+ 	tsize		文本大小,以KB为单位
+ 	tt			控制终端的缩写,通常是两个字母
+ 	tty			控制终端的完整名称
+ 	uid			用户标识
+ 	user			用户名
+ 	vsz			虚拟内存大小
+Solaris的状态码
+ 	O:正在运行
+ 	S:可中断睡眠状态,进程在等待某个事件的发生
+ 	R:可运行状态,正在运行队列中等待
+ 	W:进程正在等待CPU的使用率降低至阈值以下
+ 	T:挂起状态,有作业控制信号或者因为追踪而被挂起
+ 	Z:僵死状态
+FreeBSD&Linux
+ 	D:不可中断的睡眠状态,等待事件的结果,通常是I/O
+ 	I:空闲状态,超过20秒的睡眠,仅适用于FreeBSD
+ 	R:可运行状态
+ 	S:睡眠状态,少于20秒
+ 	T:挂起状态,有作业控制信号或者因为追踪而被挂起
+ 	Z:僵死进程
+搜索进程
+	pgrep [options] pattern
+	options:
+ 	-g:指定要搜索的进程的组ID
+ 	-G:指定要搜索的进程所属的真实组ID
+ 	-l:以长格式显示匹配结果,包括进程ID和进程名称
+ 	-P:匹配父进程为指定ID的进程
+ 	-u:匹配有效用户ID为指定ID的进程
+ 	-U:匹配真实用户ID为指定ID的进程
+监控进程	(Solaris)
+	top [options] [number] (动态)
+	options:
+ 	-I:不显示空闲进程
+ 	-S:显示进程
+ 	-C:显示完整的命令名称
+ 	-i:交互模式
+ 	-q:快速模式,top进程本事的nice将变为-20,获得更高的优先级
+ 	-d:只显示指定次数然后退出top命令
+ 	-o:指定用来排序的列
+运行时命令:
+ 	o:指定排序标准
+ 	p:以CPU时间的占用百分比排序
+ 	q:退出top命令
+ 	r:改变进程优先级
+ 	s:改变屏幕刷新时间间隔
+ 	T:以进程所使用的系统和用户时间排序
+	prstat [options] [interval [count]]
+	options:
+ 	-n:该选项用来指定prstat命令输出的行数
+ 	-p:指定要显示的进程ID列表
+ 	-s:指定作为降序排列标准的列
+ 	-S: 指定作为升序排列标准的列
+ 	-t:统计每个用户的资源使用情况
+ 	-u:只列出有效用户ID出现在指定列表中的进程
+ 	-U:该选项只列出真实用户ID出现在指定列表的进程
+显示进程树
+	ptree [options] [pid|user]…
+	options:
+ 	-a:显示所有进程
+BSD&Linux
+pstree [options] [pid|username]
+options:
+ 	-g n:指定使用图形字符绘制进程树分支
+					 n为1,2,3时,分别表示使用IBM-850,VT100以及UTF-8
+ 	-l n:指定进程树的深度为n
+ 	-u:只显示指定用户的进程
+ 	-p:只显示包含指定进程ID的分支
+控制进程
+设置进程优先级
+	nice [-n increment] command
+	-n:指定优先级,increment是由符号十进制整数(-20~19),代表优先级,值越大,优先级越低,默认为10
+	HP-UX的nice值范围是0~39
+改变进程优先级
+	Ctrl+Z:挂起进程
+	Ctrl+C:终止进程
+将进程移动到后台
+	bg %n
+ 	n:后台作业号
+	renice [-n increment] -p processed…
+ 	-n:指定新的优先级
+ 	-p:指定进程ID列表
+杀死进程
+	kill命令分为内部命令和外部命令
+		一般为外部命令
+	kill [-9] pid…|jobid…
+ 	pid:进程ID
+ 	jobid:作业ID
+	pkill [options] [pattern]
+	options:
+ 	-g:进程所属的用户组ID或者用户组名
+ 	-G:进程的真实组ID或者组名
+ 	-n:最新(newest)创建的进程
+ 	-o:最旧(oldest)的进程
+ 	-P:进程的父进程ID
+ 	-u:进程的有效用户ID或者用户名
+ 	-U:进程的真实用户ID或者用户名
+	pattern参数表示要匹配的模式
+ 
+信号
+UNIX系统中的常见信号
+编号	名称	缩写	说明
+1	SIGHUP	HUP	中止:注销或者终端失去连接时发送给进程
+2	SIGINT	INT	中断:当按下Ctrl+C组合键时发送
+9	SIGKILL	KILL	杀死:立即终止,进程不能捕获
+15	SIGTERM	TERM	终止:请求终止,进程不能捕获
+18	SIGCONT	CONT	继续:恢复挂起的进程,由fg或者bg发送
+19	SIGSTOP	STOP	停止(挂起):当按下Ctrl+Z组合键时发送
+查看当前系统支持的信号
+	kill -l
+	尽量使用信号名称或者缩写来代替具体的编号
+可以通过signal.h文件查看当前系统中支持的信号
+	more /usr/include/sys/signal.h
+kill命令信号发送
+	kill -s signal_name pid…
+或者
+	kill [-signal_name] pid…
+或者
+	kill [-signal_number] pid…
+
+10.4作业控制
+10.4.1	作业
+	进程加作业控制为作业,一个作业可能包含多个进程(多个进程ID),但只有一个作业ID
+10.4.2	后台运行作业
+	在命令末尾附加&符号,可以将命令放到后台运行
+10.4.3	挂起作业
+	Ctrl+Z
+	作业的3种状态:前台运行,后台运行及暂停并等待信号恢复运行
+10.4.4挂起Shell
+	suspend [-f]
+ 	-f:强制执行命令
+10.4.5显示作业列表
+	jobs [options]
+	options:
+ 	-l:显示进程ID及工作目录
+10.4.6将作业移至后台
+	 I.在命令后加&
+	II.Ctrl+Z
+		bg [%jobid]
+			+:当前作业
+			-:上一个作业
+10.4.7将作业移至前台
+将当前作业移至前台
+fg [ |%%|%+]
+将上一个作业移至前台
+	fg %-
+将作业ID为n的作业移至前台
+	fg %n
+10.4.8作业调度:cron
+	在使用cron的系统中,都有一个crond守护进程,这个进程会定期检查是否有预定的作业需要执行,通常情况下,间隔1分钟.crond进程读取的作业都存储在一个名称为crontab的文件中.
+	crontab文件格式
+	*			*			*			*			*			要执行的命令
+	|			|			|			|			|
+  分钟     小时      日       月       周
+星期日可以使用0或者7来表示
+如果日期和星期同时被设定,那么只要其中的一个条件被满足时,指令便会被执行
+crontab [options] [file]
+option:
+ 	-u:指定要处理的crontab文件所属的文件
+ 	-l:列出crontab文件的内容
+ 	-r:删除crontab文件的内容
+ 	-e:编辑crontab文件的内容
+10.5常见问题
+10.5.1理解交换进程与init进程
+	在UNIX系统中,进程ID为0的进程为交换进程(swapper),又称为调度进程.该进程不调用磁盘上的任何程序,是内核的一部分.
+	进程ID为1的进程为init进程,在系统引导结束时,由内核创建,先由调度进程创建一个内核线程,然后由该线程通过exec系统调用执行/sbin/init程序,从而创建出init进程.init进程读取初始化文件(/etc/rc脚本文件),并将系统引导至某个特定的状态.
+10.5.2Shell进程
+	Shell进程负责解释用户输入的命令,提供内核与用户之间的接口
+	Shell进程的执行过程	:
+(1)	读取用户输入的命令
+(2)	分析命令以及配置参数
+(3)	创建子进程
+(4)	对于前台作业,Shell进程会调用wait系统调用来等待子进程的结束
+(5)	子进程结束后,会返回执行状态并唤醒父进程,打印出命令提示符,等待用户的下一个命令
+ 
+网络管理
+11.1TCP/IP协议简介
+11.1.1TCP/IP协议和Internet
+	1941年,第一部电子计算机
+	20世纪70年代,NCP(Network Control Protocol)协议
+	1972年,罗伯特 卡恩研究卫星数据包网路和地面无线数据报网络,1973年春天,NCP协议开发者文顿 瑟夫加入.
+	1973年夏天,开发出基本改进形式,网络协议之间的不同通过一个公有互联网络协议隐藏,随后开发出TCP v1,TCP v2,TCP/IP v3,及目前仍在使用的TCP/IP v4互联网标准协议
+	1975年,TCP/IP在斯坦福和伦敦大学之间进行测试,1977年11月,TCP/IP在美国,英国和挪威之间测试.1983年1月1日,ARPANET完全转换到TCP/IP
+	1984年,美国国防部将TCP/IP作为所有计算机网络的标准
+11.1.2TCP/IP协议网络模型
+	1983年国际标准化组织(International Organization for Standardization, ISO)提出开放式通信系统互联参考模型(Open System Interconnection Recference Model, OSI)
+	OSI模型将计算机网络体系结构分为7层:
+	应用层(Application Layer)
+	通过应用层应用程序接口与具体的应用程序沟通
+	表示层(Presentation Layer)
+	向应用程序提供信息和数据的表示方式,使不同表达方式的系统之间能够通信
+	会话层(Session Layer)
+	管理参与会话的实体之间的对话连接
+	传输层(Transport Layer)
+	TCP/IP协议所在层,也是最重要的一层.总体的数据传输和数据传输控制,数据的传输单位:段(segment)
+	网络层(Network Layer)
+	提供路由和寻址,数据的传输单位:数据报(datagram)
+	数据链路层(Data Link Layer)
+	管理两个网络实体之间的数据链路连接的建立,维持和释放等,数据的传输单位:帧(frame)
+	物理层(Data Link Layer)
+	规定了数据传输时所需要的物理链路的一系列的电子,电气特性,确保原始的电子信号能够在各种物理介质上传输,数据的传输单位:比特(bit),即位.
+TCP/IP参考模型
+
+ 
+11.1.3端口
+	常见服务及其默认端口
+服务	默认端口	服务	默认端口
+FTP数据传输	20	FTP控制命令	21
+远程登录(SSH)	22	电子邮件(SMTP)	25
+电子邮件(POP3)	110	安全超文本传输(HTTPS)	443
+DHCP客户端	546	DHCP服务	547
+11.2IP地址
+11.2.1IP地址分类
+	IPv4
+A,B以及C类网络的相关参数
+网络类别	前缀位	最大网络数	第一个可用的网络号	最后一个可用的网络号	每个网络中的最大主机数
+A	0	126	1	126	16777214
+B	10	16382	128.1	191.255	65534
+C	110	2097150	192.0.1	223.255.255	254
+1.	A类IP地址(最优)
+xxxx.xxxx.xxxx.xxxx
+网络地址   主机地址
+2.	B类IP地址
+xxxx.xxxx.xxxx.xxxx
+网络地址   主机地址
+
+3.	C类IP地址
+xxxx.xxxx.xxxx.xxxx
+网络地址   主机地址
+11.2.2子网和子网掩码
+	子网(subnet):从分类网络中划分出来的一部分网络
+	包括网络地址,子网号以及主机地址.1
+	子网掩码(subnet mask):用来区分IP地址的网络地址位和主机地址位
+	子网掩码的左边表示网络地址位用二进制1表示,1的个数等于指定IP地址中网络地址所占的二进制位数;右边是主机地址位,用二进制0表示,0的个数等于指定IP地址中主机地址所占的二进制位数
+11.2.3专用地址和NAT
+	互联网号码分配局(Internet Assigned Numbers Authority, IANA)分配的IP地址称为公用地址
+	A类网络专用IP地址	10.0.0.1~10.255.255.254
+	子网掩码:255.0.0.0
+	B类网络专用IP地址	172.16.0.1~172.31.255.254
+	子网掩码:255.240.0.0
+	C类网络专用IP地址	192.168.0.1~192.168.255.254
+	子网掩码:255.255.255.0
+	专用地址不能从互联网接受对方发过来的数据,如果某台主机使用专用地址,同时又要与互联网上的其他主机进行通信,则该专用地址必须转换成公用地址,这个过程称为为网络地址转换(Network Address Translation, NAT)
+11.2.4IPv6寻址
+	IPv6使用128位的地址,消除了对网络地址转换的依赖
+11.3网络接口设置
+11.3.1ifconfig命令
+	ifconfig [interface] [options] [address_family] [address] [/prefix_length] [dest_address] [parameters]
+	dc表示DEC/Intel以太网卡驱动程序
+	em表示Intel(R) PRO/1000千兆以太网卡驱动
+	sis表示SiS 900,SiS 7016以及NS DP83815/DP83816
+Solaris网络接口命名规则:
+	<driver-name><instance-number>
+	options:
+ 	-a:列出所有指定类型的网络接口
+ 	-d:仅仅将ifconfig命令应用于处于禁止状态(down)的网络接口
+ 	-u: 仅仅将ifconfig命令应用于处于启用状态(up)的网络接口
+	address_family:地址类型
+	address:网络接口的网络地址
+ 	up:激活网络接口,使其处于工作状态
+	down:关闭网络接口,时期停止工作
+	delete:从接口删除指定的IP地址
+	detach:从网络接口列表中删除一个网络接口
+	netmask mask:指出子网掩码
+	mtu value:设置系统最大的IP包大小,value变量可以是从60~65535的任意整数值
+11.3.2列出可用的网络接口
+	ifcongig -a
+11.3.3修改网络接口参数
+	ifconfig interface [up|down]
+	up:启用网络接口
+	down:禁用网络接口
+设置IP地址以及子网掩码
+	ifconfig interface inet ipaddress netmask mask
+	inet:设置IPv4的IP地址,可省略
+	ipaddress:具体的IPv4地址
+	netmask:指定子网掩码
+	mask:子网掩码
+ifconfig命令为临时配置
+可更改/etc/hostname.interface和/etc/netmasks配置文件,需要重新启动
+11.3.4给一个网络配置多个IP地址
+	ifconfig interface inet ipaddress netmask mask[add|alias]
+	ipaddress:要分配的IP地址
+	mask:子网掩码
+	add|alias:指定的网络接口分配别名地址
+删除地址
+	ifconfig interface inet ipaddress delete
+11.3.5配置DHCP支持
+	动态主机设置协议(Dynamic Host Configuration Protocol, DHCP)是一个局域网的网络协议
+	DHCP配置文件/etc/default/dhcpagent和etc/dhcp.interface
+eg:为名称为e1000g0的网络接口配置DHCP
+(1)	创建DHCP文件.
+使用vi命令在/etc目录中创建一个新的文件,名称为dhcp.e1000g0,内容如下:
+wait 30
+(2)	初始化网络接口
+ifconfig interface [inet6] dhcp start
+inet6表示IPv6地址,默认表示IPv4地址
+dhcp关键字表示启用DHCP客户端
+start关键字表示启用并初始化改网络接口
+(3)	查看网络接口的DHCP配置状态
+ifconfig interface [inet6] dhcp status
+status:查询指定网络接口的状态
+(4)	请求租用期延长
+ifconfig interface [inet6] dhcp extend
+extend表示延长IP地址租用时间
+(5)	释放IP地址
+ifconfig interface [inet6] dhcp release
+release表示释放已经分配的IP地址
+(6)	删除IP地址
+ifconfig interface [inet6] dhcp drop
+drop表示删除已分配的IP地址
+	为某个网络接口配置DHCP客户端时,需要在rc.conf文件添加
+	ifconfig_interface=”DHCP”
+11.3.6关闭或激活网络接口
+	关闭网络接口
+	ifconfig interface down
+	激活网络接口
+	ifconfig interface up
+11.4路由
+11.4.1路由表
+	一般情况下,路由表为与路由器(router)中,主机可以拥有自己的有路由表,称为主路由表
+	查看路由表
+	netstat [-r|-n]
+	-n:不使用主机名表示
+11.4.2静态路由
+	手工操纵路由表,进行静态路由设置
+	route [options] command [[modifiers] destination gateway [netmask]]
+	command:
+ 	add:增加一条路由
+ 	flush:删除路由表中所有的路由信息
+ 	delete:删除某条特定的路由
+ 	change:修改某条特定的路由
+ 	get:查询并显示某个目的地的路由信息
+ 	monitor:监控路由信息
+	modifiers表示修饰符,指定目的地类型
+ 	-inet:将指定目的地强制解释为一个IPv4地址
+ 	-inet6:将指定目的地强制解释为一个IPv6地址
+ 	-host:将指定目的地强制解释为一个主机
+ 	-net:将指定目的地强制解释为一个网络
+	destination:目的地,可以是主机或者网络
+	gateway:数据宝贝发送到的下一个节点
+	netmask:子网掩码
+11.4.3默认路由
+	默认路由是一种特殊的静态路由
+添加默认路由
+	route add default -gateway gateway -interface
+interface
+	default:指定添加的是默认路由
+ 	-gateway:默认路由的网关地址
+ 	-interface:默认路由的网络接口
+11.5名称解析
+11.5.1主机名和域名
+1.主机名(hostname)
+	在局域网中为主机赋予的名称
+主机名解析/etc/hosts
+ [Internet addres] [official hostname] [alias1] [alias2]
+Internet address:主机的IP地址
+official hostname:主机的正式名称,一般是域名
+alias1|alias2:主机的别名(主机名),可以拥有多个
+2.域名
+	由一串用圆点分隔的字符组成的Internet上某一台主机或者一组主机上的名称
+11.5.2DNS客户端配置
+DNS配置
+	/etc/resolv.conf
+11.6常见问题
+ 
+DNS服务器
+12.1DNS的起源和背景
+12.1.1DNS的历史
+	20世纪60年代,美国国防高级研究计划署(Advanced Research Projects Agency, ARPA),开始资助实验性的光与计算机网络,称为阿帕网(The Advanced Research Projects Agency NetWork, ARPANET)
+	20世纪80年代,TCP/IP协议成为ARPANET的标准网络协议,ARPANET成为基于TCP/IP协议的局域网和区域联合网的主干,被称为Internet
+	1988年,美国国家自然科学基金网络(National Science Foundation Network, NSFNET)取代阿帕网成为Internet的骨干网.1995年春天,Internet完成了由公共NSFNET作为骨干网到使用多个商业骨干网的转变
+12.1.2DNS概述
+	www.tsinghuan.edu.cn
+	主机名.三级域.二级域.顶级域
+12.1.3域名空间和体系结构
+顶级域名:
+1.	通用顶级域名
+2.	基础设施顶级域名
+3.	国家和地区顶级域
+4.	国际化国家和地区顶级域
+12.1.4域和域名
+	在DNS树中,域都是分支节点,而主机是叶子节点
+12.1.5区域和域的不同
+	域:DNS树上面的一个分支节点以及所有的下面的节点
+	区域:把域的某个部分授权出去让别人代为管理,称为区域
+12.1.6域名服务器的类型
+		1.主域名服务器(Primary DNS Server)
+		2.辅助域名服务器(Secondary DNS Server)
+		3.高速缓存域名服务器(Cache DNS Server)
+		4.转发服务器(Forwarding Server)
+12.1.7DNS基本原理
+		首先,DNS系统以分布式数据库的方式提供域名解析服务.在分布式数据库中,每一条记录称为资源记录(resource record, RR)
+		其次,DNS系统中的数据库采用分散式的方式来管理,没用任何一个域名服务器中的数据库会包含Internet上的所有资源记录.
+		再次,同一个数据库可以由多台域名服务器来管理,查询其中任何一台域名服务器都可以得到相同的资源记录.反之,同一个域名服务器可以管理多个区域的数据库,不同的域名数据库查询都可能是由同一台域名服务器提供
+		最后,将本来属于自己所管理的资源记录授予其他的域名服务器来管理,称之为授权(delegation).一经授权,上层的域名服务器都不在管理这些区域,完全依靠被授权的域名服务器来管理.
+12.2BIND及其安装方法
+12.2.1关于BIND
+	BIND是互联网上使用最为广泛的域名服务器软件,约占90%市场
+	BIND(Berkeley Internet Name Domain)
+	1984年,柏克莱加州大学(University of California, Berkeley)计算机系统研究小组的4个研究生共同开发了UNIX系统上的第1个DNS协议
+	1985年,美国设备公司(Digital Equipment Corporation, DEC)的工程师Kevin Dunlap重写了这个最初的DNS实现,并正式命名为BIND
+	20世纪90年代,BIND被移植到Windows NT平台上.
+	BIND发展过程中经历了3个主要版本,分别是BIND 4,BIND 8和BIND 9,每个版本在架构上有显著变化.
+	BIND软件包包括:
+	DNS服务器:名称为named的程序,是name daemon的缩写,主要功能是根据DNS协议标准的规定,响应收到的DNS查询
+	DNS解析器:一个解析器是一个程序,通过发送请求到合适的服务器并且对服务器的响应做出合适的回应,来解析对一个域名的查询,一个解析库是程序组件的集合,可以在开发其他程序时使用,为这些程序提供域名解析的功能
+	测试服务器的软件工具.例如,nslookup,dig以及host等
+12.2.2以二进制软件包的方式安装Bind 9
+	以root身份登录,执行以下命令(Solaris)
+	pkg install pkg:/service/network/dns/bind
+	查看当前系统中安装的BIND的版本
+	named -v
+	FreeBSD命令
+	安装
+	cd /usr/ports/dns/bind98/
+	make && make install
+	查看BIND版本
+	named -v
+12.2.3以源代码的方式安装BIND9
+BIND9代码下载网址http://www.isc.org/downloads
+	tar zxvf bind-9.***.tar.gz
+	cd bind-9.***
+	./configure
+	make && make install
+	以源代码的方式安装BIND9需要gcc编译器
+12.2.4启动和停止BIND 9
+BIND 9最主要的服务进程为named
+启动named服务
+	svcadm enable dns/serve
+或者
+	svcadm enable dns/serve:default
+停止named服务
+	svcadm disable dns/serve
+或者
+	svcadm disable dns/serve:default
+FreeBSD中需要先配置/etc/rc.conf文件,增加以下代码:
+	#add following line if not present
+	named_enable=”YES”
+#the line below must replace the line named_program=”usr/sbin/named” if present
+# otherwise add it
+named_program=”/usr/local/sbin/named”
+	启动named服务进程
+	/etc/rc.d/named start
+	停止named服务进程
+	/etc/rc.d/named stop
+12.3配置BIND 9
+
+12.3.1BIND配置文件概述
+BIND组件以及位置
+组件	Solaris	FreeBSD
+BIND主配置文件	/etc/named.conf	/etc/named/named.conf
+BIND可执行文件	
+/usr/sbin/named
+/usr/sbin/named-check
+/usr/sbin/named-checkzone
+/usr/sbin/named-compilezone	/usr/sbin/named
+/usr/sbin/named-checkconf
+/usr/sbin/named-checkzone
+/usr/sbin/named-compilezone
+/usr/sbin/named.reconfig
+/usr/sbin/named.reload
+BIND数据库文件	/var/named	/var/named/etc/namedb
+默认的提示文件的名称	未指定	named.root
+启动named	svcadm enable dns/server
+或
+svcadm enable dns/server:default	
+/etc/rc.d/named start
+关闭named	svcadm disable dns/server
+或
+svcadm disable dns/server:default	
+/etc/rc.d/named stop
+12.3.2主配置文件named.conf
+	named.conf文件中的语句的基本语法
+	clause [argument]{
+	/*块注释*/
+		item;//注释
+		item;#注释
+		……
+};
+named.conf文件中的常用语句及其涵义
+语句	涵义
+acl	定义一个IP地址表列名,用于访问控制
+controls	定义系统管理员使用的,有关本地域名服务器操作的控制通道
+include	包含一个外部文件
+key	定义密钥,应用在通过TSIG进行授权和认证的配置中
+logging	设置日志服务器和日志信息的发送地
+options	控制服务器的全局配置选项和为其他语句设置默认值
+server	在一个单服务器基础上设置特定的配置选项
+trusted-keys	定义信任的DNSSED密钥
+view	定义一个视图
+zone	定义一个区域
+12.3.3定义地址匹配列表
+	acl语句用来定义地址匹配列表
+	acl acl-name{
+			address_match_list
+};
+	acl-name:要定义的地址匹配列表的名称
+	address_match_list:地址列表,可以是IP地址,也可以是用大括号括起来的另一个地址匹配列表
+	由于BIND采用了顺序优先匹配算法,所以一个小的范围定义一定要在更大的范围定义之前,不管知否带有!符号.
+	BIND定义了一些常,表示某个范围的主机地址
+ 	any:匹配所有主机
+ 	none:不匹配任何主机
+ 	localhost:匹配主机上所有IPv4的网络接口
+ 	localnets:匹配所有IPv4本地网络的主机
+12.3.4定义控制通道
+	controls语句定义了系统管理员使用的,有关本地域名服务器操作的控制通道
+	control{
+		inet(ipv4_address|IPv6_address|*)
+		[port(integer)]
+		allow{address_match_list}
+		[keys{key_list}];
+		……
+}
+如果想禁用所有的控制通道,则:
+	controls{};
+12.3.5包含外部文件
+	include语句可以在该语句出现的地方插入指定的文件
+	include “path”
+12.3.6定义共享密钥
+	key语句用来定义共享密钥
+	key key_id{
+		algorithm hmac_md5;
+		secret string;
+};
+	key_id:密钥的名称,在其他地方可以通过该名称来引用该密钥
+	algorithm:加密算法,目前只支持hmac-md5
+	secret:指定一个用base-64编码的字符串作为密钥
+12.3.7定义通道
+	BIND的所有的日志都会输出到一个或者多个通道中.
+	channel channel_name{
+			(file path_name
+[version(number|unlimited)]
+[size filesize]
+|syslog syslog_facility
+|stderr
+|null);
+[severity(critical|error|warning|notice|info|debug|[level]|dynamic);]
+[print-category yes or no;]
+[print-severity yes or no;]
+[print-time yes or no;]
