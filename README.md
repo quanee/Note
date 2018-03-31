@@ -2,3 +2,5 @@
 
 - Linux
 - Python
+- Django
+- flask
