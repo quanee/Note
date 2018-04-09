@@ -1898,3 +1898,383 @@
             <key>Play Date UTC</key><date>2011-11-08T16:48:35Z</date>
             <key>Rating</key><integer>20</integer>
             <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>790</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>5DA9E3D025CE9A15</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-06%20Bach_%20Jesu,%20Joy%20Of%20Man's%20Desiring.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9586</key>
+        <dict>
+            <key>Track ID</key><integer>9586</integer>
+            <key>Name</key><string>Vivaldi: Guitar Concerto In D, RV 93 - 2. Largo</string>
+            <key>Artist</key><string>Christopher Parkening; Iona Brown: Academy Of St. Martin In The Fields</string>
+            <key>Composer</key><string>Antonio Vivaldi</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>9505382</integer>
+            <key>Total Time</key><integer>277746</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>7</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1994</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:16Z</date>
+            <key>Date Added</key><date>2011-10-15T13:43:37Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3403633264</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:11:04Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>427</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>520775452292A7AA</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-07%20Vivaldi_%20Guitar%20Concerto%20In%20D,%20RV%2093%20-%202.%20Largo.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9588</key>
+        <dict>
+            <key>Track ID</key><integer>9588</integer>
+            <key>Name</key><string>Visée: Suite #11 B Minor</string>
+            <key>Artist</key><string>Manuel Barrueco</string>
+            <key>Composer</key><string>Robert De Visée</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>8880536</integer>
+            <key>Total Time</key><integer>268626</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>8</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1990</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:17Z</date>
+            <key>Date Added</key><date>2011-10-15T13:43:55Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3403632986</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:06:26Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>943</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>4FC3EFA9A1DEB877</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-08%20Vise%CC%81e_%20Suite%20%2311%20B%20Minor.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9590</key>
+        <dict>
+            <key>Track ID</key><integer>9590</integer>
+            <key>Name</key><string>Capirola: O Mia Cieca E Dura Sorte</string>
+            <key>Artist</key><string>Anthony Bailes</string>
+            <key>Composer</key><string>Vincenzo Capirola</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>4694443</integer>
+            <key>Total Time</key><integer>141240</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>9</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1984</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:17Z</date>
+            <key>Date Added</key><date>2011-10-15T13:44:12Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3403633966</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:22:46Z</date>
+            <key>Skip Count</key><integer>1</integer>
+            <key>Skip Date</key><date>2011-12-16T13:49:18Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1202</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>4F99E79CFE9AAC07</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-09%20Capirola_%20O%20Mia%20Cieca%20E%20Dura%20Sorte.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9592</key>
+        <dict>
+            <key>Track ID</key><integer>9592</integer>
+            <key>Name</key><string>Scarlatti (D): Harpsichord Sonata In E, K 380</string>
+            <key>Artist</key><string>Julian Byzantine</string>
+            <key>Composer</key><string>Domenico Scarlatti</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>12893034</integer>
+            <key>Total Time</key><integer>368746</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>10</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1985</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:18Z</date>
+            <key>Date Added</key><date>2011-10-15T13:44:21Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>3</integer>
+            <key>Play Date</key><integer>3403634629</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:33:49Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1255</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>A88755F5BCE0BA54</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-10%20Scarlatti%20(D)_%20Harpsichord%20Sonata%20In%20E,%20K%20380.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9594</key>
+        <dict>
+            <key>Track ID</key><integer>9594</integer>
+            <key>Name</key><string>Holborne: Countess Of Pembroke's Paradise (Pavan #15)</string>
+            <key>Artist</key><string>Anthony Bailes</string>
+            <key>Composer</key><string>Anthony Holborne</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>7730261</integer>
+            <key>Total Time</key><integer>233240</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>11</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1984</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:19Z</date>
+            <key>Date Added</key><date>2011-10-15T13:44:42Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>4</integer>
+            <key>Play Date</key><integer>3403634862</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:37:42Z</date>
+            <key>Skip Count</key><integer>1</integer>
+            <key>Skip Date</key><date>2011-12-16T13:49:22Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1256</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>9C455E36C22135EA</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-11%20Holborne_%20Countess%20Of%20Pembroke's%20Paradise%20(Pavan%20%2315).m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9596</key>
+        <dict>
+            <key>Track ID</key><integer>9596</integer>
+            <key>Name</key><string>Holborne: Heigh Ho Holiday (Galliard #13)</string>
+            <key>Artist</key><string>Anthony Bailes</string>
+            <key>Composer</key><string>Anthony Holborne</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>2821900</integer>
+            <key>Total Time</key><integer>86466</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>12</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1984</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:19Z</date>
+            <key>Date Added</key><date>2011-10-15T13:44:55Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>3</integer>
+            <key>Play Date</key><integer>3403632276</integer>
+            <key>Play Date UTC</key><date>2011-11-08T15:54:36Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1256</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>156DE2C48BD6BA65</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-12%20Holborne_%20Heigh%20Ho%20Holiday%20(Galliard%20%2313).m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9598</key>
+        <dict>
+            <key>Track ID</key><integer>9598</integer>
+            <key>Name</key><string>Narváez: Variations On "Guardam Las Vacas"</string>
+            <key>Artist</key><string>Oscar Ghiglia</string>
+            <key>Composer</key><string>Luis De Narváez</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>6282548</integer>
+            <key>Total Time</key><integer>185520</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>13</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1968</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:20Z</date>
+            <key>Date Added</key><date>2011-10-15T13:45:00Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>4</integer>
+            <key>Play Date</key><integer>3403635700</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:51:40Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>523</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>18545998B3B20EB1</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-13%20Narva%CC%81ez_%20Variations%20On%20_Guardam%20Las%20Vacas_.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9600</key>
+        <dict>
+            <key>Track ID</key><integer>9600</integer>
+            <key>Name</key><string>Gaultier: Piece In G For Guitar</string>
+            <key>Artist</key><string>Anthony Bailes</string>
+            <key>Composer</key><string>Denis Gaultier</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>12174757</integer>
+            <key>Total Time</key><integer>368413</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>14</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1977</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:21Z</date>
+            <key>Date Added</key><date>2011-10-15T13:45:10Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3403633633</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:17:13Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1149</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>3E4A86648C5D1CA4</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-14%20Gaultier_%20Piece%20In%20G%20For%20Guitar.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9602</key>
+        <dict>
+            <key>Track ID</key><integer>9602</integer>
+            <key>Name</key><string>Praetorius: Terpischore - Suite In D: Courante, Ballet, Volte</string>
+            <key>Artist</key><string>Christopher Parkening; Iona Brown: Academy Of St. Martin In The Fields</string>
+            <key>Composer</key><string>Michael Praetorius</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>11254121</integer>
+            <key>Total Time</key><integer>343200</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>15</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1994</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:21Z</date>
+            <key>Date Added</key><date>2011-10-15T13:45:29Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3403632619</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:00:19Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1256</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>18B8ADA4459DE3BA</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-15%20Praetorius_%20Terpischore%20-%20Suite%20In%20D_%20Courante,%20Ballet,%20Volte.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9604</key>
+        <dict>
+            <key>Track ID</key><integer>9604</integer>
+            <key>Name</key><string>Bach: Cantata #169, BWV 169, "Gott Soll Allein Mein Herze Haben" - God Alone Should Have My Heart</string>
+            <key>Artist</key><string>Christopher Parkening; Paul Shure: Los Angeles Chamber Orchestra</string>
+            <key>Composer</key><string>Johann Sebastian Bach</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>6516886</integer>
+            <key>Total Time</key><integer>196880</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>16</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1985</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:22Z</date>
+            <key>Date Added</key><date>2011-10-15T13:45:45Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>3</integer>
+            <key>Play Date</key><integer>3403635322</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:45:22Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1256</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>54927B88236C1186</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-16%20Bach_%20Cantata%20%23169,%20BWV%20169,%20_Gott%20Soll%20Allein%20Mein%20Herze%20Haben_%20-%20God%20Alone%20Should%20Have%20My%20Heart.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9606</key>
+        <dict>
+            <key>Track ID</key><integer>9606</integer>
+            <key>Name</key><string>Mouton: Suite In F Sharp Minor - La Belle Iris (Allemande)</string>
+            <key>Artist</key><string>Anthony Bailes</string>
