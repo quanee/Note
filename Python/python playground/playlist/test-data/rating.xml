@@ -1518,3 +1518,383 @@
             <key>Compilation</key><true/>
             <key>Artwork Count</key><integer>1</integer>
             <key>Persistent ID</key><string>EB9A74A2207FF8E8</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/Music%20of%20the%20Rivers/02%20Song%20of%20the%20River%201.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>5140</key>
+        <dict>
+            <key>Track ID</key><integer>5140</integer>
+            <key>Name</key><string>Delta - Journey to the Sea</string>
+            <key>Artist</key><string>Pt. Hari Prasad Chaurasia and others</string>
+            <key>Composer</key><string>Hari Prasad Chaurasia</string>
+            <key>Album</key><string>Music of the Rivers</string>
+            <key>Genre</key><string>World</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>19790369</integer>
+            <key>Total Time</key><integer>817271</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>3</integer>
+            <key>Track Count</key><integer>3</integer>
+            <key>Year</key><integer>1993</integer>
+            <key>Date Modified</key><date>2006-07-30T08:18:10Z</date>
+            <key>Date Added</key><date>2009-10-03T14:57:55Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Rating</key><integer>80</integer>
+            <key>Album Rating</key><integer>80</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Normalization</key><integer>1215</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>ADADF5D23F45CC80</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/Music%20of%20the%20Rivers/03%20Delta%20-%20Journey%20to%20the%20Sea%201.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>6400</key>
+        <dict>
+            <key>Track ID</key><integer>6400</integer>
+            <key>Name</key><string>La Mer - 1. From Dawn till Noon on the Sea (De l'aube à midi sur la mer)</string>
+            <key>Artist</key><string>Berliner Philharmoniker</string>
+            <key>Album Artist</key><string>Berliner Philharmoniker</string>
+            <key>Composer</key><string>Claude Debussy</string>
+            <key>Album</key><string>Ravel: Boléro / Debussy: La Mer / Mussorgsky: Pictures at an Exhibition</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>16604877</integer>
+            <key>Total Time</key><integer>515082</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>19</integer>
+            <key>Year</key><integer>1996</integer>
+            <key>Date Modified</key><date>2008-11-23T17:19:23Z</date>
+            <key>Date Added</key><date>2009-10-03T14:59:33Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Comments</key><string>Amazon.com Song ID: 204929326</string>
+            <key>Play Count</key><integer>3</integer>
+            <key>Play Date</key><integer>3408275072</integer>
+            <key>Play Date UTC</key><date>2012-01-01T09:34:32Z</date>
+            <key>Rating</key><integer>80</integer>
+            <key>Album Rating</key><integer>80</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>C6F460041F8369F6</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Berliner%20Philharmoniker/Ravel_%20Bole%CC%81ro%20_%20Debussy_%20La%20Mer%20_%20Mussorgsky_%20Pictures%20at%20an%20Exhibition/01%20La%20Mer%20-%201.%20From%20Dawn%20till%20Noon%20on%20the%20Sea%20(De%20l'aube%20a%CC%80%20midi%20sur%20la%20mer).mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>6668</key>
+        <dict>
+            <key>Track ID</key><integer>6668</integer>
+            <key>Name</key><string>Khalbali</string>
+            <key>Artist</key><string>A R Rahman, Aslam, Nacim</string>
+            <key>Composer</key><string>A R Rahman</string>
+            <key>Album</key><string>Rang De Basanti</string>
+            <key>Genre</key><string>Soundtracks</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>9168274</integer>
+            <key>Total Time</key><integer>379250</integer>
+            <key>Track Number</key><integer>5</integer>
+            <key>Date Modified</key><date>2007-04-09T09:37:02Z</date>
+            <key>Date Added</key><date>2009-10-03T15:00:51Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Rating</key><integer>80</integer>
+            <key>Album Rating</key><integer>80</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Normalization</key><integer>2495</integer>
+            <key>Artwork Count</key><integer>2</integer>
+            <key>Sort Artist</key><string>R Rahman, Aslam, Nacim</string>
+            <key>Sort Composer</key><string>R Rahman</string>
+            <key>Persistent ID</key><string>2B2C617EC4E37CAF</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/A%20R%20Rahman,%20Aslam,%20Nacim/Rang%20De%20Basanti/05%20Khalbali.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>6776</key>
+        <dict>
+            <key>Track ID</key><integer>6776</integer>
+            <key>Name</key><string>Concierto de Aranjuez for Guitar and Orchestra - 1. Allegro con spirito</string>
+            <key>Artist</key><string>Pepe Romero</string>
+            <key>Album Artist</key><string>Various Artists</string>
+            <key>Composer</key><string>Rodrigo, Joaquin</string>
+            <key>Album</key><string>Essential Guitar</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>11733911</integer>
+            <key>Total Time</key><integer>362945</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>2</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>18</integer>
+            <key>Year</key><integer>2002</integer>
+            <key>Date Modified</key><date>2009-11-14T14:37:28Z</date>
+            <key>Date Added</key><date>2009-11-14T15:03:01Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Comments</key><string>Amazon.com Song ID: 202532098</string>
+            <key>Play Count</key><integer>3</integer>
+            <key>Play Date</key><integer>3399818796</integer>
+            <key>Play Date UTC</key><date>2011-09-25T12:36:36Z</date>
+            <key>Rating</key><integer>100</integer>
+            <key>Album Rating</key><integer>80</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>3245FADF198007E6</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Various%20Artists/Essential%20Guitar/1-01%20Concierto%20de%20Aranjuez%20for%20Guitar%20and%20Orchestra%20-%201.%20Allegro%20con%20spirito.mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>6804</key>
+        <dict>
+            <key>Track ID</key><integer>6804</integer>
+            <key>Name</key><string>5 Preludes - No. 1 in E minor</string>
+            <key>Artist</key><string>Julian Bream</string>
+            <key>Album Artist</key><string>Various Artists</string>
+            <key>Composer</key><string>Villa-Lobos, Heitor</string>
+            <key>Album</key><string>Essential Guitar</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>8508045</integer>
+            <key>Total Time</key><integer>262138</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>2</integer>
+            <key>Track Number</key><integer>15</integer>
+            <key>Track Count</key><integer>18</integer>
+            <key>Year</key><integer>2002</integer>
+            <key>Date Modified</key><date>2009-11-14T14:52:29Z</date>
+            <key>Date Added</key><date>2009-11-14T15:03:01Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Comments</key><string>Amazon.com Song ID: 202532112</string>
+            <key>Play Count</key><integer>9</integer>
+            <key>Play Date</key><integer>3400432218</integer>
+            <key>Play Date UTC</key><date>2011-10-02T15:00:18Z</date>
+            <key>Rating</key><integer>60</integer>
+            <key>Album Rating</key><integer>80</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>E31BCFCEE14DAB58</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Various%20Artists/Essential%20Guitar/1-15%205%20Preludes%20-%20No.%201%20in%20E%20minor.mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9574</key>
+        <dict>
+            <key>Track ID</key><integer>9574</integer>
+            <key>Name</key><string>Bach: Lute Suite In E, BWV 1006A - Gavotte En Rondeau</string>
+            <key>Artist</key><string>Sharon Isbin</string>
+            <key>Composer</key><string>Johann Sebastian Bach</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>6393595</integer>
+            <key>Total Time</key><integer>192026</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1990</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:10Z</date>
+            <key>Date Added</key><date>2011-10-15T13:42:12Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3403633825</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:20:25Z</date>
+            <key>Skip Count</key><integer>1</integer>
+            <key>Skip Date</key><date>2011-11-01T15:32:55Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1255</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>4A93E3AF0C8635CC</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-01%20Bach_%20Lute%20Suite%20In%20E,%20BWV%201006A%20-%20Gavotte%20En%20Rondeau.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9576</key>
+        <dict>
+            <key>Track ID</key><integer>9576</integer>
+            <key>Name</key><string>Dowland: Allemande</string>
+            <key>Artist</key><string>Christopher Parkening</string>
+            <key>Composer</key><string>John Dowland</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>3305527</integer>
+            <key>Total Time</key><integer>98866</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>2</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1986</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:11Z</date>
+            <key>Date Added</key><date>2011-10-15T13:42:30Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>12</integer>
+            <key>Play Date</key><integer>3403632718</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:01:58Z</date>
+            <key>Skip Count</key><integer>2</integer>
+            <key>Skip Date</key><date>2011-12-16T13:49:14Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>660</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>071A7C2BDA9AEC17</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-02%20Dowland_%20Allemande.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9578</key>
+        <dict>
+            <key>Track ID</key><integer>9578</integer>
+            <key>Name</key><string>Bach: Prelude, Fugue &#38; Allegro In E Flat, BWV 998 - Prelude</string>
+            <key>Artist</key><string>Manuel Barrueco</string>
+            <key>Composer</key><string>Johann Sebastian Bach</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>5047251</integer>
+            <key>Total Time</key><integer>153880</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>3</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1990</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:12Z</date>
+            <key>Date Added</key><date>2011-10-15T13:42:39Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>4</integer>
+            <key>Play Date</key><integer>3403631707</integer>
+            <key>Play Date UTC</key><date>2011-11-08T15:45:07Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>342</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>7FAF9AF82B874342</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-03%20Bach_%20Prelude,%20Fugue%20&#38;%20Allegro%20In%20E%20Flat,%20BWV%20998%20-%20Prelude.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9580</key>
+        <dict>
+            <key>Track ID</key><integer>9580</integer>
+            <key>Name</key><string>Bach: Violin Partita #2 In D Minor, BWV 1004 - Gigue (Guitar Version)</string>
+            <key>Artist</key><string>Manuel Barrueco</string>
+            <key>Composer</key><string>Johann Sebastian Bach</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>9717257</integer>
+            <key>Total Time</key><integer>294466</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>4</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1990</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:13Z</date>
+            <key>Date Added</key><date>2011-10-15T13:42:52Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3403634260</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:27:40Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>423</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>96D29144E660CCE2</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-04%20Bach_%20Violin%20Partita%20%232%20In%20D%20Minor,%20BWV%201004%20-%20Gigue%20(Guitar%20Version).m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9582</key>
+        <dict>
+            <key>Track ID</key><integer>9582</integer>
+            <key>Name</key><string>Froberger: Gigue</string>
+            <key>Artist</key><string>Andrés Segovia</string>
+            <key>Composer</key><string>Johann Froberger</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>2853943</integer>
+            <key>Total Time</key><integer>101266</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>5</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1991</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:14Z</date>
+            <key>Date Added</key><date>2011-10-15T13:43:15Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>5</integer>
+            <key>Play Date</key><integer>3403631924</integer>
+            <key>Play Date UTC</key><date>2011-11-08T15:48:44Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Normalization</key><integer>1254</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>80C2D98999E89AE2</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/50%20Best%20Guitar%20%5BDisc%201%5D/1-05%20Froberger_%20Gigue.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9584</key>
+        <dict>
+            <key>Track ID</key><integer>9584</integer>
+            <key>Name</key><string>Bach: Jesu, Joy Of Man's Desiring</string>
+            <key>Artist</key><string>Christopher Parkening: Los Angeles Chamber Orchestra</string>
+            <key>Composer</key><string>Johann Sebastian Bach</string>
+            <key>Album</key><string>50 Best Guitar [Disc 1]</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>6449488</integer>
+            <key>Total Time</key><integer>193306</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>3</integer>
+            <key>Track Number</key><integer>6</integer>
+            <key>Track Count</key><integer>21</integer>
+            <key>Year</key><integer>1985</integer>
+            <key>Date Modified</key><date>2011-10-15T14:05:15Z</date>
+            <key>Date Added</key><date>2011-10-15T13:43:23Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3403635515</integer>
+            <key>Play Date UTC</key><date>2011-11-08T16:48:35Z</date>
+            <key>Rating</key><integer>20</integer>
+            <key>Rating Computed</key><true/>
