@@ -3798,3 +3798,383 @@
         <key>31197</key>
         <dict>
             <key>Track ID</key><integer>31197</integer>
+            <key>Name</key><string>Hari Om Meditation (English Version)</string>
+            <key>Artist</key><string>Sri Sri Ravi Shankar</string>
+            <key>Composer</key><string>The Art Of Living</string>
+            <key>Album</key><string>Hari Om</string>
+            <key>Genre</key><string>Religious</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>26836799</integer>
+            <key>Total Time</key><integer>1341727</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>4</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Date Modified</key><date>2014-06-12T08:31:44Z</date>
+            <key>Date Added</key><date>2014-06-12T08:29:24Z</date>
+            <key>Bit Rate</key><integer>160</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Rating</key><integer>20</integer>
+            <key>Album Rating</key><integer>20</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Normalization</key><integer>1288</integer>
+            <key>Sort Composer</key><string>Art Of Living</string>
+            <key>Persistent ID</key><string>135CBA55A131343A</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1297106739</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Sri%20Sri%20Ravi%20Shankar/Hari%20Om/04%20Hari%20Om%20Meditation%20(English%20Version).mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+    </dict>
+    <key>Playlists</key>
+    <array>
+        <dict>
+            <key>Name</key><string>rating</string>
+            <key>Playlist ID</key><integer>31781</integer>
+            <key>Playlist Persistent ID</key><string>492BBB5307569327</string>
+            <key>All Items</key><true/>
+            <key>Playlist Items</key>
+            <array>
+                <dict>
+                    <key>Track ID</key><integer>11540</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>10882</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11544</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11502</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11382</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11516</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11518</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>6776</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>3026</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2994</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11524</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11534</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11542</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11010</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>6400</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11506</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11514</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11508</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11496</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11538</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>3020</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>3028</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>10668</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11478</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11520</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>5136</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>5138</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>5140</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2938</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2940</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>6668</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11522</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11528</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11500</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11504</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11386</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11536</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4232</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4234</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4236</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4238</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4240</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4242</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4244</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4246</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4248</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4250</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4252</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4254</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4256</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4258</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4260</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4262</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4264</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4266</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4268</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4270</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4272</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4274</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>3982</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>6804</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>10770</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11510</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>3024</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>10670</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2970</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2854</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2856</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11526</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11532</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11530</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2138</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11392</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4534</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4536</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4538</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4540</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4542</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4544</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4546</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4548</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4550</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4552</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4554</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>4556</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>11512</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>3022</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>10666</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>10678</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>2944</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9582</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9590</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9594</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9596</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9600</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9606</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9608</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9576</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9586</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9602</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9614</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9604</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9584</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9592</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9610</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9612</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9578</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9580</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9588</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9598</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>9574</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>31171</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>31180</integer>
+                </dict>
+                <dict>
+                    <key>Track ID</key><integer>31189</integer>
+                </dict>
