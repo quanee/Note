@@ -16,3 +16,5 @@ while True:
     while True:
         try:
             data = conn.recv(1024)
+        except Exception:
+            break
