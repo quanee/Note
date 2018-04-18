@@ -26,3 +26,5 @@ while True:
         obj = subprocess.Popen(str(data, 'utf8'), shell=True, stdout=subprocess.PIPE)
         cmd_result = obj.stdout.read()
         result_len = bytes(str(len(cmd_result)), 'utf8')
+        print(str(result_len))
+        # 两个send(sendall) 在一起 粘包现象 使用一发一收隔开解决
