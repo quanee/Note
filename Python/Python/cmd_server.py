@@ -20,3 +20,4 @@ while True:
             break
         if not data:
             break
+        print(str(data, 'utf8'))
