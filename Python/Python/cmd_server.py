@@ -24,3 +24,5 @@ while True:
 
         # subprocess.PIPE 将子进程输出转到主进程
         obj = subprocess.Popen(str(data, 'utf8'), shell=True, stdout=subprocess.PIPE)
+        cmd_result = obj.stdout.read()
+        result_len = bytes(str(len(cmd_result)), 'utf8')
