@@ -14,3 +14,5 @@ while True:
     conn, addr = sk.accept()
     print(addr)
     while True:
+        try:
+            data = conn.recv(1024)
