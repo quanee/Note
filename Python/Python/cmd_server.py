@@ -12,3 +12,5 @@ sk.listen(3)  # 排队连接个数 2
 
 while True:
     conn, addr = sk.accept()
+    print(addr)
+    while True:
