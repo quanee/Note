@@ -18,3 +18,5 @@ while True:
             data = conn.recv(1024)
         except Exception:
             break
+        if not data:
+            break
