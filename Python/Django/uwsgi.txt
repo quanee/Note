@@ -6,3 +6,7 @@ socket = 127.0.0.1:8001
 # Django目录
 chdir = /home/user/CrazyEye
 # Django的wsgi文件
+wsgi-file = Proj/wsgi.py
+# 进程个数
+processes = 4
+# 每个进程线程个数
