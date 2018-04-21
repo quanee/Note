@@ -1,0 +1,4 @@
+[uwsgi]
+# Django服务端口号
+http = :9000
+#本地Nginx与uwsgin通讯socket
