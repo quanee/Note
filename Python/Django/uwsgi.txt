@@ -2,3 +2,7 @@
 # Django服务端口号
 http = :9000
 #本地Nginx与uwsgin通讯socket
+socket = 127.0.0.1:8001
+# Django目录
+chdir = /home/user/CrazyEye
+# Django的wsgi文件
