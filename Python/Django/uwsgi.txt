@@ -10,3 +10,7 @@ wsgi-file = Proj/wsgi.py
 # 进程个数
 processes = 4
 # 每个进程线程个数
+threads = 2
+ 
+# 监控uwsgi状态
+stats = 127.0.0.1:9191
