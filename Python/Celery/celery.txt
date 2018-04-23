@@ -60,3 +60,11 @@ $ celery multi stop WORKER3
 $ celery -A periodic_task beat
 $ celery -A periodic_task beat --loglevel=debug
 
+
+
+
+celery-django定时任务
+$ pip install django-celery-beat
+
+INSTALLED_APPS = (
+        ...,
