@@ -1,0 +1,7 @@
+
+# 查看输出结果
+result.ready()
+# 格式化输出
+result.get(propagate=False)
+# 追踪错误信息
+result.traceback
