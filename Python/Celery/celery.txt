@@ -11,3 +11,10 @@ result.traceback
 proj/__init__.py
     /celery.py
     /tasks.py
+
+proj/celery.py
+
+    from __future__ import absolute_import, unicode_literals
+    from celery import Celery
+
+    app = Celery('proj', broker='redis://:password@localhost:port', backend='redis://:password@localhost:port', include=['proj.tasks'])
