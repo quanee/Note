@@ -54,3 +54,9 @@ $ celery multi start WORKER2 -A proj --loglevel=info
 $ celery multi start WORKER3 -A proj --loglevel=info
 # 停止服务
 $ celery multi stop WORKER3
+
+# 启动任务调度器 celery beat
+# 任务添加好 让celery单独启动一个进程来定时发起任务 注意 不是执行 这个进程不断检查任务计划， 发现有任务需要执行 就发起一个任务调用消息 交给celery worker去执行
+$ celery -A periodic_task beat
+$ celery -A periodic_task beat --loglevel=debug
+
