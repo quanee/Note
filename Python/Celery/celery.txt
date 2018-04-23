@@ -5,3 +5,9 @@ result.ready()
 result.get(propagate=False)
 # 追踪错误信息
 result.traceback
+
+
+# 将celery配置成一个项目
+proj/__init__.py
+    /celery.py
+    /tasks.py
