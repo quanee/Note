@@ -47,3 +47,10 @@ proj/tasks.py
 
 # 启动
 $ celery -A proj worker -l info
+
+# 后台多启动
+$ celery multi start WORKER1 -A proj worker --loglevel=info
+$ celery multi start WORKER2 -A proj --loglevel=info
+$ celery multi start WORKER3 -A proj --loglevel=info
+# 停止服务
+$ celery multi stop WORKER3
