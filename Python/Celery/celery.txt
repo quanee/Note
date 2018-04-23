@@ -39,3 +39,11 @@ proj/tasks.py
     @app.task
     def mul(x, y):
         return x * y
+
+
+    @app.task
+    def xsum(numbers):
+        return sum(numbers)
+
+# 启动
+$ celery -A proj worker -l info
