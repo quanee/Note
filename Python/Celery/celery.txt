@@ -18,3 +18,11 @@ proj/celery.py
     from celery import Celery
 
     app = Celery('proj', broker='redis://:password@localhost:port', backend='redis://:password@localhost:port', include=['proj.tasks'])
+
+    # 结果存储时间
+    app.conf.update(result_expires=3600, )
+
+    if __name__ == '__main__':
+        app.start()
+
+proj/tasks.py
