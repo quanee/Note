@@ -3,3 +3,8 @@
     <country name="Liechtenstein">
         <rank updated="yes">2</rank>
         <year updated="yes">2012</year>
+        <gdppc>141100</gdppc>
+        <neighbor direction="E" name="Austria" />
+        <neighbor direction="W" name="Switzerland" />
+    </country>
+    <country name="Singapore">
