@@ -8,3 +8,4 @@ print(len(T))
 print(T[0])
 print(T.index(4))
 print(T.count(4))
+
