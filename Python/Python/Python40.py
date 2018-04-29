@@ -37,3 +37,8 @@ print(list(x))
 # 保留对应真值为False的元素
 x = itertools.filterfalse(lambda e: e < 5, (1, 5, 3, 6, 9, 4))
 print(list(x))
+
+# 按照分组函数的值对元素进行分组
+x = itertools.groupby(range(10), lambda x: x < 5 or x > 8)
+for condition, numbers in x:
+    print(condition, list(numbers))
