@@ -28,3 +28,8 @@ print(list(itertools.islice(x, 0, 10, 1)))
 
 # 循环指定的列表和迭代器
 x = itertools.cycle('ABC')
+print(list(itertools.islice(x, 0, 10, 1)))
+
+# 按照真值函数丢弃掉列表和迭代器前面的元素
+x = itertools.dropwhile(lambda e: e < 5, range(10))
+print(list(x))
