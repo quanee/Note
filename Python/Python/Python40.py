@@ -33,3 +33,7 @@ print(list(itertools.islice(x, 0, 10, 1)))
 # 按照真值函数丢弃掉列表和迭代器前面的元素
 x = itertools.dropwhile(lambda e: e < 5, range(10))
 print(list(x))
+
+# 保留对应真值为False的元素
+x = itertools.filterfalse(lambda e: e < 5, (1, 5, 3, 6, 9, 4))
+print(list(x))
