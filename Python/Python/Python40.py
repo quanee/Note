@@ -17,3 +17,9 @@ print(list(x))
 # 允许重复元素的组合
 x = itertools.combinations_with_replacement('ABC', 2)
 print(list(x))
+
+# 按照真值表筛选元素
+x = itertools.compress(range(5), (True, False, True, True, False))
+print(list(x))
+
+# 计数器,可以指定起始位置和步长
