@@ -53,3 +53,8 @@ print(list(x))
 
 # 简单的生成一个拥有指定数目元素的迭代器
 x = itertools.repeat(0, 5)
+print(list(x))
+
+# 类似map
+x = itertools.starmap(str.islower, 'aBCDefGhI')
+print(list(x))
