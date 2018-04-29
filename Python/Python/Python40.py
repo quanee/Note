@@ -13,3 +13,7 @@ print(list(x))
 # 求列表或生成器中指定数目的元素不重复的所有组合
 x = itertools.combinations(range(4), 3)
 print(list(x))
+
+# 允许重复元素的组合
+x = itertools.combinations_with_replacement('ABC', 2)
+print(list(x))
