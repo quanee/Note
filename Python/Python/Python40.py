@@ -42,3 +42,9 @@ print(list(x))
 x = itertools.groupby(range(10), lambda x: x < 5 or x > 8)
 for condition, numbers in x:
     print(condition, list(numbers))
+
+# 对迭代器进行切片
+x = itertools.islice(range(10), 0, 9, 2)
+print(list(x))
+
+# 产生指定数目的元素的所有排列(顺序有关)
