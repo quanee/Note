@@ -48,3 +48,8 @@ x = itertools.islice(range(10), 0, 9, 2)
 print(list(x))
 
 # 产生指定数目的元素的所有排列(顺序有关)
+x = itertools.permutations(range(4), 3)
+print(list(x))
+
+# 简单的生成一个拥有指定数目元素的迭代器
+x = itertools.repeat(0, 5)
