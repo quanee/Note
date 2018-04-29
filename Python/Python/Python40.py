@@ -63,3 +63,8 @@ print(list(x))
 # 与dropwhile相反，保留元素直至真值函数值为假。
 x = itertools.takewhile(lambda e: e < 5, range(10))
 print(list(x))
+
+
+# 生成指定数目的迭代器
+x = itertools.tee(range(10), 2)
+for letters in x:
