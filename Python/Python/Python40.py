@@ -23,3 +23,8 @@ x = itertools.compress(range(5), (True, False, True, True, False))
 print(list(x))
 
 # 计数器,可以指定起始位置和步长
+x = itertools.count(start=20, step=-1)
+print(list(itertools.islice(x, 0, 10, 1)))
+
+# 循环指定的列表和迭代器
+x = itertools.cycle('ABC')
