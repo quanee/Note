@@ -38,3 +38,10 @@ wirte() 输出font字体的字符串
 turtle.pensize(3)
 turtle.penup()
 turtle.goto(-200, -50)
+turtle.pendown()
+turtle.circle(40, steps=3)
+
+turtle.penup()
+turtle.goto(-100, -50)
+turtle.pendown()
+turtle.circle(40, steps=4)
