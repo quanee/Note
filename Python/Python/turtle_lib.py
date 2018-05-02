@@ -45,3 +45,12 @@ turtle.penup()
 turtle.goto(-100, -50)
 turtle.pendown()
 turtle.circle(40, steps=4)
+
+turtle.penup()
+turtle.goto(0, -50)
+turtle.pendown()
+turtle.circle(40, steps=5)
+
+turtle.penup()
+turtle.goto(100, -50)
+turtle.pendown()
