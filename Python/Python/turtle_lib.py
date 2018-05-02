@@ -22,3 +22,11 @@ undo() 撤销画笔最后一步动作
 speed() 设置画笔的绘制速度，参数为0-10之间
 
 turtle颜色和字体绘制方法
+color() 设置画笔的颜色
+begin_fill() 填充图形前，调用该方法
+end_fill() 填充图形结束
+filling() 返回填充的状态，true为填充，false为未填充
+clear() 清空当前窗口，但不改变当前画笔的位置
+reset() 清空当前窗口，并重置位置等状态为默认值
+screensize() 设置画布的长和宽
+hideturtle() 隐藏画笔的turtle形状
