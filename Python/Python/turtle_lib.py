@@ -30,3 +30,11 @@ clear() 清空当前窗口，但不改变当前画笔的位置
 reset() 清空当前窗口，并重置位置等状态为默认值
 screensize() 设置画布的长和宽
 hideturtle() 隐藏画笔的turtle形状
+showturtle() 显示画笔的turtle形状
+isvisble() 如果turtle可见，则返回ture
+wirte() 输出font字体的字符串
+'''
+
+turtle.pensize(3)
+turtle.penup()
+turtle.goto(-200, -50)
