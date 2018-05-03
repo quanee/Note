@@ -16,3 +16,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 while True:
     conn, addr = sk.accept()
+    print(addr)
+    while True:
+        data = conn.recv(1024)
