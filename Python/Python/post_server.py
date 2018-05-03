@@ -24,3 +24,7 @@ while True:
         filesize = int(filesize)
 
         f = open(path, 'ab')
+
+        has_recv = 0
+        while has_recv != filesize:
+            data = conn.recv(1024)
