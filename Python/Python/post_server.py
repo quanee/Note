@@ -19,3 +19,6 @@ while True:
     print(addr)
     while True:
         data = conn.recv(1024)
+        cmd, filename, filesize = str(data, 'utf8').split('|')
+        path = os.path.join(BASE_DIR, '__pycache__', filename)
+        filesize = int(filesize)
