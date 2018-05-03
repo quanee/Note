@@ -22,3 +22,5 @@ while True:
         cmd, filename, filesize = str(data, 'utf8').split('|')
         path = os.path.join(BASE_DIR, '__pycache__', filename)
         filesize = int(filesize)
+
+        f = open(path, 'ab')
