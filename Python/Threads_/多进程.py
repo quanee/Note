@@ -13,3 +13,5 @@ def task(url):
 def done(future, *args, **kwargs):
     response = future.result()
     # print(response.content)
+    print(response)
+    print(response.status_code)
