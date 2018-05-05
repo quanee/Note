@@ -22,3 +22,6 @@ pool = ProcessPoolExecutor(8)
 url_list = [
     'http://www.baidu.com',
     'http://www.bing.com',
+    'http://www.zhihu.com',
+    'http://www.sina.com',
+    'http://www.youku.com',
