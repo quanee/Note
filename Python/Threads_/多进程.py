@@ -15,3 +15,6 @@ def done(future, *args, **kwargs):
     # print(response.content)
     print(response)
     print(response.status_code)
+
+
+pool = ProcessPoolExecutor(8)
