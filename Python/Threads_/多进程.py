@@ -9,3 +9,7 @@ def task(url):
     return response
     # time.sleep(1)
 
+
+def done(future, *args, **kwargs):
+    response = future.result()
+    # print(response.content)
