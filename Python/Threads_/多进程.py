@@ -25,3 +25,5 @@ url_list = [
     'http://www.zhihu.com',
     'http://www.sina.com',
     'http://www.youku.com',
+    'http://www.toutiao.com',
+]
