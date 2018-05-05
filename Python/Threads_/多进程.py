@@ -27,3 +27,7 @@ url_list = [
     'http://www.youku.com',
     'http://www.toutiao.com',
 ]
+
+if __name__ == '__main__':
+    freeze_support()
+    for url in url_list:
