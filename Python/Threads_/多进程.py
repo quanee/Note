@@ -18,3 +18,7 @@ def done(future, *args, **kwargs):
 
 
 pool = ProcessPoolExecutor(8)
+
+url_list = [
+    'http://www.baidu.com',
+    'http://www.bing.com',
