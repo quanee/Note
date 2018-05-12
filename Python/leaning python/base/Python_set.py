@@ -5,3 +5,4 @@ Y = {'m', 'a', 'x', 'k', 'i', 'm'}
 
 print(X, Y)
 print(X&Y)
+print(X|Y)
