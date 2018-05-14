@@ -10,3 +10,7 @@ for title in found:
 
 
 # DOM
+
+from xml.dom.minidom import parse, Node
+
+xmltree = parse('mybooks.xml')
