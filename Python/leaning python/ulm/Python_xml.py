@@ -42,3 +42,7 @@ class BookHandler(xml.sax.handler.ContentHandler):
 
 
 import xml.sax
+
+parser = xml.sax.make_parser()
+handler = BookHandler()
+parser.setContentHandler(handler)
