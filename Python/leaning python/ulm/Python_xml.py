@@ -46,3 +46,7 @@ import xml.sax
 parser = xml.sax.make_parser()
 handler = BookHandler()
 parser.setContentHandler(handler)
+parser.parse('mybooks.xml')
+
+
+# etree
