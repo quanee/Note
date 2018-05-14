@@ -21,3 +21,8 @@ for node1 in xmltree.getElementsByTagName('title'):
 
 
 # SAX
+
+import xml.sax.handler
+
+class BookHandler(xml.sax.handler.ContentHandler):
+    def __init__(self):
