@@ -26,3 +26,7 @@ import xml.sax.handler
 
 class BookHandler(xml.sax.handler.ContentHandler):
     def __init__(self):
+        self.inTitle = False
+
+    def startElement(self, name, attributes):
+        if name == 'title':
