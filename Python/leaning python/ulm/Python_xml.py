@@ -38,3 +38,7 @@ class BookHandler(xml.sax.handler.ContentHandler):
 
     def endElement(self, name):
         if name == 'title':
+            self.inTitle = False
+
+
+import xml.sax
