@@ -21,3 +21,12 @@ def variable_with_weight_loss(shape, stddev, wl):
 
     return var
 
+
+cifar10.maybe_download_and_extract()
+
+images_train, labels_train = cifar10_input.distorted_inputs(data_dir=data_dir, batch_size=batch_size)
+
+images_test, labels_test = cifar10_input.inputs(eval_data=True, data_dir=data_dir, batch_size=batch_size)
+
+image_holder = tf.placeholder(tf.float32, [batch_size, 24, 24, 3])
+label_holder = tf.placeholder(tf.int32, [batch_size])
