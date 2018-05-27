@@ -93,3 +93,12 @@ for step in range(max_steps):
 
         format_str = ('step %d, loss=%.2f (%.1f examples/sec; %.3f sec/batch)')
         print(format_str % (step, loss_value, example_per_sec, sec_per_batch))
+
+
+num_examples = 10000
+import math
+
+num_iter = int(math.ceil(num_examples / batch_size))
+true_count = 0
+total_sample_count = num_iter * batch_size
+step = 0
