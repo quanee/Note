@@ -86,3 +86,10 @@ for step in range(max_steps):
     image_batch, label_batch = sess.run([images_train, labels_train])
     _, loss_value = sess.run([train_op, loss], feed_dict={image_holder: image_batch, label_holder: label_batch})
     duration = time.time() - start_time
+
+    if step % 10 == 0:
+        example_per_sec = batch_size / duration
+        sec_per_batch = float(duration)
+
+        format_str = ('step %d, loss=%.2f (%.1f examples/sec; %.3f sec/batch)')
+        print(format_str % (step, loss_value, example_per_sec, sec_per_batch))
