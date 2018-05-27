@@ -78,3 +78,11 @@ top_k_op = tf.nn.in_top_k(logits, label_holder, 1)
 
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
+
+tf.train.start_queue_runners()
+
+for step in range(max_steps):
+    start_time = time.time()
+    image_batch, label_batch = sess.run([images_train, labels_train])
+    _, loss_value = sess.run([train_op, loss], feed_dict={image_holder: image_batch, label_holder: label_batch})
+    duration = time.time() - start_time
