@@ -54,3 +54,11 @@ local3 = tf.nn.relu(tf.matmul(reshape, weight3) + bias3)
 
 weight4 = variable_with_weight_loss(shape=[384, 192], stddev=0.04, wl=0.004)
 bais4 = tf.Variable(tf.constant(0.1, shape=[192]))
+local4 = tf.nn.relu(tf.matmul(local3, weight4) + bais4)
+
+weight5 = variable_with_weight_loss(shape=[192, 10], stddev=1 / 192.0, wl=0.0)
+bias5 = tf.Variable(tf.constant(0.0, shape=[10]))
+logits = tf.add(tf.matmul(local4, weight5), bias5)
+
+
+def loss(logits, labels):
