@@ -16,3 +16,6 @@ with h5py.File("name.hdf5", "w") as f:
     print(f)
 
 print(f)
+
+'''
+文件驱动
