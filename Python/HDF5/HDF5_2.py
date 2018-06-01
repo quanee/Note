@@ -13,3 +13,6 @@ f = h5py.File("name.hdf5", "w-")  # 防止覆盖(存在则打开失败)
 '''
 
 with h5py.File("name.hdf5", "w") as f:
+    print(f)
+
+print(f)
