@@ -25,3 +25,6 @@ print(f)
             f = h5py.File("name.hdf5", driver="core", backing_store=True)
     family驱动: 将一个大文件分成多个大小一致的文件
             1G chunks
+            f = h5py.File("family.hdf5", driver="family", memb_size=1024**3)
+    mpio驱动: 并发HDF5的核心 允许多个同时运行的进程访问同一文件 并保持文件数据的一致性
+'''
