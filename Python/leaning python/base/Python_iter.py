@@ -16,3 +16,6 @@ I = iter(E)
 
 print(next(I))
 print(next(I))
+print(next(I))
+
+print(list(enumerate('boss')))
