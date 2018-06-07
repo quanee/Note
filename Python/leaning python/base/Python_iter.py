@@ -9,3 +9,7 @@ print(next(f), end='')
 print(next(f), end='')
 print(next(f), end='')
 
+
+E = enumerate('moon')
+
+I = iter(E)
