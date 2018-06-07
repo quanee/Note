@@ -7,3 +7,5 @@ print(f.__next__(), end='')
 
 print(next(f), end='')
 print(next(f), end='')
+print(next(f), end='')
+
