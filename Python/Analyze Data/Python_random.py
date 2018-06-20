@@ -18,3 +18,7 @@ weighted_choices = [('Three', 3), ('Two', 2), ('One', 1), ('Four', 4)]
 
 population = [val for val, cnt in weighted_choices for i in range(cnt)]
 print(random.choice(population))
+
+'''
+泊松分布
+'''
