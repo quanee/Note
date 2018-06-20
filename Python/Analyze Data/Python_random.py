@@ -22,3 +22,7 @@ print(random.choice(population))
 '''
 泊松分布
 '''
+import math
+import random
+
+def nextPoisson(lambdaValue):
