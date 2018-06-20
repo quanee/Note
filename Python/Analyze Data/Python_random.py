@@ -26,3 +26,6 @@ import math
 import random
 
 def nextPoisson(lambdaValue):
+    elambda = math.exp(-1 * lambdaValue)
+    product = 1
+    count = 0
