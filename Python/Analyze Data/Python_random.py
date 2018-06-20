@@ -10,3 +10,6 @@ print(random.randrange(0, 99, 3))
 print(random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
 
 items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+random.shuffle(items)
+print(items)
+print(random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], 5))
