@@ -34,3 +34,8 @@ class IndexHandler(RequestHandler):
         # self.write(str(body_args))
         print(type(self.request.files))
         print(self.request.files.keys())
+        print(type(self.request.files['img1']))
+        with open('img.jpg', 'wb') as f:
+            f.write(self.request.files['img1'][0]['body'])
+        self.write('ok')
+
