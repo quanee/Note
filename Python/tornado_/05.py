@@ -16,3 +16,9 @@ class IndexHandler(RequestHandler):
     def get(self):
         """get请求方式"""
         # self.write('<a href="'+self.reverse_url('cpp_url') + '">cpp</a>')
+        # subjects = self.get_query_arguments('subject')
+        # self.write(str(subjects))
+        # subject = self.get_query_argument('subject')
+        # self.write(subject)
+        # body_arg = self.get_body_argument('b')
+        # body_args = self.get_body_arguments('b')
