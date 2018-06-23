@@ -39,3 +39,10 @@ class IndexHandler(RequestHandler):
             f.write(self.request.files['img1'][0]['body'])
         self.write('ok')
 
+
+# class SubjectHandler(RequestHandler):
+#     def initialize(self, subject):
+#         self.subject = subject
+
+#     def get(self):
+#         self.write(self.subject)
