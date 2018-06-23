@@ -46,3 +46,9 @@ class IndexHandler(RequestHandler):
 
 #     def get(self):
 #         self.write(self.subject)
+        
+
+if __name__ == '__main__':
+    tornado.options.parse_command_line()   
+    app = tornado.web.Application(
+        [(r'/', IndexHandler),
