@@ -22,3 +22,9 @@ class IndexHandler(RequestHandler):
         # self.write(subject)
         # body_arg = self.get_body_argument('b')
         # body_args = self.get_body_arguments('b')
+        # a = self.get_argument('a')
+        # ags = self.get_arguments('a')
+        # self.write(str(ags))
+
+    def post(self):
+        # a = self.get_argument('a')
