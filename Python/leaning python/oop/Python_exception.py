@@ -14,3 +14,5 @@ except Bad:
 
 '''
 try:
+    ...
+except:
