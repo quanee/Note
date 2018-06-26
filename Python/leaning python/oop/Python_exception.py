@@ -8,3 +8,5 @@ def doomed():
 
 try:
     doomed()
+except Bad:
+    print('got Bad')
