@@ -14,3 +14,4 @@ class MyServer(socketserver.BaseRequestHandler):
                 print('waiting...')
                 server_response = input('>>>')
                 conn.sendall(bytes(server_response, 'utf8'))
+            conn.close()
