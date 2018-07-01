@@ -10,3 +10,5 @@ class MyServer(socketserver.BaseRequestHandler):
             while True:
                 client_data = conn.recv(1024)
                 print(str(client_data, 'utf8'))
+
+                print('waiting...')
