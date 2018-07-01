@@ -6,3 +6,5 @@ class MyServer(socketserver.BaseRequestHandler):
         print("服务启动...")
         while True:
             conn = self.request
+            print(self.client_address)
+            while True:
