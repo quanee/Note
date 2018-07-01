@@ -8,3 +8,5 @@ class MyServer(socketserver.BaseRequestHandler):
             conn = self.request
             print(self.client_address)
             while True:
+                client_data = conn.recv(1024)
+                print(str(client_data, 'utf8'))
