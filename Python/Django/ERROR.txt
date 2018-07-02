@@ -2,3 +2,4 @@
   Did you install mysqlclient?
 $ project/project/__init__.py
     + import pymysql
+    + pymysql.install_as_MySQLdb()
