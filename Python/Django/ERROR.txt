@@ -1,0 +1,1 @@
+? django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.
