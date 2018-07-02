@@ -1,3 +1,4 @@
 ? django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.
   Did you install mysqlclient?
 $ project/project/__init__.py
+    + import pymysql
