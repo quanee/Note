@@ -8,3 +8,4 @@ class myThread(threading.Thread):
         if semaphore.acquire():
             print(self.name)
             time.sleep(2)
+            semaphore.release()
