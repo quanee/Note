@@ -4,3 +4,5 @@ import time
 
 
 class myThread(threading.Thread):
+    def run(self):
+        if semaphore.acquire():
