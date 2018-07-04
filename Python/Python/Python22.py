@@ -9,3 +9,6 @@ class myThread(threading.Thread):
             print(self.name)
             time.sleep(2)
             semaphore.release()
+
+
+if __name__ == "__main__":
