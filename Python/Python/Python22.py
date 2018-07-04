@@ -6,3 +6,5 @@ import time
 class myThread(threading.Thread):
     def run(self):
         if semaphore.acquire():
+            print(self.name)
+            time.sleep(2)
