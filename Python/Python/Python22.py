@@ -14,3 +14,4 @@ class myThread(threading.Thread):
 if __name__ == "__main__":
 
     semaphore = threading.BoundedSemaphore(5)
+    thrs = []
