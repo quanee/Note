@@ -7,3 +7,5 @@ with open('rl.py', 'w') as f:
     f.flush()
     f.close()
 
+
+import rl
