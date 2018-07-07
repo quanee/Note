@@ -9,3 +9,6 @@ with open('rl.py', 'w') as f:
 
 
 import rl
+
+
+py = '''print("bbb")'''
