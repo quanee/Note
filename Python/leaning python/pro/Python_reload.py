@@ -18,3 +18,5 @@ with open('rl.py', 'a') as f:
     f.close()
 
 from imp import reload
+
+reload(rl)
