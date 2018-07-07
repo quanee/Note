@@ -16,3 +16,5 @@ with open('rl.py', 'a') as f:
     f.write(py)
     f.flush()
     f.close()
+
+from imp import reload
