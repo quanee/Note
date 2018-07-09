@@ -1,0 +1,1 @@
+python rabbit_topic_send.py a.error b.debug c.waring
