@@ -4,3 +4,4 @@ python rabbit_topic_send.py a.error b.debug c.waring
 python rabbit_topic_recv.py a.error message
 python rabbit_topic_recv.py b.debug message
 python rabbit_topic_recv.py c.waring message
+python rabbit_topic_recv.py *.waring message
