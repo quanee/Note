@@ -298,3 +298,28 @@ print(all(a1 > a2))
 
 # def ufunccal(n):
 #     s = np.array(range(n + 1)) + 100
+#     return
+
+
+# import timeit
+
+# print(timeit.timeit('mathcal(1000000)', globals=globals()))
+# print(timeit.timeit('ufunccal(1000000)', globals=globals()))
+
+
+# 自定义ufunc函数
+def liftscore(n):
+    n_new = np.sqrt((n ^ 2) * 100)
+    return n_new
+
+
+score = np.array([87, 77, 56, 100, 60])
+# 定义ufunc函数
+score_1 = np.frompyfunc(liftscore, 1, 1)(score)
+print(score_1)
+# ufunc函数返回数组类型为object 转换为float
+score_1 = score_1.astype(float)
+print(score_1.dtype)
+
+score_2 = np.vectorize(liftscore, otypes=[float])(score)
+print(any(score_1 == score_2))
