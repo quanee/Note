@@ -123,3 +123,28 @@ print(b[np.ix_([1, 0], [2, 1], [0, 3, 2])])
 '''
 数组切片是原始数组的视图, 与原始数组共享同一块数据存储空间
 '''
+b_slice = b[0, 1, 1:3]
+b_copy = b[0, 1, 1:3].copy()
+print(b_slice)
+print(b_copy)
+b_slice[1] = 666
+print(b_slice)
+print(b)
+b_copy[1] = 999
+print(b_copy)
+print(b)
+
+# 数组属性
+ac = np.arange(12)
+ac.shape = (2, 2, 3)
+print(ac)
+# 数组形状
+print(ac.shape)
+# 数组各元素类型
+print(ac.dtype)
+# 数组维数
+print(ac.ndim)
+# 数组元素总个数
+print(ac.size)
+# 数组元素在内存中所占字节数
+print(ac.itemsize)
