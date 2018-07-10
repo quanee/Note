@@ -73,3 +73,28 @@ print(goods_new)
 
 
 # 索引与切片
+
+# ":"分割起止位置与间隔 ","表示不同维度 "..."遍历剩余维度
+a = np.arange(1, 20, 2)
+
+print(a)
+print(a[3])
+print(a[1:4])
+print(a[:2])
+print(a[-2])
+print(a[::-1])
+
+b = np.arange(24).reshape(2, 3, 4)
+print(b)
+print(b.shape)
+print(b[1, 1, 2])
+print(b[0, 2, :])
+print(b[0, 2])
+print(b[0, ...])
+print(b[0])
+print(b[:, 1])
+print(b[:, :, 1])
+print(b[..., 1])
+print(b[0, ::2, -2])
+print(goods['name'])
+print(goods[3])
