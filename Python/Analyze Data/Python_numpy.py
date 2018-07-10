@@ -247,3 +247,29 @@ print(np.column_stack((a1, a2)))
 print(np.row_stack((a1, a2)))
 
 # 数组分拆
+
+# 水平分拆
+a = np.arange(9).reshape(3, 3)
+print(a)
+
+ahs = np.hsplit(a, 3)
+print(ahs)
+# 列表
+print(type(ahs))
+# 元素是numpy数组
+print(type(ahs[1]))
+
+print(np.split(a, 3, axis=1))
+
+# 垂直分拆
+print(np.vsplit(a, 3))
+print(np.split(a, 3, axis=0))
+
+# 深度分拆
+ads = np.arange(12)
+ads.shape = (2, 2, 3)
+print(ads)
+print(np.dsplit(ads, 3))
+
+
+# ufunc运算
