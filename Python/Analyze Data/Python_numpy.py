@@ -47,3 +47,29 @@ print(a.ndim)  # 维度
 print(np.identity(9).astype(np.int8))
 print(a.tolist())
 print(type(a.tolist()))
+
+# 查看ndarray数据类型
+print(set(np.typeDict.values()))
+
+# 结构数组
+goodslist = np.dtype([('name', np.str_, 50), ('location', np.str_, 30), ('price', np.float16), ('volume', np.int32)])
+
+goods = np.array([('Gree Airconditioner', 'JD.com', 6245, 1),
+                  ('Sony Blueray Player', 'Amazon,com', 3210, 2),
+                  ('Apple Mackbook Pro 13', 'Tmall.com', 12388, 5),
+                  ('iPhoneSE', 'JD.com', 4588, 2)], dtype=goodslist)
+
+print(goods)
+
+# 使用字典定义结果数组
+goodsdict = np.dtype({'names': ['name', 'location', 'price', 'volume'], 'formats': ['S50', 'S30', 'f', 'i']})
+
+goods_new = np.array([('Gree Airconditioner', 'JD.com', 6245, 1),
+                      ('Sony Blueray Player', 'Amazon,com', 3210, 2),
+                      ('Apple Mackbook Pro 13', 'Tmall.com', 12388, 5),
+                      ('iPhoneSE', 'JD.com', 4588, 2)], dtype=goodsdict)
+
+print(goods_new)
+
+
+# 索引与切片
