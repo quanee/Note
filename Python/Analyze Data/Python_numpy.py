@@ -173,3 +173,28 @@ print(s_r)
 s_r.sort(axis=1)
 print(s_r)
 s_r.sort(axis=0)
+print(s_r)
+s_r.sort(axis=-1)
+print(s_r)
+
+# 指定排序顺序
+a = [1, 5, 1, 4, 3, 4, 4]
+b = [9, 4, 0, 4, 0, 2, 1]
+# 先按a排序 再按b排序
+ind = np.lexsort((b, a))
+print([(a[i], b[i]) for i in ind])
+
+
+# 数组维度
+# 展平
+b = np.arange(24).reshape(2, 3, 4)
+print(b)
+print(b.ndim)
+# 展平为一维数组(返回视图)
+br = np.ravel(b)
+print(br)
+print(br.ndim)
+# reshape函数也可以达到相同效果, 但维度不变
+brsh = b.reshape(1, 1, 24)
+print(brsh)
+print(brsh.ndim)
