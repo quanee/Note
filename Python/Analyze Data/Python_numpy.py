@@ -223,3 +223,27 @@ a = np.arange(9).reshape(3, 3)
 print(a)
 b = np.array([[0, 11, 22, 33], [44, 55, 66, 77], [88, 00, 00, 11]])
 print(b)
+print(np.hstack((a, b)))
+print(np.concatenate((a, b), axis=1))
+c = np.array([[0, 11, 22], [44, 55, 66], [88, 99, 00], [22, 33, 44]])
+print(c)
+# print(np.hstack((a, c)))  # ValueError: all the input array dimensions except for the concatenation axis must match exactly
+
+# 垂直组合
+print(np.vstack((a, c)))
+print(np.concatenate((a, c), axis=0))
+
+# 深度组合
+d = np.delete(b, 3, axis=1)  # 删除数组中指定数据, axis=1表示列, axis=0表示行
+print(d)
+print(np.dstack((a, d)))
+
+# 列组合
+a1 = np.arange(4)
+a2 = np.arange(4) * 2
+print(np.column_stack((a1, a2)))
+
+# 行组合
+print(np.row_stack((a1, a2)))
+
+# 数组分拆
