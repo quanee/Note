@@ -148,3 +148,28 @@ print(ac.ndim)
 print(ac.size)
 # 数组元素在内存中所占字节数
 print(ac.itemsize)
+# 数组元素所占存储空间(size与itemsize)
+print(ac.nbytes)
+# 转置数组
+print(ac.T)
+# 数组扁平迭代器(像遍历一维数组一样去遍历任意多维数组)
+print(ac.flat)
+
+# 数组排序
+s = np.array([1, 2, 4, 3, 1, 2, 2, 4, 6, 7, 2, 4, 8, 4, 5])
+# 返回排序后的数组
+print(np.sort(s))
+# 返回数组排序后的下标
+print(np.argsort(s))
+# 降序排序
+print(s[np.argsort(-s)])
+# 就地排序
+s.sort()
+print(s)
+
+# 多维数组排序
+s_r = np.array([3, 23, 52, 34, 52, 3, 6, 645, 34, 7, 85, 23]).reshape(6, 2)
+print(s_r)
+s_r.sort(axis=1)
+print(s_r)
+s_r.sort(axis=0)
