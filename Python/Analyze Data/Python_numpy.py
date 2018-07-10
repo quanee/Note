@@ -347,3 +347,29 @@ print(x1)
 x2 = np.mgrid[:5, :5]
 print(x2)
 
+
+# ufunc方法
+print(np.add.reduce(np.arange(5)))
+print(np.add.reduce([[1, 2, 3, 4], [5, 6, 7, 8]], axis=1))
+print(np.add.reduce([[1, 2, 3, 4], [5, 6, 7, 8]], axis=0))
+print(np.add.accumulate(np.arange(5)))
+print(np.add.accumulate([[1, 2, 3, 4], [5, 6, 7, 8]], axis=1))
+print(np.add.accumulate([[1, 2, 3, 4], [5, 6, 7, 8]], axis=0))
+
+ara = np.arange(8)
+print(ara)
+print(np.add.reduceat(ara, indices=[0, 4, 1, 5, 2, 6, 3, 7]))
+
+print(np.add.reduceat(ara, [0, 4, 1, 5, 2, 6, 3, 7])[::2])
+
+print(np.add.outer([1, 2, 3, 4], [5, 6, 7, 8]))
+
+print(np.multiply.outer([1, 2, 3], [5, 6, 7, 8]))
+
+# 矩阵
+m1 = np.mat([[1, 2, 3], [4, 5, 6]])
+print(m1)
+print(m1 * 8)
+m2 = np.matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(m1 * m2)
+# print(m2.I)  # 逆矩阵
