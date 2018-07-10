@@ -323,3 +323,27 @@ print(score_1.dtype)
 
 score_2 = np.vectorize(liftscore, otypes=[float])(score)
 print(any(score_1 == score_2))
+
+# 广播
+'''
+  * 所有输入输入数组向维数最多的数组看齐 shape属性
+  * 输出数组的shape属性是输入数组的shape属性在各个轴上的最大值
+  * 当输入数组的某个轴长度为1时 沿此轴运算时都用此轴上的第一组值
+'''
+a = np.arange(0, 10).reshape(5, 2)
+print(a)
+b = np.arange(0, 1, 0.2).reshape(5, 1)
+print(b)
+c = a + b
+print(c)
+print(c.shape)
+# 返回用来广播计算的数组
+x, y = np.ogrid[:5, :5]
+print(x)
+print(y)
+x1 = np.ogrid[:5, : 5]
+print(x1)
+# 返回广播后的数组
+x2 = np.mgrid[:5, :5]
+print(x2)
+
