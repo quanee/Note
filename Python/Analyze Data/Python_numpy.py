@@ -98,3 +98,28 @@ print(b[..., 1])
 print(b[0, ::2, -2])
 print(goods['name'])
 print(goods[3])
+print(goods[3]['name'])
+print(sum(goods['volume']))
+
+# 逻辑索引(布尔索引 条件索引)
+print(b[b >= 15])
+print(b[~(b >= 15)])
+# 逻辑运算符and, or, 在布尔数组中无效
+print(b[(b >= 5) & (b <= 15)])
+b_bool1 = np.array([False, True], dtype=bool)
+print(b[b_bool1])
+b_bool2 = np.array([False, True, True], dtype=bool)
+b_bool3 = np.array([False, True, True, False], dtype=bool)
+print(b[b_bool1, b_bool2])
+print(b[b_bool1, b_bool2, b_bool3])
+
+# 花式索引
+print(b[[[0], [1, 2], [2, 3]]])
+# ix_函数将若干一维整数数组转换为一个用于选取矩形区域的索引器
+print(b[np.ix_([1, 0])])
+print(b[np.ix_([1, 0], [2, 1])])
+print(b[np.ix_([1, 0], [2, 1], [0, 3, 2])])
+
+'''
+数组切片是原始数组的视图, 与原始数组共享同一块数据存储空间
+'''
