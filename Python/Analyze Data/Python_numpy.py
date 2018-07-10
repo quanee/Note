@@ -273,3 +273,28 @@ print(np.dsplit(ads, 3))
 
 
 # ufunc运算
+# 函数运算 比较运算 布尔运算
+a1 = np.arange(0, 10)
+print(a1)
+a2 = np.arange(0, 20, 2)
+print(a2)
+# out后面的数组必须事先定义 可以省略out
+a3 = np.add(a1, a2, out=a1)
+
+print(a3, a1)
+print(id(a3) == id(a1))
+
+print(a1 > a2)
+print(any(a1 > a2))
+print(all(a1 > a2))
+
+# ufunc函数比Python内置函数快
+# def mathcal(n):
+#     s = []
+#     for i in range(n + 1):
+#         s.append(100 + i)
+#     return
+
+
+# def ufunccal(n):
+#     s = np.array(range(n + 1)) + 100
