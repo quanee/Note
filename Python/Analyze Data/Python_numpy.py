@@ -198,3 +198,28 @@ print(br.ndim)
 brsh = b.reshape(1, 1, 24)
 print(brsh)
 print(brsh.ndim)
+# 展平为一维数组(返回新对象, 分配内存)
+print(b.flatten())
+
+# 维度改变
+# 返回视图
+bd = b.reshape(4, 6)
+print(bd)
+b.shape = (1, 1, 24)
+print(b)
+# 直接修改数组
+b.resize(1, 1, 24)
+print(b)
+
+# 转置
+b.shape = (3, 4, 2)
+print(b)
+# 等价于 b.T
+print(np.transpose(b))
+
+# 数组组合
+# 水平组合
+a = np.arange(9).reshape(3, 3)
+print(a)
+b = np.array([[0, 11, 22, 33], [44, 55, 66, 77], [88, 00, 00, 11]])
+print(b)
