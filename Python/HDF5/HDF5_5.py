@@ -41,3 +41,45 @@ f.close()
 f = h5py.File('propdemo.hdf5', 'w')
 grp = f.create_group('hello')
 print(grp.file == f)
+print(grp.parent)
+f.close()
+
+# 硬链接 (将一个链接名字和文件中的对象关联到一起 根据文件位置)
+f = h5py.File('linksdemo.hdf5', 'w')
+grpx = f.create_group('x')
+print(grpx.name)
+
+# 创建链接指向该组
+f['y'] = grpx
+grpy = f['y']
+print(grpx == grpy)
+print(grpx.name)
+print(grpy.name)
+
+# 删除硬链接
+del f['y']
+f.close()
+
+# 剩余空间和重新打包
+# h5repack bigfile.hdf5 out.hdf5
+
+
+# 软链接 (在对象内保存指向一个对象的路径 根据名字)
+f = h5py.File('test.hdf5', 'w')
+grp = f.create_group('mygroup')
+dset = grp.create_dataset('dataset', (100, ))
+
+f['hardlink'] = dset
+print(f['hardlink'] == grp['dataset'])
+
+# # 数据集重名名
+grp.move('dataset', 'new_dataset_name')
+print(f['hardlink'] == grp['new_dataset_name'])
+
+grp.move('new_dataset_name', 'dataset')
+f['softlink'] = h5py.SoftLink('/mygroup/dataset')
+print(f['softlink'] == grp['dataset'])
+
+softlink = h5py.SoftLink('/some/path')
+print(softlink)
+print(softlink.path)
