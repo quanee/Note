@@ -126,3 +126,47 @@ f.create_dataset('dataset', (100, ))
 for name in f:
     print(name, f.get(name, getclass=True))
 
+
+f['softlink'] = h5py.SoftLink('/subgroup')
+with h5py.File('get_demo_ext.hdf5', 'w') as f2:
+    f2.create_group('egroup')
+
+f['extlink'] = h5py.ExternalLink('get_demo_ext.hdf5', '/egroup')
+
+for name in f:
+    print(name, f.get(name, getlink=True))
+
+for name in f:
+    print(name, f.get(name, getclass=True, getlink=True))
+f.close()
+# require
+# h5py不能直接重写组内成员
+f = h5py.File('require_demo.hdf5', 'w')
+f.create_group('x')
+f.create_group('y')
+del f['y']
+f['y'] = f['x']
+
+# require版本会检查组或数据集是否存在,若存在则直接返回该对象
+# require版本会额外检查形状和类型是否和已存在的数据集一致(不一致则抛出异常)
+f.require_dataset('dataset', (100, ), dtype='int64')
+# 异常
+# f.require_dataset('dataset', (100, ), dtype='float64')
+# 使用numpy转换规则检查
+f.require_dataset('dataset', (100, ), dtype='int32')
+
+# 迭代和容器
+'''
+在HDF5文件中, 组成员以B树的数据结构索引
+'''
+f = h5py.File('iterationdemo.hdf5', 'w')
+f.create_group('1')
+f.create_group('2')
+f.create_group('10')
+f.create_dataset('data', (100, ))
+print([x for x in f.keys()])
+print([x for x in f])
+print([x for x in f.values()])
+print([(x, y) for x, y in f.items()])
+
+# 测试存在性
