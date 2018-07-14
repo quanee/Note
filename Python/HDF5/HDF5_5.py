@@ -170,3 +170,46 @@ print([x for x in f.values()])
 print([(x, y) for x, y in f.items()])
 
 # 测试存在性
+# if 'name' in group.keys():  # 不支持写法
+# if 'name' in group  # 推荐写法
+
+# 用Vistor模式多级遍历
+# 以名字访问
+f = h5py.File('visit_test.hdf5', 'w')
+f.create_dataset('top_dataset', data=1.0)
+f.create_group('top_group_1')
+f.create_group('top_group_1/subgroup_1')
+f.create_dataset('top_group_1/subgroup_1/sub_dataset_1', data=1.0)
+
+f.create_group('top_group_2')
+f.create_dataset('top_group_2/sub_dataset_2', data=1.0)
+
+def printname(name):
+    print(name)
+
+
+f.visit(printname)
+grp = f['top_group_1']
+grp.visit(printname)
+
+# 多个链接和visit
+grp['hardlink'] = f['top_group_2']
+grp.visit(printname)
+
+# 访问对象
+def printobj(name):
+    print(grp[name])
+
+def printobj2(name, obj):
+    print(name, obj)
+
+
+grp.visititems(printobj2)
+
+# 遍历中止
+f['top_group_2/sub_dataset_2'].attrs['special'] = 42
+
+
+def findspecial(name, obj):
+    if obj.attrs.get('special') == 42:
+        return obj
