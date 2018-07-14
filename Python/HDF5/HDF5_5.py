@@ -213,3 +213,46 @@ f['top_group_2/sub_dataset_2'].attrs['special'] = 42
 def findspecial(name, obj):
     if obj.attrs.get('special') == 42:
         return obj
+
+
+out = f.visititems(findspecial)
+print(out)
+f.close()
+# 复制对象
+f = h5py.File('copytest', 'w')
+f.create_group('mygroup')
+f.create_group('mygroup/subgroup')
+f.create_dataset('mygroup/apples', (100, ))
+f.copy('/mygroup/apples', '/oranges')
+print(f['oranges'] == f['mygroup/apples'])
+
+f.copy('mygroup', 'mygroup2')
+f.visit(printname)
+f.close
+# dset = f['/mygroup/apples']
+# f.copy(dset, f)
+# f.visit(printname)
+
+# 对象比较和哈希
+
+f = h5py.File('objectdemo.hdf5', 'w')
+grpx = f.create_group('x')
+grpy = f.create_group('y')
+print(grpx == f['x'])
+print(grpx == grpy)
+
+print(id(grpx))
+print(id(f['x']))
+print(hash(grpx))
+print(hash(f['x']))
+print(f == f['/'])
+print(bool(grpx))
+f.close()
+print(bool(grpx))
+
+
+
+
+import os
+
+for name in os.listdir('./'):
