@@ -8,3 +8,8 @@ print({} or [] or ())
 # and 从左至右 返回第一个为假的对象 或最后一个真的对象
 print({} and [])
 print(3 and [])
+print(3 and 5)
+
+# if/else三元表达式
+A = 'moon' if 't' else 'boss'
+print(A)
