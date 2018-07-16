@@ -13,3 +13,8 @@ print(3 and 5)
 # if/else三元表达式
 A = 'moon' if 't' else 'boss'
 print(A)
+
+A = (('t' and 'moon') or 'boss')
+print(A)
+
+# 列表索引
