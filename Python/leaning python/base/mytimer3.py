@@ -18,3 +18,6 @@ def timer(func, *pargs, _reps=1000, **kargs):
     elapsed = timefunc() - start
     return (elapsed, ret)
 
+
+def best(func, *pargs, _reps=50, **kargs):
+    best = 2 ** 32
