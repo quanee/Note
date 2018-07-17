@@ -16,3 +16,5 @@ def timer(func, *pargs, _reps=1000, **kargs):
     for i in range(_reps):
         ret = func(*pargs, **kargs)
     elapsed = timefunc() - start
+    return (elapsed, ret)
+
