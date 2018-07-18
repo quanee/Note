@@ -9,3 +9,8 @@ class Foo(object):
     def get_instance(cls):
         if not cls.__v:
             cls.__v = Foo()
+
+        return cls.__v
+
+
+obj1 = Foo.get_instance()
