@@ -2,3 +2,7 @@
 
 
 class Foo(object):
+    '''单例模式'''
+    __v = None
+
+    @classmethod
