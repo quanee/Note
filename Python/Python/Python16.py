@@ -26,3 +26,7 @@ import tornado.web
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         import time
+        self.write(str(time.time()))
+
+
+application = tornado.web.Application([
