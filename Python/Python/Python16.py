@@ -18,3 +18,6 @@ print(obj1)
 obj2 = Foo.get_instance()
 print(obj1)
 obj3 = Foo.get_instance()
+print(obj1)
+
+import tornado.web
