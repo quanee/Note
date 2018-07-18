@@ -6,3 +6,6 @@ class Foo(object):
     __v = None
 
     @classmethod
+    def get_instance(cls):
+        if not cls.__v:
+            cls.__v = Foo()
