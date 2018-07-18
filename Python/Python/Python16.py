@@ -30,3 +30,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 application = tornado.web.Application([
+    (r'/index', MainHandler),
+])
+
+if __name__ == '__mian__':
