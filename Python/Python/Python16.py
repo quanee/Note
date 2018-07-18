@@ -21,3 +21,8 @@ obj3 = Foo.get_instance()
 print(obj1)
 
 import tornado.web
+
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        import time
