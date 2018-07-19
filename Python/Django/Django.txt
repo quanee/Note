@@ -802,3 +802,271 @@ def update_or_create(self, defaults=None, **kwargs):
 
 def first(self):
    # 获取第一个
+
+def last(self):
+   # 获取最后一个
+
+def in_bulk(self, id_list=None):
+   # 根据主键ID进行查找
+   id_list = [11,21,31]
+   models.DDD.objects.in_bulk(id_list)
+
+def delete(self):
+   # 删除
+
+def update(self, **kwargs):
+    # 更新
+
+def exists(self):
+   # 是否有结果
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % Django原生SQL获取cursor字典 % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+import pymysql
+from django.db import connection, connections
+ 
+connection.connect()
+conn = connection.connection
+cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+cursor.execute("""SELECT * from app01_userinfo""")
+row = cursor.fetchone()
+connection.close()
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % 数字自增,字符串更新 % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+==>数字自增
+from django.db.models import F
+models.UserInfo.objects.update(num=F('num') + 1)
+
+==>字符串更新
+from django.db.models.functions import Concat
+from django.db.models import Value
+
+models.UserInfo.objects.update(name=Concat('name', 'pwd'))
+models.UserInfo.objects.update(name=Concat('name', Value('666')))
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % ORM函数相关 % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+==>基础函数
+
+1. Concat,用于做类型转换
+v = models.UserInfo.objects.annotate(c=Cast('pwd', FloatField()))
+
+2. Coalesce,从前向后,查询第一个不为空的值
+v = models.UserInfo.objects.annotate(c=Coalesce('name', 'pwd'))
+v = models.UserInfo.objects.annotate(c=Coalesce(Value('666'),'name', 'pwd'))
+
+3. Concat,拼接
+models.UserInfo.objects.update(name=Concat('name', 'pwd'))
+models.UserInfo.objects.update(name=Concat('name', Value('666')))
+models.UserInfo.objects.update(name=Concat('name', Value('666'),Value('999')))
+
+4.ConcatPair,拼接（仅两个参数）
+v = models.UserInfo.objects.annotate(c=ConcatPair('name', 'pwd'))
+v = models.UserInfo.objects.annotate(c=ConcatPair('name', Value('666')))
+
+5.Greatest,获取比较大的值;least 获取比较小的值;
+v = models.UserInfo.objects.annotate(c=Greatest('id', 'pwd',output_field=FloatField()))
+
+6.Length,获取长度
+v = models.UserInfo.objects.annotate(c=Length('name'))
+
+7. Lower,Upper,变大小写
+v = models.UserInfo.objects.annotate(c=Lower('name'))
+v = models.UserInfo.objects.annotate(c=Upper('name'))
+
+8. Now,获取当前时间
+v = models.UserInfo.objects.annotate(c=Now())
+
+9. substr,子序列
+v = models.UserInfo.objects.annotate(c=Substr('name',1,2))
+
+==>时间类函数
+1. 时间截取,不保留其他:Extract, ExtractDay, ExtractHour, ExtractMinute, ExtractMonth,ExtractSecond, ExtractWeekDay, ExtractYear,
+v = models.UserInfo.objects.annotate(c=functions.ExtractYear('ctime'))
+v = models.UserInfo.objects.annotate(c=functions.ExtractMonth('ctime'))
+v = models.UserInfo.objects.annotate(c=functions.ExtractDay('ctime'))
+
+v = models.UserInfo.objects.annotate(c=functions.Extract('ctime', 'year'))
+v = models.UserInfo.objects.annotate(c=functions.Extract('ctime', 'month'))
+v = models.UserInfo.objects.annotate(c=functions.Extract('ctime', 'year_month'))
+"""
+MICROSECOND
+SECOND
+MINUTE
+HOUR
+DAY
+WEEK
+MONTH
+QUARTER
+YEAR
+SECOND_MICROSECOND
+MINUTE_MICROSECOND
+MINUTE_SECOND
+HOUR_MICROSECOND
+HOUR_SECOND
+HOUR_MINUTE
+DAY_MICROSECOND
+DAY_SECOND
+DAY_MINUTE
+DAY_HOUR
+YEAR_MONTH
+"""
+
+2. 时间截图,保留其他:Trunc, TruncDate, TruncDay,TruncHour, TruncMinute, TruncMonth, TruncSecond, TruncYear
+v = models.UserInfo.objects.annotate(c=functions.TruncHour('ctime'))
+v = models.UserInfo.objects.annotate(c=functions.TruncDate('ctime'))
+v = models.UserInfo.objects.annotate(c=functions.Trunc('ctime','year'))
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+ORM自定义函数
+from django.db.models.functions.base import Func
+class CustomeFunc(Func):
+    function = 'DATE_FORMAT'
+    template = '%(function)s(%(expressions)s,%(format)s)'
+
+    def __init__(self, expression, **extra):
+        expressions = [expression]
+        super(CustomeFunc, self).__init__(*expressions, **extra)
+
+v = models.UserInfo.objects.annotate(c=CustomeFunc('ctime',format="'%%Y-%%m'"))
+
+
+% $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $
+% $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $
+% $ % $ % $ % $ % $ % $ % $ % $ % $ % 用户请求验证流程$ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $
+% $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $
+% $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $ % $
+
+==>Form
+class UserForm(forms.Form):
+    username = fields.CharField(label='用户名')
+    email = fields.EmailField(label='邮箱')
+
+    def clean_username():
+        ...
+
+    def clean_email():
+        ...
+
+1. 用户发送请求
+    {k:v, ...}
+2. obj = UserForm(request.POST)
+
+3. obj.is_valid()
+    - 循环Form对象中所有的字段
+      for name, field_obj in XX.items:
+        # 去用户请求中获取数据
+        # 调用字段的clean方法 进行正则表达式的验证
+            field_obj.clean(value)
+
+          self.clean_name(obj.clean_username())
+4. 自定义的_clean_form方法
+    __all__
+    raise ValidationError('用户名或邮箱错误!!!')
+5. 自定义的_post_clean方法
+    不允许出现异常
+    self.add_error('__all__', ValidationError('用户名或邮箱错误!!!'))
+    self.add_error(None, ValidationError('用户名或邮箱错误!!!'))
+
+is_valid()=>self.errors=>self.full_clean()=>self._clean_fields()=>value=field.clean(value, initial)=>self.add_error(name, e)
+                                          =>self._clean_form()=>self.clean()=>self.add_error(None, e)
+                                          =>self._post_clean()
+
+==>Modes
+full_clean()=>字段正则判定=>clean方法(钩子)
+
+==>ModelForm
+    Form:
+        UserForm
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+ % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+ModelForm组件
+a.  class Meta:
+        model,  # 对应Model的
+        fields=None,  # 字段
+        exclude=None,  # 排除字段
+        labels=None,  # 提示信息
+        help_texts=None,  # 帮助提示信息
+        widgets=None,  # 自定义插件
+        error_messages=None,  # 自定义错误信息（整体错误信息from django.core.exceptions import NON_FIELD_ERRORS）
+        field_classes=None,  # 自定义字段类 （也可以自定义字段）
+        localized_fields=('birth_date',)  # 本地化,如:根据不同时区显示数据
+        如:
+            数据库中
+                2016-12-27 04:10:57
+            setting中的配置
+                TIME_ZONE = 'Asia/Shanghai'
+                USE_TZ = True
+            则显示:
+                2016-12-27 12:10:57
+b. 验证执行过程
+    is_valid -> full_clean -> 钩子 -> 整体错误
+
+c. 字典字段验证
+    def clean_字段名(self):
+        # 可以抛出异常
+        # from django.core.exceptions import ValidationError
+        return "新值"
+d. 用于验证
+    model_form_obj = XXOOModelForm()
+    model_form_obj.is_valid()
+    model_form_obj.errors.as_json()
+    model_form_obj.clean()
+    model_form_obj.cleaned_data
+e. 用于创建
+    model_form_obj = XXOOModelForm(request.POST)
+    # # # # 页面显示,并提交 # # # # #
+    # 默认保存多对多
+        obj = form.save(commit=True)
+    # 不做任何操作,内部定义 save_m2m（用于保存多对多）
+        obj = form.save(commit=False)
+        obj.save()      # 保存单表信息
+        obj.save_m2m()  # 保存关联多对多信息
+
+f. 用于更新和初始化
+    obj = model.tb.objects.get(id=1)
+    model_form_obj = XXOOModelForm(request.POST,instance=obj)
+    ...
+
+    PS: 单纯初始化
+        model_form_obj = XXOOModelForm(initial={...})
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+ % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+中间件
+class A:
+    def process_request()
+    def process_view()
+    def process_response()
+class B: ...
+class C: ...
+
+   1 (A)process_request==>(B)process_request==>(C)process_request==>                                   %$                  
+   2 (A)process_view==>(B)process_view==>(C)process_view==>                                            %$                         
+    (A)process_template_response<==(B)process_template_response<==(C)process_template_response<==  3   %$ view                    
+    (A)process_response<==(B)process_response<==(C)process_response<==                             3   %$                   
+   4       (A)Exception==>(B)process_exception==>(C)process_exception==>                               %$                   
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+CSRF
+全站请求都要CSRF:
+    Form请求
+        render
+        {% csrf_token %}
+    Ajax请求
+        cookie中提取随机字符串 csrftoken对象的值
+        设置请求头:
+            X-CSRFToken: cookie中取到的值
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
+@csrf_protect 为当前函数强制设置防跨站请求伪造功能, 即便settings中没有设置全局中间件
+@csrf_exempt 取消当前函数防跨站请求伪造功能, 即便settings中设置了全局中间件
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+缓存
