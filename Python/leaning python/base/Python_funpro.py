@@ -68,3 +68,10 @@ for arg in func.__annotations__:
 
 
 # 参数:注解 = 默认值
+def func(a: 'moon' = 4, b: (1, 10) = 5, c: float = 6) -> int:
+    return a + b + c
+
+
+print(func(1, 2, 3))
+print(func())
+print(func())
