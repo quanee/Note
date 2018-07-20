@@ -26,3 +26,9 @@ F('boss')
 
 
 # 函数内省
+print(make.__name__)
+print(dir(make.__name__))
+print(make.__code__)
+print(dir(make.__code__))
+print(make.__code__.co_varnames)
+print(make.__code__.co_argcount)
