@@ -46,3 +46,10 @@ print(dir(make))
 # 函数注解
 def func(a: 'moon', b: (1, 10), c: float) -> int:
     return a + b + c
+
+
+print(func(1, 2, 3))
+print(func.__annotations__)
+
+for arg in func.__annotations__:
+    print(arg, '=>', func.__annotations__[arg])
