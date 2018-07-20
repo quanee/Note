@@ -40,3 +40,9 @@ print(make.count)
 
 make.handles = 'Button-Press'
 print(make.handles)
+print(dir(make))
+
+
+# 函数注解
+def func(a: 'moon', b: (1, 10), c: float) -> int:
+    return a + b + c
