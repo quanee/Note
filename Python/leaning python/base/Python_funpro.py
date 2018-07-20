@@ -75,3 +75,10 @@ def func(a: 'moon' = 4, b: (1, 10) = 5, c: float = 6) -> int:
 print(func(1, 2, 3))
 print(func())
 print(func())
+print(func.__annotations__)
+
+
+counters = [1, 2, 3, 4]
+# map 不修改参数
+print(list(map((lambda x: x + 3), counters)))
+# print(counters)
