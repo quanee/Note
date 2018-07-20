@@ -19,3 +19,10 @@ def make(label):
         print(label + ':' + message)
 
     return echo
+
+
+F = make('moon')
+F('boss')
+
+
+# 函数内省
