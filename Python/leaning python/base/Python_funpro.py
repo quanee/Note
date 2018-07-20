@@ -32,3 +32,11 @@ print(make.__code__)
 print(dir(make.__code__))
 print(make.__code__.co_varnames)
 print(make.__code__.co_argcount)
+
+# 向函数添加自定义属性
+make.count = 0
+make.count += 1
+print(make.count)
+
+make.handles = 'Button-Press'
+print(make.handles)
