@@ -5,3 +5,10 @@ def sumtree(L):
     for x in L:
         if not isinstance(x, list):
             tot += x
+        else:
+            tot += sumtree(x)
+    return tot
+
+
+L = [1, [2, 3, [4, 5]]]
+print(sumtree(L))
