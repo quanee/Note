@@ -12,3 +12,10 @@ def sumtree(L):
 
 L = [1, [2, 3, [4, 5]]]
 print(sumtree(L))
+
+
+def make(label):
+    def echo(message):
+        print(label + ':' + message)
+
+    return echo
