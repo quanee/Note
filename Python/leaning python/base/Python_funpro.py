@@ -61,3 +61,10 @@ def func(a: 'moon', b, c: 99):
 
 print(func(1, 2, 3))
 print(func.__annotations__)
+
+
+for arg in func.__annotations__:
+    print(arg, '=>', func.__annotations__[arg])
+
+
+# 参数:注解 = 默认值
