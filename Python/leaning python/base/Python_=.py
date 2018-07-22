@@ -22,3 +22,6 @@ print(a, b, c)
 
 (a, b), c = string[:2], string[2:]
 print(a, b, c)
+
+((a, b), c) = ('mo', 'on')
+print(a, b, c)
