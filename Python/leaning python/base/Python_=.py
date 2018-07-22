@@ -16,3 +16,6 @@ moon = boss = 'lunch'
 moon += 's'
 
 string = 'moon'
+
+a, b, c = string[0], string[1], string[2:]
+print(a, b, c)
