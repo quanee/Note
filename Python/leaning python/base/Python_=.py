@@ -25,3 +25,6 @@ print(a, b, c)
 
 ((a, b), c) = ('mo', 'on')
 print(a, b, c)
+
+*a, b = string
+print(a, b)
