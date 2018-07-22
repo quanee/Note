@@ -10,3 +10,6 @@ print(a, b)
 # 扩展序列解包赋值
 a, *b = 'moon'
 print(a, b)
+# 多重目标赋值
+moon = boss = 'lunch'
+# 增强赋值
