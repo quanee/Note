@@ -19,3 +19,6 @@ string = 'moon'
 
 a, b, c = string[0], string[1], string[2:]
 print(a, b, c)
+
+(a, b), c = string[:2], string[2:]
+print(a, b, c)
