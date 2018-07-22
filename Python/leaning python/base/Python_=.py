@@ -13,3 +13,6 @@ print(a, b)
 # 多重目标赋值
 moon = boss = 'lunch'
 # 增强赋值
+moon += 's'
+
+string = 'moon'
