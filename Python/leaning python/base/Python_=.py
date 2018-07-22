@@ -28,3 +28,6 @@ print(a, b, c)
 
 *a, b = string
 print(a, b)
+
+
+# + 创建新对象
