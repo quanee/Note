@@ -297,3 +297,63 @@ def add(*args, **kwargs):
     for i in args:
         sum += i
     print(sum)
+
+
+add(1, 3, 5)
+
+'''# 登录
+user, passwd = pangdahai, 123
+login_status = False
+
+def login():
+    if login_status == False:
+        username = input("username:")
+        password = input("password:")
+        if user == username and passwd = password:
+            print("welcome...")
+            home()
+            login_status = True
+    else:
+        pass
+
+
+@login(auth_type="jingdong") # auth == authentication
+def home():
+    print("welcome to home page")
+
+
+@login("weixing")
+def finance(): #金融
+    print("welcome to finance page")
+
+
+@login(auth_type="jingdong")
+def book():
+    print("welcome to book page")
+'''
+
+'''方法的延迟加载'''
+
+
+class cached_property(object):
+
+    def __init__(self, func):
+        self.func = func
+
+    def __get__(self, obj, cls):
+        if obj is None:
+            return self
+        value = obj.__dict__[self.func.__name__] = self.func(obj)
+        return value
+
+
+class Test(object):
+    def __init__(self, value):
+        self.value = value
+
+    @cached_property
+    def display(self):
+        # create expensive object
+        print("some complicated compute here")
+        return self.value
+
