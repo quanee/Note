@@ -238,3 +238,62 @@ class Point:
 
 # 测试
 start = Point(6, 7)
+
+end = Point(1, 2)
+
+
+# 装饰器的镶套
+'''
+@animal
+@person
+@student
+def func():
+    pass
+
+# 等价于
+animal(person(student(func)))
+'''
+# 闭包
+# 闭包(closure)是函数式编程的重要的语法结构。
+
+# 定义：如果在一个内部函数里，对在外部作用域（但不是在全局作用域）的变量进行引用，那么内部函数就被认为是闭包(closure).
+# 被装饰函数带参数
+
+
+def show_time(func):
+    def wrapper():
+        start_time = time.time()
+        func()
+        end_time = time.time()
+        print("time=%s" % (start_time - end_time))
+
+    return wrapper
+
+# 装饰器函数带参数
+
+
+def time_logger(flag=0):
+    def show_time(func):
+        def wrapper(*args, **kwargs):
+            start_time = time.time()
+            func(*args, **kwargs)
+            end_time = time.time()
+            print("time:%s" % (end_time - start_time))
+
+            if flag:
+                print("将操作记录到日志")
+
+        return wrapper
+    return show_time
+
+
+# 调用
+
+
+@time_logger(3)
+def add(*args, **kwargs):
+    time.sleep(1)
+    sum = 0
+    for i in args:
+        sum += i
+    print(sum)
