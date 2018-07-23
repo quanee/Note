@@ -177,3 +177,64 @@ class decorador1:
         print("do after")
         return obj
 
+
+# 类装饰类，示例拦截每个person对象的创建。
+@decorador1
+class person():
+    def __init__(self, *args, **kwgs):
+        self.para = args
+        self.kwgs = kwgs
+
+    def saytext(self, text):
+        print(text)
+        print(self.para)
+
+
+# 测试
+ming = person("ming", "man")
+'''输出
+addr:140118207480272
+do after
+'''
+ming.saytext("hello")
+'''输出
+hello
+('ming', 'man')
+'''
+lili = person("lili", "woman")
+'''输出
+addr:140118207480272
+do after
+'''
+lili.saytext("world")
+'''输出
+world
+('lili', 'woman')
+'''
+lili.saytext("test")
+'''输出
+test
+('lili', 'woman')
+'''
+
+
+# 类装饰器可以把类的名称重新绑定另一个类
+def decorador2(cls):
+    class Wrapper:
+        def __init__(self, *args):
+            self.wrapper = cls(*args)
+
+        def __getatter__(self, name):
+            return getattr(self.wrapper, name)
+    return Wrapper
+
+
+@decorador2
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+# 测试
+start = Point(6, 7)
