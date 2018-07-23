@@ -118,3 +118,62 @@ def run(func):
 
 @run
 def dog():
+    print('dog is running')
+
+
+dog()
+
+
+# 指定参数，可变参数*args，可变**kwgs
+def printpara(num, *args, **kwgs):
+    print(num)
+    print(args)
+    print(kwgs)
+
+
+printpara(10, 1, "strap", ["strn", "2"], name="pangdahai", ptype="hahaha")
+
+
+# 类装饰器
+# 类装饰函数时，在装饰阶段，__init__ 函数执行；在被装饰的函数被调用时，__call__ 执行。
+
+class decorador:
+    def __init__(self, func):
+        self.func = func
+
+    def __call__(self, *args, **kwgs):
+        print("addr:%d" % id(self))
+        self.func(*args, **kwgs)
+        print("do after")
+
+
+@decorador
+def saytext(text):
+    print(text)
+
+
+# 测试
+saytext("hello")
+'''输出
+addr:140061401007720
+hello
+do after
+'''
+saytext("world")
+'''输出
+addr:140061401007720
+world
+do after
+'''
+
+
+class decorador1:
+    def __init__(self, cls):
+        self.cls = cls
+
+    def __call__(self, *args, **kwgs):
+        print("addr:%d" % id(self))
+        obj = self.cls(*args, **kwgs)
+        print("do after")
+        return obj
+
