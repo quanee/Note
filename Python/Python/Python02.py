@@ -27,3 +27,18 @@ import datetime
 # os.path.split()函数返回一个路径的目录名和文件名
 # os.path.isfile()和os.path.isdir()函数分别检验给出的路径是一个文件还是目录
 # os.path.existe()函数用来检验给出的路径是否真地存在
+
+
+'''
+lambda
+
+lambda语句被用来创建新的函数对象，并在运行时返回它们。lambda需要一个参数，
+后面仅跟单个表达式作为函数体，而表达式的值被这个新建的函数返回。
+注意，即便是print语句也不能用在lambda形式中，只能使用表达式。
+'''
+
+'''
+exec/eval
+exec语句用来执行储存在字符串或文件中的Python语句；
+eval语句用来计算存储在字符串中的有效Python表达式。
+'''
