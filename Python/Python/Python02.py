@@ -118,3 +118,18 @@ print(now_old)
 is 判断引用相等
 """
 a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a == b)
+print(b == c)
+print(a is b)
+
+
+a = 100
+b = 100
+print(a == b)
+print(a is b)
+a = 10000
+b = 10000
+print(a is b)
