@@ -133,3 +133,18 @@ print(a is b)
 a = 10000
 b = 10000
 print(a is b)
+
+
+# 私有化
+# _xx   保护属性(from xxx import * 无法导入, import xxx 可以导入)
+# __xx  私有属性
+# __xx__内置方法或变量名
+# xx_   避免与python关键字冲突
+class Test(object):
+
+    def __init__(self):
+        self.__num = 100
+
+    def setNum(self, value):
+        print('----setter----')
+        self.__num = value
