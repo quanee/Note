@@ -88,3 +88,18 @@ def emails(e):
 def strings(url):
     listt = ['.php', '.html', '.asp', '.jsp']
     for lis in listt:
+        suffix = re.findall(lis, url)
+        if len(suffix) > 0:
+            return lis
+
+
+address = 'sadf/lsdkjflsdkj/sllls/232323.html'
+a = strings(address)
+print(a)
+
+# 获得当前时间的前一天（或前一秒）
+# 打印当前时间
+print(time.ctime())
+# 当前时间
+now_time = datetime.datetime.now()
+print(now_time)
