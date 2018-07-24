@@ -73,3 +73,18 @@ repr函数用来取得对象的规范字符串表示。反引号（也称转换�
 # 获得一个URL地址的扩展名
 # "."＋url.split(".")[－1]
 def emails(e):
+    if len(e) >= 5:
+        if re.match("[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[a-zA-Z]", e):
+            return '邮=箱=格式正确！'
+    return '邮=箱=格式有误'
+
+
+# e = input("请输入email:")
+# print(e)
+# a = emails(e)
+# print(a)
+
+
+def strings(url):
+    listt = ['.php', '.html', '.asp', '.jsp']
+    for lis in listt:
