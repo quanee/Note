@@ -148,3 +148,17 @@ class Test(object):
     def setNum(self, value):
         print('----setter----')
         self.__num = value
+
+    def getNum(self):
+        print('----getter----')
+        return self.__num
+
+    num = property(getNum, setNum)
+
+
+t = Test()
+print(t.getNum())
+t.setNum(50)
+print(t.getNum())
+t.num = 200
+print(t.num)
