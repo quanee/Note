@@ -8,3 +8,7 @@ class Employee:
 
     def work(self):
         print(self.name, "does stuff")
+
+    def __repr__(self):
+        return "<Employee: name=%s, salary=%s>" % (self.name, self.salary)
+
