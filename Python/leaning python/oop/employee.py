@@ -18,3 +18,8 @@ class Chef(Employee):
         Employee.__init__(self, name, 50000)
 
     def work(self):
+        print(self.name, "makes food")
+
+
+class Server(Employee):
+    def __init__(self, name):
