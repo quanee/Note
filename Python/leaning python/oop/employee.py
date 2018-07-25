@@ -32,3 +32,9 @@ class Server(Employee):
 class PizzaRobot(Chef):
     def __init__(self, name):
         Chef.__init__(self, name)
+
+    def work(self):
+        print(self.name, "makes pizza")
+
+
+if __name__ == '__main__':
