@@ -43,3 +43,8 @@ if __name__ == '__main__':
     bob.work()
 
     bob.giveRaise(0.20)
+    print(bob)
+    print()
+
+    for klass in Employee, Chef, Server, PizzaRobot:
+        obj = klass(klass.__name__)
