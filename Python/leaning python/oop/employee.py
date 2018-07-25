@@ -27,3 +27,8 @@ class Server(Employee):
 
     def work(self):
         print(self.name, "interfaces with customer")
+
+
+class PizzaRobot(Chef):
+    def __init__(self, name):
+        Chef.__init__(self, name)
