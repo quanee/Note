@@ -12,3 +12,9 @@ class Employee:
     def __repr__(self):
         return "<Employee: name=%s, salary=%s>" % (self.name, self.salary)
 
+
+class Chef(Employee):
+    def __init__(self, name):
+        Employee.__init__(self, name, 50000)
+
+    def work(self):
