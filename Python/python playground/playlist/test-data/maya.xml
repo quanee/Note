@@ -200,3 +200,205 @@
         <dict>
             <key>Track ID</key><integer>2264</integer>
             <key>Name</key><string>Strange Meadow Lark</string>
+            <key>Artist</key><string>The Dave Brubeck Quartet</string>
+            <key>Composer</key><string>Dave Brubeck</string>
+            <key>Album</key><string>Time Out</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>10765899</integer>
+            <key>Total Time</key><integer>444242</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>2</integer>
+            <key>Track Count</key><integer>7</integer>
+            <key>Year</key><integer>1959</integer>
+            <key>Date Modified</key><date>2006-08-03T11:46:24Z</date>
+            <key>Date Added</key><date>2009-10-03T14:52:27Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3438966197</integer>
+            <key>Play Date UTC</key><date>2012-12-21T14:53:17Z</date>
+            <key>Normalization</key><integer>1033</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Artist</key><string>Dave Brubeck Quartet</string>
+            <key>Persistent ID</key><string>328F3A1589AD1FD7</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/The%20Dave%20Brubeck%20Quartet/Time%20Out/02%20Strange%20Meadow%20Lark.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>2266</key>
+        <dict>
+            <key>Track ID</key><integer>2266</integer>
+            <key>Name</key><string>Take Five</string>
+            <key>Artist</key><string>The Dave Brubeck Quartet</string>
+            <key>Composer</key><string>Paul Desmond</string>
+            <key>Album</key><string>Time Out</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>7923853</integer>
+            <key>Total Time</key><integer>326796</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>3</integer>
+            <key>Track Count</key><integer>7</integer>
+            <key>Year</key><integer>1959</integer>
+            <key>Date Modified</key><date>2006-08-03T11:46:24Z</date>
+            <key>Date Added</key><date>2009-10-03T14:52:27Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3484980753</integer>
+            <key>Play Date UTC</key><date>2014-06-07T04:42:33Z</date>
+            <key>Skip Count</key><integer>1</integer>
+            <key>Skip Date</key><date>2011-01-17T11:15:33Z</date>
+            <key>Normalization</key><integer>1081</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Artist</key><string>Dave Brubeck Quartet</string>
+            <key>Persistent ID</key><string>09568520230C26CC</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/The%20Dave%20Brubeck%20Quartet/Time%20Out/03%20Take%20Five.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>2268</key>
+        <dict>
+            <key>Track ID</key><integer>2268</integer>
+            <key>Name</key><string>Three To Get Ready</string>
+            <key>Artist</key><string>The Dave Brubeck Quartet</string>
+            <key>Composer</key><string>Dave Brubeck</string>
+            <key>Album</key><string>Time Out</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>7901209</integer>
+            <key>Total Time</key><integer>325867</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>4</integer>
+            <key>Track Count</key><integer>7</integer>
+            <key>Year</key><integer>1959</integer>
+            <key>Date Modified</key><date>2006-08-03T11:46:24Z</date>
+            <key>Date Added</key><date>2009-10-03T14:52:28Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>1033</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Artist</key><string>Dave Brubeck Quartet</string>
+            <key>Persistent ID</key><string>855DC94A22F8CD92</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/The%20Dave%20Brubeck%20Quartet/Time%20Out/04%20Three%20To%20Get%20Ready.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>2270</key>
+        <dict>
+            <key>Track ID</key><integer>2270</integer>
+            <key>Name</key><string>Kathy's Waltz</string>
+            <key>Artist</key><string>The Dave Brubeck Quartet</string>
+            <key>Composer</key><string>Dave Brubeck</string>
+            <key>Album</key><string>Time Out</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>7048364</integer>
+            <key>Total Time</key><integer>290619</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>5</integer>
+            <key>Track Count</key><integer>7</integer>
+            <key>Year</key><integer>1959</integer>
+            <key>Date Modified</key><date>2006-08-03T11:46:26Z</date>
+            <key>Date Added</key><date>2009-10-03T14:52:28Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3441544403</integer>
+            <key>Play Date UTC</key><date>2013-01-20T11:03:23Z</date>
+            <key>Normalization</key><integer>1032</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Artist</key><string>Dave Brubeck Quartet</string>
+            <key>Persistent ID</key><string>D843F56EF045F256</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/The%20Dave%20Brubeck%20Quartet/Time%20Out/05%20Kathy's%20Waltz.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>2272</key>
+        <dict>
+            <key>Track ID</key><integer>2272</integer>
+            <key>Name</key><string>Everybody's Jumpin'</string>
+            <key>Artist</key><string>The Dave Brubeck Quartet</string>
+            <key>Composer</key><string>Dave Brubeck</string>
+            <key>Album</key><string>Time Out</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>6425315</integer>
+            <key>Total Time</key><integer>264868</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>6</integer>
+            <key>Track Count</key><integer>7</integer>
+            <key>Year</key><integer>1959</integer>
+            <key>Date Modified</key><date>2006-08-03T11:46:26Z</date>
+            <key>Date Added</key><date>2009-10-03T14:52:28Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3441544668</integer>
+            <key>Play Date UTC</key><date>2013-01-20T11:07:48Z</date>
+            <key>Normalization</key><integer>1033</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Artist</key><string>Dave Brubeck Quartet</string>
+            <key>Persistent ID</key><string>E703651BCB06438D</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/The%20Dave%20Brubeck%20Quartet/Time%20Out/06%20Everybody's%20Jumpin'.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>2274</key>
+        <dict>
+            <key>Track ID</key><integer>2274</integer>
+            <key>Name</key><string>Pick Up Sticks</string>
+            <key>Artist</key><string>The Dave Brubeck Quartet</string>
+            <key>Composer</key><string>Dave Brubeck</string>
+            <key>Album</key><string>Time Out</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>6228367</integer>
+            <key>Total Time</key><integer>256695</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>7</integer>
+            <key>Track Count</key><integer>7</integer>
+            <key>Year</key><integer>1959</integer>
+            <key>Date Modified</key><date>2006-08-03T11:46:26Z</date>
+            <key>Date Added</key><date>2009-10-03T14:52:28Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>1033</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Artist</key><string>Dave Brubeck Quartet</string>
+            <key>Persistent ID</key><string>170B1574D7B9740B</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/The%20Dave%20Brubeck%20Quartet/Time%20Out/07%20Pick%20Up%20Sticks.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3432</key>
+        <dict>
+            <key>Track ID</key><integer>3432</integer>
+            <key>Name</key><string>So What</string>
+            <key>Artist</key><string>Miles Davis</string>
+            <key>Composer</key><string>Miles Davis</string>
+            <key>Album</key><string>Kind Of Blue</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>13154266</integer>
+            <key>Total Time</key><integer>545830</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>5</integer>
+            <key>Year</key><integer>1962</integer>
+            <key>Date Modified</key><date>2006-07-30T08:32:06Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:20Z</date>
