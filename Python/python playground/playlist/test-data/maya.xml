@@ -1816,3 +1816,205 @@
             <key>Date Modified</key><date>2011-11-19T18:05:40Z</date>
             <key>Date Added</key><date>2011-11-19T18:04:23Z</date>
             <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>218</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Album</key><string>Story of the Orchestra</string>
+            <key>Persistent ID</key><string>C05E0EEA15F58BE0</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Robert%20Levine/The%20Story%20of%20the%20Orchestra/37%20Concerto%20Champetre.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>10882</key>
+        <dict>
+            <key>Track ID</key><integer>10882</integer>
+            <key>Name</key><string>Pi's Lullaby</string>
+            <key>Artist</key><string>Anwar Khurshid / Aruna Kalle / Cardinal Vaughan Memorial School / Chris Bleth / Courtney Grueschow / Evergreen Club Contemporary Gamelan / Jatinder Jeetu / Jeetu Prakesh / Mychael Danna / Rajesh Srinivasan / Thomas Fetherstonhaugh / Ulhas Bapat / V Selvag</string>
+            <key>Album</key><string>Life Of Pi</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>8930644</integer>
+            <key>Total Time</key><integer>222798</integer>
+            <key>Year</key><integer>2012</integer>
+            <key>Date Modified</key><date>2013-01-14T03:20:50Z</date>
+            <key>Date Added</key><date>2013-01-14T03:21:05Z</date>
+            <key>Bit Rate</key><integer>320</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>4</integer>
+            <key>Play Date</key><integer>3485103823</integer>
+            <key>Play Date UTC</key><date>2014-06-08T14:53:43Z</date>
+            <key>Rating</key><integer>100</integer>
+            <key>Album Rating</key><integer>100</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>566F6E4DE27704C5</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Anwar%20Khurshid%20_%20Aruna%20Kalle%20_%20Cardinal%20Vaughan%20Memorial%20School%20_%20Chris%20Bleth%20_%20Courtney%20Grueschow%20_%20Evergreen%20Club%20Contemporary%20Gamelan%20_%20Jatinder%20Jeetu%20_%20Jeetu%20Prakesh%20_%20Mychael%20Danna%20_%20Rajesh%20Srinivasan%20_%20Thomas%20Fetherstonhaugh%20_%20Ulhas%20Bapat%20_%20V%20Selv/Life%20Of%20Pi/Pi's%20Lullaby.mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>11506</key>
+        <dict>
+            <key>Track ID</key><integer>11506</integer>
+            <key>Name</key><string>God Shuffled His Feet</string>
+            <key>Artist</key><string>Crash Test Dummies</string>
+            <key>Composer</key><string>Brad Roberts</string>
+            <key>Album</key><string>God Shuffled His Feet</string>
+            <key>Genre</key><string>Alternative &#38; Punk</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>6256402</integer>
+            <key>Total Time</key><integer>310543</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>12</integer>
+            <key>Year</key><integer>1993</integer>
+            <key>Date Modified</key><date>2014-05-16T15:57:30Z</date>
+            <key>Date Added</key><date>2014-05-16T15:57:30Z</date>
+            <key>Bit Rate</key><integer>160</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3360253487</integer>
+            <key>Play Date UTC</key><date>2010-06-24T14:14:47Z</date>
+            <key>Skip Count</key><integer>2</integer>
+            <key>Skip Date</key><date>2014-06-12T12:10:15Z</date>
+            <key>Rating</key><integer>80</integer>
+            <key>Album Rating</key><integer>80</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Normalization</key><integer>3238</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>F44EEB8D03AEDA47</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1297106739</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Crash%20Test%20Dummies/God%20Shuffled%20His%20Feet/01%20God%20Shuffled%20His%20Feet.mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>11510</key>
+        <dict>
+            <key>Track ID</key><integer>11510</integer>
+            <key>Name</key><string>Floe</string>
+            <key>Artist</key><string>Philip Glass</string>
+            <key>Album Artist</key><string>Philip Glass Ensemble: Philip Glass</string>
+            <key>Composer</key><string>PHILIP GLASS (b. 1937)</string>
+            <key>Album</key><string>Glassworks - Expanded Edition</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>7215809</integer>
+            <key>Total Time</key><integer>359575</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>2</integer>
+            <key>Track Count</key><integer>11</integer>
+            <key>Year</key><integer>2003</integer>
+            <key>Date Modified</key><date>2014-05-16T15:57:40Z</date>
+            <key>Date Added</key><date>2014-05-16T15:57:40Z</date>
+            <key>Bit Rate</key><integer>160</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3467302891</integer>
+            <key>Play Date UTC</key><date>2013-11-14T14:11:31Z</date>
+            <key>Rating</key><integer>60</integer>
+            <key>Album Rating</key><integer>60</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Normalization</key><integer>1162</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>532195CDAD6610DC</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1297106739</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/Glassworks%20-%20Expanded%20Edition/02%20Floe.mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>11512</key>
+        <dict>
+            <key>Track ID</key><integer>11512</integer>
+            <key>Name</key><string>Rubric</string>
+            <key>Artist</key><string>Philip Glass</string>
+            <key>Album Artist</key><string>Philip Glass Ensemble: Philip Glass</string>
+            <key>Composer</key><string>PHILIP GLASS (b. 1937)</string>
+            <key>Album</key><string>Glassworks - Expanded Edition</string>
+            <key>Genre</key><string>Classical</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>7317166</integer>
+            <key>Total Time</key><integer>364643</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>4</integer>
+            <key>Track Count</key><integer>11</integer>
+            <key>Year</key><integer>2003</integer>
+            <key>Date Modified</key><date>2014-05-16T15:57:46Z</date>
+            <key>Date Added</key><date>2014-05-16T15:57:44Z</date>
+            <key>Bit Rate</key><integer>160</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3467303716</integer>
+            <key>Play Date UTC</key><date>2013-11-14T14:25:16Z</date>
+            <key>Rating</key><integer>40</integer>
+            <key>Album Rating</key><integer>60</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Normalization</key><integer>1735</integer>
+            <key>Compilation</key><true/>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>04794A8300E20189</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1297106739</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Compilations/Glassworks%20-%20Expanded%20Edition/04%20Rubric.mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>11524</key>
+        <dict>
+            <key>Track ID</key><integer>11524</integer>
+            <key>Name</key><string>Stairway To Heaven</string>
+            <key>Artist</key><string>Rodrigo Y Gabriela</string>
+            <key>Album Artist</key><string>Rodrigo y Gabriela</string>
+            <key>Composer</key><string>Jimmy Page.Robert Plant</string>
+            <key>Album</key><string>Rodrigo Y Gabriela</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>MPEG audio file</string>
+            <key>Size</key><integer>5748606</integer>
+            <key>Total Time</key><integer>284264</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>6</integer>
+            <key>Track Count</key><integer>9</integer>
+            <key>Year</key><integer>2006</integer>
+            <key>Date Modified</key><date>2014-05-16T15:58:16Z</date>
+            <key>Date Added</key><date>2014-05-16T15:58:11Z</date>
+            <key>Bit Rate</key><integer>160</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>12</integer>
+            <key>Play Date</key><integer>3463328692</integer>
+            <key>Play Date UTC</key><date>2013-09-29T14:14:52Z</date>
+            <key>Skip Count</key><integer>1</integer>
+            <key>Skip Date</key><date>2014-06-12T12:09:34Z</date>
+            <key>Rating</key><integer>100</integer>
+            <key>Album Rating</key><integer>100</integer>
+            <key>Album Rating Computed</key><true/>
+            <key>Normalization</key><integer>1690</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>8DF4FFBDF2ABADFE</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1297106739</integer>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Rodrigo%20y%20Gabriela/Rodrigo%20Y%20Gabriela/06%20Stairway%20To%20Heaven.mp3</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+    </dict>
+    <key>Playlists</key>
+    <array>
+        <dict>
+            <key>Name</key><string>Music for Maya</string>
+            <key>Playlist ID</key><integer>21282</integer>
+            <key>Playlist Persistent ID</key><string>DE8BE7E8F6D143BA</string>
+            <key>All Items</key><true/>
+            <key>Playlist Items</key>
+            <array>
+                <dict>
+                    <key>Track ID</key><integer>9938</integer>
+                </dict>
+                <dict>
