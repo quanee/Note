@@ -604,3 +604,205 @@
             <key>Track ID</key><integer>3820</integer>
             <key>Name</key><string>Part II B</string>
             <key>Artist</key><string>Keith Jarrett</string>
+            <key>Composer</key><string>Keith Jarrett</string>
+            <key>Album</key><string>The Koln Concert</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>26508430</integer>
+            <key>Total Time</key><integer>1094517</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>3</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1975</integer>
+            <key>Date Modified</key><date>2006-07-27T16:19:46Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:50Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3389986780</integer>
+            <key>Play Date UTC</key><date>2011-06-03T17:29:40Z</date>
+            <key>Normalization</key><integer>781</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Album</key><string>Koln Concert</string>
+            <key>Persistent ID</key><string>F14B6F46956F15A5</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Keith%20Jarrett/The%20Koln%20Concert/03%20Part%20II%20B.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3822</key>
+        <dict>
+            <key>Track ID</key><integer>3822</integer>
+            <key>Name</key><string>Part II C</string>
+            <key>Artist</key><string>Keith Jarrett</string>
+            <key>Composer</key><string>Keith Jarrett</string>
+            <key>Album</key><string>The Koln Concert</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>10098304</integer>
+            <key>Total Time</key><integer>416843</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>4</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1975</integer>
+            <key>Date Modified</key><date>2006-07-27T16:19:48Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:50Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3389987197</integer>
+            <key>Play Date UTC</key><date>2011-06-03T17:36:37Z</date>
+            <key>Normalization</key><integer>948</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Album</key><string>Koln Concert</string>
+            <key>Persistent ID</key><string>29B257311FC05657</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Keith%20Jarrett/The%20Koln%20Concert/04%20Part%20II%20C.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3910</key>
+        <dict>
+            <key>Track ID</key><integer>3910</integer>
+            <key>Name</key><string>My Favorite Things</string>
+            <key>Artist</key><string>John Coltrane</string>
+            <key>Composer</key><string>Richard Rodgers &#38; Oscar Hammerstein</string>
+            <key>Album</key><string>My Favorite Things</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>19857464</integer>
+            <key>Total Time</key><integer>824005</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1961</integer>
+            <key>Date Modified</key><date>2006-07-29T02:14:42Z</date>
+            <key>Date Added</key><date>2009-10-03T14:56:00Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>3</integer>
+            <key>Play Date</key><integer>3421814491</integer>
+            <key>Play Date UTC</key><date>2012-06-06T02:31:31Z</date>
+            <key>Normalization</key><integer>986</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>9D22C3369D79BDD6</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/John%20Coltrane/My%20Favorite%20Things/01%20My%20Favorite%20Things.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3912</key>
+        <dict>
+            <key>Track ID</key><integer>3912</integer>
+            <key>Name</key><string>Everytime We Say Goodbye</string>
+            <key>Artist</key><string>John Coltrane</string>
+            <key>Composer</key><string>Cole Porter</string>
+            <key>Album</key><string>My Favorite Things</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>8224551</integer>
+            <key>Total Time</key><integer>343212</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>2</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1961</integer>
+            <key>Date Modified</key><date>2006-07-29T02:14:42Z</date>
+            <key>Date Added</key><date>2009-10-03T14:56:00Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>501</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>66630F00EAF672CA</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/John%20Coltrane/My%20Favorite%20Things/02%20Everytime%20We%20Say%20Goodbye.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3914</key>
+        <dict>
+            <key>Track ID</key><integer>3914</integer>
+            <key>Name</key><string>Summertime</string>
+            <key>Artist</key><string>John Coltrane</string>
+            <key>Composer</key><string>Du Bose Heyward &#38; George Gershwin</string>
+            <key>Album</key><string>My Favorite Things</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>16752341</integer>
+            <key>Total Time</key><integer>695668</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>3</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1961</integer>
+            <key>Date Modified</key><date>2006-07-29T02:14:42Z</date>
+            <key>Date Added</key><date>2009-10-03T14:56:00Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>1184</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>C9F6ED7879179675</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/John%20Coltrane/My%20Favorite%20Things/03%20Summertime.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3916</key>
+        <dict>
+            <key>Track ID</key><integer>3916</integer>
+            <key>Name</key><string>But Not For Me</string>
+            <key>Artist</key><string>John Coltrane</string>
+            <key>Composer</key><string>George &#38; Ira Gershwin</string>
+            <key>Album</key><string>My Favorite Things</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>13916857</integer>
+            <key>Total Time</key><integer>574483</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>4</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1961</integer>
+            <key>Date Modified</key><date>2006-07-29T02:14:44Z</date>
+            <key>Date Added</key><date>2009-10-03T14:56:00Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>972</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>B80A79285431AB29</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/John%20Coltrane/My%20Favorite%20Things/04%20But%20Not%20For%20Me.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>9902</key>
+        <dict>
+            <key>Track ID</key><integer>9902</integer>
+            <key>Name</key><string>Ride of the Valkyries</string>
+            <key>Artist</key><string>Robert Levine</string>
+            <key>Album</key><string>The Story of the Orchestra</string>
+            <key>Genre</key><string>Children's</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>5219986</integer>
+            <key>Total Time</key><integer>155333</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>37</integer>
+            <key>Year</key><integer>2001</integer>
+            <key>Date Modified</key><date>2011-11-19T18:05:28Z</date>
+            <key>Date Added</key><date>2011-11-19T17:56:22Z</date>
+            <key>Bit Rate</key><integer>256</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3404906118</integer>
+            <key>Play Date UTC</key><date>2011-11-23T09:45:18Z</date>
+            <key>Skip Count</key><integer>1</integer>
+            <key>Skip Date</key><date>2013-11-24T09:17:14Z</date>
+            <key>Normalization</key><integer>1086</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Album</key><string>Story of the Orchestra</string>
+            <key>Persistent ID</key><string>7AB2D70463779E30</string>
+            <key>Track Type</key><string>File</string>
+            <key>File Type</key><integer>1295270176</integer>
