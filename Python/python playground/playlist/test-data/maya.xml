@@ -402,3 +402,205 @@
             <key>Year</key><integer>1962</integer>
             <key>Date Modified</key><date>2006-07-30T08:32:06Z</date>
             <key>Date Added</key><date>2009-10-03T14:55:20Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3389791251</integer>
+            <key>Play Date UTC</key><date>2011-06-01T11:10:51Z</date>
+            <key>Skip Count</key><integer>2</integer>
+            <key>Skip Date</key><date>2013-09-29T14:08:08Z</date>
+            <key>Normalization</key><integer>1242</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>FE64EBA1AAB2EE39</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Miles%20Davis/Kind%20Of%20Blue/01%20So%20What.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3434</key>
+        <dict>
+            <key>Track ID</key><integer>3434</integer>
+            <key>Name</key><string>Freddie Freeloader</string>
+            <key>Artist</key><string>Miles Davis</string>
+            <key>Composer</key><string>Miles Davis</string>
+            <key>Album</key><string>Kind Of Blue</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>13891424</integer>
+            <key>Total Time</key><integer>575830</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>2</integer>
+            <key>Track Count</key><integer>5</integer>
+            <key>Year</key><integer>1962</integer>
+            <key>Date Modified</key><date>2006-07-30T08:32:08Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:20Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3389791827</integer>
+            <key>Play Date UTC</key><date>2011-06-01T11:20:27Z</date>
+            <key>Normalization</key><integer>1255</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>CF3BC010B57179FF</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Miles%20Davis/Kind%20Of%20Blue/02%20Freddie%20Freeloader.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3436</key>
+        <dict>
+            <key>Track ID</key><integer>3436</integer>
+            <key>Name</key><string>Blue In Green</string>
+            <key>Artist</key><string>Miles Davis</string>
+            <key>Composer</key><string>Miles Davis</string>
+            <key>Album</key><string>Kind Of Blue</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>7924093</integer>
+            <key>Total Time</key><integer>328653</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>3</integer>
+            <key>Track Count</key><integer>5</integer>
+            <key>Year</key><integer>1962</integer>
+            <key>Date Modified</key><date>2006-07-30T08:32:08Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:20Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>1</integer>
+            <key>Play Date</key><integer>3389792156</integer>
+            <key>Play Date UTC</key><date>2011-06-01T11:25:56Z</date>
+            <key>Normalization</key><integer>454</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>891A0E18014C21E1</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Miles%20Davis/Kind%20Of%20Blue/03%20Blue%20In%20Green.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3438</key>
+        <dict>
+            <key>Track ID</key><integer>3438</integer>
+            <key>Name</key><string>All Blues</string>
+            <key>Artist</key><string>Miles Davis</string>
+            <key>Composer</key><string>Miles Davis</string>
+            <key>Album</key><string>Kind Of Blue</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>16758594</integer>
+            <key>Total Time</key><integer>693880</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>4</integer>
+            <key>Track Count</key><integer>5</integer>
+            <key>Year</key><integer>1962</integer>
+            <key>Date Modified</key><date>2006-07-30T08:32:08Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:20Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>652</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>0F3E03E505FA78DE</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Miles%20Davis/Kind%20Of%20Blue/04%20All%20Blues.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3440</key>
+        <dict>
+            <key>Track ID</key><integer>3440</integer>
+            <key>Name</key><string>Flamenco Sketches</string>
+            <key>Artist</key><string>Miles Davis</string>
+            <key>Composer</key><string>Miles Davis</string>
+            <key>Album</key><string>Kind Of Blue</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>13693719</integer>
+            <key>Total Time</key><integer>565125</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>5</integer>
+            <key>Track Count</key><integer>5</integer>
+            <key>Year</key><integer>1962</integer>
+            <key>Date Modified</key><date>2006-07-30T08:32:08Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:20Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Normalization</key><integer>535</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Persistent ID</key><string>0603BCEA2CD9EAAD</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Miles%20Davis/Kind%20Of%20Blue/05%20Flamenco%20Sketches.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3816</key>
+        <dict>
+            <key>Track ID</key><integer>3816</integer>
+            <key>Name</key><string>Part I</string>
+            <key>Artist</key><string>Keith Jarrett</string>
+            <key>Composer</key><string>Keith Jarrett</string>
+            <key>Album</key><string>The Koln Concert</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>37811783</integer>
+            <key>Total Time</key><integer>1561610</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>1</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1975</integer>
+            <key>Date Modified</key><date>2006-07-27T16:19:42Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:50Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3389984791</integer>
+            <key>Play Date UTC</key><date>2011-06-03T16:56:31Z</date>
+            <key>Normalization</key><integer>874</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Album</key><string>Koln Concert</string>
+            <key>Persistent ID</key><string>510557EFCBAD559F</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Keith%20Jarrett/The%20Koln%20Concert/01%20Part%20I.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3818</key>
+        <dict>
+            <key>Track ID</key><integer>3818</integer>
+            <key>Name</key><string>Part II A</string>
+            <key>Artist</key><string>Keith Jarrett</string>
+            <key>Composer</key><string>Keith Jarrett</string>
+            <key>Album</key><string>The Koln Concert</string>
+            <key>Genre</key><string>Jazz</string>
+            <key>Kind</key><string>AAC audio file</string>
+            <key>Size</key><integer>21674287</integer>
+            <key>Total Time</key><integer>894756</integer>
+            <key>Disc Number</key><integer>1</integer>
+            <key>Disc Count</key><integer>1</integer>
+            <key>Track Number</key><integer>2</integer>
+            <key>Track Count</key><integer>4</integer>
+            <key>Year</key><integer>1975</integer>
+            <key>Date Modified</key><date>2006-07-27T16:19:44Z</date>
+            <key>Date Added</key><date>2009-10-03T14:55:50Z</date>
+            <key>Bit Rate</key><integer>192</integer>
+            <key>Sample Rate</key><integer>44100</integer>
+            <key>Play Count</key><integer>2</integer>
+            <key>Play Date</key><integer>3389985685</integer>
+            <key>Play Date UTC</key><date>2011-06-03T17:11:25Z</date>
+            <key>Normalization</key><integer>774</integer>
+            <key>Artwork Count</key><integer>1</integer>
+            <key>Sort Album</key><string>Koln Concert</string>
+            <key>Persistent ID</key><string>7BE6157C7A944DEE</string>
+            <key>Track Type</key><string>File</string>
+            <key>Location</key><string>file://localhost/Users/mahesh/Music/iTunes/iTunes%20Music/Keith%20Jarrett/The%20Koln%20Concert/02%20Part%20II%20A.m4a</string>
+            <key>File Folder Count</key><integer>4</integer>
+            <key>Library Folder Count</key><integer>1</integer>
+        </dict>
+        <key>3820</key>
+        <dict>
+            <key>Track ID</key><integer>3820</integer>
+            <key>Name</key><string>Part II B</string>
+            <key>Artist</key><string>Keith Jarrett</string>
