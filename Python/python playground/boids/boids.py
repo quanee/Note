@@ -117,3 +117,19 @@ def tick(frameNum, pts, beak, boids):
 
 
 # main() function
+
+
+def main():
+    # use sys.argv if needed
+    print('starting boids...')
+
+    parser = argparse.ArgumentParser(description="Implementing Craig Reynold's Boids...")
+
+    # add arguments
+    parser.add_argument('--num-boids', dest='N', required=False)
+    args = parser.parse_args()
+
+    # set the initial number of boids
+    N = 100
+    if args.N:
+        N = int(args.N)
