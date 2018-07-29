@@ -100,3 +100,20 @@ class Boids:
             # generate a random velocity
             angles = 2 * math.pi * np.random.rand(1)
             v = np.array(list(zip(np.sin(angles), np.cos(angles))))
+            self.vel = np.concatenate((self.vel, v), axis=0)
+            self.N += 1
+
+        # right-click to scotter boids
+        elif event.button is 3:
+            # add scattering velocity
+            self.vel += 0.1 * (self.pos - np.array([[event.xdata, event.ydata]]))
+
+
+def tick(frameNum, pts, beak, boids):
+    # print frameNum
+    """update function for animation"""
+    boids.tick(frameNum, pts, beak)
+    return pts, beak
+
+
+# main() function
