@@ -83,3 +83,20 @@ class Boids:
         vel2 = D.dot(self.vel)
         self.limit(vel2, self.maxRuleVel)
         vel += vel2
+
+        # apply rule #3: Cohesion
+        vel3 = D.dot(self.pos) - self.pos
+        self.limit(vel3, self.maxRuleVel)
+        vel += vel3
+
+        return vel
+
+    def buttonPress(self, event):
+        """event handler for matplotlib button presses"""
+        # left-click to add a boid
+        if event.button is 1:
+            self.pos = np.concatenate((self.pos, np.array([[event.xdata, event.ydata]])), axis=0)
+
+            # generate a random velocity
+            angles = 2 * math.pi * np.random.rand(1)
+            v = np.array(list(zip(np.sin(angles), np.cos(angles))))
