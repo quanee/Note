@@ -66,3 +66,20 @@ class Boids:
             if coord[0] < - deltaR:
                 coord[0] = width + deltaR
             if coord[1] > height + deltaR:
+                coord[1] = -deltaR
+            if coord[1] < -deltaR:
+                coord[1] = height + deltaR
+
+    def applyRules(self):
+        # apply rule #1: Separation
+        D = self.distMatrix < 25.0
+        vel = self.pos * D.sum(axis=1).reshape(self.N, 1) - D.dot(self.pos)
+        self.limit(vel, self.maxRuleVel)
+
+        # distance threshold for alignment (defferent from separation)
+        D = self.distMatrix < 50.0
+
+        # apply rule #2: Alignment
+        vel2 = D.dot(self.vel)
+        self.limit(vel2, self.maxRuleVel)
+        vel += vel2
