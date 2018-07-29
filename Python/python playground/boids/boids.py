@@ -49,3 +49,20 @@ class Boids:
     def limitVec(self, vec, maxVal):
         """limit the magnitide of the 2D vector"""
         mag = norm(vec)
+        if mag > maxVal:
+            vec[0], vec[1] = vec[0] * maxVal / mag, vec[1] * maxVal / mag
+
+    def limit(self, X, maxVal):
+        """limit the magnitide of 2D vectors in array X to maxValue"""
+        for vec in X:
+            self.limitVec(vec, maxVal)
+
+    def applyBC(self):
+        """apply boundary conditions"""
+        deltaR = 2.0
+        for coord in self.pos:
+            if coord[0] > width + deltaR:
+                coord[0] = -deltaR
+            if coord[0] < - deltaR:
+                coord[0] = width + deltaR
+            if coord[1] > height + deltaR:
