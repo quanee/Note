@@ -133,3 +133,20 @@ def main():
     N = 100
     if args.N:
         N = int(args.N)
+
+    # create boids
+    boids = Boids(N)
+
+    # set up plot
+    fig = plt.figure()
+    ax = plt.axes(xlim=(0, width), ylim=(0, height))
+
+    pts, = ax.plot([], [], markersize=10, c='k', marker='o', ls='None')
+    beak, = ax.plot([], [], markersize=4, c='r', marker='o', ls='None')
+    anim = animation.FuncAnimation(fig, tick, fargs=(pts, beak, boids), interval=50)
+
+    # add a "button press" event handler
+    cid = fig.canvas.mpl_connect('button_press_event', boids.buttonPress)
+
+    plt.show()
+
