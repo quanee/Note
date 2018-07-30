@@ -10,3 +10,7 @@ Asynchronous I/O
 print(socket.socket())
 
 sk = socket.socket()
+
+sk.bind()
+
+sk.listen(3)
