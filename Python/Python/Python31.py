@@ -14,3 +14,7 @@ sk = socket.socket()
 sk.bind()
 
 sk.listen(3)
+# sk.setblocking()
+conn, addr = sk.accept()
+
+conn.recv()
