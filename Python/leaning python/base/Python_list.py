@@ -34,3 +34,9 @@ X = L * 4
 Y = [L] * 4
 
 print(X)
+print(Y)
+
+L[1] = 0
+
+print(X)
+print(Y)
