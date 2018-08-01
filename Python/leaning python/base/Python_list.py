@@ -22,3 +22,9 @@ print(D)
 
 # 拷贝的实现方法(顶层复制)
 # 序列 无条件值分片L[:]
+# 字典 X.copy()
+# 内置函数 list(L)
+# copy标准库
+
+# 深度拷贝
+# copy.deepcopy(Y)
