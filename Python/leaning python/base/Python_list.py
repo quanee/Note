@@ -28,3 +28,9 @@ print(D)
 
 # 深度拷贝
 # copy.deepcopy(Y)
+
+L = [4, 5, 6]
+X = L * 4
+Y = [L] * 4
+
+print(X)
