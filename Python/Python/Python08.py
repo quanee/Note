@@ -38,3 +38,7 @@ f.close()
 
 f = open('test', 'rb')
 data = f.read()
+f.close()
+data = pickle.loads(data)
+
+print(data['name'])
