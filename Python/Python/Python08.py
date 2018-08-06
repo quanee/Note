@@ -12,3 +12,9 @@ f.close()
 print(eval(dic)['b'])
 
 import json
+
+# json dumps loads
+dic = {'name': 'boss', 'age': '48'}
+data = json.dumps(dic)
+f = open('test', 'w')
+f.write(data)
