@@ -8,3 +8,7 @@ f.write(dic)
 f.close()
 f = open('test', 'r')
 dic = f.read()
+f.close()
+print(eval(dic)['b'])
+
+import json
