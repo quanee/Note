@@ -33,3 +33,8 @@ import pickle
 dic = {'name': 'boss', 'age': '48'}
 data = pickle.dumps(dic)
 f = open('test', 'wb')
+f.write(data)
+f.close()
+
+f = open('test', 'rb')
+data = f.read()
