@@ -28,3 +28,8 @@ data = json.loads(data)
 print(data['name'])
 
 import pickle
+
+# pickle dumps loads
+dic = {'name': 'boss', 'age': '48'}
+data = pickle.dumps(dic)
+f = open('test', 'wb')
