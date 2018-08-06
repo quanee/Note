@@ -53,3 +53,8 @@ f.close()
 f = open('test', 'r')
 data = json.load(f)
 print(data['name'])
+
+dic = {'name': 'boss', 'age': '48'}
+f = open('test', 'wb')
+pickle.dump(dic, f)
+f.close()
