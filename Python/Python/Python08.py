@@ -18,3 +18,8 @@ dic = {'name': 'boss', 'age': '48'}
 data = json.dumps(dic)
 f = open('test', 'w')
 f.write(data)
+f.close()
+
+f = open('test', 'r')
+data = f.read()
+f.close()
