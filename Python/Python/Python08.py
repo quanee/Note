@@ -23,3 +23,8 @@ f.close()
 f = open('test', 'r')
 data = f.read()
 f.close()
+data = json.loads(data)
+
+print(data['name'])
+
+import pickle
