@@ -42,3 +42,9 @@ f.close()
 data = pickle.loads(data)
 
 print(data['name'])
+
+
+# json dump load
+dic = {'name': 'boss', 'age': '48'}
+f = open('test', 'w')
+json.dump(dic, f)
