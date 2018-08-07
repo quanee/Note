@@ -406,3 +406,37 @@ print(bob.name)
 
 
 '''
+定义一个装饰器,既应用于函数也应用于类,把对象添加到一个基于字典的注册中
+返回对象本身而不是一个包装器,没有拦截随后的调用
+'''
+registry = {}
+def register(obj):
+    registry[obj.__name__] = obj
+    return obj
+
+
+@register
+def spam(x):
+    return (x ** 2)
+
+
+@register
+def ham(x):
+    return (x ** 3)
+
+
+@register
+class Eggs:
+    def __init__(self, x):
+        self.data = x ** 4
+
+    def __str__(self):
+        return str(self.data)
+
+
+print('Registry:')
+for name in registry:
+    print(name, '=>', registry[name], type(registry[name]))
+
+print('\nManual calls:')
+print(spam(2))
