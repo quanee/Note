@@ -337,3 +337,38 @@ class Spam:
     def display(self):
         print('Spam!' * 8)
 
+
+@Tracer
+class Person:
+    def __init__(self, name, hours, rate):
+        self.name = name
+        self.hours = hours
+        self.rate = rate
+
+    def pay(self):
+        return self.hours * self.rate
+
+
+food = Spam()
+food.display()
+print([food.fetches])
+
+bob = Person('Bob', 40, 50)
+print(bob.name)
+print(bob.pay())
+print('')
+sue = Person('Sue', rate=100, hours=60)
+print(sue.name)
+print(sue.pay())
+
+print(bob.name)
+print(bob.pay())
+print([bob.fetches, sue.fetches])
+
+
+'''类错误: 保持多个实例'''
+class Tracer(object):
+    def __init__(self, aClass):
+        self.aClass = aClass
+
+    def __call__(self, *args):
