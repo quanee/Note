@@ -167,3 +167,38 @@ class Person:
     def __init__(self, name, pay):
         self.name = name
         self.pay = pay
+
+    @tracer
+    def giveRaise(self, percent):
+        self.pay *= (1.0 + percent)
+
+    @tracer
+    def lastName(self):
+        return self.name.split()[-1]
+
+
+print('#' * 50)
+spam(1, 2, 3)
+spam(a=4, b=5, c=6)
+
+bob = Person('Bob Smith', 50000)
+sue = Person('Sue Jones', 100000)
+print(bob.name, sue.name)
+sue.giveRaise(.10)
+print(sue.pay)
+print(bob.lastName(), sue.lastName())
+
+
+'''计时调用'''
+import time
+
+class timer:
+    def __init__(self, func):
+        self.func = func
+        self.alltime = 0
+
+    def __call__(self, *args, **kwargs):
+        start = time.clock()
+        result = self.func(*args, **kwargs)
+        elapsed = time.clock() - start
+        self.alltime += elapsed
