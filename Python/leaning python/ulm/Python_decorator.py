@@ -100,3 +100,37 @@ def spam(a, b, c):
 
 print('#' * 50)
 spam(1, 2, 3)
+spam(a=4, b=5, c=6)
+
+
+class Person:
+    def __init__(self, name, pay):
+        self.name = name
+        self.pay = pay
+
+    @tracer
+    def giveRaise(self, percent):
+        self.pay *= (1.0 + percent)
+
+    @tracer
+    def lastName(self):
+        return self.name.split()[-1]
+
+
+print('methods...')
+bob = Person('Bob Smith', 50000)
+sue = Person('Sue Jones', 100000)
+print(bob.name, sue.name)
+sue.giveRaise(.10)
+print(sue.pay)
+print(bob.lastName(), sue.lastName())
+
+
+'''使用描述符装饰方法'''
+# 装饰的函数只调用其__call__
+# 装饰的方法首先调用__get__来解析方法名获取; __get__返回的对象保持主体类实例并且随后调用以完成调用表达式, 由此触发__call__
+
+class tracer(object):
+    def __init__(self, func):
+        print(0)
+        self.calls = 0
