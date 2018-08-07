@@ -372,3 +372,37 @@ class Tracer(object):
         self.aClass = aClass
 
     def __call__(self, *args):
+        self.wrapped = self.aClass(*args)
+        return self
+
+    def __getattr__(self, attrname):
+        print('Trace: ' + attrname)
+        return getattr(self.wrapped, attrname)
+
+
+@Tracer
+class Spam:
+    def display(self):
+        print('Spam!' * 8)
+
+
+@Tracer
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+
+food = Spam()
+food.display()
+
+# 只保存一个实例
+bob = Person('Bob')
+print(bob.name)
+# 覆盖bob
+Sue = Person('Sue')
+print(sue.name)
+# 只保存最后一个实例 (解决 放弃基于类的装饰器)
+print(bob.name)
+
+
+'''
