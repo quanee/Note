@@ -270,3 +270,37 @@ for func in (listcomp, mapcall):
     func(1000000)
     print(result)
     print('allTime = %s' % func.alltime)
+
+print('map/comp=%s' % round(mapcall.alltime / listcomp.alltime, 3))
+
+
+
+'''类装饰器'''
+instance = {}
+def getInstance(aClass, *args):
+    if aClass not in instance:
+        instance[aClass] = aClass(*args)
+    return instance[aClass]
+
+
+def singleton(aClass):
+    def onCall(*args):
+        return getInstance(aClass, *args)
+    return onCall
+
+
+@singleton
+class Person(object):
+    def __init__(self, name, hours, rate):
+        self.name = name
+        self.hours = hours
+        self.rate = rate
+
+    def pay(self):
+        return self.hours * self.rate
+
+
+@singleton
+class Spam(object):
+    def __init__(self, val):
+        self.attr = val
