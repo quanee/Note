@@ -304,3 +304,36 @@ class Person(object):
 class Spam(object):
     def __init__(self, val):
         self.attr = val
+
+
+bob = Person('Bob', 40, 10)
+print(bob.name, bob.pay())
+
+sue = Person('Sue', 50, 20)
+print(sue.name, sue.pay())
+
+X = Spam(42)
+Y = Spam(99)
+print(X.attr, Y.attr)
+
+
+'''跟踪对象接口'''
+def Tracer(aClass):
+    class Wrapper:
+        def __init__(self, *args, **kargs):
+            self.fetches = 0
+            self.wrapped = aClass(*args, **kargs)
+
+        def __getattr__(self, attrname):
+            print('Trace: ' + attrname)
+            self.fetches += 1
+            return getattr(self.wrapped, attrname)
+
+    return Wrapper
+
+
+@Tracer
+class Spam:
+    def display(self):
+        print('Spam!' * 8)
+
