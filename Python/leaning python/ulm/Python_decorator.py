@@ -134,3 +134,36 @@ class tracer(object):
     def __init__(self, func):
         print(0)
         self.calls = 0
+        self.func = func
+
+    def __call__(self, *args, **kwargs):
+        print(4)
+        self.calls += 1
+        print('call %s to %s' % (self.calls, self.func.__name__))
+        return self.func(*args, **kwargs)
+
+    def __get__(self, instance, owner):
+        print(1)
+        return wrapper(self, instance)
+
+
+class wrapper:
+    def __init__(self, desc, subj):
+        print(2)
+        self.desc = desc
+        self.subj = subj
+
+    def __call__(self, *args, **kwargs):
+        print(3)
+        return self.desc(self.subj, *args, **kwargs)
+
+
+@tracer
+def spam(a, b, c):
+    print(a + b + c)
+
+
+class Person:
+    def __init__(self, name, pay):
+        self.name = name
+        self.pay = pay
