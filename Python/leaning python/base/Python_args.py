@@ -40,3 +40,44 @@ f(1, c=3, b=2)
 
 
 # 默认参数
+def f(a, b=2, c=3):
+    print(a, b, c)
+
+
+f(1)
+f(a=1)
+f(1, 4)
+f(1, 4, 5)
+# 跳过默认参数
+f(1, c=6)
+
+
+# 关键字参数和默认参数混合
+def func(moon, boss, mas=0, kim=0):
+    print((moon, boss, mas, kim))
+
+
+func(1, 2)  # (1, 2, 0, 0)
+func(1, kim=1, boss=0)  # (1, 0, 0, 1)
+func(moon=1, boss=2)  # (1, 2, 0, 0)
+func(mas=1, boss=2, moon=3)  # (3, 2, 1, 0)
+func(1, 2, 3, 4)  # (1, 2, 3, 4)
+
+
+# 任意参数
+# 收集参数
+def f(*args):
+    print(args)
+
+
+f()  # ()
+f(1)  # (1,)
+f(1, 2, 3, 4)  # (1, 2, 3, 4)
+
+
+def f(**args):
+    print(args)
+
+
+f()  # {}
+f(a=1, b=2)  # {'a': 1, 'b': 2}
