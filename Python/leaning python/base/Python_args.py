@@ -81,3 +81,46 @@ def f(**args):
 
 f()  # {}
 f(a=1, b=2)  # {'a': 1, 'b': 2}
+
+
+def f(a, *pargs, **kargs):
+    print(a, pargs, kargs)
+
+
+f(1, 2, 3, x=1, y=2)  # 1 (2, 3) {'x': 1, 'y': 2}
+
+
+# 解包参数
+def func(a, b, c, d):
+    print(a, b, c, d)
+
+
+args = (1, 2)
+args += (3, 4)
+func(*args)  # 1 2 3 4
+
+args = {'a': 1, 'b': 2, 'c': 3}
+args['d'] = 4
+func(**args)  # 1 2 3 4
+
+func(*(1, 2), **{'d': 4, 'c': 4})  # 1 2 4 4
+func(1, *(2, 3), **{'d': 4})  # 1 2 3 4
+func(1, c=3, *(2, ), **{'d': 4})  # 1 2 3 4
+func(1, *(2, 3), d=4)  # 1 2 3 4
+func(1, *(2, ), c=3, **{'d': 4})  # 1 2 3 4
+
+
+def tracer(func, *pargs, **kargs):
+    print('calling: ', func.__name__)
+    return func(*pargs, **kargs)
+
+
+def func(a, b, c, d):
+    return a + b + c + d
+
+
+print(tracer(func, 1, 2, c=3, d=4))
+
+
+# keyword-only参数c(出现在*args之后 必须指定c值)
+def kwonly(a, *b, c):
