@@ -166,3 +166,44 @@ def intersect(*args):
 def union(*args):
     res = []
     for seq in args:
+        for x in seq:
+            if x not in res:
+                res.append(x)
+
+    return res
+
+
+s1, s2, s3 = 'SPAM', 'SCAM', 'SLAM'
+
+print(intersect(s1, s2))
+print(union(s1, s2))
+
+
+# 模拟print
+import sys
+def print3x(*args, sep=' ', end='\n', file=sys.stdout):
+    output = ''
+    first = True
+    for arg in args:
+        output += ('' if first else sep) + str(arg)
+        first = False
+    file.write(output + end)
+
+
+print3x("abcd")
+
+
+def print3x(*args, **kargs):
+    sep = kargs.pop('sep', ' ')
+    end = kargs.pop('end', '\n')
+    file = kargs.pop('file', sys.stdout)
+    if kargs:
+        raise TypeError('extar keywords: %s' % kargs)
+
+    output = ''
+    first = True
+    for arg in args:
+        output += ('' if first else sep) + str(arg)
+        first = False
+    file.write(output + end)
+
