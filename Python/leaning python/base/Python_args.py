@@ -124,3 +124,45 @@ print(tracer(func, 1, 2, c=3, d=4))
 
 # keyword-only参数c(出现在*args之后 必须指定c值)
 def kwonly(a, *b, c):
+    print(a, b, c)
+
+
+kwonly(1, 2, c=3)
+kwonly(1, c=3)
+
+
+def kwonly(a, *, b, c):
+    print(a, b, c)
+
+
+kwonly(1, b=2, c=3)
+
+
+def kwonly(a, *, b='moon', c='boss'):
+    print(a, b, c)
+
+
+kwonly(1)
+kwonly(1, b=2, c=3)
+
+
+# keyword-only参数必须编写在**args任意关键字形式之前
+
+
+# 交集
+def intersect(*args):
+    res = []
+    for x in args[0]:
+        for other in args[1:]:
+            if x not in other:
+                break
+            else:
+                res.append(x)
+
+    return res
+
+
+# 并集
+def union(*args):
+    res = []
+    for seq in args:
