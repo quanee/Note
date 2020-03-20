@@ -322,3 +322,29 @@ def done():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import os
+f.close()
+f1.close()
+f2.close()
+os.remove('./testfile.hdf5')
